@@ -1,0 +1,86 @@
+if !varForLang
+  include ../i18n/en
+
+block page_variables
+
+
+doctype html
+html(lang=app.lang)
+  include ../shared/head
+  block head
+
+  body
+    .app-preloader
+      .app-preloader__circle
+        .app-preloader__circle-inner
+
+    .app(class=page_class)
+      .header-wrapper
+        header.header
+          .logo
+            if page_class === 'index' 
+              .logo__link: img.logo__image(src="/static/img/logo.svg" alt=app.head.title)
+            else
+              a.logo__link(href=`/`): img.logo__image(src="/static/img/logo.svg" alt=app.head.title)
+          nav.nav
+            ul.nav__list
+              each item in app.nav
+                li.nav__item(class={"active": page_active && item.link && item.link.match(page_active) })
+                  if item.isQuickGuide === true
+                    a.nav__link.quick-guide-btn(href="javascript:void(0)" data-open-modal="video")
+                      img.quick-guide-btn__icon.js-prevent-inline(src="/static/img/icons/play.svg" alt="") 
+                      span.quick-guide-btn__text!=item.title
+                  else
+                    a.nav__link(href=item.link)!=item.title
+          nav.select-language.js-select-language
+            a.select-language__current(href="javascript:void(0)")
+              if app.lang === 'en'
+                img.js-prevent-inline(src="/static/img/icons/eng.svg" alt="")
+              if app.lang === 'ru'
+                img.js-prevent-inline(src="/static/img/icons/ru.svg" alt="")
+              if app.lang === 'jpn'
+                img.js-prevent-inline(src="/static/img/icons/jpn.svg" alt="")
+              if app.lang === 'chn'
+                img.js-prevent-inline(src="/static/img/icons/chn.svg" alt="")
+              if app.lang === 'kor'
+                img.js-prevent-inline(src="/static/img/icons/kor.svg" alt="")
+            .select-language__list
+              a.select-language__item(href="/" class={'active': app.lang === 'en'})
+                img.js-prevent-inline(src="/static/img/icons/eng.svg" alt="")
+              a.select-language__item(href="/ru/" class={'active': app.lang === 'ru'})
+                img.js-prevent-inline(src="/static/img/icons/ru.svg" alt="")
+              a.select-language__item(href="/jpn/" class={'active': app.lang === 'jpn'})
+                img.js-prevent-inline(src="/static/img/icons/jpn.svg" alt="")
+              a.select-language__item(href="/chn/" class={'active': app.lang === 'chn'})
+                img.js-prevent-inline(src="/static/img/icons/chn.svg" alt="")
+              a.select-language__item(href="/kor/" class={'active': app.lang === 'kor'})
+                img.js-prevent-inline(src="/static/img/icons/kor.svg" alt="")
+          a.hamburger.js-hamburger(href="javascript:void(0)") 
+            span.hamburger__line
+            span.hamburger__line
+            span.hamburger__line
+
+      .main-wrapper
+        main.main 
+          block content
+
+      .footer-wrapper
+        footer.footer
+          .footer__socials
+            include ../shared/socials
+            +socials
+          .footer__email: a(href="mailto:info@membrana.io") info@membrana.io
+          .footer__copyright Membrana LTD © 2018
+            br 
+            | Willow House, Cricket Square, PO Box 709, Grand Cayman KY1-1107, Cayman Islands
+            br
+            a(href="https://www.registry.gov.ky/verify/" target="blank") Check residence here
+            | . Code is: G18241849750. Number is: 339391
+
+      a(href="https://t.me/membranaplatform" target="_blank").telegram-fixed-icon: img(src="/static/img/icons/socials/telegram.svg" alt="")
+
+      .youtube-modal(data-modal="video" style="display:none")
+        a.youtube-modal__close(href='javascript:void(0)', data-close-modal='')
+        .youtube-modal__iframe.js-youtube-iframe(data-src=app.youtube_video, data-allow="autoplay; encrypted-media", data-allowfullscreen) 
+
+      //- script(defer async src="some metric uri")
