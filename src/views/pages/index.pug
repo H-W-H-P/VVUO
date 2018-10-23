@@ -1,14 +1,8 @@
-extends ../layouts/base
-
-block page_variables
-	- var page_class = 'index';
-	- var page_active = '';
-
+extends ../layouts/pages
 block append head
-	block head_variables
-		- var title = app.head.index.title;
-		- var description = app.head.index.description;
+	block title
+		- var title='Home'; // Page title
 
 block content
-	.dot-pattern-wrapper
-		include ../components/top
+	.container
+		h1 Home Page

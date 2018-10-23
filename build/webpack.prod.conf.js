@@ -6,7 +6,6 @@ var merge = require('webpack-merge')
 var baseWebpackConfig = require('./webpack.base.conf')
 var CopyWebpackPlugin = require('copy-webpack-plugin')
 var HtmlWebpackPlugin = require('html-webpack-plugin')
-// var ImageminPlugin = require('imagemin-webpack-plugin').default
 
 var env = config.build.env
 
@@ -20,11 +19,10 @@ var webpackConfig = merge(baseWebpackConfig, {
   devtool: config.build.productionSourceMap ? '#source-map' : false,
   output: {
     path: config.build.assetsRoot,
-    filename: utils.assetsPath('js/[name].js?[chunkhash]'),
-    chunkFilename: utils.assetsPath('js/[id].js?[chunkhash]')
+    filename: utils.assetsPath('js/[name].[chunkhash].js'),
+    chunkFilename: utils.assetsPath('js/[id].[chunkhash].js')
   },
   plugins: [
-    // http://vuejs.github.io/vue-loader/en/workflow/production.html
     new webpack.DefinePlugin({
       'process.env': env
     }),
@@ -54,14 +52,6 @@ var webpackConfig = merge(baseWebpackConfig, {
       name: 'manifest',
       chunks: ['vendor']
     }),
-    // move files to the root folder
-    new CopyWebpackPlugin([
-      {
-        from: path.resolve(__dirname, '../root'),
-        to: config.build.assetsRoot,
-        ignore: ['.*']
-      }
-    ]),
     // copy custom static assets
     new CopyWebpackPlugin([
       {
@@ -70,8 +60,6 @@ var webpackConfig = merge(baseWebpackConfig, {
         ignore: ['.*']
       }
     ])
-    // optimize all the images
-    // new ImageminPlugin({ test: /\.(jpe?g|png|gif|svg)$/i })
   ]
 })
 

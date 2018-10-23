@@ -5,7 +5,6 @@ var config = require('../config')
 var utils = require('./utils')
 var ExtractTextPlugin = require('extract-text-webpack-plugin')
 var OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin')
-var CopyWebpackPlugin = require('copy-webpack-plugin')
 
 function resolve (dir) {
   return path.join(__dirname, '..', dir)
@@ -55,15 +54,6 @@ module.exports = {
         }
       },
       {
-        test: /\.pug$/,
-        loader: 'pug-html-loader',
-        options: {
-          data: {
-            app: {}
-          }
-        }
-      },
-      {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
         loader: 'url-loader',
         options: {
@@ -76,7 +66,7 @@ module.exports = {
         loader: 'url-loader',
         options: {
           limit: 10000,
-          name: utils.assetsPath('fonts/[name].[ext]?[hash:7]')
+          name: utils.assetsPath('fonts/[name].[hash:7].[ext]')
         }
       }
     ]
@@ -85,16 +75,8 @@ module.exports = {
     ...utils.pageFile(isDev),
     // extract css into its own file
     new ExtractTextPlugin({
-      filename: utils.assetsPath('css/[name].css?[contenthash]')
+      filename: utils.assetsPath('css/[name].[contenthash].css')
     }),
-    // move files to the root folder
-    new CopyWebpackPlugin([
-      {
-        from: utils.assetsPath('../root'),
-        to: config.build.assetsRoot,
-        ignore: ['.*']
-      }
-    ]),
     // Compress extracted CSS. We are using this plugin so that possible
     // duplicated CSS from different components can be deduped.
     new OptimizeCSSPlugin({
@@ -105,7 +87,11 @@ module.exports = {
     new webpack.ProvidePlugin({
       $: 'jquery',
       jQuery: 'jquery',
-      'window.jQuery': 'jquery'
+      'window.jQuery': 'jquery',
+      Popper: ['popper.js', 'default'],
+      // In case you imported plugins individually, you must also require them here:
+      Util: "exports-loader?Util!bootstrap/js/dist/util",
+      Dropdown: "exports-loader?Dropdown!bootstrap/js/dist/dropdown"
     })
   ]
 }

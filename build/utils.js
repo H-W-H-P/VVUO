@@ -24,12 +24,25 @@ exports.cssLoaders = function (options) {
   function generateLoaders (loader, loaderOptions) {
     var loaders = [cssLoader]
     if (loader) {
-      loaders.push({
-        loader: loader + '-loader',
-        options: Object.assign({}, loaderOptions, {
-          sourceMap: options.sourceMap
-        })
-      })
+      loaders.push(
+        {
+          loader: 'postcss-loader',
+          options: {
+              sourceMap: options.sourceMap,
+              plugins: function() {
+                  return [
+                      require('autoprefixer')
+                  ]
+              }
+          }
+        }, 
+        {
+          loader: loader + '-loader',
+          options: Object.assign({}, loaderOptions, {
+            sourceMap: options.sourceMap
+          })
+        }
+      )
     }
 
     return ExtractTextPlugin.extract({
@@ -38,10 +51,8 @@ exports.cssLoaders = function (options) {
     })
   }
 
-  // https://vue-loader.vuejs.org/en/configurations/extract-css.html
   return {
     css: generateLoaders(),
-    postcss: generateLoaders(),
     less: generateLoaders('less'),
     sass: generateLoaders('sass', { indentedSyntax: true }),
     scss: generateLoaders('sass'),
@@ -50,7 +61,7 @@ exports.cssLoaders = function (options) {
   }
 }
 
-// Generate loaders for standalone style files (outside of .vue)
+// Generate loaders for standalone style files
 exports.styleLoaders = function (options) {
   var output = []
   var loaders = exports.cssLoaders(options)
@@ -66,27 +77,19 @@ exports.styleLoaders = function (options) {
 
 exports.pageFile = function (dev = true) {
   var HtmlWebpackPlugin = require('html-webpack-plugin')
-  const read = require('fs-readdir-recursive')
   const fs = require('fs')
   const path = require('path')
-  const pagesFolder = path.resolve(__dirname, '../src/views/pages')
-
-  console.log(global.process.argv)
-  let lang = global.process.argv[2] === 'ru' ? 'ru' : '';
-  lang = global.process.argv[2] === 'jpn' ? 'jpn' : ''; 
-  lang = global.process.argv[2] === 'chn' ? 'chn' : '';  
-  lang = global.process.argv[2] === 'kor' ? 'kor' : '';  
-
+  const testFolder = path.resolve(__dirname, '../src/views/pages')
+  
   var list = []
   
-  read(pagesFolder).forEach(fileItem => {
-    var file = path.resolve(__dirname, `${pagesFolder}/${fileItem}`)
-    var fileName = fileItem.replace('.pug', '');
-    var distFolder = fileName === 'index' ? '' : fileName
+  fs.readdirSync(testFolder).forEach(fileItem => {
+    var file = path.resolve(__dirname, `${testFolder}/${fileItem}`)
+    var distfile = fileItem.replace('.pug', '.html')
 
     // https://github.com/ampedandwired/html-webpack-plugin
     var options = {
-      filename: path.resolve(__dirname, `../dist/${lang}/${distFolder}/index.html`),
+      filename: path.resolve(__dirname, `../dist/${distfile}`),
       template: file,
       inject: true
     }
@@ -97,7 +100,7 @@ exports.pageFile = function (dev = true) {
       // see https://github.com/ampedandwired/html-webpack-plugin
       options.minify = {
         removeComments: true,
-        collapseWhitespace: false,
+        collapseWhitespace: true,
         removeAttributeQuotes: true
       }
       // necessary to consistently work with multiple chunks via CommonsChunkPlugin
