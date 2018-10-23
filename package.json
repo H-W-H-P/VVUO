@@ -1,7 +1,7 @@
 {
   "name": "webpack-simple-starter",
   "version": "1.0.0",
-  "description": "VVUO wegbsite",
+  "description": "VVUO website",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "node build/dev-server.js",
