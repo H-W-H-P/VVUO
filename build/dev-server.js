@@ -52,28 +52,7 @@ Object.keys(proxyTable).forEach(function (context) {
 // handle fallback for HTML5 history API
 app.use(require('connect-history-api-fallback')({
   rewrites: [
-    // { from: /\/whitepaper_language\/$/, to: '/whitepaper_language/index.html'},
-    // { from: /\/business_overview_language\/$/, to: '/business_overview_language/index.html'},
-    { from: /\/roadmap\/$/, to: '/roadmap/index.html'},
-    { from: /\/contacts\/$/, to: '/contacts/index.html'},
-    { from: /\/faq\/$/, to: '/faq/index.html'},
-    { from: /\/referral\/$/, to: '/referral/index.html'},
-    { from: /\/binance-exchange\/$/, to: '/binance-exchange/index.html'},
-    { from: /\/competition\/$/, to: '/competition/index.html'},
-    { from: /\/idnow-success\/$/, to: '/idnow-success/index.html'},
-    { from: /\/idnow-test-success\/$/, to: '/idnow-test-success/index.html'},
-    { from: /\/registration\/$/, to: '/registration/index.html'},
-    { from: /\/presale\/$/, to: '/presale/index.html'},
-    { from: /\/jpn\/$/, to: '/jpn/index.html'},
-    { from: /\/ru\/$/, to: '/ru/index.html'},
-    { from: /\/chn\/$/, to: '/chn/index.html'},
-    { from: /\/team\/$/, to: '/team/index.html'},
-    { from: /\/docs\/$/, to: '/docs/index.html'},
-    { from: /\/career\/$/, to: '/career/index.html'},
-    { from: /\/career__node\/$/, to: '/career__node/index.html'},
-    { from: /\/career__front\/$/, to: '/career__front/index.html'},
-    { from: /\/career__design\/$/, to: '/career__design/index.html'},
-    { from: /\/kor\/$/, to: '/kor/index.html'}
+    // { from: /\/roadmap\/$/, to: '/roadmap/index.html'},
   ]
 }))
 

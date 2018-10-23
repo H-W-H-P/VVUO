@@ -13,10 +13,7 @@ head
 	meta(property='og:site_name', content=app.head.title)
 	meta(property='og:image', content='/static/img/pictures/components/investors.jpg')
 
-	if app.lang === 'en'
-		link(href="/static/fonts/MavenPro/mavenpro.css" rel="stylesheet")
-	if app.lang === 'ru'
-		link(href="/static/fonts/EtelikaPro/etelikapro.css" rel="stylesheet")
+	link(href="/static/fonts/MavenPro/mavenpro.css" rel="stylesheet")
 
 	meta(name='description', content=description ? description : app.head.description)
 	meta(name='yandex-verification', content='4ebdfc97a2b8fa91')
