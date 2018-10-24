@@ -1,0 +1,65 @@
+// common undefault
+
+html,
+body
+	max-width: 1440px
+	margin: 0 auto
+	height: 100%
+	position: relative
+
+a
+	display: inline-block
+	color: #000
+	text-decoration: none
+
+// sizes
+
+.max_width
+	max-width: 1200px
+	margin: 0 auto
+	position: relative
+	padding: 0 30px
+
+// animations
+
+.trs
+	transition: all ease .4s
+
+// responsive
+
+.tablet
+	display: none
+	@media(max-width:1023px)
+		display: block
+
+.mob
+	display: none
+	@media(max-width:767px)
+		display: block
+
+// interactive
+
+.rnd_btn
+	border: 1px solid  #5b8ec8
+	border-radius: 16px
+	// height: 30px
+	// line-height: 30px
+	padding: 10px 14px
+
+// placements
+
+// absolute Y center
+.AXC
+	left: 50%
+	transform: translateX(-50%)
+
+// absolute Y center
+.AYC
+	top: 50%
+	transform: translateY(-50%)
+
+// absolute center
+.AC
+	left: 50%
+	top: 50%
+	transform: translate(-50%, -50%)

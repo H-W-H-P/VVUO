@@ -1,5 +1,5 @@
 // Load app style
-import '@/styles/app.scss'
+import '@/styles/app.sass'
 import 'bootstrap'
 
 // Scripts
