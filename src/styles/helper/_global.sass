@@ -6,10 +6,11 @@ body
 	margin: 0 auto
 	height: 100%
 	position: relative
+	color: #28282b
 
 a
 	display: inline-block
-	color: #000
+	color: #28282b
 	text-decoration: none
 
 // sizes
@@ -19,6 +20,11 @@ a
 	margin: 0 auto
 	position: relative
 	padding: 0 30px
+
+// fonts
+
+.title
+	margin: 0
 
 // animations
 
@@ -46,9 +52,32 @@ a
 	// line-height: 30px
 	padding: 10px 14px
 
-// placements
+.btn_w_arr
+	display: -webkit-flex
+	display: -moz-flex
+	display: -ms-flex
+	display: -o-flex
+	display: flex
+	justify-content: center
+	align-items: center
+	font-size: 18px
+	color: $white
+	font-weight: bold
 
-// absolute Y center
+	&::after
+		content: ''
+		position: static
+		width: 32px
+		height: 32px
+		display: inline-block
+		border: 2px solid  $white
+		border-radius: 50%
+		margin-left: 10px
+		background: url('../../static/img/icons/white-arr.svg') no-repeat
+		background-position: center  center
+
+// placements
+// absolute X center
 .AXC
 	left: 50%
 	transform: translateX(-50%)
@@ -63,3 +92,11 @@ a
 	left: 50%
 	top: 50%
 	transform: translate(-50%, -50%)
+
+// text center
+.TC
+	text-align: center
+
+// block center
+.BC
+	margin: 0 auto
