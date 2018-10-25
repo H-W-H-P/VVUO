@@ -8,4 +8,9 @@ $(document).ready(function () {
     dots: false,
     nav: true
   })
+
+  $('.header__toggle').click(function () {
+    $('.nav_top').toggleClass('open')
+    return false
+  })
 })

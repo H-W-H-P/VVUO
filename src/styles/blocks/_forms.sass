@@ -1,0 +1,27 @@
+.search_form
+	border: 1px solid  $gray2
+	background: $white
+	height: 60px
+	line-height: 60px
+	margin-bottom: 45px
+	box-sizing: border-box
+
+	&__btn
+		width: 20%
+		text-align: center
+		position: relative
+		cursor: pointer
+
+		&::before
+			content: ''
+			position: absolute
+			left: 0
+			top: 11px
+			bottom: 11px
+			width: 1px
+			background-color: $gray2
+
+	&__input
+		width: 79%
+		padding-left: 80px
+		box-sizing: border-box

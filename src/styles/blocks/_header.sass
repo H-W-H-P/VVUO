@@ -1,18 +1,35 @@
 .header
 	width: 100%
 	position: absolute
-	z-index: 2
-	// overflow: hidden
+	z-index: 10
+	box-sizing: border-box
+	@media(max-width:1023px)
+		padding-right: 0
 
 	&__search
 		padding-left: 50px
+		@media(max-width:767px)
+			display: none
+
+	&__toggle
+		width: 70px
+		height: 63px
+		background-color: $main-blue
+		margin-left: 40px
+		position: relative
+		z-index: 10
 
 .nav_top
 	text-transform: uppercase
 	font-size: 10px
 	font-weight: bold
 	text-align: right
-	display: inline-block
+	display: -webkit-flex
+	display: -moz-flex
+	display: -ms-flex
+	display: -o-flex
+	display: flex
+	align-items: center
 	float: right
 
 	&__wr
@@ -20,14 +37,59 @@
 		margin: 0
 		padding: 0
 		padding-right: 30px
+		transition: all ease .8s
+		@media(max-width:1439px)
+			position: absolute
+			transform: translateY(-600px)
+			top: 0
+			left: 0
+			width: 100%
+			background-color: $gray
+			padding: 50px 0
+			z-index: 10
+		@media(max-width:767px)
+			display: none
+
+			&-mob
+				display: block
+				padding-top: 120px
+				padding-bottom: 40px
+				position: static
+
+				.nav_top__first_link
+					display: flex
+					justify-content: flex-start
 
 	&__first_link
 		position: relative
 		padding-right: 44px
+		display: inline-flex
+		justify-content: center
+		align-items: center
+		@media(max-width:1023px)
+			display: none
+
+		&::before
+			content: ''
+			position: static
+			width: 15px
+			height: 15px
+			background: url('../../static/img/icons/katalog.svg') no-repeat
+			background-position: center  center
+			display: inline-block
+			margin-right: 10px
 
 	&__link
 		padding-right: 20px
 		display: inline-block
+		@media(max-width:1439px)
+			display: block
+			padding: 20px
+			text-align: center
+		@media(max-width:767px)
+			text-align: left
+			padding: 12.5px 35px
+			letter-spacing: 1.2px
 
 		&:last-child
 			padding-right: 0
@@ -43,13 +105,72 @@
 		left: 0
 		right: 0
 		z-index: 2
+		@media(max-width:1439px)
+			position: static
 
 	&__btn_wr
 		display: inline-block
 		position: relative
+		@media(max-width:767px)
+			display: none
 
 	&__number
 		font-size: 18px
 		display: block
-		padding-bottom: 12px
-		padding: 0 6px 12px
+		padding: 0 6px 4px
+		@media(max-width:1439px)
+			display: inline-block
+			padding: 0 17px 0 0
+
+	&__mob_menu
+		position: absolute
+		transform: translateY(-100%)
+		height: 100vh
+		width: 100%
+		left: 0
+		top: 0
+		z-index: 10
+		background-color: $gray
+		transition-time: .8s
+	
+	// toggle
+	&.open
+
+		.nav_top
+
+			&__wr
+				transform: none
+
+			&__mob_menu
+				transform: none
+
+
+.logo
+	position: relative
+	z-index: 11
+
+	&__img
+		@media(max-width:767px)
+			display: none
+
+			&-mob
+				display: block
+
+
+.nav_mob
+
+	&__list_mid
+		text-transform: none
+		font-weight: normal
+
+	&__link
+		padding: 10px 35px
+
+	&__call_wr
+		position: absolute
+		bottom: 0
+		left: 0
+		right: 0
+		background-color: $white
+		height: 95px
+

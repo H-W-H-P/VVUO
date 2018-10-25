@@ -1,15 +1,42 @@
 header.header.max_width.AXC
 	a.header__logo.logo(href="#")
-		img(src="static/img/logos/logo.svg", alt="").logo__img
-		img(src="static/img/logos/logo.svg", alt="").logo__img.mob.logo__img-mob
+		img(src="static/img/logos/logo.svg", width="166", alt="").logo__img
+		img(src="static/img/logos/logo-mob.svg", width="200", alt="").logo__img.mob.logo__img-mob
 	nav.header__nav.nav_top
-		a.nav_top__first_link каталог
+		a(href="#").nav_top__first_link каталог
 		ul.nav_top__wr
-			li.nav_top__link Готовые лаборатории
-			li.nav_top__link производители
-			li.nav_top__link Конфигуратор оборудования
+			li.nav_top__link
+				a(href="#") Готовые лаборатории
+			li.nav_top__link
+				a(href="#") производители
+			li.nav_top__link
+				a(href="#") Конфигуратор оборудования
 		.nav_top__btn_wr
 			a(href="tel:+7 (123) 456-78-90").nav_top__number +7 (123) 456-78-90
 			a(href="#").rnd_btn.nav_top__btn Вызвать консультанта
-		a.header__search(href="#")
+		a(href="#").header__search
 			img.header__search_icon(src="static/img/icons/search.svg", alt="")
+		.nav_top__mob_menu.mob.trs.nav_mob
+			ul.nav_top__wr.nav_top__wr-mob
+				li.nav_top__link
+					a(href="#").nav_top__first_link каталог
+				li.nav_top__link
+					a(href="#") Готовые лаборатории
+				li.nav_top__link
+					a(href="#") производители
+				li.nav_top__link
+					a(href="#") Конфигуратор оборудования
+			ul.nav_top__mob_nav_footer.nav_mob__list_mid
+				li.nav_mob__link
+					a(href="#") О проекте
+				li.nav_mob__link
+					a(href="#") Сотрудничество
+				li.nav_mob__link
+					a(href="#") Новости
+				li.nav_mob__link
+					a(href="#") Контакты
+			.nav_mob__call_wr
+
+
+
+		a(href="#").header__toggle.desktop_small
