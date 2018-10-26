@@ -13,4 +13,10 @@ $(document).ready(function () {
     $('.nav_top').toggleClass('open')
     return false
   })
+
+  $('.catalog_wr__item').click(function () {
+    $('.catalog_open_wr__item').removeClass('active')
+    $('.catalog_open_wr__item').eq($(this).index()).addClass('active')
+    return false
+  })
 })

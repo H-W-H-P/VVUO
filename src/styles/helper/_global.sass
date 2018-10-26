@@ -5,15 +5,19 @@
 
 html,
 body
+	position: relative
+
 	max-width: 1440px
 	margin: 0 auto
-	position: relative
+
 	font-family: 'avantgardegothicc';
 	color: $blackTxt
+
 	-webkit-tap-highlight-color:  rgba(255, 255, 255, 0)
 
 a
 	display: inline-block
+
 	color: $blackTxt
 	text-decoration: none
 
@@ -21,6 +25,7 @@ ul,
 li
 	list-style: none
 	text-align: left
+
 	margin: 0
 	padding: 0
 
@@ -32,10 +37,12 @@ button
 // sizes
 
 .max_width
+	position: relative
+
 	max-width: 1200px
 	margin: 0 auto
-	position: relative
 	padding: 0 30px
+
 	@media(max-width:1023px)
 		padding: 0 24px
 
@@ -43,13 +50,25 @@ button
 
 .title
 	margin: 0
+
 	font-family: "avantgardegothicc"
 	font-weight: bold
 
 .section_title
+	display: inline-block
+
 	font-size: 40px
 	line-height: 45px
-	display: inline-block
+
+	@media(max-width:1439px)
+		font-size: 30px
+
+	@media(max-width:1023px)
+		padding-left: 80px
+		display: block
+
+	@media(max-width:767px)
+		padding-left: 0
 
 // animations
 
@@ -86,8 +105,6 @@ button
 .rnd_btn
 	border: 1px solid  #5b8ec8
 	border-radius: 16px
-	// height: 30px
-	// line-height: 30px
 	padding: 10px 14px
 
 .btn_w_arr
@@ -96,8 +113,10 @@ button
 	display: -ms-flex
 	display: -o-flex
 	display: flex
+
 	justify-content: center
 	align-items: center
+
 	font-size: 18px
 	color: $white
 	font-weight: bold
@@ -105,39 +124,62 @@ button
 	&::after
 		content: ''
 		position: static
+		display: inline-block
+
 		width: 32px
 		height: 32px
-		display: inline-block
 		border: 2px solid  $white
 		border-radius: 50%
 		margin-left: 10px
+
 		background: url('../../static/img/icons/white-arr.svg') no-repeat
 		background-position: center  center
 
 // static
 
 .vert_lane
-	background-color: $blackTxt
-	width: 1px
-	height: 100%
+	position: absolute
 	opacity: .1
 	z-index: -1
-	position: absolute
+
+	width: 1px
+	height: 100%
 	top: 0
 	left: 0
+
+	background-color: $blackTxt
+
+	@media(max-width:1023px)
+		display: none
+
+	@media(max-width:1439px)
+		left: 30px
 
 	&:nth-child(2)
 		left: 25%
 
+		@media(max-width:1439px)
+			left: 33%
+
 	&:nth-child(3)
 		left: 50%
+
+		@media(max-width:1439px)
+			left: 66%
 
 	&:nth-child(4)
 		left: 75%
 
+		@media(max-width:1439px)
+			right: 30px
+			left: auto
+
 	&:last-child
 		left: auto
 		right: 0
+
+		@media(max-width:1439px)
+			display: none
 
 // placements
 // absolute X center
