@@ -1,0 +1,365 @@
+.grid
+
+	&-X4
+		display: -webkit-flex
+		display: -moz-flex
+		display: -ms-flex
+		display: -o-flex
+		display: flex
+		flex-wrap: wrap
+
+// suply block
+.supply
+	padding: 140px 0 0
+
+	position: relative
+	overflow: hidden
+
+	border-bottom: 1px solid  $gray2
+
+	@media(max-width:1439px)
+		padding: 140px 30px 0
+
+	@media(max-width:767px)
+		padding: 80px 0 0
+		
+
+	&__title
+		padding-bottom: 60px
+
+		@media(max-width:767px)
+			padding: 0 0 20px 30px
+
+	&__logo
+		max-width: 180px
+		max-height: 150px
+		width: 100%
+
+		@media(max-width:767px)
+			max-width: 110px
+
+	&__item
+		width: 25%
+		height: 180px
+
+		display: -webkit-flex
+		display: -moz-flex
+		display: -ms-flex
+		display: -o-flex
+		display: flex
+		box-sizing: border-box
+
+		justify-content: center
+		align-items: center
+
+		border-top: 1px solid  $gray2
+
+		&:last-child
+			background-color: $main-blue
+
+			@media(max-width:767px)
+				background-color: inherit
+
+		&-unmob
+			@media(max-width:767px)
+				display: none
+
+		&-mob.supply__item
+			display: none
+
+			height: 100px
+
+			background-color: $main-blue
+
+			@media(max-width:767px)
+				display: -webkit-flex
+				display: -moz-flex
+				display: -ms-flex
+				display: -o-flex
+				display: flex
+
+		@media(max-width:1439px)
+			width: 33.3333%
+
+			&:nth-child(5),
+			&:nth-child(6)
+				display: none
+
+		@media(max-width:1023px)
+			border-left: 1px solid  $gray2
+
+		@media(max-width:767px)
+			width: 100%
+
+	.grid-X4
+		@media(max-width:1023px)
+			border-right: 1px solid  $gray2
+
+	.owl-stage
+		border-bottom: 1px solid  $gray2
+
+		.owl-item:last-child
+			display: none
+
+	.owl-nav
+		top: -60px
+		right: 20px
+
+
+// advantages block
+.advantages
+	position: relative
+
+	display: -webkit-flex
+	display: -moz-flex
+	display: -ms-flex
+	display: -o-flex
+	display: flex
+
+	padding-top: 170px
+
+	@media(max-width:1439px)
+		padding: 160px 30px 0
+
+	@media(max-width:1023px)
+		flex-direction: column
+
+	@media(max-width:767px)
+		padding: 70px 0 0
+
+	&__title
+		padding: 60px 0 25px
+
+	&__text
+		font-size: 12px
+		line-height: 22px
+
+		max-width: 250px
+
+		@media(max-width:1439px)
+			font-size: 14px
+			line-height: 24px
+
+		@media(max-width:1023px)
+			font-size: 12px
+			line-height: 22px
+
+			max-width: 480px
+
+	&__link
+		color: #000000
+
+		justify-content: flex-start
+
+		&::after
+			background-image: url('../../static/img/icons/black-arr.svg')
+
+			margin-left: 30px
+
+			@media(max-width:767px)
+				margin-left: 0px
+
+		@media(max-width:767px)
+			font-size: 16px
+
+	&__left
+		width: 25%
+
+		@media(max-width:1439px)
+			width: 33.33333%
+			min-width: 33.33333%
+
+		@media(max-width:1023px)
+			width: 100%
+
+			padding: 0 80px
+			margin-bottom: -40px
+
+			box-sizing: border-box
+
+		@media(max-width:767px)
+			padding: 0 30px
+
+	&__right
+		width: 50%
+		margin-left: 25%
+
+		display: -webkit-flex
+		display: -moz-flex
+		display: -ms-flex
+		display: -o-flex
+		display: flex
+		box-sizing: border-box
+
+		z-index: -2
+
+		@media(max-width:1439px)
+			width: 66.6666%
+			min-width: 66.6666%
+			padding: 0 80px
+			margin: 0
+
+		@media(max-width:1023px)
+			width: 100%
+			z-index: auto
+
+		@media(max-width:767px)
+			padding: 0
+
+	&__column
+		width: 50%
+
+		@media(max-width:1439px)
+			padding-top: 120px
+
+		&:nth-child(2)
+			padding-top: 120px
+
+			@media(max-width:1439px)
+				padding-top: 0
+
+			@media(max-width:1023px)
+				border-left:  1px solid  $gray2
+
+	&__item
+		padding: 50px
+
+		background-color: $gray
+
+		&:nth-child(2)
+			border-top:  1px solid  $gray2
+
+		@media(max-width:1439px)
+			padding: 40px
+		
+		@media(max-width:767px)
+			padding: 30px
+
+	&__desc
+		font-size: 12px
+		line-height: 22px
+
+		max-width: 160px
+
+// news main page
+
+.news
+	position: relative
+
+	padding-top: 140px
+
+	@media(max-width:1023px)
+		overflow: hidden
+
+	&__title
+		padding-bottom: 40px
+
+	&__item
+		width: 25%
+		padding-right: 75px
+
+		box-sizing: border-box
+
+		@media(max-width:1439px)
+			width: 33.333%
+
+			&:nth-child(4)
+				display: none
+
+		@media(max-width:1023px)
+			width: 100%
+
+	&__image
+		width: 100%
+
+		object-fit: cover
+
+		&-big
+			height: 260px
+
+		&-small
+			height: 130px
+
+			@media(max-width:1023px)
+				padding-top: 130px
+
+	&__date
+		padding: 30px 0 10px
+		margin: 0
+
+		font-size: 12px
+
+	&__desc
+		font-size: 16px
+		font-weight: bold
+		line-height: 24px
+
+		padding-bottom: 10px
+
+	&__text
+		font-size: 12px
+		line-height: 22px
+
+	&__btn
+		position: absolute
+		z-index: 2
+
+		top: 0
+		right: -110px
+		width: 260px
+		height: 130px
+
+		background-color: $gray4
+		color: $blackTxt
+
+		@media(max-width:1439px)
+			right: 0
+			top: 165px
+			height: 60px
+			width: 240px
+
+			font-size: 16px
+
+		&::after
+			border-color: $blackTxt
+
+			background-image: url('../../static/img/icons/black-arr.svg')
+
+			@media(max-width:1439px)
+				border: none
+			
+			@media(max-width:1023px)
+				border: 2px solid  $blackTxt
+
+		@media(max-width:1023px)
+			position: static
+
+			background-color: inherit
+
+			justify-content: flex-start
+
+			margin-left: 80px
+
+		@media(max-width:767px)
+			margin-left: 0
+
+	.relative_wr
+		@media(max-width:1439px)
+			position: static
+
+	&__slider
+		@media(max-width:1023px)
+			padding-left: 80px
+			width: 84%
+			position: static
+
+		@media(max-width:767px)
+			padding-left: 0
+			width: 90%
+
+		.owl-stage-outer
+			overflow: visible
+
+		.owl-nav
+			top: 144px
+			right: 20px

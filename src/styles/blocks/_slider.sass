@@ -1,0 +1,54 @@
+.clients
+	padding-top: 100px
+	padding-bottom: 220px
+
+	overflow: hidden
+
+	@media(max-width:1023px)
+		padding-bottom: 180px
+
+	@media(max-width:767px)
+		padding-bottom: 100px
+
+	&__item
+		max-width: 85px
+		max-height: 85px
+		width: 100%
+		height: 100%
+		@media(max-width:1023px)
+			max-width: 65px
+			max-height: 65px
+
+	&__title
+		padding-bottom: 85px
+		@media(max-width:767px)
+			padding-bottom: 40px
+
+	.clientsOwl 
+		margin-left: -60px
+		margin-right: -60px
+		width: auto
+
+		position: static
+
+		@media(max-width:1439px)
+			margin: 0
+			width: 115%
+
+		@media(max-width:1023px)
+			margin-left: 80px
+			width: 105%
+
+		@media(max-width:1023px)
+			margin-left: 0
+			width: 130%
+
+	.owl-item
+		text-align: center
+
+		@media(max-width:1439px)
+			text-align: left
+
+	.owl-nav
+		top: 100px
+		right: 20px

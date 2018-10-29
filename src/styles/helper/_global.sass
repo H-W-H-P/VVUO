@@ -43,6 +43,9 @@ button
 	margin: 0 auto
 	padding: 0 30px
 
+	@media(max-width:1439px)
+		max-width: 100%
+
 	@media(max-width:1023px)
 		padding: 0 24px
 
@@ -100,6 +103,11 @@ button
 	@media(max-width:767px)
 		display: block
 
+.unmob
+	display: block
+	@media(max-width:767px)
+		display: none
+
 // interactive
 
 .rnd_btn
@@ -137,6 +145,17 @@ button
 
 // static
 
+.lanes
+	position: absolute
+	top: 0
+	bottom: 0
+	width: 1200px
+	left: 50%
+	transform: translateX(-50%)
+	@media(max-width:1439px)
+		position: static
+		transform: none
+
 .vert_lane
 	position: absolute
 	opacity: .1
@@ -159,7 +178,7 @@ button
 		left: 25%
 
 		@media(max-width:1439px)
-			left: 33%
+			left: 34%
 
 	&:nth-child(3)
 		left: 50%
@@ -180,6 +199,9 @@ button
 
 		@media(max-width:1439px)
 			display: none
+
+.relative_wr
+	position: relative
 
 // placements
 // absolute X center
@@ -206,9 +228,33 @@ button
 .BC
 	margin: 0 auto
 
+// sliders
+
+.slider_T1
+
+	.owl-nav
+		position: absolute
+
+		button.owl-prev,
+		button.owl-next
+			width: 20px
+			padding: 10px !important
+			background-image: url('../../static/img/icons/arr-long-black.svg') !important
+			background-repeat: no-repeat !important
+			background-position: center center !important
+
+		button.owl-next
+			transform: scaleX(-1)
+
 // libraries
 // owl
-.owl-nav
+.owl
 
-	span
-		opacity: 0
+	&-carousel
+		display: block
+
+	&-nav
+
+		span
+			opacity: 0
+
