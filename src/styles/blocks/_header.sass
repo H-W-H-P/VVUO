@@ -21,12 +21,127 @@
 	&__toggle
 		position: relative
 		z-index: 10
+		box-sizing: border-box
+
+		text-align: center
 
 		width: 70px
 		height: 63px
 		margin-left: 40px
+		padding-top: 30px
 
 		background-color: $main-blue
+
+		&:hover
+			.hover_bl
+				opacity: 1	
+
+
+	&__slide
+		display: none
+
+		@media(max-width:1439px)
+			display: block
+			box-sizing: border-box
+
+			position: absolute
+			z-index: -1
+
+			top: 0
+			left: 0
+			right: 0
+			transform: translateY(-110%)
+			padding: 190px 30px 0
+			height: 100vh
+			min-height: 700px
+
+			transition: all ease .8s
+
+			background-color: #ffffff
+
+		@media(max-width:1023px)
+			padding: 140px 20px
+			min-height: 900px
+
+	&.open
+
+		.header__slide
+			transform: none
+
+	&__bottom
+		position: absolute
+
+		left: 0
+		bottom: 0
+		right: 0
+		height: 94px
+		padding: 0 30px
+
+		background-color: $gray
+
+	&__list
+		width: 20%
+		padding: 0
+
+		&2
+			line-height: 35px
+
+			padding-left: 35px
+
+			box-sizing: border-box
+
+		&1
+			line-height: 21px
+			text-transform: uppercase
+
+			padding-top: 6px
+
+			li
+				padding-bottom: 16px
+
+		@media(max-width:1023px)
+			width: 26%
+
+	&__tablet
+		display: -webkit-flex
+		display: -moz-flex
+		display: -ms-flex
+		display: -o-flex
+		display: flex
+
+		justify-content: center
+
+		padding-top: 60px
+
+	&__bottom
+		display: -webkit-flex
+		display: -moz-flex
+		display: -ms-flex
+		display: -o-flex
+		display: flex
+
+		justify-content: center
+		align-items: center
+
+	&__consult
+		color: $blackTxt
+
+		padding-left: 35px
+		width: 130%
+
+		justify-content: flex-start
+
+		box-sizing: border-box
+
+		&::after
+			background-image: url('../../static/img/icons/black-arr.svg')
+
+			border: none
+
+			width: 10px
+
+		@media(max-width:1023px)
+			width: 150%
 
 .nav_top
 	text-transform: uppercase
@@ -53,32 +168,33 @@
 		transition: all ease .8s
 
 		@media(max-width:1439px)
-			position: absolute
+			// position: absolute
 
-			transform: translateY(-600px)
-			top: 0
-			left: 0
-			width: 100%
-			padding: 50px 0
+			// transform: translateY(-600px)
+			// top: 0
+			// left: 0
+			// width: 100%
+			// padding: 50px 0
 
-			background-color: $gray
+			// background-color: $gray
 
-			z-index: 10
-
-		@media(max-width:767px)
+			// z-index: 10
 			display: none
 
-			&-mob
-				display: block
-				position: static
+		// @media(max-width:767px)
+		// 	display: none
 
-				padding-top: 120px
-				padding-bottom: 40px
+		// 	&-mob
+		// 		display: block
+		// 		position: static
 
-				.nav_top__first_link
-					display: flex
+		// 		padding-top: 120px
+		// 		padding-bottom: 40px
 
-					justify-content: flex-start
+		// 		.nav_top__first_link
+		// 			display: flex
+
+		// 			justify-content: flex-start
 
 	&__first_link
 		position: relative
@@ -109,6 +225,13 @@
 		padding-right: 20px
 
 		display: inline-block
+
+		a
+			transition: all ease .4s
+
+		&:hover a
+			color: $main-blue
+
 
 		@media(max-width:1439px)
 			display: block
@@ -180,22 +303,17 @@
 		background-color: $gray
 
 		transition-time: .8s
-	
-	// toggle
-	&.open
-
-		.nav_top
-
-			&__wr
-				transform: none
-
-			&__mob_menu
-				transform: none
 
 
 .logo
 	position: relative
 	z-index: 11
+
+	@media(max-width:1439px)
+		position: absolute
+
+		top: 50%
+		transform: translateY(-50%)
 
 	&__img
 		@media(max-width:767px)

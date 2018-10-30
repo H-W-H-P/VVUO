@@ -5,14 +5,17 @@ $(document).ready(function () {
   // click handlers
 
   $('.header__toggle').click(function () {
-    $('.nav_top').toggleClass('open')
+    $('.header').toggleClass('open')
+    $(this).toggleClass('active')
     return false
   })
 
   $('.catalog_wr__item').click(function () {
-    $('.catalog_open_wr__item').removeClass('active')
-    $('.catalog_open_wr__item').eq($(this).index()).addClass('active')
-    return false
+    if (!$(this).closest('.header__slide').length) {
+      $('.catalog_open_wr__item').removeClass('active')
+      $('.catalog_open_wr__item').eq($(this).index()).addClass('active')
+      return false
+    }
   })
 
   var windWidthResize = window.innerWidth

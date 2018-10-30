@@ -10,7 +10,7 @@ body
 	max-width: 1440px
 	margin: 0 auto
 
-	font-family: 'avantgardegothicc';
+	font-family: 'avantgardegothicc'
 	color: $blackTxt
 
 	-webkit-tap-highlight-color:  rgba(255, 255, 255, 0)
@@ -145,6 +145,100 @@ button
 
 		background: url('../../static/img/icons/white-arr.svg') no-repeat
 		background-position: center  center
+
+.hamburger
+	position: relative
+
+	&-box
+		position: relative
+
+		display: inline-block
+
+		width: 15px
+		height: 16px
+
+	&-inner
+		transition-timing-function: cubic-bezier(.55, .055, .675, .19)
+		transition-duration: 75ms
+	    top: 50%
+    	display: block
+		position: absolute
+		width: 15px
+		height: 2px
+		transition-timing-function: ease
+		transition-duration: .15s
+		transition-property: transform, width
+		border-radius: 4px
+		background-color: #fff
+
+		&::after,
+		&::before
+			display: block
+			content: ''
+			position: absolute
+			width: 15px
+			height: 2px
+			transition-timing-function: ease
+			transition-duration: .15s
+			transition-property: transform, width
+			border-radius: 4px
+			background-color: #fff
+
+		&::after
+			bottom: -5px
+
+		&::before
+			top: -5px
+
+	&.active
+
+		.hamburger-inner
+			transition-delay: .12s
+			transition-timing-function: cubic-bezier(.215,.61,.355,1)
+			transform: rotate(45deg)
+
+			&::before
+				top: 0
+				transition: top 75ms ease,opacity 75ms ease .12s
+				opacity: 0
+
+			&::after
+				bottom: 0
+				transition: bottom 75ms ease,transform 75ms cubic-bezier(.215,.61,.355,1) .12s
+				transform: rotate(-90deg)
+
+		&:hover
+			.hamburger-inner
+				width: 15px
+
+				&::after
+					width: 15px
+
+	&:hover
+
+		.hamburger-inner
+			width: 10px
+			@media(max-width:1023px)
+				width: 15px
+
+			&::after
+				width: 5px
+				@media(max-width:1023px)
+					width: 15px
+
+.hover_bl
+	position: absolute
+	z-index: -5
+	opacity: 0
+
+	left: 0
+	right: 0
+	bottom: 0
+	top: 0
+
+	background-color: rgba(0, 0, 0, .1)
+
+	transition: all ease .4s
 
 // static
 
