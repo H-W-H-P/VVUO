@@ -15,6 +15,12 @@ $(document).ready(function () {
     return false
   })
 
+  var windWidthResize = window.innerWidth
+
+  window.addEventListener('resize', function (event) {
+    windWidthResize = window.innerWidth
+  })
+
   // slider creating
 
   $('.main_slider__right').owlCarousel({
@@ -43,8 +49,7 @@ $(document).ready(function () {
   })
 
   function createSlider () {
-    // console.log($(window).width())
-    if ($(window).width() <= 768) {
+    if (windWidthResize < 768) {
       $('.supplyOwl').owlCarousel({
         items: 2,
         loop: false,
@@ -52,7 +57,7 @@ $(document).ready(function () {
         nav: true
       })
     }
-    if ($(window).width() > 768) {
+    if (windWidthResize >= 768) {
       $('.supplyOwl').trigger('destroy.owl.carousel').addClass('off')
     }
   }
@@ -62,7 +67,7 @@ $(document).ready(function () {
 
   function createSlider2 () {
     // console.log($(window).width())
-    if ($(window).width() <= 1024) {
+    if (windWidthResize < 1024) {
       $('.news__slider').owlCarousel({
         items: 1,
         loop: false,
@@ -76,7 +81,7 @@ $(document).ready(function () {
         }
       })
     }
-    if ($(window).width() > 1024) {
+    if (windWidthResize >= 1024) {
       $('.news__slider').trigger('destroy.owl.carousel').addClass('off')
     }
   }
