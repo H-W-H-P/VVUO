@@ -132,6 +132,8 @@ button
 	color: $white
 	font-weight: bold
 
+	position: relative
+
 	&::after
 		content: ''
 		position: static
@@ -145,6 +147,14 @@ button
 
 		background: url('../../static/img/icons/white-arr.svg') no-repeat
 		background-position: center  center
+
+	&:hover
+		.hover_bl
+			opacity: 1
+
+			@media(max-width:1023px)
+				opacity: 0
+
 
 .hamburger
 	position: relative
@@ -228,7 +238,6 @@ button
 
 .hover_bl
 	position: absolute
-	z-index: -5
 	opacity: 0
 
 	left: 0
@@ -342,6 +351,48 @@ button
 
 		button.owl-next
 			transform: scaleX(-1)
+
+.slider_T2
+	.owl-nav
+
+		button.owl-prev,
+		button.owl-next
+			background-image: url('../../static/img/icons/arr-long-black.svg') !important
+			background-repeat: no-repeat !important
+			background-position: 90% center !important
+
+			&::after
+				position: absolute
+				content: ''
+
+				top: 0
+				left: 0
+				right: 0
+				bottom: 0
+
+				background-color: $gray3
+
+				opacity: 0
+
+				transition: all ease .4s
+
+			&:hover
+
+				&::after
+					opacity: 1
+
+					@media(max-width:1023px)
+						opacity: 0
+
+		button.owl-next
+			transform: scaleX(-1)
+
+	.owl
+
+		&-stage-outer,
+		&-stage,
+		&-item
+			height: 100%
 
 // libraries
 // owl

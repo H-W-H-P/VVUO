@@ -1,6 +1,6 @@
 header.header.max_width.AXC
 	.header__slide
-		.catalog__wr.catalog_wr
+		.catalog__wr.catalog_wr.header__catalog
 			a(href="#").catalog_wr__item.catalog_wr__item-header
 				h7.catalog_wr__title.title Для детских садов
 				.catalog_wr__text Оборудование и лаборатории для обучения детей дошкольного и младшего школьного возраста
@@ -31,6 +31,10 @@ header.header.max_width.AXC
 				img(src="static/img/icons/cat-icon-4.svg", alt="").catalog_wr__image
 		.header__tablet
 			ul.header__list1.header__list.bold
+				li.mob
+					a(href="#").nav_top__first_link каталог
+				li.mob
+					a(href="#") Готовые лаборатории
 				li
 					a(href="#") производители
 				li
@@ -44,6 +48,8 @@ header.header.max_width.AXC
 					a(href="#") Новости
 				li
 					a(href="#") Контакты
+			form(action="").footer__search.header__search
+				input(type="text", placeholder="Поиск по сайту").footer__input2.bold
 		.header__bottom
 			.header__list
 				a(href="tel:#").bold +7 123 456-78-90

@@ -60,8 +60,12 @@
 			background-color: #ffffff
 
 		@media(max-width:1023px)
-			padding: 140px 20px
+			padding: 140px 30px
 			min-height: 900px
+
+		@media(max-width:767px)
+			min-height: 667px
+			padding-top: 120px
 
 	&.open
 
@@ -90,6 +94,12 @@
 
 			box-sizing: border-box
 
+			@media(max-width:767px)
+				padding-left: 0
+				padding-top: 20px
+
+				line-height: 40px
+
 		&1
 			line-height: 21px
 			text-transform: uppercase
@@ -102,6 +112,9 @@
 		@media(max-width:1023px)
 			width: 26%
 
+		@media(max-width:767px)
+			width: 100%
+
 	&__tablet
 		display: -webkit-flex
 		display: -moz-flex
@@ -113,6 +126,22 @@
 
 		padding-top: 60px
 
+		@media(max-width:767px)
+			flex-direction: column
+
+			padding-top: 0
+
+			font-size: 12px
+
+			.nav_top__first_link
+				display: -webkit-flex
+				display: -moz-flex
+				display: -ms-flex
+				display: -o-flex
+				display: flex
+
+				justify-content: flex-start
+
 	&__bottom
 		display: -webkit-flex
 		display: -moz-flex
@@ -122,6 +151,9 @@
 
 		justify-content: center
 		align-items: center
+
+		@media(max-width:767px)
+			font-size: 12px
 
 	&__consult
 		color: $blackTxt
@@ -142,6 +174,27 @@
 
 		@media(max-width:1023px)
 			width: 150%
+
+		@media(max-width:767px)
+			font-size: 12px
+
+			padding-left: 0
+			width: 100%
+
+	.header__catalog
+		@media(max-width:767px)
+			display: none
+
+	.header__search
+		@media(max-width:767px)
+			display: block
+
+			position: absolute
+
+			width: calc(100% - 60px)
+			bottom: 130px
+			left: 30px
+			padding: 0
 
 .nav_top
 	text-transform: uppercase
@@ -168,33 +221,7 @@
 		transition: all ease .8s
 
 		@media(max-width:1439px)
-			// position: absolute
-
-			// transform: translateY(-600px)
-			// top: 0
-			// left: 0
-			// width: 100%
-			// padding: 50px 0
-
-			// background-color: $gray
-
-			// z-index: 10
 			display: none
-
-		// @media(max-width:767px)
-		// 	display: none
-
-		// 	&-mob
-		// 		display: block
-		// 		position: static
-
-		// 		padding-top: 120px
-		// 		padding-bottom: 40px
-
-		// 		.nav_top__first_link
-		// 			display: flex
-
-		// 			justify-content: flex-start
 
 	&__first_link
 		position: relative
