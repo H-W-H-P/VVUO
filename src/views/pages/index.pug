@@ -4,13 +4,8 @@ block append head
 	block title
 		- var title='VVUO';
 
-block content
-	.lanes
-		.lanes__vert.vert_lane
-		.lanes__vert.vert_lane
-		.lanes__vert.vert_lane
-		.lanes__vert.vert_lane
-		.lanes__vert.vert_lane
+block content	
+	include ../blocks/lanes
 	include ../blocks/main_slider
 	include ../blocks/catalog
 	include ../blocks/supply
