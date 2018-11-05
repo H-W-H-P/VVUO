@@ -1,0 +1,13 @@
+extends ../layouts/pages
+
+block append head
+	block title
+		- var title='News';
+
+block content	
+	include ../blocks/lanes
+	include ../blocks/simple_title_2
+	include ../blocks/news_item
+	include ../blocks/news_more
+	include ../blocks/footer
+	
