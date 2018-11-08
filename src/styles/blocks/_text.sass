@@ -210,14 +210,43 @@
 
 	padding-bottom: 140px
 
+	@media(max-width:1439px)
+		padding: 0 30px 110px 0
+
+		overflow: hidden
+
+	@media(max-width:1023px)
+		padding-bottom: 80px
+
+	@media(max-width:767px)
+		padding: 0 30px
+
+		display: block
+
 	&__img
 		width: calc(50% - 70px)
+
+		@media(max-width:1439px)
+			width: 44%
+
+		@media(max-width:1023px)
+			width: 48%
+
+		@media(max-width:767px)
+			width: 80%
 
 	&__wr
 		width: 50%
 
 		font-size: 12px
 		line-height: 22px
+
+		@media(max-width:1023px)
+			width: 44%
+
+		@media(max-width:767px)
+			width: 100%
+			padding-bottom: 50px
 
 	&__top
 		font-size: 16px
@@ -227,6 +256,9 @@
 		padding-bottom: 34px
 
 		position: relative
+
+		@media(max-width:767px)
+			display: none
 
 	&__bg
 		position: absolute
@@ -239,12 +271,22 @@
 
 		background-color: $gray
 
+		@media(max-width:1439px)
+			z-index: -3
+
 	&__item
 		margin: 0
 		padding-top: 20px
 
 		&-top
 			padding-top: 0
+
+			@media(max-width:767px)
+				font-weight: bold
+				line-height: 24px
+				font-size: 14px
+
+				padding: 0 30px 30px
 
 	&__columns
 		display: -webkit-flex
@@ -253,6 +295,18 @@
 		display: -o-flex
 		display: flex
 
+		@media(max-width:1439px)
+			display: block
+
 	&__column
 		width: 50%
 		padding-right: 30px
+
+		@media(max-width:1439px)
+			width: 100%
+			padding: 0
+
+		@media(max-width:1023px)
+
+			&-right
+				display: none

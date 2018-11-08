@@ -77,9 +77,28 @@
 .simple_title_wr_3
 	position: relative
 
+	@media(max-width:767px)
+		padding-bottom: 70px
+		margin-bottom: -70px
+
 	&__title
 		padding: 230px 0 140px
-		// margin-bottom: -175px 330
+		
+		@media(max-width:1439px)
+			padding: 200px 0 75px
+
+		@media(max-width:1023px)
+			max-width: 100%
+			padding: 165px 0 85px 30px
+
+			font-size: 40px
+			line-height: 50px
+
+		@media(max-width:767px)
+			padding: 105px 0 35px 30px
+
+			font-size: 24px
+			line-height: 34px
 
 	&__bg
 		position: absolute
@@ -90,3 +109,9 @@
 		width: 420px
 
 		background-color: $gray2
+
+		@media(max-width:1439px)
+			width: 34%
+
+		@media(max-width:767px)
+			display: none
