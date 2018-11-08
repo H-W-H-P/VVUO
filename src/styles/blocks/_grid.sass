@@ -259,9 +259,6 @@
 		padding-right: 75px
 
 		box-sizing: border-box
-		vertical-align: top
-
-		position: relative
 
 		@media(max-width:1439px)
 			width: 33.333%
@@ -282,7 +279,9 @@
 
 		&-small
 			height: 130px
-			padding-top: 130px
+
+			@media(max-width:1023px)
+				padding-top: 130px
 
 	&__date
 		padding: 30px 0 10px
@@ -368,77 +367,168 @@
 			top: 144px
 			right: 20px
 
-	&__pad_top
-		padding: 95px 0 120px
+.about_grid__wr1
+	display: -webkit-flex
+	display: -moz-flex
+	display: -ms-flex
+	display: -o-flex
+	display: flex
 
-		@media(max-width:1023px)
-			padding: 0
+	justify-content: flex-end
 
-	&__link
-		color: $blackTxt
+	padding-bottom: 70px
 
-		display: inline-flex
+.list1
+	width: 75%
 
-		margin-bottom: 110px
+	background-color: $gray
 
-		@media(max-width:767px)
-			max-width: 230px
-			margin: 0 auto 130px
+	display: -webkit-flex
+	display: -moz-flex
+	display: -ms-flex
+	display: -o-flex
+	display: flex
 
-			font-size: 12px
+	position: relative
 
-			display: -webkit-flex
-			display: -moz-flex
-			display: -ms-flex
-			display: -o-flex
-			display: flex
+	&::after
+		content: ''
+		position: absolute
 
-			justify-content: flex-start
+		top: 0
+		bottom: 0
+		left: 100%
+		right: -120px
 
-		&::after
-			background-image: url('../../static/img/icons/black-arr.svg')
+		background-color: $gray
 
-	&__not_slide
-		@media(max-width:1023px)
-			width: 50%
-			padding-right: 30px
-			margin-bottom: 70px
+	&__item
+		width: 33%
+		padding: 50px 0 50px 50px
 
-			&:nth-child(4)
-				display: inline-block
+		font-size: 12px
+		line-height: 22px
 
-			&:nth-child(2n)
-				padding-right: 0
-				padding-left: 30px
+	&__title_item
+		font-weight: bold
 
-		@media(max-width:767px)
-			width: 100%
-			padding: 0
-			max-width: 230px
-			margin: 0 auto 50px
+	&__text
+		margin: 0
 
-			display: block
+.about_grid__wr2
+	padding-bottom: 200px
 
-			&:nth-child(2n)
-				padding: 0
+	position: relative
+	z-index: 3
 
-			&:nth-child(4)
-				display: block				
-				
-	&_page
-		@media(max-width:1023px)
-			max-width: 520px
-			margin: 0 auto
-			padding: 70px 0 0
+	&_title
+		padding-bottom: 70px
 
-		&__image-small
-			@media(max-width:767px)
-				padding: 0
+.list2
+	width: 75%
 
-		&__text
-			@media(max-width:767px)
-				display: none
+	display: -webkit-flex
+	display: -moz-flex
+	display: -ms-flex
+	display: -o-flex
+	display: flex
 
-		&__desc
-			@media(max-width:767px)
-				font-size: 14px				
+	position: relative
+
+	&::before
+		content: ''
+		position: absolute
+
+		top: 120px
+		bottom: 0
+		left: -120px
+		right: 0
+
+		background-color: $gray4
+
+	&__item
+		width: 33.333%
+		padding: 0 75px 55px 0
+
+		font-size: 12px
+		line-height: 22px
+
+		box-sizing: border-box
+		position: relative
+
+	&__title_item
+		font-weight: bold
+
+	&__text
+		margin: 0
+
+	&__img
+		width: 100%
+
+.about_grid
+
+	&__wr3
+		display: -webkit-flex
+		display: -moz-flex
+		display: -ms-flex
+		display: -o-flex
+		display: flex
+
+		padding-bottom: 270px
+
+		position: relative
+		z-index: 2
+
+	&__img
+		width: 46%
+		margin: 0 150px 0 100px
+
+	&__btn
+		position: relative
+
+		width: 300px
+		height: 60px
+
+		background-color: $main-blue
+
+		font-size: 16px
+		color: #ffffff
+		font-weight: bold
+
+		display: -webkit-flex
+		display: -moz-flex
+		display: -ms-flex
+		display: -o-flex
+		display: flex
+
+		justify-content: center
+		align-items: center
+
+		&:hover
+			.hover_bl
+				opacity: 1
+
+	&__text
+		font-size: 12px
+		line-height: 22px
+
+		padding-bottom: 50px
+		max-width: 250px
+		margin: 0
+
+	&__title
+		padding: 20px 0
+
+	&__column
+		position: relative
+
+	&__bg
+		position: absolute
+		z-index: -1
+
+		right: -120px
+		bottom: -170px
+		left: -260px
+		top: -320px
+
+		background-color: $gray

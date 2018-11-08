@@ -202,3 +202,57 @@
 			transform: none
 
 			padding: 40px 35px
+
+.about_text
+	display: flex
+
+	justify-content: space-between
+
+	padding-bottom: 140px
+
+	&__img
+		width: calc(50% - 70px)
+
+	&__wr
+		width: 50%
+
+		font-size: 12px
+		line-height: 22px
+
+	&__top
+		font-size: 16px
+		line-height: 26px
+		font-weight: bold
+
+		padding-bottom: 34px
+
+		position: relative
+
+	&__bg
+		position: absolute
+		z-index: -1
+
+		bottom: 0
+		top: -50px
+		right: -120px
+		left: -300px
+
+		background-color: $gray
+
+	&__item
+		margin: 0
+		padding-top: 20px
+
+		&-top
+			padding-top: 0
+
+	&__columns
+		display: -webkit-flex
+		display: -moz-flex
+		display: -ms-flex
+		display: -o-flex
+		display: flex
+
+	&__column
+		width: 50%
+		padding-right: 30px
