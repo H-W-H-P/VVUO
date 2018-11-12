@@ -249,6 +249,70 @@ button
 
 	transition: all ease .4s
 
+.css_arr
+	position: relative
+
+	&::after
+		position: absolute
+		content: ''
+
+		right: 0
+		top: 50%
+		transform: translateY(-50%) rotate(-45deg)
+		width: 6px
+		height: 6px
+
+		border-left: 2px solid $blackTxt
+		border-bottom: 2px solid $blackTxt
+
+.checkbox
+	position: absolute
+	z-index: -10
+
+	width: 0
+	height: 0
+
+	opacity: 0
+
+.label_checkbox
+	position: relative
+
+	padding-left: 30px
+	
+	cursor: pointer
+
+	&::before
+		content: ''
+		position: absolute
+
+		left: 0
+		top: 50%
+		transform: translateY(-50%)
+		width: 15px
+		height: 15px
+
+		border: 1px solid  $gray2
+
+	&::after
+		content: ''
+		position: absolute
+
+		width: 7px
+		height: 7px
+		left: 5px
+		top: 50%
+		transform: translateY(-50%)
+
+		background-color: $blackTxt
+		opacity: 0
+
+		transition: all ease .4s
+
+.checkbox:checked + .label_checkbox
+
+	&::after
+		opacity: 1
+
 // static
 
 .lanes

@@ -115,3 +115,85 @@
 
 		@media(max-width:767px)
 			display: none
+
+.simple_title_wr_4
+	background-color: $gray4
+
+	position: relative
+	z-index: 1
+
+	@media(max-width:1439px)
+		padding-left: 28px
+
+	@media(max-width:1023px)
+		padding-left: 103px
+
+	@media(max-width:767px)
+		padding-left: 30px
+
+		overflow: hidden
+
+	&__title
+		padding-bottom: 40px
+
+		@media(max-width:1439px)
+			padding-bottom: 55px
+
+		@media(max-width:1023px)
+			padding-bottom: 75px
+
+		@media(max-width:767px)
+			padding-bottom: 45px
+
+	&__desc
+		padding-bottom: 60px
+
+		@media(max-width:1439px)
+			padding: 0 0 50px
+
+		@media(max-width:1023px)
+			padding-bottom: 100px
+
+		@media(max-width:767px)
+			float: right
+			display: -webkit-flex
+			display: -moz-flex
+			display: -ms-flex
+			display: -o-flex
+			display: flex
+
+			align-items: center
+
+			height: 70px
+			padding: 0
+
+	&__btn
+		position: absolute
+		z-index: 2
+
+		width: 420px
+		height: 120px
+		right: 0
+		bottom: 0
+
+		background-color: $main-blue
+
+		&:hover
+			.hover_bl
+				opacity: 1
+
+		@media(max-width:1439px)
+			width: 290px
+
+		@media(max-width:1023px)
+			width: 255px
+			height: 95px
+
+		@media(max-width:767px)
+			position: relative
+
+			float: left
+
+			height: 70px
+			width: 220px
+			margin-left: -30px

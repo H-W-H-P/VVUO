@@ -347,3 +347,96 @@
 			padding: 0
 			line-height: 24px
 			align-items: flex-end
+
+.shop
+	position: relative
+
+	display: -webkit-flex
+	display: -moz-flex
+	display: -ms-flex
+	display: -o-flex
+	display: flex
+
+	font-size: 12px
+
+	&_filters
+		width: 25%
+		padding-bottom: 100px
+
+		&__top
+			padding: 50px 0 0
+
+		&__caps
+			text-transform: uppercase
+			font-weight: bold
+			letter-spacing: 1px
+
+			display: block
+
+			padding-bottom: 20px
+
+		&__cat
+			padding: 30px 20px 30px 0
+			margin-top: 20px
+
+			letter-spacing: .5px
+
+		&__input_wr
+			line-height: 40px
+
+		&__cat_link
+			line-height: 30px
+
+			padding-left: 30px
+
+			&:hover
+				color: $main-blue
+
+		&__btn
+			background-color: $main-blue
+
+			color: #ffffff
+			font-size: 12px
+
+			width: 170px
+			height: 40px
+			margin: 40px 0 25px
+
+			&::after
+				border: none
+
+				width: 20px
+
+			&:hover
+				.hover_bl
+					opacity: 1
+
+		&__reset
+			padding-left: 20px
+
+			position: relative
+
+			&::before,
+			&::after
+				position: absolute
+				content: ''
+
+				left: 4px
+				top: 50%
+				transform: translateY(-50%) rotate(45deg)
+				height: 12px
+				width: 2px
+
+				background-color: $blackTxt
+
+				transition: all ease .4s
+
+			&::after
+				transform: translateY(-50%) rotate(-45deg)
+
+			&:hover
+				color: $main-blue
+
+				&::after,
+				&::before
+					background-color: $main-blue

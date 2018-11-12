@@ -51,6 +51,24 @@ $(document).ready(function () {
     }
   })
 
+  $('.shopSlider').owlCarousel({
+    items: 1,
+    // loop: true,
+    dots: false,
+    nav: true,
+    responsive: {
+      1439: {
+        items: 4
+      },
+      1024: {
+        items: 3
+      },
+      767: {
+        items: 2
+      }
+    }
+  })
+
   function createSlider () {
     if (windWidthResize < 768) {
       $('.supplyOwl').owlCarousel({
