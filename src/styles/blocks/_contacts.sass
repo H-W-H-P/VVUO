@@ -2,9 +2,26 @@
 	background-color: #e0d7cf
 
 	display: flex
-	
+	@media(max-width:1439px)
+		//
+
+
 	@media(max-width:1023px)
 		display: block
+
+	&__right
+		width: 50%
+		height: auto
+		margin-top: 281px
+
+		background-color: pink
+
+		@media(max-width:1439px)
+			width: 100%
+	
+	&__map
+		min-height: 68px
+		width: 100%
 
 	&__left
 		width: 50%
@@ -25,9 +42,7 @@
 			@media(max-width:1439px)
 				font-size: 40px
 
-		padding-top: 233px
-		padding-bottom: 246px
-		padding-left: 117px
+		padding: 233px 0 246px 117px
 		width: 100%
 		
 		background-color: #f4f6f6
@@ -40,48 +55,45 @@
 		@media(max-width:1439px)
 			padding-left: 104px	
 
-	&__adress	
-		background-color: #dcdfe2
-		
-		width: 50%
-
-		@media(max-width:1439px)
-			width: 100%
-
-		@media(max-width:1023px)
-			width: 50%	
-		
-	
-	&__chief
-		background-color: #fff
-
-		width: 50%
-
-		@media(max-width:1439px)
-			width: 100%
-
-		@media(max-width:1023px)
-			width: 50%	
 
 
-	&__right
-		width: 50%
-		height: auto
-		margin-top: 281px
 
-		background-color: pink
 
-		@media(max-width:1439px)
-			width: 100%
-	
-	&__map
-		min-height: 68px
-		width: 100%
 
 
 .info_contacts
-	padding-top: 117px
-	padding-bottom: 106px
+	display: flex
+
+	width: 100%
+
+	&__item
+		width: 50%
+		padding: 120px 0 106px 0
+
+	&__adress
+		background-color: #dcdfe2
+
+		padding-left: 120px;
+
+		@media(max-width:1439px)
+			width: 100%
+
+		@media(max-width:1023px)
+			width: 50%	
+
+	&__chief
+		background-color: #fff
+
+		padding-left: 110px
+
+
+		@media(max-width:1439px)
+			width: 100%
+
+		@media(max-width:1023px)
+			width: 50%
+
+
 
 	@media(max-width:1439px)
 		padding-top: 31px
@@ -95,12 +107,15 @@
 		font-size: 12px
 		color: #28282b
 		font-weight: bold
+		
 
 	&__text
 		font-size: 12px
 		width: 190px
 		line-height: 1.83
 		color: #28282b
+		margin-top: 12px
+		margin-bottom: 20px
 
 
 
