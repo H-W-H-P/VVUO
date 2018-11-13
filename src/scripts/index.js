@@ -1,12 +1,21 @@
 import $ from 'jquery'
 import 'owl.carousel'
 
+require('jquery-ui-bundle')
+require('jquery-ui-touch-punch')
+
 $(document).ready(function () {
   // click handlers
 
   $('.header__toggle').click(function () {
     $('.header').toggleClass('open')
     $(this).toggleClass('active')
+    return false
+  })
+
+  $('.shop_filters__toggle').click(function () {
+    $('.shop_filters').toggleClass('opened')
+    $(this).toggleClass('opened')
     return false
   })
 
@@ -24,13 +33,46 @@ $(document).ready(function () {
     windWidthResize = window.innerWidth
   })
 
+  var priceLimits = {
+    left: 10,
+    right: 50
+  }
+
+  $('.prFil').on('input', function (e) {
+    var priceVal = $(this).val()
+    if ($(this).hasClass('prFilLeft')) {
+      priceLimits.left = priceVal
+    } else {
+      priceLimits.right = priceVal
+    }
+    $('.shop_filters__price').slider('option', 'values', [ priceLimits.left, priceLimits.right ])
+  })
+
   // slider creating
 
+  // jquery UI
+  $('.shop_filters__price').slider({
+    range: true,
+    values: [priceLimits.left, priceLimits.right],
+    change: function (event, ui) {
+      // probably would needed later
+      console.log(event, ui)
+    }
+  })
+
+  // owls
   $('.main_slider__right').owlCarousel({
     items: 1,
     loop: true,
     dots: false,
     nav: true
+  })
+
+  $('.shop_filters__mob_wr').owlCarousel({
+    items: 1,
+    loop: false,
+    dots: false,
+    nav: false
   })
 
   $('.clientsOwl').owlCarousel({
@@ -47,6 +89,24 @@ $(document).ready(function () {
       },
       767: {
         items: 5
+      }
+    }
+  })
+
+  $('.shopSlider').owlCarousel({
+    items: 1,
+    // loop: true,
+    dots: false,
+    nav: true,
+    responsive: {
+      1439: {
+        items: 4
+      },
+      1024: {
+        items: 3
+      },
+      767: {
+        items: 2
       }
     }
   })

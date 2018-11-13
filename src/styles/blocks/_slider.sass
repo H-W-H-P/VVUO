@@ -52,3 +52,52 @@
 	.owl-nav
 		top: 100px
 		right: 20px
+
+.simple_slider
+	font-size: 14px
+
+	padding-bottom: 55px
+
+	@media(max-width:1439px)
+		overflow: hidden
+
+	@media(max-width:1023px)
+		padding-left: 105px
+
+	@media(max-width:767px)
+		padding-left: 30px
+
+	&__item
+		padding-right: 50px
+
+	&__price
+		font-size: 16px
+
+		margin: 0
+
+	&__title
+		padding: 50px 0 40px
+
+	&__text
+		margin: 0
+		padding: 20px 0
+
+	.owl-nav
+		right: -10px
+		top: -80px
+
+		@media(max-width:1439px)
+			top: 60px
+			right: 20px
+
+	.shopSlider
+		@media(max-width:1439px)
+			width: 90%
+			position: static
+
+			.owl-stage-outer
+				overflow: visible
+				position: static
+
+		// @media(max-width:1023px)
+		// 	margin-left: 105px

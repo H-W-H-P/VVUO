@@ -347,3 +347,236 @@
 			padding: 0
 			line-height: 24px
 			align-items: flex-end
+
+.shop
+	position: relative
+
+	display: -webkit-flex
+	display: -moz-flex
+	display: -ms-flex
+	display: -o-flex
+	display: flex
+
+	font-size: 12px
+
+	@media(max-width:1439px)
+		position: static
+
+	&_filters
+		width: 25%
+		padding-bottom: 100px
+
+		@media(max-width:1439px)
+			width: 100%
+			max-height: 0
+			left: 0
+			top: 60px
+			padding: 0 30px 
+
+			overflow: hidden
+			box-sizing: border-box
+
+			position: absolute
+			z-index: -1
+
+			transition: all ease .6s
+
+			background-color: $gray4
+
+			&.opened
+				max-height: 10000px
+
+				z-index: 10
+
+				@media(max-width:767px)
+
+					.shop_filters__btn
+						opacity: 1
+
+						z-index: 5
+
+		&__wrap
+			@media(max-width:1439px)
+				clear: both
+
+				padding: 115px 0 40px
+
+		&__block
+			@media(max-width:1439px)
+				width: 33.333%
+
+				float: left
+
+			@media(max-width:767px)
+				width: 100%
+
+		&__toggle
+			display: none
+
+			position: relative
+
+			@media(max-width:1439px)
+				display: flex
+
+				justify-content: flex-start
+				align-items: center
+
+				height: 60px
+
+				background-color: $gray4
+				
+				&::before
+					content: ''
+					position: static
+
+					display: block
+
+					margin-left: 30px
+					margin-right: 20px
+					width: 20px
+					height: 14px
+
+					background-image: url('../../static/img/icons/filter.svg')
+					background-repeat: no-repeat
+
+					transition: all ease .4s
+
+			&:hover
+				.hover_bl
+					opacity: 1
+
+			&.opened
+				&::before
+					transform: rotate(90deg)
+
+		&__top
+			padding: 50px 0 0
+
+			@media(max-width:1439px)
+				width: 33.333%
+
+				float: left
+
+			@media(max-width:767px)
+				width: 100%
+
+		&__caps
+			text-transform: uppercase
+			font-weight: bold
+			letter-spacing: 1px
+
+			display: block
+
+			padding-bottom: 20px
+
+		&__cat
+			padding: 30px 20px 30px 0
+			margin-top: 20px
+
+			letter-spacing: .5px
+
+		&__input_wr
+			line-height: 40px
+
+		&__cat_link
+			line-height: 30px
+
+			padding-left: 30px
+
+			&:hover
+				color: $main-blue
+
+		&__btn
+			background-color: $main-blue
+
+			color: #ffffff
+			font-size: 12px
+
+			width: 170px
+			height: 40px
+			margin: 40px 0 25px
+
+			&::after
+				border: none
+
+				width: 20px
+
+			&:hover
+				.hover_bl
+					opacity: 1
+
+			@media(max-width:767px)
+				position: fixed
+
+				left: 0
+				bottom: 0
+				width: 100%
+				height: 60px
+				margin: 0
+
+				font-size: 16px
+
+				opacity: 0
+				z-index: -1
+
+		&__reset
+			padding-left: 20px
+
+			position: relative
+
+			&::before,
+			&::after
+				position: absolute
+				content: ''
+
+				left: 4px
+				top: 50%
+				transform: translateY(-50%) rotate(45deg)
+				height: 12px
+				width: 2px
+
+				background-color: $blackTxt
+
+				transition: all ease .4s
+
+			&::after
+				transform: translateY(-50%) rotate(-45deg)
+
+			&:hover
+				color: $main-blue
+
+				&::after,
+				&::before
+					background-color: $main-blue
+
+		&__mob_wr.owl-carousel
+			width: 90%
+
+			display: none
+
+			@media(max-width:767px)
+				display: block
+
+			.owl-stage-outer
+				overflow: visible
+
+		&__price_wr
+			width: 235px
+			padding-top: 30px
+
+		&__price_input
+			width: 100px
+			height: 40px
+			margin-top: 25px
+			padding-left: 10px
+
+			display: inline-block
+			box-sizing: border-box
+
+			border: 1px solid  $gray2
+
+			@media(max-width:1439px)
+				border-color: $blackTxt
+
+			&-last
+				float: right
