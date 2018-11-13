@@ -91,4 +91,21 @@ $(document).ready(function () {
 
   createSlider2()
   $(window).resize(createSlider2)
+
+  $('.cooperating_slider').owlCarousel({
+    items: 4,
+    dots: false,
+    nav: true,
+    responsive: {
+      1439: {
+        items: 3
+      },
+      767: {
+        items: 3
+      },
+      0: {
+        items: 2
+      }
+    }
+  })
 })

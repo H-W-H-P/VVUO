@@ -1,0 +1,169 @@
+body
+	overflow-x: hidden
+	
+.cooperating_slider_head
+	position: relative
+
+	padding-bottom: 120px
+
+	.owl-stage
+		display: flex
+
+	.owl-prev, .owl-next
+		width: 20px
+		height: 40px
+		margin: 1px
+
+		position: absolute
+		top: 0
+		right: 0
+
+		&:after
+			content: ""
+
+			width: 20px
+			height: 20px
+
+			display: block
+			position: absolute
+			top: 8px
+			left: 0
+
+			background: url('../../static/img/icons/arr-long-black.svg') no-repeat center center / 100%	
+			
+
+	.owl-next
+		right: 120px
+		transform: rotate(180deg)
+
+		&:after
+			top: 12px
+
+		@media(max-width:1439px)
+			right: 30px
+
+	.owl-prev
+		right: 160px
+
+		@media(max-width:1439px)
+			right: 70px
+
+
+
+	&__title
+		width: 232px
+		height: 45px
+		padding-left: 121px
+		margin-bottom: 90px
+		margin-top: 106px
+
+		font-size: 40px
+		line-height: 1.13
+
+		font-weight: bold
+		color: #28282b
+
+		@media(max-width:1439px)
+			padding-left: 30px
+			margin-bottom: 35px
+
+		@media(max-width:1023px)
+			padding-left: 103px
+		
+
+
+.cooperating_slider
+	width: 1199px
+	padding-left: 121px
+
+	@media(max-width:1439px)
+		padding-left: 30px
+		// width: 100%
+
+	@media(max-width:1023px)
+		padding-left: 103px
+	
+	
+	
+
+.slider_head_item 
+	width: 259px
+	height: 161px
+	padding-top: 21px
+	padding-left: 29px
+	padding-right: 79px
+
+	background-color: #f4f6f6
+
+	box-sizing: border-box
+	position: relative
+
+	&__text
+		font-size: 12px
+		line-height: 1.83
+
+		margin: 0
+
+		color: #28282b
+		font-weight: bold
+
+	&__link
+		width: 64px
+		height: 64px
+
+		background-color: #5b8ec8
+		position: absolute
+		bottom: 0
+		right: 0
+
+		&:after
+			content: ""
+
+			width: 16px
+			height: 2px
+			margin-bottom: 23px
+			margin-left: 24px
+
+			position: absolute
+			background-color: #fff
+
+			bottom: 0
+			left: 0
+
+		&:before
+			content: ""
+
+			width: 10px
+			height: 10px
+			margin-top: 27px
+			margin-left: 27px
+
+			display: block
+			position: absolute
+
+			top: 0
+			left: 0
+			transform: rotate(90deg)
+
+			background: url('../../static/img/icons/white-arr(2).svg') no-repeat center center / 100%	
+
+
+@media(max-width:1439px)
+	.owl-item
+		width: 302px!important
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
