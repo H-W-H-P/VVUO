@@ -2,6 +2,10 @@
 	padding-top: 63px
 	padding-bottom: 178px
 
+	@media(max-width:767px)
+		padding-top: 30px
+		padding-bottom: 97px
+
 	&__title
 		font-size: 40px
 		line-height: 1.13
@@ -14,8 +18,41 @@
 		justify-content: center
 		flex-direction: column
 
+		@media(max-width:1023px)
+			width: 504px
+			padding-left: 105px
+			margin: 0
+
+			font-size: 30px
+
+		@media(max-width:767px)
+			padding-left: 10px
+			width: auto	
+
 	&__field_input
 		padding-bottom: 36px
+
+		@media(max-width:1023px)
+			display: flex
+			flex-direction: column
+
+			padding-left: 105px
+			padding-bottom: 20px
+			width: 52%
+
+		@media(max-width:767px)
+			padding-left: 10px	
+			width: 72%
+
+	&__field_send
+		display: flex
+
+		@media(max-width:1023px)
+			display: block
+			padding-left: 105px
+
+		@media(max-width:767px)
+			padding-left: 10px
 
 	&__input
 		height: 40px
@@ -31,6 +68,15 @@
 		background-color: #fff
 		color: rgba(40,40,43,.5)
 
+		@media(max-width:1023px)
+			width: 400px
+			margin-left: 0
+			margin-bottom: 19px
+
+		@media(max-width:767px)
+			width: 100%	
+			min-width: 272px
+
 	&__input:first-child
 		margin-left: 0
 
@@ -39,6 +85,7 @@
 		height: 60px
 		padding-left: 60px
 		font-size: 16px
+		margin-right: 30px
 
 		background-color: #5b8ec8
 		color: #fff
@@ -58,7 +105,33 @@
 			top: 5px
 			left: 0
 			background: url('../../static/img/icons/white-arr.svg') no-repeat center center
-			
+
+		@media(max-width:1023px)
+			width: 400px
+			padding-left: 101px
+
+			box-sizing: border-box
+
+		@media(max-width:767px)
+			width: 272px
+			padding-left: 52px	
+
+		
+
+
+	&__consalt_free	
+		width: 154px
+		margin: 0
+		padding-top: 10px
+
+		font-size: 14px
+		line-height: 1.71
+
+		color: #000000
+		opacity: 0.6
+
+		@media(max-width:1023px)
+			width: 100%
 
 
 
