@@ -249,6 +249,9 @@ button
 
 	transition: all ease .4s
 
+	@media(max-width:1023px)
+		display: none
+
 .css_arr
 	position: relative
 
@@ -293,6 +296,9 @@ button
 
 		border: 1px solid  $gray2
 
+		@media(max-width:1439px)
+			border-color: $blackTxt
+
 	&::after
 		content: ''
 		position: absolute
@@ -312,6 +318,33 @@ button
 
 	&::after
 		opacity: 1
+
+.ui-slider-handle
+	border: none !important
+	border-radius: 50%
+
+	background-color: $blackTxt !important
+
+	width: 21px !important
+	height: 21px !important
+	top: -10px !important
+
+	outline: none
+	cursor: pointer !important
+
+.ui-widget.ui-widget-content
+	height: 1px !important
+
+	border: none !important	
+
+	background-color: $gray2
+
+	@media(max-width:1439px)
+		background-color: $gray6
+
+.ui-slider-range
+	background-color: $blackTxt
+
 
 // static
 
