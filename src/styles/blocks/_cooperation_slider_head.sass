@@ -5,9 +5,31 @@ body
 	position: relative
 
 	padding-bottom: 120px
+	padding-left: 121px
+
+	@media(max-width:1439px)
+		padding: 0 0 189px 30px
+
+	@media(max-width:1023px)
+		padding: 0 0 189px 104px
+
+	@media(max-width:767px)
+		padding: 0 0 97px 34px
+
+	.owl-carousel
+		position: static
 
 	.owl-stage
-		display: flex
+		// display: flex
+
+	.owl-carousel .owl-stage-outer
+		overflow: visible
+
+	.owl-item
+		// width: 300px!important
+
+		@media(max-width:767px)
+			// width: auto!important
 
 	.owl-prev, .owl-next
 		width: 20px
@@ -68,22 +90,33 @@ body
 			margin-bottom: 35px
 
 		@media(max-width:1023px)
-			padding-left: 103px
+			padding-left: 0
+			margin-top: 83px
+
+			font-size: 30px
+
+
+			
 		
 
 
 .cooperating_slider
-	width: 1199px
-	padding-left: 121px
-
+	width: 91%
+	
 	@media(max-width:1439px)
-		padding-left: 30px
-		// width: 100%
+		width: 90%
 
 	@media(max-width:1023px)
-		padding-left: 103px
+		width: 90%
+
+	@media(max-width:767px)
+		width: 100%
+
+	@media(max-width:650px)
+		width: 80%
 	
-	
+	@media(max-width:376px)
+		width: 90%
 	
 
 .slider_head_item 
@@ -115,6 +148,12 @@ body
 		position: absolute
 		bottom: 0
 		right: 0
+
+		transition: all .4s ease
+		cursor: pointer
+
+		&:hover
+			background-color: #5280b4
 
 		&:after
 			content: ""
@@ -148,9 +187,8 @@ body
 			background: url('../../static/img/icons/white-arr(2).svg') no-repeat center center / 100%	
 
 
-@media(max-width:1439px)
-	.owl-item
-		width: 302px!important
+
+
 
 
 

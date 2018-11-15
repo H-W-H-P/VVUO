@@ -1,0 +1,302 @@
+.cooperating_slider_midle
+	position: relative
+
+	@media(max-width:1023px)
+		padding-top: 70px
+		padding-left: 22px
+		padding-right: 22px
+
+	@media(max-width:767px)
+		padding-top: 105px
+
+	&__title
+		position: absolute
+		
+		top: 60px
+		left: 0
+
+		@media(max-width:1439px)
+			font-size: 30px
+
+			margin-top: 0
+			top: 0
+
+		@media(max-width:767px)
+			padding-left: 8.8%
+		
+	
+
+
+
+
+	
+.slider_middle
+	width: 62.3%
+	height: 544px
+	margin-left: 420px
+
+	position: relative
+
+	@media(max-width:1439px)
+		width: 70%
+		margin-left: 19%
+
+	@media(max-width:1023px)
+		margin-left: 0
+		
+		width: 100%
+		height: 615px
+
+		box-sizing: border-box
+
+	@media(max-width:767px)
+		width: 100%
+		margin: 0
+		height: 446px
+
+
+
+.slider_middle
+
+	@media(max-width:1439px)
+		//
+
+	&__nav
+		display: flex
+		position: absolute
+
+		bottom: 182px
+		right: 20.5%
+
+		@media(max-width:1439px)
+			right: initial
+			left: 67%
+
+		@media(max-width:1023px)
+			left: initial
+			bottom: initial
+			right: 33%
+			top: 0
+
+		@media(max-width:767px)
+			left: 22.4%
+
+		
+		
+		.slider_middle_prev, .slider_middle_next
+			height: 111px
+			width: 55.5px
+
+			background-color: #5b8ec8
+			outline: 0
+			cursor: pointer
+
+			position: relative
+
+			transition: all .4s ease
+
+			@media(max-width:1023px)
+				width: 60px
+
+			@media(max-width:767px)
+				height: 46px
+				width: 53px
+
+			&:hover
+				background-color: #5280b4
+
+				transition: all .4s ease
+
+
+			&:before
+				background: url('../../static/img/icons/arr-long-white.svg') no-repeat center center
+
+				content: ""
+				display: block
+				position: absolute
+
+				transform: translateY(-50%)
+
+				height: 20px
+				width: 20px
+				padding-top: 4px
+				top: 50%
+				left: 26px
+
+		.slider_middle_next
+			
+			&:before
+				left: initial
+				right: 26px
+				bottom: 50%
+
+				transform: scale(-1) translateY(50%)
+
+	&__basic
+		width: 100%
+		height: 182px
+
+		background-color: #f4f6f6
+		border-top: 1px solid #dcdfe2
+		// border-left: 1px solid #dcdfe2
+		box-sizing: border-box
+
+		@media(max-width:1439)
+			// border-left: 1px solid #dcdfe2
+
+		@media(max-width:1023px)
+			height: 242px
+
+		@media(max-width:767px)
+			height: 190px
+
+	&__block_one
+		position: absolute
+
+		width: 33.3%
+		height: 364px
+
+		bottom: 0
+		left: 1px
+
+		@media(max-width:1439px)
+			border-left: 1px solid #dcdfe2
+
+		@media(max-width:1023px)
+			left: initial
+			right: 33.3%
+			bottom: 20px
+
+			height: 484px
+
+		@media(max-width:767px)
+			width: 50%
+			height: 380px
+
+			left: 0
+
+
+	&__block_two
+		position: absolute
+
+		width: 33.3%
+		height: 364px
+
+		left: 33.6%
+		top: -2px
+
+		@media(max-width:1439px)
+			border-left: 1px solid #dcdfe2
+
+		@media(max-width:1023px)
+			left: initial
+			right: 0
+			top: 0
+
+			height: 484px
+
+		@media(max-width:767px)
+			width: 50%
+			height: 380px
+
+
+	&__block_three
+		position: absolute
+
+		width: 33.2%
+		height: 182px
+
+		bottom: 0
+		right: -2px
+
+		@media(max-width:1439px)
+			border-right: 1px solid #dcdfe2
+
+		@media(max-width:1023px)
+			right: initial
+			left: 0
+			bottom: 141px
+
+			height: 242px
+
+		@media(max-width:767px)
+			display: none
+
+
+
+
+.slider_par
+	position: relative
+
+	a
+		width: 100%
+		height: 182px
+
+		background-color: #f4f6f6
+		border-bottom: 1px solid #dcdfe2
+		box-sizing: border-box
+
+		@media(max-width:1023px)
+			height: 242px
+
+		@media(max-width:767px)
+			height: 190px
+	
+
+	img.slider_par__picture
+		width: 85px
+		height: auto
+		margin-left: 50%
+		padding-top: 48px
+		transform: translate(-50%, 0%)
+
+		top: 0
+		left: 0
+
+		position: absolute
+		display: block
+
+
+
+
+
+
+
+
+
+
+
+// 		img.slider_par__picture
+// 			width: 85px
+// 			height: auto
+// 			margin-left: 50%
+// 			padding-top: 48px
+// 			transform: translate(-50%, 0%)
+
+// 			position: absolute
+
+// 			top: 0
+// 			left: 0
+
+// 			display: block
+
+// .slider_middle_block_one
+// 	position: absolute
+// 	bottom: 0
+// 	left: 1px
+// 	width: 33.4%
+// 	border-top: 1px solid #dcdfe2
+
+// .slider_middle_block_two
+// 	position: absolute
+// 	top: -3px
+// 	left: 33.4%
+// 	width: 33.45%
+// 	border-top: 1px solid #dcdfe2
+
+// .slide_five
+// 	position: absolute
+// 	bottom: 0
+// 	right: -2px
+// 	width: 33.45%
+// 	border-top: 1px solid #dcdfe2

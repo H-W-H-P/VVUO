@@ -1,5 +1,6 @@
 import $ from 'jquery'
 import 'owl.carousel'
+import '../../node_modules/slick-1.8.1/slick/slick.js'
 
 $(document).ready(function () {
   // click handlers
@@ -93,19 +94,53 @@ $(document).ready(function () {
   $(window).resize(createSlider2)
 
   $('.cooperating_slider').owlCarousel({
-    items: 4,
+    // loop: true,
     dots: false,
     nav: true,
     responsive: {
+      1440: {
+        items: 4
+      },
       1439: {
         items: 3
       },
-      767: {
+      1024: {
         items: 3
       },
-      0: {
+      767: {
         items: 2
+      },
+      650: {
+        items: 2
+      },
+      0: {
+        items: 1
       }
     }
+  })
+
+  let slide1 = $('.slider_middle__slide_a').slick({
+    infinite: true,
+    dots: false,
+    arrows: false,
+    vertical: true
+  })
+
+  let slide2 = $('.slider_middle__slide_b').slick({
+    infinite: true,
+    dots: false,
+    arrows: false
+  })
+
+  // let counter = 0
+
+  $('.slider_middle_prev').on('click', function () {
+    slide1.slick('slickPrev')
+    slide2.slick('slickPrev')
+  })
+
+  $('.slider_middle_next').on('click', function () {
+    slide1.slick('slickNext')
+    slide2.slick('slickNext')
   })
 })
