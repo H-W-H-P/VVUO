@@ -52,8 +52,17 @@ $(document).ready(function () {
   })
 
   $('.comp_title__arrow').click(function () {
-    $('html, body').animate({ scrollTop: $('.grid2').offset().top }, 1000)
+    var $nextSect = $(this).closest('section').next()
+    $('html, body').animate({ scrollTop: $nextSect.offset().top }, 1000)
     return false
+  })
+
+  $(document).on('click', '.complex_slider .owl-next', function () {
+    labSlider.trigger('next.owl.carousel')
+  })
+
+  $(document).on('click', '.complex_slider .owl-prev', function () {
+    labSlider.trigger('prev.owl.carousel')
   })
 
   // 360 creating
@@ -138,6 +147,26 @@ $(document).ready(function () {
     // loop: true,
     dots: false,
     nav: true,
+    responsive: {
+      1439: {
+        items: 4
+      },
+      1024: {
+        items: 3
+      },
+      767: {
+        items: 2
+      }
+    }
+  })
+
+  var labSlider = $('.labSlider').owlCarousel({
+    items: 1,
+    // loop: true,
+    dots: false,
+    nav: true,
+    mouseDrag: false,
+    touchDrag: false,
     responsive: {
       1439: {
         items: 4

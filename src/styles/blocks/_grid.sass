@@ -1152,7 +1152,7 @@
 			bottom: 0
 			right: 100%
 
-			background-color: $orange
+			background-color: inherit
 
 			@media(max-width:1439px)
 				display: none
@@ -1295,6 +1295,123 @@
 
 			height: 90px
 			width: 90px
+
+	// complex title 2
+	&_2
+		&__right
+			background: url('/../static/img/pictures/image10.jpg')
+			background-size: cover
+			background-position-x: 100%
+
+		&__desc
+			padding-bottom: 70px
+
+		&__quarter_right
+			background-color: $gray7
+
+			z-index: auto
+
+		&__quarter_left
+			z-index: 1
+
+		&__btn
+			background-color: $gray8
+
+			@media(max-width: 1439px)
+				margin-left: 0
+				width: 55%
+
+		&__btn1
+
+			&::after
+				border-color: #fff
+
+				background-image: url('../../static/img/icons/white-arr.svg')
+
+			@media(max-width: 1439px)
+				color: #fff
+
+				&::before
+					content: ''
+					position: absolute
+					display: block
+
+					left: -30px
+					top: 0
+					bottom: 0
+					right: 100%
+
+					background-color: inherit
+
+					@media(max-width: 1023px)
+						left: -100px
+
+				.hover_bl
+					left: -30px
+
+			@media(max-width: 1023px)
+				display: -webkit-flex
+				display: -moz-flex
+				display: -ms-flex
+				display: -o-flex
+				display: flex
+
+				width: 100%
+
+				justify-content: flex-start
+
+			@media(max-width: 767px)
+				display: none
+
+		&__btn2
+			@media(max-width: 1439px)
+				display: none
+
+		&__btn3
+			display: -webkit-flex
+			display: -moz-flex
+			display: -ms-flex
+			display: -o-flex
+			display: flex
+
+			width: 100%
+			bottom: 0
+
+			position: absolute
+			z-index: 5
+
+			background-color: inherit
+
+			justify-content: center
+
+			color: $blackTxt
+
+			&::before
+				display: none
+
+			&::after
+				border-color: $blackTxt
+
+				background-image: url('../../static/img/icons/black-arr.svg')
+
+			@media(max-width: 1439px)
+				margin-left: 0
+
+			&::hover
+				.hover_bl
+					opacity: 1
+
+			.hover_bl
+				left: 0
+
+		&__btn4
+			background-color: $gray8
+
+		&__image
+			bottom: 115px
+
+			@media(max-width: 1023px)
+				bottom: 95px
 
 .grid2
 	padding: 90px 0 80px

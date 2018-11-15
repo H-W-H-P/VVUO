@@ -114,7 +114,7 @@
 
 		justify-content: center
 
-		&:after
+		&::after
 			content: ""
 			display: block
 
@@ -124,6 +124,10 @@
 			left: 0
 
 			background: url('../../static/img/icons/white-arr.svg') no-repeat center center
+
+		&:hover
+			.hover_bl
+				opacity: 1
 
 		@media(max-width:1023px)
 			width: 400px
