@@ -249,6 +249,103 @@ button
 
 	transition: all ease .4s
 
+	@media(max-width:1023px)
+		display: none
+
+.css_arr
+	position: relative
+
+	&::after
+		position: absolute
+		content: ''
+
+		right: 0
+		top: 50%
+		transform: translateY(-50%) rotate(-45deg)
+		width: 6px
+		height: 6px
+
+		border-left: 2px solid $blackTxt
+		border-bottom: 2px solid $blackTxt
+
+.checkbox
+	position: absolute
+	z-index: -10
+
+	width: 0
+	height: 0
+
+	opacity: 0
+
+.label_checkbox
+	position: relative
+
+	padding-left: 30px
+	
+	cursor: pointer
+
+	&::before
+		content: ''
+		position: absolute
+
+		left: 0
+		top: 50%
+		transform: translateY(-50%)
+		width: 15px
+		height: 15px
+
+		border: 1px solid  $gray2
+
+		@media(max-width:1439px)
+			border-color: $blackTxt
+
+	&::after
+		content: ''
+		position: absolute
+
+		width: 7px
+		height: 7px
+		left: 5px
+		top: 50%
+		transform: translateY(-50%)
+
+		background-color: $blackTxt
+		opacity: 0
+
+		transition: all ease .4s
+
+.checkbox:checked + .label_checkbox
+
+	&::after
+		opacity: 1
+
+.ui-slider-handle
+	border: none !important
+	border-radius: 50%
+
+	background-color: $blackTxt !important
+
+	width: 21px !important
+	height: 21px !important
+	top: -10px !important
+
+	outline: none
+	cursor: pointer !important
+
+.ui-widget.ui-widget-content
+	height: 1px !important
+
+	border: none !important	
+
+	background-color: $gray2
+
+	@media(max-width:1439px)
+		background-color: $gray6
+
+.ui-slider-range
+	background-color: $blackTxt
+
+
 // static
 
 .lanes
