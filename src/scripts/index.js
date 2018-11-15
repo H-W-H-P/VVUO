@@ -4,6 +4,9 @@ import 'owl.carousel'
 require('jquery-ui-bundle')
 require('jquery-ui-touch-punch')
 
+// const create360Viewer = require('360-image-viewer')
+// const canvasFit = require('canvas-fit')
+
 $(document).ready(function () {
   // click handlers
 
@@ -48,6 +51,36 @@ $(document).ready(function () {
     $('.shop_filters__price').slider('option', 'values', [ priceLimits.left, priceLimits.right ])
   })
 
+  $('.comp_title__arrow').click(function () {
+    $('html, body').animate({ scrollTop: $('.grid2').offset().top }, 1000)
+    return false
+  })
+
+  // 360 creating
+
+  // load your image
+  // const image = new Image()
+  // // image.src = 'static/img/pictures/image6.jpg'
+  // image.src = 'static/img/pictures/image8.jpg'
+
+  // image.onload = function () {
+  //   // when the image is loaded, setup the viewer
+  //   const viewer = create360Viewer({
+  //     image: image
+  //   })
+
+  //   // attach canvas to body
+  //   $('.big_image__360_wr').append(viewer.canvas)
+
+  //   // setup fullscreen canvas sizing
+  //   const fit = canvasFit(viewer.canvas, window, window.devicePixelRatio)
+  //   window.addEventListener('resize', fit, false)
+  //   fit()
+
+  //   // start the render loop
+  //   viewer.start()
+  // }
+
   // slider creating
 
   // jquery UI
@@ -62,6 +95,13 @@ $(document).ready(function () {
 
   // owls
   $('.main_slider__right').owlCarousel({
+    items: 1,
+    loop: true,
+    dots: false,
+    nav: true
+  })
+
+  $('.big_image__wr2').owlCarousel({
     items: 1,
     loop: true,
     dots: false,

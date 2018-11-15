@@ -1551,7 +1551,8 @@
 			padding-left: 105px
 
 		@media(max-width:767px)
-			padding: 0 30px
+			padding: 25px 30px
+			width: 100%
 
 	&__text4
 
@@ -1566,6 +1567,7 @@
 
 		@media(max-width:767px)
 			padding: 0 30px
+			width: 100%
 
 	&__low_title
 		font-size: 12px
@@ -1597,3 +1599,171 @@
 
 		@media(max-width:767px)
 			font-size: 12px
+
+
+.big_image
+	position: relative
+
+	// height: 100vh
+	// max-height: 1080px
+
+	// &__360_wr
+	// 	position: absolute
+	// 	z-index: 2
+
+	// 	height: 100%
+	// 	width: 100%
+	// 	left: 0
+	// 	top: 0
+	margin-bottom: 60px
+
+	@media(max-width:1023px)
+		padding-bottom: 110px
+
+	@media(max-width:767px)
+		padding-bottom: 40px
+		margin-bottom: 0
+
+	&__wr
+		position: static
+
+	&__wr2
+
+		.owl
+
+			&-nav
+				position: absolute
+				top: 0
+				left: 120px
+
+				@media(max-width:1439px)
+					left: auto
+					right: 0
+
+				button.owl-prev,
+				button.owl-next
+					height: 110px
+					width: 55px
+
+					background-color: $main-blue !important
+					background-image: url('../../static/img/icons/arr-long-white.svg') !important
+
+	&__bot
+		position: absolute
+		z-index: 2
+
+		bottom: 0
+		width: 600px
+		height: 110px
+		left: 50%
+		transform: translateX(-50%)
+
+		background-color: #fff
+
+		display: -webkit-flex
+		display: -moz-flex
+		display: -ms-flex
+		display: -o-flex
+		display: flex
+		
+		align-items: center
+
+		@media(max-width:1439px)
+			width: 635px
+
+		@media(max-width:1023px)
+			width: 100%
+			padding: 0 60px
+
+			box-sizing: border-box
+
+			border-bottom: 1px solid  $gray2
+
+		@media(max-width:767px)
+			position: relative
+
+			left: 0
+			transform: none
+			padding: 0
+			height: auto
+
+			flex-direction: column-reverse
+
+			border-bottom: none
+
+	&__btn
+		color: $blackTxt
+
+		width: 50%
+		height: 100%
+
+		&::after
+			border-color: $blackTxt
+
+			background-image: url('../../static/img/icons/black-arr.svg')
+
+		&:hover
+			.hover_bl
+				opacity: 1	
+
+		@media(max-width:767px)
+			width: 100%
+			padding: 30px 0
+
+			border-bottom: 2px solid  $blackTxt
+
+			justify-content: space-between
+
+	&__text
+		width: 50%
+		padding: 35px 50px
+
+		font-size: 12px
+		line-height: 22px
+
+		box-sizing: border-box
+
+		@media(max-width:767px)
+			width: 100%
+			padding: 35px 0 0
+			margin: 0
+
+	// &__tog
+	// 	position: absolute
+
+	// 	left: 0
+	// 	top: 0
+	// 	width: 250px
+	// 	height: 180px
+
+	// 	background-color: #fff
+
+	// &__tog1
+
+	// 	&:hover
+	// 		.big_image__icon
+	// 			opacity: 0
+
+	// 		.big_image__icon-hov
+	// 			opacity: 1
+
+	// &__tog2
+	// 	left: 250px
+
+	// 	height: 110px
+	// 	width: 190px
+
+	// 	background-color: $gray
+
+	// &__icon
+	// 	position: absolute
+
+	// 	left: 50%
+	// 	top: 50%
+	// 	transform: translate(-50%, -50%)
+	// 	width: 40px
+	// 	height: 40px
+
+	// 	&-hov
+	// 		opacity: 0
+
