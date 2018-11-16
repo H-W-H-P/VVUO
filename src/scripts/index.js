@@ -160,6 +160,18 @@ $(document).ready(function () {
     }
   })
 
+  $('.labSlider2').owlCarousel({
+    items: 1,
+    // loop: true,
+    dots: false,
+    nav: true,
+    responsive: {
+      1439: {
+        items: 2
+      }
+    }
+  })
+
   var labSlider = $('.labSlider').owlCarousel({
     items: 1,
     // loop: true,
@@ -167,15 +179,19 @@ $(document).ready(function () {
     nav: true,
     mouseDrag: false,
     touchDrag: false,
+    slideBy: 2,
     responsive: {
       1439: {
-        items: 4
+        items: 4,
+        slideBy: 4
       },
       1024: {
-        items: 3
+        items: 3,
+        slideBy: 5
       },
       767: {
-        items: 2
+        items: 2,
+        slideBy: 5
       }
     }
   })
