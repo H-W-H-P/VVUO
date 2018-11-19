@@ -258,6 +258,8 @@
 		width: 25%
 		padding-right: 75px
 
+		position: relative
+
 		box-sizing: border-box
 
 		@media(max-width:1439px)
@@ -1884,3 +1886,358 @@
 	// 	&-hov
 	// 		opacity: 0
 
+.conf_wr
+	position: relative
+
+	&__top
+		display: -webkit-flex
+		display: -moz-flex
+		display: -ms-flex
+		display: -o-flex
+		display: flex
+
+		&-left
+			&::before
+				position: absolute
+				content: ''
+				z-index: -1
+
+				right: 100%
+				left: -120px
+				top: -1px
+				bottom: -1px
+
+				background-color: inherit
+
+				border: 1px solid  $gray2
+				border-right: none
+
+	&__quart
+		position: relative
+
+		display: -webkit-flex
+		display: -moz-flex
+		display: -ms-flex
+		display: -o-flex
+		display: flex
+		box-sizing: border-box
+
+		align-items: center
+
+		width: 25%
+		height: 60px
+		margin: 0
+
+		background-color: $gray
+
+		border-top: 1px solid  $gray2
+		border-bottom: 1px solid  $gray2
+
+	&__18
+		font-size: 18px
+
+		padding-right: 10px
+
+	&__bold
+		font-size: 20px
+
+	&__order
+		background-color: $main-blue
+
+		font-size: 16px
+
+		&::after
+			border: none
+
+	&__order2
+		width: 33.3333%
+		margin-top: 70px
+
+	&__btn2
+		color: $blackTxt
+		font-size: 16px
+
+		&::after
+			border: none
+
+			background-image: url('../../static/img/icons/black-arr.svg')
+
+	&__toggle
+		flex-direction: row-reverse
+
+		position: relative
+
+		background-color: $gray4
+
+		&::before
+			display: block
+
+			margin-right: 0
+
+		&::after
+			position: absolute
+			content: ''
+			z-index: -1
+
+			left: 100%
+			right: -120px
+			top: -1px
+			bottom: -1px
+
+			background-color: inherit
+
+			border: 1px solid  $gray2
+			border-left: none
+
+		.hover_bl
+			right: -120px
+
+	&_filters
+		max-height: 0
+		padding: 0
+		width: 100%
+
+		overflow: hidden
+
+		background-color: $gray4
+
+		transition: all ease .6s
+
+		&::before
+			content: ''
+			position: absolute
+			z-index: -1
+
+			left: -90px
+			right: -90px
+			top: 0
+			bottom: 0
+
+			background-color: inherit
+
+		&.opened
+			max-height: 2000px
+			padding-bottom: 100px
+
+		&__wr
+			width: 25%
+
+			float: left
+
+		&__chbx
+
+			&::before
+				border-color: $blackTxt
+
+		&__wrap
+			float: left
+
+		&__price_inp
+			border-color: $blackTxt
+
+		.ui-widget.ui-widget-content 
+			background-color: rgba(40,40,43,.3)
+
+		&-side
+			padding-top: 40px
+
+			&__wrap
+				padding-top: 40px
+
+	&__over
+		overflow: hidden
+
+		padding-right: 120px
+		margin-right: -120px
+
+.config
+	width: 75%
+	padding: 40px 0 50px
+
+	&__wrap
+		display: -webkit-flex
+		display: -moz-flex
+		display: -ms-flex
+		display: -o-flex
+		display: flex
+
+		background-color: $gray
+
+		position: relative
+
+	&__left,
+	&__center,
+	&__right
+		width: 33.3333333%
+
+	&__left
+		padding: 24px 0 0 20px
+
+	&__inp_wr
+		width: 100%
+
+	&__input
+		width: 150px
+		height: 30px
+		margin-bottom: 20px
+		padding-left: 10px
+
+		box-sizing: border-box
+
+		background-color: #fff
+
+		border: 1px solid  $gray2
+
+	&__label
+		display: block
+
+		padding-bottom: 5px
+
+		color: $gray5
+
+	&__body
+		height: 570px
+		margin-top: 75px
+
+		background-color: black
+
+		position: relative
+
+	&__top_line,
+	&__left_line
+		position: absolute
+
+		&::after
+			content: ''
+			position: absolute
+			z-index: -1
+
+			background-color: $gray2
+
+	&__top_line
+		top: -30px
+		left: 0
+		height: 30px
+		width: 100%
+
+		&::after
+			left: 0
+			top: 50%
+			transform: translateY(-50%)
+			width: 100%
+			height: 1px
+
+	&__left_line
+		top: 0
+		left: -30px
+		width: 30px
+		height: 100%
+
+		&::after
+			left: 50%
+			top: 0
+			transform: translateX(-50%)
+			height: 100%
+			width: 1px
+
+		.config__number
+			transform: translate(-50%, -50%) rotate(270deg)
+
+	&__number
+		position: absolute
+		z-index: 2
+
+		background-color: #fff
+
+		left: 50%
+		top: 50%
+		transform: translate(-50%, -50%)
+		padding: 0 12px
+
+		color: $gray5
+
+	&__title
+		font-size: 16px
+
+		padding-bottom: 20px
+
+		display: inline-block
+
+	&-cond2
+		.config__wr
+			display: none
+
+		.config-cond1__title
+			display: none
+
+	&-cond1
+		.config-cond2__title
+			display: none
+
+		.config__owl
+			display: none
+
+	&__item
+		position: relative
+		box-sizing: border-box
+
+		padding-right: 20px
+
+	&__img_wr
+		position: relative
+
+	&__arrow
+		position: absolute
+
+		bottom: 0
+		left: 0
+		width: 30px
+		height: 30px
+
+		background-color: $gray2
+
+		transform: rotate(90deg)
+
+	&__icon
+		position: absolute
+
+		top: 50%
+		left: 50%
+		transform: translate(-50%, -50%)
+		width: 10px
+		height: 10px
+
+		transition: all ease .4s
+
+		&-hov
+			opacity: 0
+
+	&__desc
+		color: $gray5
+
+		padding-bottom: 10px
+
+	&__name
+		padding: 20px 0 5px
+
+	&__price
+		font-weight: bold
+
+		padding-bottom: 10px
+
+	&__name,
+	&__desc,
+	&__price
+		margin: 0
+
+	&__owl
+		background-color: $gray
+
+		padding: 30px 90px 10px 30px
+
+		.owl-stage-outer
+			overflow: visible
+
+		.owl-nav
+			top: -46px
+			right: 110px

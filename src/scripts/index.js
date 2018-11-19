@@ -65,6 +65,14 @@ $(document).ready(function () {
     labSlider.trigger('prev.owl.carousel')
   })
 
+  $('.shop_filters__cat').click(function () {
+    if (!$(this).closest('.conf_wr_filters').length) {
+      $(this).closest('.shop_filters__block').find('.shop_filters__cat_wr').toggleClass('closed')
+      $(this).toggleClass('closed')
+    }
+    return false
+  })
+
   // 360 creating
 
   // load your image
@@ -106,6 +114,13 @@ $(document).ready(function () {
   $('.main_slider__right').owlCarousel({
     items: 1,
     loop: true,
+    dots: false,
+    nav: true
+  })
+
+  $('.config__owl').owlCarousel({
+    items: 5,
+    loop: false,
     dots: false,
     nav: true
   })
