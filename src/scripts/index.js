@@ -1,9 +1,9 @@
 import $ from 'jquery'
 import 'owl.carousel'
-import '../../node_modules/slick-1.8.1/slick/slick.js'
 
 require('jquery-ui-bundle')
 require('jquery-ui-touch-punch')
+require('slick-carousel')
 
 $(document).ready(function () {
   // click handlers
@@ -202,5 +202,21 @@ $(document).ready(function () {
   $('.slider_middle_next').on('click', function () {
     slide1.slick('slickNext')
     slide2.slick('slickNext')
+  })
+
+  // map
+  const loadGoogleMapsApi = require('load-google-maps-api')
+
+  loadGoogleMapsApi().then(function (googleMaps) {
+    googleMaps.Map(document.querySelector('.map'), {
+      center: {
+        lat: 40.7484405,
+        lng: -73.9944191
+      },
+      zoom: 12,
+      key: 'AIzaSyCKq7IFsP3Ugif1ZKOq54V7CNQiAleK4Bg'
+    })
+  }).catch(function (error) {
+    console.error(error)
   })
 })
