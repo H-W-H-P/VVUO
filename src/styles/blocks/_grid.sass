@@ -1895,15 +1895,24 @@
 		@media(max-width:1439px)
 			display: block
 
+		@media(max-width:1023px)
+			display: none
+
 	&__desk
 
 		@media(max-width:1439px)
 			display: none
 
+		@media(max-width:1023px)
+			display: block
+
 	&__shop
 
 		@media(max-width:1439px)
 			flex-wrap: wrap
+
+		@media(max-width:767px)
+			display: none
 
 	&__top
 		display: -webkit-flex
@@ -1928,6 +1937,14 @@
 				border: 1px solid  $gray2
 				border-right: none
 
+			@media(max-width:1023px)
+				padding-left: 30px
+
+		@media(max-width:1023px)
+			flex-wrap: wrap
+
+			padding: 0
+
 	&__quart
 		position: relative
 
@@ -1949,6 +1966,17 @@
 		border-top: 1px solid  $gray2
 		border-bottom: 1px solid  $gray2
 
+		@media(max-width:1023px)
+			width: 33.333%
+
+			border: none
+
+		@media(max-width:767px)
+			width: 50%
+
+			border-top: 1px solid  $gray2
+
+
 	&__18
 		font-size: 18px
 
@@ -1957,8 +1985,19 @@
 		@media(max-width:1439px)
 			font-size: 16px
 
+		@media(max-width:767px)
+			font-size: 12px
+
+			padding-right: 5px
+
 	&__bold
 		font-size: 20px
+
+		@media(max-width:1439px)
+			font-size: 18px
+
+		@media(max-width:767px)
+			font-size: 12px
 
 	&__order
 		background-color: $main-blue
@@ -1983,6 +2022,12 @@
 			border: none
 
 			background-image: url('../../static/img/icons/black-arr.svg')
+
+		@media(max-width:1023px)
+			border-top: 1px solid  $gray2
+
+		@media(max-width:767px)
+			width: 100%
 
 	&__toggle
 		flex-direction: row-reverse
@@ -2019,6 +2064,17 @@
 
 		@media(max-width:1439px)
 			justify-content: center
+
+		@media(max-width:1023px)
+			width: 100%
+			padding-left: 30px
+
+			justify-content: flex-end
+
+			border: none
+
+		@media(max-width:767px)
+			display: none
 
 	&__block
 
@@ -2070,6 +2126,9 @@
 
 			float: left
 
+			@media(max-width:1023px)
+				width: 33.33333%
+
 		&__chbx
 
 			&::before
@@ -2077,6 +2136,9 @@
 
 		&__wrap
 			float: left
+
+			@media(max-width:1439px)
+				clear: none
 
 		&__price_inp
 			border-color: $blackTxt
@@ -2098,6 +2160,10 @@
 				padding-right: 0
 
 				background-color: initial
+
+			@media(max-width:1023px)
+				margin-right: -30px
+				width: auto
 
 			&__wrap
 				padding-top: 40px
@@ -2160,11 +2226,19 @@
 				&.closed
 					padding: 0 30px
 
+			@media(max-width:1023px)
+				position: relative
+
+				
+
 	&__over
 		overflow: hidden
 
 		padding-right: 120px
 		margin-right: -120px
+
+		&-filters
+			display: none
 
 		@media(max-width:1439px)
 			padding-right: 0
@@ -2174,6 +2248,9 @@
 
 			&-filters
 				display: block
+
+		@media(max-width:1023px)
+			overflow: visible
 
 	&__cat
 
@@ -2192,6 +2269,31 @@
 
 				&::after
 					border-color: $blackTxt
+
+		@media(max-width:1023px)
+			z-index: 2
+
+	&__plan
+
+		@media(max-width:1023px)
+			padding-right: 30px
+
+			box-sizing: border-box
+
+	&__mob
+		text-align: center
+
+		background: url('/../static/img/pictures/bg4.jpg')
+		background-size: cover
+
+		padding: 100px 30px 170px
+
+	&__mob_text
+		font-size: 16px
+		line-height: 26px
+
+		max-width: 270px
+		margin: 20px auto 0
 
 .config
 	width: 75%
@@ -2223,6 +2325,12 @@
 
 		@media(max-width:1439px)
 			padding-top: 50px
+
+		&-no_desk
+			display: none
+
+			@media(max-width:1439px)
+				display: block
 
 	&__left,
 	&__center,
@@ -2403,9 +2511,16 @@
 		@media(max-width:1439px)
 			padding: 30px 0
 
+		@media(max-width:1023px)
+			position: static
+
 		.owl-stage-outer
 			overflow: visible
 
 		.owl-nav
 			top: -46px
 			right: 110px
+
+			@media(max-width:1023px)
+				top: 10px
+				right: 20px

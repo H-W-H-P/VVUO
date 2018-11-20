@@ -203,6 +203,15 @@
 
 	padding: 0 30px 90px
 
+	@media(max-width:1023px)
+		padding: 0 100px 90px
+
+	@media(max-width:767px)
+		padding: 0 30px 40px
+
+		.simple_title_wr__date_wr
+			opacity: 0
+
 	&__inp
 		width: 100%
 
@@ -213,7 +222,10 @@
 
 		@media(max-width:1439px)
 			font-size: 40px
-			line-height: 50px
+			line-height: 70px
+
+		@media(max-width:767px)
+			font-size: 24px
 
 	&__inp_wr
 		padding: 0
@@ -233,3 +245,7 @@
 			background-image: url(../../static/img/icons/pencil.svg)
 			background-size: cover
 			background-repeat: no-repeat
+
+			@media(max-width:767px)
+				width: 20px
+				height: 20px

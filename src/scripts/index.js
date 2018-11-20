@@ -101,6 +101,15 @@ $(document).ready(function () {
   function resizing1 () {
     if (windWidthResize <= 1440) {
       $('.conf_wr__plan .shop_filters__cat_wr, .conf_wr_filters__plan').removeClass('closed')
+    } else $('.conf_wr__plan .shop_filters__cat_wr, .conf_wr_filters__plan').addClass('closed')
+  }
+
+  $(window).resize(resizing2)
+  resizing2()
+
+  function resizing2 () {
+    if (windWidthResize <= 767) {
+      $('.conf_wr_filters').removeClass('opened')
     }
   }
 
@@ -150,10 +159,15 @@ $(document).ready(function () {
   })
 
   $('.config__owl').owlCarousel({
-    items: 5,
+    items: 4,
     loop: false,
     dots: false,
-    nav: true
+    nav: true,
+    responsive: {
+      1024: {
+        items: 5
+      }
+    }
   })
 
   $('.big_image__wr2').owlCarousel({
