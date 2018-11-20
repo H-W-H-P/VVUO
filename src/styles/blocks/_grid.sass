@@ -1889,6 +1889,22 @@
 .conf_wr
 	position: relative
 
+	&__desk-small
+		display: none
+
+		@media(max-width:1439px)
+			display: block
+
+	&__desk
+
+		@media(max-width:1439px)
+			display: none
+
+	&__shop
+
+		@media(max-width:1439px)
+			flex-wrap: wrap
+
 	&__top
 		display: -webkit-flex
 		display: -moz-flex
@@ -1938,6 +1954,9 @@
 
 		padding-right: 10px
 
+		@media(max-width:1439px)
+			font-size: 16px
+
 	&__bold
 		font-size: 20px
 
@@ -1952,6 +1971,9 @@
 	&__order2
 		width: 33.3333%
 		margin-top: 70px
+
+		@media(max-width:1439px)
+			display: none
 
 	&__btn2
 		color: $blackTxt
@@ -1974,6 +1996,9 @@
 
 			margin-right: 0
 
+			@media(max-width:1439px)
+				margin-left: 10px
+
 		&::after
 			position: absolute
 			content: ''
@@ -1991,6 +2016,14 @@
 
 		.hover_bl
 			right: -120px
+
+		@media(max-width:1439px)
+			justify-content: center
+
+	&__block
+
+		@media(max-width:1439px)
+			width: 100%
 
 	&_filters
 		max-height: 0
@@ -2015,9 +2048,22 @@
 
 			background-color: inherit
 
+		@media(max-width:1439px)
+			padding: 0 30px
+			margin: 0 -30px
+			top: 0
+
+			box-sizing: content-box
+
+			position: relative
+
 		&.opened
 			max-height: 2000px
 			padding-bottom: 100px
+
+			@media(max-width:1439px)
+				padding-bottom: 0
+				padding-top: 30px
 
 		&__wr
 			width: 25%
@@ -2041,6 +2087,18 @@
 		&-side
 			padding-top: 40px
 
+			@media(max-width:1439px)
+				position: relative
+				z-index: 1
+
+				top: 0
+				max-height: initial
+				width: 100%
+				padding-left: 0
+				padding-right: 0
+
+				background-color: initial
+
 			&__wrap
 				padding-top: 40px
 
@@ -2056,6 +2114,11 @@
 
 				transition: all ease .4s
 
+				@media(max-width:1439px)
+					width: 100%
+
+					border-bottom: none
+
 				&::before,
 				&::after
 					display: none
@@ -2067,15 +2130,85 @@
 				.conf_wr_filters-side__wrap
 					display: block
 
+				.conf_wr_filters__plan
+					color: $blackTxt
+
+		&__plan
+			color: $main-blue
+
+			@media(max-width:1439px)
+				position: relative
+				z-index: 1
+
+				&.closed
+					color: $blackTxt
+
+		&__input_wr
+
+			@media(max-width:1439px)
+				display: inline-block
+
+				padding-right: 10px
+
+		&__cat_wr
+
+			@media(max-width:1439px)
+				background-color: $gray
+
+				padding: 60px 30px 0
+
+				&.closed
+					padding: 0 30px
+
 	&__over
 		overflow: hidden
 
 		padding-right: 120px
 		margin-right: -120px
 
+		@media(max-width:1439px)
+			padding-right: 0
+			margin-right: 0
+
+			display: none
+
+			&-filters
+				display: block
+
+	&__cat
+
+		@media(max-width:1439px)
+			color: $main-blue
+
+			transform: translate(30px, 60px)
+
+			&::after
+				border-color: $main-blue
+
+			&.closed
+				color: $blackTxt
+
+				transform: none
+
+				&::after
+					border-color: $blackTxt
+
 .config
 	width: 75%
 	padding: 40px 0 50px
+
+	@media(max-width:1439px)
+		width: 100%
+
+	&__wr
+
+		@media(max-width:1439px)
+			display: none
+
+		&-filter
+
+			@media(max-width:1439px)
+				display: block
 
 	&__wrap
 		display: -webkit-flex
@@ -2088,13 +2221,16 @@
 
 		position: relative
 
+		@media(max-width:1439px)
+			padding-top: 50px
+
 	&__left,
 	&__center,
 	&__right
 		width: 33.3333333%
 
 	&__left
-		padding: 24px 0 0 20px
+		padding: 24px 0 0 30px
 
 	&__inp_wr
 		width: 100%
@@ -2125,6 +2261,9 @@
 		background-color: black
 
 		position: relative
+
+		@media(max-width:1439px)
+			margin-left: 35px
 
 	&__top_line,
 	&__left_line
@@ -2185,6 +2324,9 @@
 		padding-bottom: 20px
 
 		display: inline-block
+
+		@media(max-width:1439px)
+			display: none
 
 	&-cond2
 		.config__wr
@@ -2257,6 +2399,9 @@
 		background-color: $gray
 
 		padding: 30px 90px 10px 30px
+
+		@media(max-width:1439px)
+			padding: 30px 0
 
 		.owl-stage-outer
 			overflow: visible
