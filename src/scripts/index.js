@@ -3,6 +3,7 @@ import 'owl.carousel'
 
 require('jquery-ui-bundle')
 require('jquery-ui-touch-punch')
+require('slick-carousel')
 
 // const create360Viewer = require('360-image-viewer')
 // const canvasFit = require('canvas-fit')
@@ -265,19 +266,69 @@ $(document).ready(function () {
   $(window).resize(createSlider2)
 
   $('.cooperating_slider').owlCarousel({
-    items: 4,
+    // loop: true,
     dots: false,
     nav: true,
     responsive: {
+      1440: {
+        items: 4
+      },
       1439: {
         items: 3
       },
-      767: {
+      1024: {
         items: 3
       },
-      0: {
+      767: {
         items: 2
+      },
+      650: {
+        items: 2
+      },
+      0: {
+        items: 1
       }
     }
+  })
+
+  let slide1 = $('.slider_middle__slide_a').slick({
+    infinite: true,
+    dots: false,
+    arrows: false,
+    vertical: true
+  })
+
+  let slide2 = $('.slider_middle__slide_b').slick({
+    infinite: true,
+    dots: false,
+    arrows: false
+  })
+
+  // let counter = 0
+
+  $('.slider_middle_prev').on('click', function () {
+    slide1.slick('slickPrev')
+    slide2.slick('slickPrev')
+  })
+
+  $('.slider_middle_next').on('click', function () {
+    slide1.slick('slickNext')
+    slide2.slick('slickNext')
+  })
+
+  // map
+  const loadGoogleMapsApi = require('load-google-maps-api')
+
+  loadGoogleMapsApi().then(function (googleMaps) {
+    googleMaps.Map(document.querySelector('.map'), {
+      center: {
+        lat: 40.7484405,
+        lng: -73.9944191
+      },
+      zoom: 12,
+      key: 'AIzaSyCKq7IFsP3Ugif1ZKOq54V7CNQiAleK4Bg'
+    })
+  }).catch(function (error) {
+    console.error(error)
   })
 })

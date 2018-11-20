@@ -2,6 +2,9 @@
 	background-color: #e0d7cf
 
 	display: flex
+	position: relative
+
+	z-index: 2
 	@media(max-width:1439px)
 		//
 
@@ -19,10 +22,16 @@
 		bottom: 0
 		left: 0
 
+		transition: all .4s ease
+		cursor: pointer
+
+		&:hover
+			background-color: #5280b4
+
 		img
 			transform: rotate(-90deg)
 
-			top: 48px
+			top: 52px
 			left: 48px
 
 			position: absolute
@@ -85,11 +94,12 @@
 		@media(max-width:1439px)
 			padding-top: 197px
 			padding-bottom: 137px
-			padding-left: 104px	
+			padding-left: 34px	
 
 		@media(max-width:1023px)
 			padding-top: 214px
 			padding-bottom: 176px	
+			padding-left: 104px
 
 		@media(max-width:767px)
 			padding-top: 106px
@@ -185,12 +195,22 @@
 
 	a
 		display: block
-	
+		b
+	.info_contacts__mail
+		border-bottom: 1px solid  #28282b
+
+		display: inline-block
+
+		letter-spacing: 0.5px
+		line-height: 1.2
+
+		width: 140px
 
 	&__title
 		font-size: 12px
 		color: #28282b
 		font-weight: bold
+		letter-spacing: 0.5px
 		
 
 	&__text

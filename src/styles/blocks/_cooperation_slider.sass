@@ -1,0 +1,588 @@
+//slider head
+
+body
+	overflow-x: hidden
+	
+.cooperating_slider_head
+	position: relative
+
+	padding-bottom: 120px
+	padding-left: 121px
+
+	@media(max-width:1439px)
+		padding: 0 0 189px 30px
+
+	@media(max-width:1023px)
+		padding: 0 0 189px 104px
+
+	@media(max-width:767px)
+		padding: 0 0 97px 34px
+
+	.owl-carousel
+		position: static
+
+	.owl-stage
+		// display: flex
+
+	.owl-carousel .owl-stage-outer
+		overflow: visible
+
+	.owl-item
+		// width: 300px!important
+
+		@media(max-width:767px)
+			// width: auto!important
+
+	.owl-prev, .owl-next
+		width: 20px
+		height: 40px
+		margin: 1px
+
+		position: absolute
+		top: 0
+		right: 0
+
+		&:after
+			content: ""
+
+			width: 20px
+			height: 20px
+
+			display: block
+			position: absolute
+			top: 8px
+			left: 0
+
+			background: url('../../static/img/icons/arr-long-black.svg') no-repeat center center / 100%	
+			
+
+	.owl-next
+		right: 120px
+		transform: rotate(180deg)
+
+		&:after
+			top: 12px
+
+		@media(max-width:1439px)
+			right: 30px
+
+	.owl-prev
+		right: 160px
+
+		@media(max-width:1439px)
+			right: 70px
+
+
+
+	&__title
+		width: 232px
+		height: 45px
+		padding-left: 0px
+		margin-bottom: 90px
+		margin-top: 106px
+
+		font-size: 40px
+		line-height: 1.13
+
+		font-weight: bold
+		color: #28282b
+
+		@media(max-width:1439px)
+			margin-bottom: 35px
+
+		@media(max-width:1023px)
+			padding-left: 0
+			margin-top: 83px
+
+			font-size: 30px
+
+
+			
+		
+
+
+.cooperating_slider
+	width: 91%
+	
+	@media(max-width:1439px)
+		width: 90%
+
+	@media(max-width:1023px)
+		width: 90%
+
+	@media(max-width:767px)
+		width: 100%
+
+	@media(max-width:650px)
+		width: 80%
+	
+	@media(max-width:376px)
+		width: 90%
+	
+
+.slider_head_item 
+	width: 259px
+	height: 161px
+	padding-top: 21px
+	padding-left: 29px
+	padding-right: 79px
+
+	background-color: #f4f6f6
+
+	box-sizing: border-box
+	position: relative
+
+	&__text
+		font-size: 12px
+		line-height: 1.83
+
+		margin: 0
+
+		color: #28282b
+		font-weight: bold
+
+	&__link
+		width: 64px
+		height: 64px
+
+		background-color: #5b8ec8
+		position: absolute
+		bottom: 0
+		right: 0
+
+		transition: all .4s ease
+		cursor: pointer
+
+		&:hover
+			background-color: #5280b4
+
+		&:after
+			content: ""
+
+			width: 16px
+			height: 2px
+			margin-bottom: 23px
+			margin-left: 24px
+
+			position: absolute
+			background-color: #fff
+
+			bottom: 0
+			left: 0
+
+		&:before
+			content: ""
+
+			width: 10px
+			height: 10px
+			margin-top: 27px
+			margin-left: 27px
+
+			display: block
+			position: absolute
+
+			top: 0
+			left: 0
+			transform: rotate(90deg)
+
+			background: url('../../static/img/icons/white-arr(2).svg') no-repeat center center / 100%	
+
+
+
+//slider midle
+.cooperating_slider_midle
+	position: relative
+
+	@media(max-width:1023px)
+		padding-top: 70px
+		padding-left: 22px
+		padding-right: 22px
+
+	@media(max-width:767px)
+		padding-top: 85px
+		padding-left: 0
+		padding-right: 0
+
+	&__title
+		position: absolute
+		
+		top: 60px
+		left: 120px
+
+		@media(max-width:1439px)
+			font-size: 30px
+
+			margin-top: 0
+			left: 34px
+			top: 0
+
+		@media(max-width:1023px)
+			left: 103px
+
+		@media(max-width:767px)
+			left: 33px
+
+			font-size: 24px
+
+			width: 123px
+		
+	
+
+
+
+
+	
+.slider_middle
+	width: 62.3%
+	height: 544px
+	margin-left: 420px
+
+	position: relative
+
+	@media(max-width:1439px)
+		width: 70%
+		margin-left: 19%
+
+	@media(max-width:1023px)
+		margin-left: 0
+		
+		width: 100%
+		height: 615px
+
+		box-sizing: border-box
+
+	@media(max-width:767px)
+		width: 100%
+		margin: 0
+		height: 446px
+
+
+
+.slider_middle
+
+	@media(max-width:1439px)
+		//
+
+	&__nav
+		display: flex
+		position: absolute
+
+		bottom: 182px
+		right: 20.6%
+
+		@media(max-width:1439px)
+			right: initial
+			left: 67%
+
+		@media(max-width:1023px)
+			left: initial
+			bottom: initial
+			right: 33%
+			top: 0
+
+		@media(max-width:767px)
+			right: 50%
+
+		
+		
+		.slider_middle_prev, .slider_middle_next
+			height: 111px
+			width: 55.5px
+
+			background-color: #5b8ec8
+			outline: 0
+			cursor: pointer
+
+			position: relative
+
+			transition: all .4s ease
+
+			@media(max-width:1023px)
+				width: 60px
+
+			@media(max-width:767px)
+				height: 46px
+				width: 53px
+
+			&:hover
+				background-color: #5280b4
+
+				transition: all .4s ease
+
+
+			&:before
+				background: url('../../static/img/icons/arr-long-white.svg') no-repeat center center
+
+				content: ""
+				display: block
+				position: absolute
+
+				transform: translateY(-50%)
+
+				height: 20px
+				width: 20px
+				padding-top: 4px
+				top: 50%
+				left: 26px
+
+		.slider_middle_next
+			
+			&:before
+				left: initial
+				right: 26px
+				bottom: 50%
+
+				transform: scale(-1) translateY(50%)
+
+	&__basic
+		width: 100%
+		height: 182px
+
+
+
+		// border-top: 1px solid #dcdfe2
+		
+
+		background-color: #f4f6f6
+		// + border-top: 1px solid #dcdfe2
+		// border-left: 1px solid #dcdfe2
+		box-sizing: border-box
+
+		@media(max-width:1439)
+			// border-right: 1px solid #dcdfe2
+
+		@media(max-width:1023px)
+			height: 242px
+
+		@media(max-width:767px)
+			height: 190px
+
+	&__block_one
+		position: absolute
+
+		width: 33.3%
+		height: 366px
+
+		bottom: 0
+		left: 1px
+
+		border-top: 1px solid #dcdfe2
+		
+
+		box-sizing: border-box
+
+		.slick-list
+			height: 181px!important
+
+		.slider_middle__basic
+			border-bottom: 1px solid #dcdfe2
+
+		
+
+		@media(max-width:1439px)
+			border-left: 1px solid #dcdfe2
+			border-right: 1px solid #dcdfe2
+
+			width: 33.5%
+
+		@media(max-width:1023px)
+			left: initial
+			right: 33.3%
+			bottom: 20px
+
+			height: 484px
+
+		@media(max-width:767px)
+			width: 50%
+			height: 380px
+
+			left: 1px
+
+
+	&__block_two
+		position: absolute
+
+		width: 33.3%
+		height: 366px
+
+		left: 33.6%
+		top: -4px
+
+		border-top: 1px solid #dcdfe2
+		
+
+		box-sizing: border-box
+
+		.slick-list
+			height: 181px!important
+
+		.slider_middle__basic
+			border-bottom: 1px solid #dcdfe2
+
+			@media(max-width:1439px)
+				border-left: 1px solid #dcdfe2
+
+		// border-bottom: 1px solid #dcdfe2
+
+		@media(max-width:1439px)
+			border-right: 1px solid #dcdfe2
+
+			width: 33.7%
+
+		@media(max-width:1023px)
+			left: initial
+			right: -3px
+			top: 0
+
+			height: 484px
+
+		@media(max-width:767px)
+			width: 50%
+			height: 380px
+			
+			right: 0
+
+
+	&__block_three
+		position: absolute
+
+		width: 33.2%
+		height: 183px
+
+		bottom: -1px
+		right: -2px
+
+		border-top: 1px solid #dcdfe2
+		border-bottom: 1px solid #dcdfe2
+
+		.slider_middle__basic
+			height: 183px
+
+			@media(max-width:1023px)
+				height: 100%
+
+		.slick-list
+			height: 183px!important
+
+			@media(max-width:1023px)
+				height: 242px!important
+
+
+		// box-sizing: border-box
+
+		@media(max-width:1439px)
+			border-right: 1px solid #dcdfe2
+			border-left: 1px solid #dcdfe2
+
+			right: -4px
+
+		@media(max-width:1023px)
+			right: initial
+			left: 0
+			bottom: 141px
+
+			height: 242px
+
+		@media(max-width:767px)
+			display: none
+
+
+
+
+.slider_par
+	position: relative
+
+	a
+		width: 100%
+		height: 182px
+
+		// border-bottom: 1px solid #dcdfe2
+		// border-top: 1px solid #dcdfe2
+
+		background-color: #f4f6f6
+		// + border-bottom: 1px solid #dcdfe2
+		box-sizing: border-box
+
+		@media(max-width:1023px)
+			height: 242px
+
+		@media(max-width:767px)
+			height: 190px
+	
+
+	img.slider_par__picture
+		width: 85px
+		height: auto
+		margin-left: 50%
+		// padding-top: 48px
+		transform: translate(-50%, -50%)
+
+		top: 50%
+		left: 0
+
+		position: absolute
+		display: block
+
+		@media(max-width:1023px)
+			//
+
+
+
+
+
+
+
+
+
+
+
+// 		img.slider_par__picture
+// 			width: 85px
+// 			height: auto
+// 			margin-left: 50%
+// 			padding-top: 48px
+// 			transform: translate(-50%, 0%)
+
+// 			position: absolute
+
+// 			top: 0
+// 			left: 0
+
+// 			display: block
+
+// .slider_middle_block_one
+// 	position: absolute
+// 	bottom: 0
+// 	left: 1px
+// 	width: 33.4%
+// 	border-top: 1px solid #dcdfe2
+
+// .slider_middle_block_two
+// 	position: absolute
+// 	top: -3px
+// 	left: 33.4%
+// 	width: 33.45%
+// 	border-top: 1px solid #dcdfe2
+
+// .slide_five
+// 	position: absolute
+// 	bottom: 0
+// 	right: -2px
+// 	width: 33.45%
+// 	border-top: 1px solid #dcdfe2
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
