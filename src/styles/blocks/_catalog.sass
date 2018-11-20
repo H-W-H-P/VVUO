@@ -425,21 +425,24 @@
 
 				background-color: $gray4
 				
-				&::before
-					content: ''
-					position: static
+			&::before
+				content: ''
+				position: static
 
+				display: none
+
+				margin-left: 30px
+				margin-right: 20px
+				width: 20px
+				height: 14px
+
+				background-image: url('../../static/img/icons/filter.svg')
+				background-repeat: no-repeat
+
+				transition: all ease .4s
+
+				@media(max-width:1439px)
 					display: block
-
-					margin-left: 30px
-					margin-right: 20px
-					width: 20px
-					height: 14px
-
-					background-image: url('../../static/img/icons/filter.svg')
-					background-repeat: no-repeat
-
-					transition: all ease .4s
 
 			&:hover
 				.hover_bl
@@ -470,10 +473,19 @@
 			padding-bottom: 20px
 
 		&__cat
-			padding: 30px 20px 30px 0
-			margin-top: 20px
+			padding: 5px 20px 5px 0
+			margin: 10px 0 20px
 
 			letter-spacing: .5px
+
+			transition: all ease .4s
+
+			&.closed
+				padding: 5px 20px 5px 0
+				margin: 10px 0 0
+
+				&::after
+					transform: translateY(-50%) rotate(-135deg);
 
 		&__input_wr
 			line-height: 40px
@@ -560,10 +572,6 @@
 			.owl-stage-outer
 				overflow: visible
 
-		&__price_wr
-			width: 235px
-			padding-top: 30px
-
 		&__price_input
 			width: 100px
 			height: 40px
@@ -580,3 +588,19 @@
 
 			&-last
 				float: right
+
+		&__cat_wr
+			max-height: 1000px
+
+			transition: all ease .4s
+
+			overflow: hidden
+
+			&.closed
+				max-height: 0
+
+		&__price_wr
+			width: 235px
+			padding-top: 30px
+
+			overflow: visible

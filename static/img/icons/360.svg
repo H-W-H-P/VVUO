@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="35" height="31" viewBox="0 0 35 31">
+    <g fill="none" fill-rule="evenodd" opacity=".6">
+        <text fill="#28282B" font-family="AvantGardeGothicC-Bold, AvantGardeGothicC" font-size="14" font-weight="bold" transform="translate(1)">
+            <tspan x="2" y="10">360</tspan> <tspan x="25.52" y="10" font-size="20">°</tspan>
+        </text>
+        <g stroke="#28282B" stroke-width="2">
+            <path d="M27.334 20.465h5.988v5.988M1 22.636c10.413 9.819 20.825 9.546 31.238-.818"/>
+        </g>
+    </g>
+</svg>

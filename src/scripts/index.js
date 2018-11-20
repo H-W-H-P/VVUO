@@ -5,6 +5,9 @@ require('jquery-ui-bundle')
 require('jquery-ui-touch-punch')
 require('slick-carousel')
 
+// const create360Viewer = require('360-image-viewer')
+// const canvasFit = require('canvas-fit')
+
 $(document).ready(function () {
   // click handlers
 
@@ -49,6 +52,65 @@ $(document).ready(function () {
     $('.shop_filters__price').slider('option', 'values', [ priceLimits.left, priceLimits.right ])
   })
 
+  $('.comp_title__arrow').click(function () {
+    var $nextSect = $(this).closest('section').next()
+    $('html, body').animate({ scrollTop: $nextSect.offset().top }, 1000)
+    return false
+  })
+
+  $(document).on('click', '.complex_slider .owl-next', function () {
+    labSlider.trigger('next.owl.carousel')
+  })
+
+  $(document).on('click', '.complex_slider .owl-prev', function () {
+    labSlider.trigger('prev.owl.carousel')
+  })
+
+  $('.shop_filters__cat').click(function () {
+    if (!$(this).closest('.conf_wr_filters').length) {
+      $(this).closest('.shop_filters__block').find('.shop_filters__cat_wr').toggleClass('closed')
+      $(this).toggleClass('closed')
+    }
+    return false
+  })
+
+  $('.config__next').click(function () {
+    $('.config').removeClass('config-cond1').addClass('config-cond2')
+    $('.conf_wr_filters-side').addClass('conf_wr_filters-side-cond2')
+    return false
+  })
+
+  $('.conf_wr_filters-side__reset').click(function () {
+    $('.config').addClass('config-cond1').removeClass('config-cond2')
+    $('.conf_wr_filters-side').removeClass('conf_wr_filters-side-cond2')
+    return false
+  })
+
+  // 360 creating
+
+  // load your image
+  // const image = new Image()
+  // // image.src = 'static/img/pictures/image6.jpg'
+  // image.src = 'static/img/pictures/image8.jpg'
+
+  // image.onload = function () {
+  //   // when the image is loaded, setup the viewer
+  //   const viewer = create360Viewer({
+  //     image: image
+  //   })
+
+  //   // attach canvas to body
+  //   $('.big_image__360_wr').append(viewer.canvas)
+
+  //   // setup fullscreen canvas sizing
+  //   const fit = canvasFit(viewer.canvas, window, window.devicePixelRatio)
+  //   window.addEventListener('resize', fit, false)
+  //   fit()
+
+  //   // start the render loop
+  //   viewer.start()
+  // }
+
   // slider creating
 
   // jquery UI
@@ -63,6 +125,20 @@ $(document).ready(function () {
 
   // owls
   $('.main_slider__right').owlCarousel({
+    items: 1,
+    loop: true,
+    dots: false,
+    nav: true
+  })
+
+  $('.config__owl').owlCarousel({
+    items: 5,
+    loop: false,
+    dots: false,
+    nav: true
+  })
+
+  $('.big_image__wr2').owlCarousel({
     items: 1,
     loop: true,
     dots: false,
@@ -108,6 +184,42 @@ $(document).ready(function () {
       },
       767: {
         items: 2
+      }
+    }
+  })
+
+  $('.labSlider2').owlCarousel({
+    items: 1,
+    // loop: true,
+    dots: false,
+    nav: true,
+    responsive: {
+      1439: {
+        items: 2
+      }
+    }
+  })
+
+  var labSlider = $('.labSlider').owlCarousel({
+    items: 1,
+    // loop: true,
+    dots: false,
+    nav: true,
+    mouseDrag: false,
+    touchDrag: false,
+    slideBy: 2,
+    responsive: {
+      1439: {
+        items: 4,
+        slideBy: 4
+      },
+      1024: {
+        items: 3,
+        slideBy: 5
+      },
+      767: {
+        items: 2,
+        slideBy: 5
       }
     }
   })

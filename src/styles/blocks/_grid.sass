@@ -258,6 +258,8 @@
 		width: 25%
 		padding-right: 75px
 
+		position: relative
+
 		box-sizing: border-box
 
 		@media(max-width:1439px)
@@ -963,3 +965,1302 @@
 			display: -ms-flex
 			display: -o-flex
 			display: flex
+
+// complex title			
+
+.comp_title
+	position: relative
+
+	display: -webkit-flex
+	display: -moz-flex
+	display: -ms-flex
+	display: -o-flex
+	display: flex
+
+	@media(max-width:1023px)
+		padding: 0
+
+	&__left
+		width: 50%
+
+		position: relative
+
+		@media(max-width:1439px)
+			width: 60%
+
+		@media(max-width:1023px)
+			margin-top: 400px
+			padding-left: 100px
+			width: 56.5%
+
+			box-sizing: border-box
+
+			background-color: #fff
+
+		@media(max-width:767px)
+			margin-top: 330px
+			padding-left: 30px
+			width: 80%
+
+			z-index: 2
+
+	&__right
+		width: 50%
+		padding-right: 120px
+		margin-right: -120px
+
+		background: url('/static/img/pictures/image3.jpg')
+
+		position: relative
+
+		@media(max-width:1439px)
+			width: 34%
+
+		@media(max-width:1023px)
+			width: 100%
+			left: 0
+			top: 0
+			bottom: 0
+
+			position: absolute
+			z-index: -1
+
+		@media(max-width:767px)
+			padding: 0
+			margin: 0
+
+			z-index: auto
+
+	&__quarter_left
+		position: relative
+
+	&__quarter_right
+		position: absolute
+		z-index: -1
+
+		width: 50%
+		left: 50%
+		top: 0
+		bottom: 0
+
+		background-color: $yellow
+
+		@media(max-width:1439px)
+			left: 55%
+			width: 45%
+
+		@media(max-width:1023px)
+			left: 100%
+			top: 125px
+			width: 55%
+
+			z-index: 1
+
+		@media(max-width:767px)
+			top: 45px
+
+	&__bd_left
+		margin: 170px 0 90px
+		height: 21px
+		padding-left: 8px
+
+		border-left: 1px solid $blackTxt
+
+		display: inline-block
+
+		font-size: 12px
+		line-height: 21px
+
+		@media(max-width:1439px)
+			margin: 210px 0 85px
+
+		@media(max-width:1023px)
+			margin: 55px 0 85px
+
+		@media(max-width:767px)
+			margin: 40px 0 20px
+
+	&__title
+		font-size: 60px
+		line-height: 70px
+
+		padding-bottom: 30px
+
+		@media(max-width:1439px)
+			padding-bottom: 45px
+			width: 50%
+
+			font-size: 40px
+			line-height: 50px
+
+		@media(max-width:1023px)
+			width: 95%
+
+		@media(max-width:767px)
+			font-size: 24px
+			line-height: 34px
+
+			padding-bottom: 25px
+
+	&__desc
+		padding-bottom: 180px
+
+		width: 50%
+		margin: 0
+
+		line-height: 1.7
+
+		@media(max-width:1439px)
+			padding-bottom: 75px
+
+		@media(max-width:1023px)
+			width: 75%
+
+		@media(max-width:767px)
+			display: none
+
+	&__bold
+		font-size: 40px
+
+		padding-bottom: 60px
+		margin: 0
+
+		@media(max-width:1439px)
+			padding-bottom: 50px
+
+			font-size: 30px
+
+		@media(max-width:767px)
+			font-size: 18px
+
+			padding-bottom: 45px
+
+	&__btn
+		height: 115px
+		width: 50%
+
+		background-color: $orange
+
+		justify-content: flex-start
+
+		cursor: pointer
+
+		&::before
+			content: ''
+			position: absolute
+
+			left: -120px
+			top: 0
+			bottom: 0
+			right: 100%
+
+			background-color: inherit
+
+			@media(max-width:1439px)
+				display: none
+
+		@media(max-width:1439px)
+			margin-left: 55%
+			width: 45%
+
+			justify-content: center
+
+			background-color: $yellow
+
+			color: $blackTxt
+
+			&::after
+				background-image: url('../../static/img/icons/black-arr.svg')
+
+				border-color: $blackTxt
+
+		@media(max-width:1023px)
+			height: 90px
+			width: 50%
+
+			display: none
+
+		.hover_bl
+			left: -120px
+
+			@media(max-width:1439px)
+				left: 0
+
+		@media(max-width:767px)
+			display: none
+
+	&__btn2
+		display: none
+
+		@media(max-width:1439px)
+			display: flex
+
+			margin-left: 0
+			width: 55%
+
+			float: left
+
+			color: #fff
+
+			background-color: $orange
+
+			justify-content: flex-start
+
+			&::before
+				display: block
+
+			&::after
+				background-image: url('../../static/img/icons/white-arr.svg')
+
+				border-color: #fff
+
+			.hover_bl
+				left: -30px
+
+		@media(max-width:1023px)
+			width: 100%
+
+		@media(max-width:767px)
+			display: none
+
+	&__btn3
+		display: none
+
+		@media(max-width:1023px)
+			display: flex
+
+			position: absolute
+
+			width: 100%
+			bottom: 0
+			margin: 0
+
+		@media(max-width:767px)
+			display: none
+
+	&__btn4
+		display: none
+
+		width: calc(100% + 30px)
+		margin-left: -30px
+		padding-left: 30px
+
+		background-color: $orange
+
+		color: #fff
+
+		justify-content: flex-start
+
+		@media(max-width:767px)
+			display: -webkit-flex
+			display: -moz-flex
+			display: -ms-flex
+			display: -o-flex
+			display: flex
+
+		&::after
+			background-image: url('../../static/img/icons/white-arr.svg')
+
+			border-color: #fff
+
+	&__image
+		width: 100%
+		bottom: 0
+		left: 0
+
+		position: absolute
+
+		@media(max-width:1439px)
+			bottom: 40px
+
+		@media(max-width:1023px)
+			bottom: 90px
+
+		@media(max-width:767px)
+			display: none
+
+	&__arrow
+		bottom: 0
+		left: 0
+		transform: rotate(-90deg)
+
+		position: absolute
+
+		@media(max-width:1023px)
+			right: 0
+			left: auto
+			width: 95px
+			height: 95px
+
+		@media(max-width:767px)
+			z-index: 3
+
+			height: 90px
+			width: 90px
+
+	// complex title 2
+	&_2
+		&__right
+			background: url('/../static/img/pictures/image10.jpg')
+			background-size: cover
+			background-position-x: 100%
+
+		&__desc
+			padding-bottom: 70px
+
+		&__quarter_right
+			background-color: $gray7
+
+			z-index: auto
+
+		&__quarter_left
+			z-index: 1
+
+		&__btn
+			background-color: $gray8
+
+			@media(max-width: 1439px)
+				margin-left: 0
+				width: 55%
+
+		&__btn1
+
+			&::after
+				border-color: #fff
+
+				background-image: url('../../static/img/icons/white-arr.svg')
+
+			@media(max-width: 1439px)
+				color: #fff
+
+				&::before
+					content: ''
+					position: absolute
+					display: block
+
+					left: -30px
+					top: 0
+					bottom: 0
+					right: 100%
+
+					background-color: inherit
+
+					@media(max-width: 1023px)
+						left: -100px
+
+				.hover_bl
+					left: -30px
+
+			@media(max-width: 1023px)
+				display: -webkit-flex
+				display: -moz-flex
+				display: -ms-flex
+				display: -o-flex
+				display: flex
+
+				width: 100%
+
+				justify-content: flex-start
+
+			@media(max-width: 767px)
+				display: none
+
+		&__btn2
+			@media(max-width: 1439px)
+				display: none
+
+		&__btn3
+			display: -webkit-flex
+			display: -moz-flex
+			display: -ms-flex
+			display: -o-flex
+			display: flex
+
+			width: 100%
+			bottom: 0
+
+			position: absolute
+			z-index: 5
+
+			background-color: inherit
+
+			justify-content: center
+
+			color: $blackTxt
+
+			&::before
+				display: none
+
+			&::after
+				border-color: $blackTxt
+
+				background-image: url('../../static/img/icons/black-arr.svg')
+
+			@media(max-width: 1439px)
+				margin-left: 0
+
+			&::hover
+				.hover_bl
+					opacity: 1
+
+			.hover_bl
+				left: 0
+
+		&__btn4
+			background-color: $gray8
+
+		&__image
+			bottom: 115px
+
+			@media(max-width: 1023px)
+				bottom: 95px
+
+.grid2
+	padding: 90px 0 80px
+
+	display: -webkit-flex
+	display: -moz-flex
+	display: -ms-flex
+	display: -o-flex
+	display: flex
+
+	flex-wrap: wrap
+
+	@media(max-width:1023px)
+		padding-top: 45px
+
+	&__img1
+		width: 50%
+		transform: translateY(-100%)
+		height: 240px
+		left: 0
+
+		object-fit: cover
+
+		position: absolute
+
+		@media(max-width:1023px)
+			position: static
+
+			transform: none
+
+			margin-top: -80px
+			width: 39%
+			padding-left: 30px
+
+			float: left
+
+		@media(max-width:767px)
+			padding-left: 0
+			width: 45%
+			height: 170px
+			margin-top: -70px
+
+	&__img2
+		width: 40%
+
+		position: relative
+		z-index: 1
+
+		@media(max-width:1439px)
+			left: 160px
+
+		@media(max-width:1023px)
+			display: block
+
+			float: left
+
+			left: 0
+			width: 30%
+			padding: 60px 0 80px 40px
+
+		@media(max-width:767px)
+			width: 50%
+			padding-left: 15px
+
+			box-sizing: border-box
+
+	&__img3
+		width: 75%
+		margin-left: 25%
+		padding-bottom: 55px
+		height: 270px
+
+		object-fit: cover
+
+		@media(max-width:1439px)
+			margin-left: 0
+			padding: 0
+			width: 100%
+			height: 310px
+
+		@media(max-width:1023px)
+			width: 59%
+			margin: -10px 0 0 30px
+			height: auto
+
+		@media(max-width:767px)
+			width: 100%
+			margin: 0
+
+	&__title
+		font-size: 40px
+		line-height: 45px
+
+		padding: 0 50% 145px 0
+		width: 100%
+
+		@media(max-width:1439px)
+			font-size: 30px
+
+			padding-left: 30px
+
+		@media(max-width:1023px)
+			padding-bottom: 120px
+
+		@media(max-width:767px)
+			padding: 0 30px 100px
+
+			font-size: 24px
+
+	&__left
+		width: 50%
+
+		overflow: hidden
+
+		@media(max-width:1439px)
+			background-color: $gray
+
+			position: relative
+			overflow: visible
+
+			&::after
+				content: ''
+				position: absolute
+
+				top: 100%
+				left: 0
+				right: 0
+				height: 80px
+
+				background-color: $gray
+
+				@media(max-width:1023px)
+					display: none
+
+		@media(max-width:1023px)
+			width: 100%
+
+			z-index: 2
+			order: 2
+
+			background-color: #fff
+
+	&__right
+		width: 50%
+
+		position: relative
+
+		background-color: $gray
+
+		&::after
+			content: ''
+			position: absolute
+
+			top: 0
+			left: 0
+			right: -120px
+			height: calc(100% + 80px)
+
+			background-color: $gray
+
+			@media(max-width:1023px)
+				display: none
+
+		@media(max-width:1023px)
+			width: 100%
+
+	&__text
+		margin: 0
+		width: 50%
+		padding-right: 30px
+
+		float: left
+		box-sizing: border-box
+
+		font-size: 12px
+		line-height: 22px
+
+		@media(max-width:1439px)
+			width: 100%
+			padding: 70px 35px 30px 120px
+
+		@media(max-width:1023px)
+			padding: 40px 105px 0 0
+
+		@media(max-width:767px)
+			width: 100%
+			padding: 0 30px
+
+	&__text1
+		padding: 75px 0 0 50px
+		width: 350px
+		margin: 0
+		height: 270px
+
+		box-sizing: border-box
+
+		font-size: 16px
+		line-height: 26px
+
+		float: left
+
+		position: relative
+		z-index: 1
+
+		@media(max-width:1439px)
+			width: 100%
+			height: auto
+			padding: 50px 130px 0 80px
+
+		@media(max-width:1023px)
+			float: left
+
+			width: 56%
+			padding: 40px 50px 44px 40px
+
+		@media(max-width:767px)
+			width: 50%
+
+			font-size: 12px
+			line-height: 23px
+
+			padding: 27px 12px 0 24px
+
+	&__text2
+		float: left
+
+		padding: 75px 0 0 50px
+		height: 270px
+
+		box-sizing: border-box
+
+		position: relative
+		z-index: 1
+
+		@media(max-width:1439px)
+			width: 100%
+			padding: 40px 180px 70px 80px
+			height: auto
+
+		@media(max-width:1023px)
+			width: 50%
+			padding: 60px 0 0 105px
+
+			float: left
+
+		@media(max-width:767px)
+			padding-left: 30px
+			padding-bottom: 50px
+
+	&__text3
+		@media(max-width:1023px)
+			width: 50%
+			padding-right: 10px
+			padding-left: 105px
+
+		@media(max-width:767px)
+			padding: 25px 30px
+			width: 100%
+
+	&__text4
+
+		@media(max-width:1439px)
+			padding-top: 0
+			width: 86%
+
+		@media(max-width:1023px)
+			width: 50%
+			padding-top: 40px
+			padding-left: 10px
+
+		@media(max-width:767px)
+			padding: 0 30px
+			width: 100%
+
+	&__low_title
+		font-size: 12px
+		text-transform: uppercase
+
+		padding-bottom: 20px
+
+		display: inline-block
+
+	&__list_item
+		font-size: 14px
+		line-height: 28px
+
+		padding-left: 20px
+
+		position: relative
+
+		&::before
+			content: ''
+			position: absolute
+
+			left: 0
+			top: 50%
+			transform: translateY(-50%)
+			width: 5px
+			height: 5px
+
+			background-color: $blackTxt
+
+		@media(max-width:767px)
+			font-size: 12px
+
+
+.big_image
+	position: relative
+
+	// height: 100vh
+	// max-height: 1080px
+
+	// &__360_wr
+	// 	position: absolute
+	// 	z-index: 2
+
+	// 	height: 100%
+	// 	width: 100%
+	// 	left: 0
+	// 	top: 0
+	margin-bottom: 60px
+
+	@media(max-width:1023px)
+		padding-bottom: 110px
+
+	@media(max-width:767px)
+		padding-bottom: 40px
+		margin-bottom: 0
+
+	&__wr
+		position: static
+
+	&__wr2
+
+		.owl
+
+			&-nav
+				position: absolute
+				top: 0
+				left: 120px
+
+				@media(max-width:1439px)
+					left: auto
+					right: 0
+
+				button.owl-prev,
+				button.owl-next
+					height: 110px
+					width: 55px
+
+					background-color: $main-blue !important
+					background-image: url('../../static/img/icons/arr-long-white.svg') !important
+
+	&__bot
+		position: absolute
+		z-index: 2
+
+		bottom: 0
+		width: 600px
+		height: 110px
+		left: 50%
+		transform: translateX(-50%)
+
+		background-color: #fff
+
+		display: -webkit-flex
+		display: -moz-flex
+		display: -ms-flex
+		display: -o-flex
+		display: flex
+		
+		align-items: center
+
+		@media(max-width:1439px)
+			width: 635px
+
+		@media(max-width:1023px)
+			width: 100%
+			padding: 0 60px
+
+			box-sizing: border-box
+
+			border-bottom: 1px solid  $gray2
+
+		@media(max-width:767px)
+			position: relative
+
+			left: 0
+			transform: none
+			padding: 0
+			height: auto
+
+			flex-direction: column-reverse
+
+			border-bottom: none
+
+	&__btn
+		color: $blackTxt
+
+		width: 50%
+		height: 100%
+
+		&::after
+			border-color: $blackTxt
+
+			background-image: url('../../static/img/icons/black-arr.svg')
+
+		&:hover
+			.hover_bl
+				opacity: 1	
+
+		@media(max-width:767px)
+			width: 100%
+			padding: 30px 0
+
+			border-bottom: 2px solid  $blackTxt
+
+			justify-content: space-between
+
+	&__text
+		width: 50%
+		padding: 35px 50px
+
+		font-size: 12px
+		line-height: 22px
+
+		box-sizing: border-box
+
+		@media(max-width:767px)
+			width: 100%
+			padding: 35px 0 0
+			margin: 0
+
+	// &__tog
+	// 	position: absolute
+
+	// 	left: 0
+	// 	top: 0
+	// 	width: 250px
+	// 	height: 180px
+
+	// 	background-color: #fff
+
+	// &__tog1
+
+	// 	&:hover
+	// 		.big_image__icon
+	// 			opacity: 0
+
+	// 		.big_image__icon-hov
+	// 			opacity: 1
+
+	// &__tog2
+	// 	left: 250px
+
+	// 	height: 110px
+	// 	width: 190px
+
+	// 	background-color: $gray
+
+	// &__icon
+	// 	position: absolute
+
+	// 	left: 50%
+	// 	top: 50%
+	// 	transform: translate(-50%, -50%)
+	// 	width: 40px
+	// 	height: 40px
+
+	// 	&-hov
+	// 		opacity: 0
+
+.conf_wr
+	position: relative
+
+	&__top
+		display: -webkit-flex
+		display: -moz-flex
+		display: -ms-flex
+		display: -o-flex
+		display: flex
+
+		&-left
+			&::before
+				position: absolute
+				content: ''
+				z-index: -1
+
+				right: 100%
+				left: -120px
+				top: -1px
+				bottom: -1px
+
+				background-color: inherit
+
+				border: 1px solid  $gray2
+				border-right: none
+
+	&__quart
+		position: relative
+
+		display: -webkit-flex
+		display: -moz-flex
+		display: -ms-flex
+		display: -o-flex
+		display: flex
+		box-sizing: border-box
+
+		align-items: center
+
+		width: 25%
+		height: 60px
+		margin: 0
+
+		background-color: $gray
+
+		border-top: 1px solid  $gray2
+		border-bottom: 1px solid  $gray2
+
+	&__18
+		font-size: 18px
+
+		padding-right: 10px
+
+	&__bold
+		font-size: 20px
+
+	&__order
+		background-color: $main-blue
+
+		font-size: 16px
+
+		&::after
+			border: none
+
+	&__order2
+		width: 33.3333%
+		margin-top: 70px
+
+	&__btn2
+		color: $blackTxt
+		font-size: 16px
+
+		&::after
+			border: none
+
+			background-image: url('../../static/img/icons/black-arr.svg')
+
+	&__toggle
+		flex-direction: row-reverse
+
+		position: relative
+
+		background-color: $gray4
+
+		&::before
+			display: block
+
+			margin-right: 0
+
+		&::after
+			position: absolute
+			content: ''
+			z-index: -1
+
+			left: 100%
+			right: -120px
+			top: -1px
+			bottom: -1px
+
+			background-color: inherit
+
+			border: 1px solid  $gray2
+			border-left: none
+
+		.hover_bl
+			right: -120px
+
+	&_filters
+		max-height: 0
+		padding: 0
+		width: 100%
+
+		overflow: hidden
+
+		background-color: $gray4
+
+		transition: all ease .6s
+
+		&::before
+			content: ''
+			position: absolute
+			z-index: -1
+
+			left: -90px
+			right: -90px
+			top: 0
+			bottom: 0
+
+			background-color: inherit
+
+		&.opened
+			max-height: 2000px
+			padding-bottom: 100px
+
+		&__wr
+			width: 25%
+
+			float: left
+
+		&__chbx
+
+			&::before
+				border-color: $blackTxt
+
+		&__wrap
+			float: left
+
+		&__price_inp
+			border-color: $blackTxt
+
+		.ui-widget.ui-widget-content 
+			background-color: rgba(40,40,43,.3)
+
+		&-side
+			padding-top: 40px
+
+			&__wrap
+				padding-top: 40px
+
+				display: none
+
+			&__chbx
+				padding-left: 0
+				width: 65%
+
+				display: block
+
+				border-bottom: 1px solid  $gray2
+
+				transition: all ease .4s
+
+				&::before,
+				&::after
+					display: none
+
+			&__cat
+				padding-left: 0
+
+			&-cond2
+				.conf_wr_filters-side__wrap
+					display: block
+
+	&__over
+		overflow: hidden
+
+		padding-right: 120px
+		margin-right: -120px
+
+.config
+	width: 75%
+	padding: 40px 0 50px
+
+	&__wrap
+		display: -webkit-flex
+		display: -moz-flex
+		display: -ms-flex
+		display: -o-flex
+		display: flex
+
+		background-color: $gray
+
+		position: relative
+
+	&__left,
+	&__center,
+	&__right
+		width: 33.3333333%
+
+	&__left
+		padding: 24px 0 0 20px
+
+	&__inp_wr
+		width: 100%
+
+	&__input
+		width: 150px
+		height: 30px
+		margin-bottom: 20px
+		padding-left: 10px
+
+		box-sizing: border-box
+
+		background-color: #fff
+
+		border: 1px solid  $gray2
+
+	&__label
+		display: block
+
+		padding-bottom: 5px
+
+		color: $gray5
+
+	&__body
+		height: 570px
+		margin-top: 75px
+
+		background-color: black
+
+		position: relative
+
+	&__top_line,
+	&__left_line
+		position: absolute
+
+		&::after
+			content: ''
+			position: absolute
+			z-index: -1
+
+			background-color: $gray2
+
+	&__top_line
+		top: -30px
+		left: 0
+		height: 30px
+		width: 100%
+
+		&::after
+			left: 0
+			top: 50%
+			transform: translateY(-50%)
+			width: 100%
+			height: 1px
+
+	&__left_line
+		top: 0
+		left: -30px
+		width: 30px
+		height: 100%
+
+		&::after
+			left: 50%
+			top: 0
+			transform: translateX(-50%)
+			height: 100%
+			width: 1px
+
+		.config__number
+			transform: translate(-50%, -50%) rotate(270deg)
+
+	&__number
+		position: absolute
+		z-index: 2
+
+		background-color: #fff
+
+		left: 50%
+		top: 50%
+		transform: translate(-50%, -50%)
+		padding: 0 12px
+
+		color: $gray5
+
+	&__title
+		font-size: 16px
+
+		padding-bottom: 20px
+
+		display: inline-block
+
+	&-cond2
+		.config__wr
+			display: none
+
+		.config-cond1__title
+			display: none
+
+	&-cond1
+		.config-cond2__title
+			display: none
+
+		.config__owl
+			display: none
+
+	&__item
+		position: relative
+		box-sizing: border-box
+
+		padding-right: 20px
+
+	&__img_wr
+		position: relative
+
+	&__arrow
+		position: absolute
+
+		bottom: 0
+		left: 0
+		width: 30px
+		height: 30px
+
+		background-color: $gray2
+
+		transform: rotate(90deg)
+
+	&__icon
+		position: absolute
+
+		top: 50%
+		left: 50%
+		transform: translate(-50%, -50%)
+		width: 10px
+		height: 10px
+
+		transition: all ease .4s
+
+		&-hov
+			opacity: 0
+
+	&__desc
+		color: $gray5
+
+		padding-bottom: 10px
+
+	&__name
+		padding: 20px 0 5px
+
+	&__price
+		font-weight: bold
+
+		padding-bottom: 10px
+
+	&__name,
+	&__desc,
+	&__price
+		margin: 0
+
+	&__owl
+		background-color: $gray
+
+		padding: 30px 90px 10px 30px
+
+		.owl-stage-outer
+			overflow: visible
+
+		.owl-nav
+			top: -46px
+			right: 110px

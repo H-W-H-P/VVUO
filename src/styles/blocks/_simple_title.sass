@@ -197,3 +197,35 @@
 			height: 70px
 			width: 220px
 			margin-left: -30px
+
+.simple_title_wr_5
+	z-index: 1
+
+	padding: 0 30px 90px
+
+	&__inp
+		width: 100%
+
+		font-size: 60px
+		line-height: 100px
+
+		border-bottom: 1px solid  $blackTxt
+
+	&__inp_wr
+		padding: 0
+
+		position: relative
+
+		&::after
+			content: ''
+			position: absolute
+
+			right: 0
+			top: 50%
+			transform: translateY(-50%)
+			height: 40px
+			width: 38px
+
+			background-image: url(../../static/img/icons/pencil.svg)
+			background-size: cover
+			background-repeat: no-repeat

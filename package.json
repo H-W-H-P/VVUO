@@ -56,11 +56,11 @@
     "webpack-merge": "^4.1.1"
   },
   "dependencies": {
+    "360-image-viewer": "^1.0.1",
+    "canvas-fit": "^1.5.0",
     "hamburgers": "^1.1.3",
     "jquery": "^3.3.1",
-    "jquery-ui": "^1.12.1",
     "jquery-ui-bundle": "^1.12.1-migrate",
-    "jquery-ui-dist": "^1.12.1",
     "jquery-ui-touch-punch": "^0.2.3",
     "load-google-maps-api": "^1.3.2",
     "owl.carousel": "^2.3.4",
