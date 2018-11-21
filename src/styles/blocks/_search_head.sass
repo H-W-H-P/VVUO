@@ -2,6 +2,9 @@
 	position: relative
 	z-index: 5
 
+	.simple_title_wr__title 
+		line-height: normal
+
 	@media(max-width:1439px)
 		padding-right: 26px
 
@@ -14,14 +17,14 @@
 
 
 	&__search_head
-		padding-bottom: 26px
+		padding-bottom: 46px
 
 		@media(max-width:1439px)
-			padding-bottom: 47px
+			padding-bottom: 57px
 
 		@media(max-width:1023px)
 			max-width: 560px
-			padding: 211px 0 63px
+			padding: 211px 0 70px
 		
 		@media(max-width:767px)
 			min-width: 305px
@@ -74,8 +77,6 @@
 			top: 0
 			left: 0
 			margin: 50% 0 0 50%
-			// margin-top: 50%
-			// margin-left: 50%
 
 			transform: translate(-50%, -50%)
 
@@ -84,10 +85,13 @@
 	&__field_radio
 		font-size: 10px
 
-		padding-top: 25px
+		padding-top: 50px
 
 		@media(max-width:1439px)
-			padding-top: 35px
+			padding-top: 50px
+
+		@media(max-width:1023px)
+			padding-top: 70px
 
 
 		input[type='radio']:checked + label 
@@ -120,3 +124,4 @@
 		label:last-of-type
 			@media(max-width:767px)
 				margin-right: 0
+
