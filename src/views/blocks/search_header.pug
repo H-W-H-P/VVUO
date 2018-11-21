@@ -1,0 +1,16 @@
+section.simple_title_wr.search
+	.simple_title_wr__title.max_width.search__search_head
+		form.search__form
+			.search__field_search
+				input(type="text", placeholder="Поиск по сайту").title.search__input
+				div
+					button.bold.search__btn
+			.search__field_radio
+				p Поиск
+				input(type="radio" name="radio" checked="checked")#search__radio_all.search__radio
+				label(for="search__radio_all") везде
+				input(type="radio" name="radio")#search__radio_news.search__radio
+				label(for="search__radio_news") новости
+				input(type="radio" name="radio")#search__radio_catalog.search__radio
+				label(for="search__radio_catalog") каталог
+					

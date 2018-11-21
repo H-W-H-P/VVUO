@@ -1,0 +1,12 @@
+extends ../layouts/pages
+
+block append head
+	block title
+		- var title='search';
+
+block content	
+	include ../blocks/lanes
+	include ../blocks/search_header
+	include ../blocks/search_middle
+	include ../blocks/footer
+	
