@@ -61,10 +61,11 @@ button
 	display: inline-block
 
 	font-size: 40px
-	line-height: 45px
+	line-height: 55px
 
 	@media(max-width:1439px)
 		font-size: 30px
+		line-height: 45px
 
 	@media(max-width:1023px)
 		padding-left: 80px
@@ -116,7 +117,7 @@ button
 .rnd_btn
 	border: 1px solid  #5b8ec8
 	border-radius: 16px
-	padding: 10px 14px
+	padding: 10px 0
 
 .btn_w_arr
 	display: -webkit-flex
@@ -164,6 +165,25 @@ button
 
 			@media(max-width:1023px)
 				opacity: 0
+
+.zoomImgWr
+	transition: all ease .4s
+
+.zoomImgWr.zoomed
+	position: fixed
+	z-index: 10
+
+	width: 90%
+	height: 100%
+	left: 50%
+	top: 50%
+	margin: 0
+	padding: 0
+	transform: translate(-50%, -50%)
+
+	.grid2__icon1
+		&::after
+			opacity: 0
 
 .cross
 
