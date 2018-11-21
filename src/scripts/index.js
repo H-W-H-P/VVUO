@@ -321,7 +321,7 @@ $(document).ready(function () {
     items: 1,
     // loop: true,
     dots: false,
-    nav: true,
+    nav: false,
     responsive: {
       1439: {
         items: 4
@@ -339,7 +339,7 @@ $(document).ready(function () {
     items: 1,
     // loop: true,
     dots: false,
-    nav: true,
+    nav: false,
     responsive: {
       1439: {
         items: 4
@@ -357,7 +357,7 @@ $(document).ready(function () {
     items: 1,
     // loop: true,
     dots: false,
-    nav: true,
+    nav: false,
     responsive: {
       1439: {
         items: 4
