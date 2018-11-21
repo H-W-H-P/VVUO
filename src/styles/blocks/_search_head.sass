@@ -15,7 +15,6 @@
 		color: #000
 		opacity: 1
 
-
 	&__search_head
 		padding-bottom: 46px
 
@@ -64,13 +63,24 @@
 
 		cursor: pointer
 
+		transition: all .5s ease
+
+		&:hover
+			background-color: #000
+			&::after
+				opacity: 0
+			&::before
+				opacity: 1
+
 		@media(max-width:767px)
 			width: 44px
 			height: 44px
 
-		&::after
+		&::after,&::before
 			content: ""
 			display: block
+
+			position: absolute
 
 			height: 28px
 			width: 20px
@@ -78,9 +88,15 @@
 			left: 0
 			margin: 50% 0 0 50%
 
+			transition: all .5s ease
+
 			transform: translate(-50%, -50%)
 
 			background: url('../../static/img/icons/black-arr.svg') no-repeat center center
+
+		&::before
+			background: url('../../static/img/icons/white-arr.svg') no-repeat center center
+			opacity: 0
 	
 	&__field_radio
 		font-size: 10px

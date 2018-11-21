@@ -171,27 +171,51 @@
 	display: flex
 	position: relative
 
+	cursor: pointer
+
 	top: 5px
+
+	transition: all .5s ease
+
+	&:hover
+		color: #5280b4
+
+		&::before
+			opacity: 1
+
+		&::after
+			opacity: 0
+
+
 
 	@media(max-width:767px)
 		font-size: 12px
 
-	&::after
+	&::after,&::before
+		transition: all .5s ease
+
 		content: ""
 		display: block
 		position: relative
 
 		height: 28px
 		width: 16px
-		margin-top: -14px
-		margin-left: 13px
-
+		margin: -14px 0 0 13px
 
 		top: 50%
 		left: 0
 
-
 		background: url('../../static/img/icons/black-arr.svg') no-repeat center center
+
+	&::before
+		position: absolute
+		
+		left: initial
+		right: 0
+		
+		opacity: 0
+
+		background: url('../../static/img/icons/blue-more-arr.svg') no-repeat center center
 
 		@media(max-width:767px)
 			margin-top: -14px

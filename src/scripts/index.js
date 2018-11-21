@@ -349,6 +349,7 @@ $(document).ready(function () {
   })
 
   // search
+
   $('.search_slider_catalog').owlCarousel({
     items: 1,
     // loop: true,
