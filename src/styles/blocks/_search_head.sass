@@ -1,0 +1,122 @@
+.search
+	position: relative
+	z-index: 5
+
+	@media(max-width:1439px)
+		padding-right: 26px
+
+	@media(max-width:1023px)
+		padding-right: 0
+
+	input[type='text']:focus
+		color: #000
+		opacity: 1
+
+
+	&__search_head
+		padding-bottom: 26px
+
+		@media(max-width:1439px)
+			padding-bottom: 47px
+
+		@media(max-width:1023px)
+			max-width: 560px
+			padding: 211px 0 63px
+		
+		@media(max-width:767px)
+			min-width: 305px
+			padding: 151px 35px 40px 35px
+
+
+	&__field_search
+		padding-bottom: 11px
+		width: 100%
+
+		display: -webkit-flex
+		display: -moz-flex
+		display: -ms-flex
+		display: -o-flex
+		display: flex
+		justify-content: space-between
+
+		border-bottom: 1px solid #28282b
+
+
+	&__input
+		color: #28282b
+		opacity: .4
+		transition: all .5s ease
+
+		width: 100%
+
+
+	&__btn
+		position: relative
+
+		border: 2px solid black
+		border-radius: 50%
+
+		width: 54px
+		height: 54px
+
+		cursor: pointer
+
+		@media(max-width:767px)
+			width: 44px
+			height: 44px
+
+		&::after
+			content: ""
+			display: block
+
+			height: 28px
+			width: 20px
+			top: 0
+			left: 0
+			margin: 50% 0 0 50%
+			// margin-top: 50%
+			// margin-left: 50%
+
+			transform: translate(-50%, -50%)
+
+			background: url('../../static/img/icons/black-arr.svg') no-repeat center center
+	
+	&__field_radio
+		font-size: 10px
+
+		padding-top: 25px
+
+		@media(max-width:1439px)
+			padding-top: 35px
+
+
+		input[type='radio']:checked + label 
+			border-bottom: 1px solid black
+
+		p
+			display: inline-block
+			font-size: 12px
+
+			padding-right: 76px
+			margin: 0
+
+			@media(max-width:767px)
+				padding-right: 12%
+
+		label
+			text-transform: uppercase
+			font-weight: bold
+			cursor: pointer
+			transition: all .3s ease
+			
+			letter-spacing: 1px
+			border-bottom: 1px solid transparent
+
+			margin-right: 46px
+
+			@media(max-width:767px)
+				margin-right: 12%
+
+		label:last-of-type
+			@media(max-width:767px)
+				margin-right: 0

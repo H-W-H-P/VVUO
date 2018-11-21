@@ -348,6 +348,61 @@ $(document).ready(function () {
     slide2.slick('slickNext')
   })
 
+  // search
+  $('.search_slider_catalog').owlCarousel({
+    items: 1,
+    // loop: true,
+    dots: false,
+    nav: true,
+    responsive: {
+      1439: {
+        items: 4
+      },
+      1024: {
+        items: 3
+      },
+      767: {
+        items: 2
+      }
+    }
+  })
+
+  $('.search_slider_news').owlCarousel({
+    items: 1,
+    // loop: true,
+    dots: false,
+    nav: true,
+    responsive: {
+      1439: {
+        items: 4
+      },
+      1024: {
+        items: 3
+      },
+      767: {
+        items: 2
+      }
+    }
+  })
+
+  $('.search_slider_other').owlCarousel({
+    items: 1,
+    // loop: true,
+    dots: false,
+    nav: true,
+    responsive: {
+      1439: {
+        items: 4
+      },
+      1024: {
+        items: 3
+      },
+      767: {
+        items: 2
+      }
+    }
+  })
+
   // map
   const loadGoogleMapsApi = require('load-google-maps-api')
 
