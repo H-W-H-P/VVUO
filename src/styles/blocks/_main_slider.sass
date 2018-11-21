@@ -18,10 +18,36 @@
 
 			background-color: $yellow
 
+	&__progr_bar
+		margin: 0 6px
+		height: 2px
+		width: 50px
+
+		display: inline-block
+		position: relative
+
+		background-color: $gray6
+
+	&__progr
+		position: absolute
+
+		left: 0
+		top: 0
+		bottom: 0
+		width: 0
+
+		transition: all ease .4s
+
+		background-color: $blackTxt
+
 	&__counter
 		padding: 358px 0 50px
 
-		font-size: 14px
+		font-size: 20px
+
+		display: inline-flex
+
+		align-items: center
 
 		@media(max-width:1439px)
 			padding-top: 230px

@@ -113,6 +113,39 @@ $(document).ready(function () {
     }
   }
 
+  // pop ups
+
+  $('.popUpCall').click(function () {
+    var popUpName = $(this).data('pop_up')
+    popUping(popUpName)
+    return false
+  })
+
+  function popUping (_popUpName) {
+    $('html, body').addClass('pop_up_cond')
+    $(_popUpName).addClass('pop_up_active')
+  }
+
+  $('.pop_up__toggle').click(function () {
+    $(this).closest('.pop_up__wr').removeClass('pop_up_active')
+    $('html, body').removeClass('pop_up_cond')
+    return false
+  })
+
+  var zoomImgToggle = true
+  $('.imgZoom').click(function () {
+    if (zoomImgToggle) {
+      popUping()
+      $(this).closest('.zoomImgWr').addClass('zoomed')
+      zoomImgToggle = false
+    } else {
+      $('html, body').removeClass('pop_up_cond')
+      $(this).closest('.zoomImgWr').removeClass('zoomed')
+      zoomImgToggle = true
+    }
+    return false
+  })
+
   // 360 creating
 
   // load your image
@@ -153,10 +186,27 @@ $(document).ready(function () {
   // owls
   $('.main_slider__right').owlCarousel({
     items: 1,
-    loop: true,
+    loop: false,
     dots: false,
-    nav: true
+    nav: true,
+    onInitialized: callback,
+    onChanged: callback2
   })
+
+  function callback (event) {
+    var items = event.item.count
+    $('.main_slider__comm_numb').text('0' + items)
+  }
+
+  function callback2 (event) {
+    var items = event.item.index
+    items = items + 1
+    var allItems = event.item.count
+    var progBarWidth = items / allItems * 100
+    progBarWidth = progBarWidth + '%'
+    $('.main_slider__curr_numb').text('0' + items)
+    $('.main_slider__progr').width(progBarWidth)
+  }
 
   $('.config__owl').owlCarousel({
     items: 4,
