@@ -113,6 +113,25 @@ $(document).ready(function () {
     }
   }
 
+  // pop ups
+
+  $('.popUpCall').click(function () {
+    var popUpName = $(this).data('pop_up')
+    popUping(popUpName)
+    return false
+  })
+
+  function popUping (_popUpName) {
+    $('html, body').addClass('pop_up_cond')
+    $(_popUpName).addClass('pop_up_active')
+  }
+
+  $('.pop_up__toggle').click(function () {
+    $(this).closest('.pop_up__wr').removeClass('pop_up_active')
+    $('html, body').removeClass('pop_up_cond')
+    return false
+  })
+
   // 360 creating
 
   // load your image

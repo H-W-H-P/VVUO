@@ -1,0 +1,47 @@
+.pop_up
+
+	.pop_up__bg
+
+	.pop_up_consult.pop_up__wr
+
+		h6.pop_up__title.title Есть вопросы? Проконсультируем
+
+		form(action="").pop_up__content
+			input(type="text", placeholder="Ваше имя").pop_up__input
+			input(type="text", placeholder="Телефон").pop_up__input
+			select#time(name="").pop_up__select.pop_up__input
+				option(value="default" disabled selected) Время для звонка
+				option(value="1") 12:00
+				option(value="1") 14:00
+				option(value="1") 16:00
+			button.pop_up__content_btn.btn_w_arr.pop_up__btn Отправить заявку
+				.hover_bl
+			p.pop_up__text Консультация бесплатно
+
+		a(href="").pop_up__toggle.cross
+			span.cross_one.cross_lane
+			span.cross_two.cross_lane
+
+	.pop_up_equipment.pop_up__wr
+
+		h6.pop_up__title.title Заявка на подбор оборудования
+
+		form(action="").pop_up__content
+			input(type="text", placeholder="Ваше имя").pop_up__input
+			input(type="text", placeholder="E-mail").pop_up__input
+			input(type="text", placeholder="Телефон").pop_up__input
+			select#time(name="").pop_up__select.pop_up__input
+				option(value="default" disabled selected) Время для звонка
+				option(value="1") 12:00
+				option(value="1") 14:00
+				option(value="1") 16:00
+			textarea(placeholder="Ваш комментарий").pop_up__input.pop_up__txt_area
+			button.pop_up__content_btn.btn_w_arr.pop_up__btn Отправить заявку
+				.hover_bl
+			p.pop_up__text Консультация бесплатно
+
+		a(href="").pop_up__toggle.cross
+			span.cross_one.cross_lane
+			span.cross_two.cross_lane
+
+

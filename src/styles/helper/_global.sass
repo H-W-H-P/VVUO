@@ -148,12 +148,47 @@ button
 		background: url('../../static/img/icons/white-arr.svg') no-repeat
 		background-position: center  center
 
+		transition: all ease .4s
+
 	&:hover
+		&::after
+			transform: translateX(10px)
+
+			border-color: transparent
+
+			@media(max-width:1023px)
+				transform: none
+
 		.hover_bl
 			opacity: 1
 
 			@media(max-width:1023px)
 				opacity: 0
+
+.cross
+
+	&_lane
+		position: absolute
+
+		width: 100%
+		height: 1px
+		left: 0
+		top: 50%
+		transform: translateY(-50%)
+
+		background-color: $blackTxt
+		transition: all ease .4s
+
+	&_one
+		transform: translateY(-50%) rotate(45deg)
+
+	&_two
+		transform: translateY(-50%) rotate(-45deg)
+
+	&:hover
+
+		.cross_lane
+			background-color: $main-blue
 
 
 .hamburger
