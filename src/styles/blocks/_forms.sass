@@ -128,6 +128,7 @@
 		display: -ms-flex
 		display: -o-flex
 		display: flex
+		flex-wrap: wrap
 
 		@media(max-width:1023px)
 			flex-direction: column
@@ -207,15 +208,16 @@
 		justify-content: center
 
 		@media(max-width:1439px)
-			width: 33%
+			width: 33.3%
 
 		&::after
 			content: ""
 			display: block
+			position: relative
 
 			height: 20px
 			width: 20px
-			top: 5px
+			top: 2px
 			left: 0
 
 			background: url('../../static/img/icons/white-arr.svg') no-repeat center center
@@ -259,6 +261,9 @@
 	padding-top: 68px
 	padding-bottom: 216px
 
+	@media(max-width:1439px)
+		padding-bottom: 146px
+
 	@media(max-width:1023px)
 		display: block
 
@@ -267,6 +272,7 @@
 	@media(max-width:767px)
 		padding-left: 34px
 		padding-bottom: 177px
+		padding-top: 48px
 
 	&__left_side, &__right_side
 		width: 50%
@@ -303,6 +309,8 @@
 
 		@media(max-width:1439px)
 			width: 290px
+			height: 148px
+			padding-top: 17px
 
 			font-size: 30px
 
@@ -345,6 +353,7 @@
 			justify-content: flex-end
 
 			padding-top: 0
+			padding-bottom: 64px
 
 		@media(max-width:1023px)
 			padding-left: 0
@@ -352,6 +361,7 @@
 
 		@media(max-width:767px)
 			padding-top: 30px
+			padding-bottom: 0
 
 	&__field_send
 		@media(max-width:1023px)
@@ -362,10 +372,12 @@
 		margin-bottom: 49px
 		margin-right: 45px
 		padding-left: 19px
+		width: 42.5%
 
 		@media(max-width:1439px)
 			margin-right: 0
 			width: 39%
+			margin-bottom: 39px
 			padding-left: 20px
 			
 
@@ -384,9 +396,8 @@
 	&__area
 		width: 551px
 		height: 118px
-		margin-left: 0
-		padding-top: 10px
-		padding-left: 19px
+		margin: 0
+		padding: 10px 0 0 19px
 
 		@media(max-width:1439px)
 			width: 88.5%
@@ -394,7 +405,7 @@
 
 		@media(max-width:1023px)
 			width: 65.2%
-			margin-bottom: 57px
+			margin-bottom: 0
 
 			font-size: 13px
 
@@ -407,6 +418,7 @@
 		justify-content: center
 
 		@media(max-width:1439px)
+
 			margin-left: 11.5%
 
 		@media(max-width:1023px)
