@@ -70,11 +70,14 @@ $(document).ready(function () {
     if (!$(this).closest('.conf_wr_filters').length) {
       $(this).closest('.shop_filters__block').find('.shop_filters__cat_wr').toggleClass('closed')
       $(this).toggleClass('closed')
+      if (windWidthResize >= 1440) {
+        if ($(this).hasClass('conf_wr_filters__plan')) $(this).addClass('closed')
+      }
     }
     return false
   })
 
-  $('.config__next').click(function () {
+  $('.config__next, .conf_wr_filters-side__chbx').click(function () {
     $('.config').removeClass('config-cond1').addClass('config-cond2')
     $('.conf_wr_filters-side').addClass('conf_wr_filters-side-cond2')
     return false
@@ -85,6 +88,30 @@ $(document).ready(function () {
     $('.conf_wr_filters-side').removeClass('conf_wr_filters-side-cond2')
     return false
   })
+
+  $('.conf_wr_filters__plan').click(function () {
+    $('.config').addClass('config-cond1').removeClass('config-cond2')
+    $('.conf_wr_filters-side').removeClass('conf_wr_filters-side-cond2')
+    return false
+  })
+
+  $(window).resize(resizing1)
+  resizing1()
+
+  function resizing1 () {
+    if (windWidthResize <= 1440) {
+      $('.conf_wr__plan .shop_filters__cat_wr, .conf_wr_filters__plan').removeClass('closed')
+    } else $('.conf_wr__plan .shop_filters__cat_wr, .conf_wr_filters__plan').addClass('closed')
+  }
+
+  $(window).resize(resizing2)
+  resizing2()
+
+  function resizing2 () {
+    if (windWidthResize <= 767) {
+      $('.conf_wr_filters').removeClass('opened')
+    }
+  }
 
   // 360 creating
 
@@ -132,10 +159,15 @@ $(document).ready(function () {
   })
 
   $('.config__owl').owlCarousel({
-    items: 5,
+    items: 4,
     loop: false,
     dots: false,
-    nav: true
+    nav: true,
+    responsive: {
+      1024: {
+        items: 5
+      }
+    }
   })
 
   $('.big_image__wr2').owlCarousel({
