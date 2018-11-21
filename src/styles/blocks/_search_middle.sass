@@ -1,9 +1,6 @@
 .search_section
 	padding-bottom: 0
 
-	.owl-carousel .owl-nav.disabled 
-		display: block
-
 	@media(max-width:1439px)
 		.owl-carousel
 			position: static
@@ -14,6 +11,12 @@
 
 		.owl-carousel .owl-stage-outer
 			overflow: visible
+
+	.owl-carousel .owl-item img
+		object-fit: cover
+
+	.simple_title_wr__title 
+		line-height: normal
 
 
 .search_section_other
@@ -108,6 +111,7 @@
 				height: auto
 
 
+
 .decor-top
 	.search_slider__item_decor_head
 		background-color: #deccde
@@ -139,12 +143,3 @@
 		margin: 0
 		padding: 0
 
-.search_title_counter
-	position: relative
-	font-weight: bold
-	
-	font-size: 10px
-
-	top: -5px	
-	left: 2px
-	width: 25px
