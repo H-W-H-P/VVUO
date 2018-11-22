@@ -145,7 +145,7 @@ button
 	justify-content: center
 	align-items: center
 
-	font-size: 18px
+	font-size: 16px
 	color: $white
 	font-weight: bold
 
@@ -332,7 +332,7 @@ button
 
 		right: 0
 		top: 50%
-		transform: translateY(-50%) rotate(-45deg)
+		transform: translateY(-70%) rotate(-45deg)
 		width: 6px
 		height: 6px
 
@@ -530,6 +530,10 @@ button
 			background-image: url('../../static/img/icons/arr-long-black.svg') !important
 			background-repeat: no-repeat !important
 			background-position: center center !important
+			transition: all ease .4s
+
+			&:hover
+				background-image: url('../../static/img/icons/arr-long-mainBlue.svg') !important
 
 		button.owl-next
 			transform: scaleX(-1)
@@ -552,8 +556,10 @@ button
 			background-image: url('../../static/img/icons/arr-long-black.svg') !important
 			background-repeat: no-repeat !important
 			background-position: 90% center !important
+			transition: all ease .4s
 
-
+			&:hover
+				background-image: url('../../static/img/icons/arr-long-mainBlue.svg') !important
 
 			&::after
 				position: absolute
