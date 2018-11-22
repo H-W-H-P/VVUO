@@ -3,7 +3,11 @@ footer.footer.max_width
 		a(href="/").footer__logo
 			img(src="static/img/logos/logo.svg", width="166", alt="").logo__img.footer__image
 		form(action="").footer__sub
-			input(type="text", placeholder="E-mail").footer__input1
+			label(for="").footer__input1.input_decore_label
+				input(type="text", placeholder="").input_decore
+				span.label_text E-mail
+				span.border
+				span.danger_text Неверный E-mail
 			button.footer__btn.bold Подписаться
 				.hover_bl
 		form(action="").footer__search
