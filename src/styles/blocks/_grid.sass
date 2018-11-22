@@ -1615,6 +1615,23 @@
 		width: 100%
 		height: 100%
 
+		&::after
+			display: none
+
+		&_triangle
+			width: 0 
+			height: 0
+			top: 50%
+			left: 50%
+			transform: translate(-50%, -50%)
+
+			border-top: 10px solid transparent
+			border-bottom: 10px solid transparent
+			border-left: 10px solid #fff
+
+			display: block
+			position: absolute
+
 	&__btn
 		position: absolute
 

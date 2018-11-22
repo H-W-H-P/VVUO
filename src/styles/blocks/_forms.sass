@@ -15,6 +15,8 @@
 	@media(max-width:767px)
 		height: 50px
 
+		line-height: 50px
+
 	&__btn
 		text-align: center
 		position: relative
@@ -121,6 +123,8 @@ label input, label textarea
 .input_decore_label
 	position: relative
 
+	cursor: pointer
+
 .input_decore
 	padding-left: 29px
 
@@ -132,10 +136,10 @@ label input, label textarea
 
 	&:focus
 		~ .label_text
-			transform: translateY(-30px) scale(.75)
+			transform: translateY(-40px) scale(.75)
 
 			@media(max-width:1439px)
-				transform: translateY(-26px) scale(.75)
+				transform: translateY(-35px) scale(.75)
 
 		~ .border
 			transform: scaleX(1)
@@ -147,7 +151,8 @@ label input, label textarea
 	top: 50%
 	left: 29px
 
-	margin-top: -7px
+	// margin-top: -7px
+	transform: translateY(-50%)
 
 	transform-origin: 0 0
 	transition: all .2s ease
@@ -298,7 +303,8 @@ label input, label textarea
 		background-color: #fff
 
 		@media(max-width:1439px)
-			width: 30.3333%		
+			// width: 30.3333%	
+			width: 28%	
 
 		@media(max-width:1023px)
 			width: 100%
@@ -312,6 +318,25 @@ label input, label textarea
 
 	&__input:first-child
 		margin-left: 0
+
+	&__select
+		width: 100%
+		height: 100%
+		padding-left: 29px
+
+		color: $gray5
+		font-size: 14px
+
+		display: -webkit-flex
+		display: -moz-flex
+		display: -ms-flex
+		display: -o-flex
+		display: flex
+
+		align-items: center
+
+		border: none
+		outline: 0
 
 	&__btn
 		width: 25%
