@@ -15,8 +15,28 @@
 	&__search
 		padding-left: 50px
 
+		position: relative
+
 		@media(max-width:767px)
 			display: none
+
+		img
+			transition: all .5s ease
+
+		&:hover
+			img:first-child
+				opacity: 0
+			img:last-child
+				opacity: 1
+
+
+	&__search_icon_hov
+		position: absolute
+
+		opacity: 0
+
+		right: 4px
+		bottom: 5px
 
 	.header__search_form
 		display: none

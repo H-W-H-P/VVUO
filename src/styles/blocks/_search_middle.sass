@@ -38,10 +38,20 @@
 
 
 		//
+.search_section_news
+	padding-top: 25px
 
+	@media(max-width:1439px)
+		padding-top: 47px
 
 .search_section_other
 	padding-bottom: 206px
+
+	@media(max-width:1439px)
+		padding-bottom: 115px
+
+	@media(max-width:1023px)
+		padding-bottom: 170px
 
 	@media(max-width:767px)
 		padding-bottom: 115px
@@ -58,7 +68,7 @@
 		.simple_slider__text
 			font-weight: bold
 			
-			padding: 21px 0 15px 0
+			padding: 30px 0 15px 0
 
 	&__text
 		margin-top: 0
@@ -66,7 +76,7 @@
 		font-size: 14px
 		line-height: 1.71
 
-		@media(max-width:767px)
+		@media(max-width:1439px)
 			font-size: 12px
 
 	&__date
@@ -166,17 +176,19 @@
 	font-size: 16px
 
 	padding-top: 0
-	margin-top: 50px
+	margin-top: 45px
+	padding-bottom: 30px
 
 	@media(max-width:1439px)
-		padding-bottom: 34px
+		padding-bottom: 25px
+		margin-top: 25px
 
 	p
 		margin: 0
 		padding: 0
 
 .search_title_counter
-	font-size: 10px
+	font-size: 12px
 
 	position: relative
 	left: 2px
@@ -236,4 +248,4 @@
 		background: url('../../static/img/icons/blue-more-arr.svg') no-repeat center center
 
 		@media(max-width:767px)
-			margin-top: -14px
+			margin-top: -10px
