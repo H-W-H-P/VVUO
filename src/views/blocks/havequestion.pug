@@ -2,13 +2,21 @@
     h2.have_question__title Есть вопросы? Проконсультируем
     form(action="")
         .have_question__field_input
-            input(type="text", placeholder="Ваше имя").have_question__input
-            input(type="tel", placeholder="Телефон").have_question__input
-            input(type="number", placeholder="Время для звонка").have_question__input
+            label(for="").have_question__input.danger.input_decore_label
+                input(type="text", placeholder="").input_decore
+                span.label_text Ваше имя
+                span.border
+                span.danger_text Неверное имя
+            label(for="").have_question__input.input_decore_label
+                input(type="tel", placeholder="").input_decore
+                span.label_text Телефон
+                span.border
+                span.danger_text Неверный номер телефона
+            label(for="").have_question__input.input_decore_label
+                input(type="text", placeholder="").input_decore
+                span.label_text Время для звонка
+                span.border
         .have_question__field_send
             button.have_question__btn.bold Отправить заявку
                 .hover_bl
             p.have_question__consalt_free Консультация бесплатно
-        //-         br
-        //-         | бесплатно
-        //- 
