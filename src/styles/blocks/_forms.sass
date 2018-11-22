@@ -89,10 +89,102 @@
 			height: 26px
 			left: 10px
 
+
+
+// Form decore
+label input, label textarea
+	width: 100%
+	height: 100%
+
+.border
+	position: absolute
+	z-index: 3
+
+	bottom: 0
+	left: 0
+
+	height: 2px
+	width: 100%
+
+	background: $main-blue
+
+	transform: scaleX(0)
+	transform-origin: 0 0
+	transition: all .15s ease
+	
+.input_decore_label
+	position: relative
+
+.input_decore
+	padding-left: 29px
+
+	position: relative
+	z-index: 2
+
+	@media(max-width:767px)
+		padding-left: 20px
+
+	&:focus
+		~ .label_text
+			transform: translateY(-30px) scale(.75)
+
+			@media(max-width:1439px)
+				transform: translateY(-26px) scale(.75)
+
+		~ .border
+			transform: scaleX(1)
+
+.label_text
+	position: absolute
+	z-index: 1
+
+	top: 50%
+	left: 29px
+
+	margin-top: -7px
+
+	transform-origin: 0 0
+	transition: all .2s ease
+
+	@media(max-width:767px)
+		left: 20px
+
+.danger_text
+	position: absolute
+
+	color: $danger
+
+	font-size: 11px
+
+	right: 0
+	bottom: -18px
+
+	opacity: 0
+
+	transition: all .2s ease
+
+	@media(max-width:1439px)
+		bottom: -15px
+
+.input_decore_label.danger
+	.input_decore
+		&:focus
+			~ span 
+				color: $danger
+			~ .border
+				background: $danger
+			~ .danger_text
+				opacity: 1
+
+
 // HaveQuastion
 .have_question
 	padding-top: 36px
 	padding-bottom: 178px
+
+	input
+		width: 100%
+		height: 100%
 	
 	@media(max-width:1439px)
 		padding-top: 30px
@@ -191,7 +283,7 @@
 		height: 40px
 		width: 22%
 		margin-right: 3%
-		padding-left: 29px
+		
 
 		border: 1px solid #dcdfe2
 
@@ -311,6 +403,18 @@
 		padding-bottom: 177px
 		padding-top: 32px
 
+	.input_decore
+		padding-left: 19px
+
+		@media(max-width:1439px)
+			padding-left: 20px
+
+	.label_text
+		left: 19px
+
+		@media(max-width:1439px)
+			left: 20px
+
 	&__left_side, &__right_side
 		width: 50%
 
@@ -408,14 +512,14 @@
 		margin-left: 0
 		margin-bottom: 49px
 		margin-right: 45px
-		padding-left: 19px
+		// padding-left: 19px
 		width: 42.5%
 
 		@media(max-width:1439px)
 			margin-right: 0
 			width: 39%
 			margin-bottom: 39px
-			padding-left: 20px
+			// padding-left: 20px
 			
 
 		@media(max-width:1023px)
@@ -434,7 +538,10 @@
 		width: 551px
 		height: 118px
 		margin: 0
-		padding: 10px 0 0 19px
+		padding: 0px 0 0 19px
+
+		.label_text
+			top: 17px
 
 		@media(max-width:1439px)
 			width: 88.5%
@@ -580,3 +687,4 @@
 		.pop_up__bg
 			opacity: 1
 			z-index: 9
+

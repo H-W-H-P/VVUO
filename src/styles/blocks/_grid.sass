@@ -130,6 +130,12 @@
 	&__title
 		padding: 60px 0 25px
 
+		// A
+		@media(max-width:1439px)
+			width: 50%
+		@media(max-width:1023px)
+			width: 100%
+
 	&__text
 		font-size: 12px
 		line-height: 22px
@@ -141,11 +147,14 @@
 			font-size: 14px
 			line-height: 24px
 
+			padding-bottom: 20px
+
 		@media(max-width:1023px)
 			font-size: 12px
 			line-height: 22px
 
 			max-width: 480px
+			padding-bottom: 55px
 
 	&__link
 		color: #000000
@@ -154,8 +163,12 @@
 
 		&::after
 			background-image: url('../../static/img/icons/black-arr.svg')
-
-			margin-left: 30px
+			
+			// A
+			// margin-left: 30px
+			margin: 4px 0 0 0 
+			// margin-left: 0px
+			// margin-top: 4px
 
 			@media(max-width:767px)
 				margin-left: 0px
@@ -235,6 +248,12 @@
 		
 		@media(max-width:767px)
 			padding: 30px
+			
+		@media(max-width:480px)
+			// A
+			img 
+				width: 43px
+				height: 43px
 
 	&__desc
 		font-size: 12px

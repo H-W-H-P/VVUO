@@ -116,8 +116,22 @@ button
 
 .rnd_btn
 	border: 1px solid  #5b8ec8
-	border-radius: 16px
-	padding: 10px 0
+
+	// A
+	border-radius: 15px
+	padding: 7px 0
+	// A
+	@media(max-width:1439px)
+		width: 157px
+	@media(max-width:1023px)
+		width: 162px
+
+.supply
+	.btn_w_arr
+		@media(max-width:767px)
+			&::after
+				margin-left: 30px
+
 
 .btn_w_arr
 	display: -webkit-flex

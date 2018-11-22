@@ -6,11 +6,28 @@ section.cooperating_form.max_width
 		.cooperating_form__form
 			form(action="")
 				.have_question__field_input.cooperating_form__field_input
-					input(type="text", placeholder="Ваше имя").have_question__input.cooperating_form__input
-					input(type="text", placeholder="Название компании").have_question__input.cooperating_form__input
-					input(type="tel", placeholder="Телефон").have_question__input.cooperating_form__input
-					input(type="e-mail", placeholder="E-mail").have_question__input.cooperating_form__input
-					textarea(name="", cols="30", rows="10" placeholder="Ваш комментарий").have_question__input.cooperating_form__area
+					label(for="").have_question__input.cooperating_form__input.input_decore_label
+						input(type="text", placeholder="").input_decore
+						span.label_text Ваше имя
+						span.border
+						span.danger_text Неверное имя
+					label(for="").have_question__input.cooperating_form__input.input_decore_label
+						input(type="text", placeholder="").input_decore
+						span.label_text Название компании
+						span.border
+						span.danger_text Неверное имя
+					label(for="").have_question__input.cooperating_form__input.input_decore_label
+						input(type="tel", placeholder="").input_decore
+						span.label_text Телефон
+						span.border
+						span.danger_text Неверный Телефон
+					label(for="").have_question__input.cooperating_form__input.input_decore_label
+						
+					label(for="").have_question__input.cooperating_form__area.input_decore_label
+						textarea(name="", cols="30", rows="10" placeholder="").input_decore
+						span.label_text Ваш комментарий
+						span.border
+						span.danger_text Ваш комментарий
 				.have_question__field_send.cooperating_form__field_send
 					button.have_question__btn.bold.cooperating_form__btn Отправить заявку
 	
