@@ -521,11 +521,23 @@ button
 .slider_T2
 	.owl-nav
 
+		&:hover
+			button.owl-prev,
+			button.owl-next
+
+				// &::after
+				// 	opacity: 1
+
+				// 	@media(max-width:1023px)
+				// 		opacity: 0
+
 		button.owl-prev,
 		button.owl-next
 			background-image: url('../../static/img/icons/arr-long-black.svg') !important
 			background-repeat: no-repeat !important
 			background-position: 90% center !important
+
+
 
 			&::after
 				position: absolute
@@ -543,10 +555,9 @@ button
 				transition: all ease .4s
 
 			&:hover
-
+				
 				&::after
 					opacity: 1
-
 					@media(max-width:1023px)
 						opacity: 0
 
