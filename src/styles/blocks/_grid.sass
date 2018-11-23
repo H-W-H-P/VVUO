@@ -1084,8 +1084,15 @@
 			&:hover
 				&::after
 					opacity: 0
+
+					@media(max-width:1023px)
+						opacity: 1
+
 				&::before
 					opacity: 1
+
+					@media(max-width:1023px)
+						opacity: 0
 
 
 			&::before,&::after
@@ -1156,6 +1163,9 @@
 
 			&:hover
 				transform: translateY(-10px)
+
+				@media(max-width:1023px)
+					transform: none
 
 // complex title			
 
@@ -2052,6 +2062,8 @@
 				top: 0
 				left: 120px
 
+				background-color: $main-blue !important
+
 				@media(max-width:1439px)
 					left: auto
 					right: 0
@@ -2061,8 +2073,16 @@
 					height: 110px
 					width: 55px
 
-					background-color: $main-blue !important
+					position: relative
+					z-index: 2
+					
 					background-image: url('../../static/img/icons/arr-long-white.svg') !important
+
+					&:hover
+						background-image: url('../../static/img/icons/arr-long-black.svg') !important
+
+						@media(max-width:1023px)
+							background-image: url('../../static/img/icons/arr-long-white.svg') !important
 
 	&__bot
 		position: absolute
