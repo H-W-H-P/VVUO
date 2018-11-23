@@ -194,6 +194,15 @@
 			width: 100%
 			padding-bottom: 30px
 
+			display: -webkit-flex
+			display: -moz-flex
+			display: -ms-flex
+			display: -o-flex
+			display: flex
+
+			flex-wrap: wrap
+			justify-content: space-between
+
 	&__text
 		margin: 0
 		padding-bottom: 14px
@@ -201,8 +210,14 @@
 		&:last-child
 			padding-bottom: 10px
 
+		@media(max-width:767px)
+			width: 100%
+
 	&__dev
 		padding-top: 16px
+
+		@media(max-width:767px)
+			padding-top: 25px
 
 	&__cons
 		color: $blackTxt
@@ -224,7 +239,9 @@
 		@media(max-width:767px)
 			display: inline-block
 
-			padding-left: 40px
+	&__tel
+		@media(max-width:767px)
+			width: 40%
 
 	&__list
 		line-height: 35px

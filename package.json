@@ -57,6 +57,7 @@
   },
   "dependencies": {
     "360-image-viewer": "^1.0.1",
+    "@google/maps": "^0.5.5",
     "canvas-fit": "^1.5.0",
     "hamburgers": "^1.1.3",
     "jquery": "^3.3.1",
@@ -65,7 +66,9 @@
     "load-google-maps-api": "^1.3.2",
     "owl.carousel": "^2.3.4",
     "popper.js": "^1.12.9",
-    "slick-carousel": "^1.8.1"
+    "slick-carousel": "^1.8.1",
+    "ymaps": "^0.1.1",
+    "yt-player": "^3.1.0"
   },
   "engines": {
     "node": ">= 8.1.3",

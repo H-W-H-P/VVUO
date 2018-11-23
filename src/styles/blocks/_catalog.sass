@@ -278,10 +278,13 @@
 		background-color: #f0cb88
 
 		font-size: 14px
+		line-height: 45px
 		font-weight: normal
 
 		&::after
 			border: none
+
+			width: 14px
 
 .catalog_bot
 	display: -webkit-flex
@@ -632,9 +635,15 @@
 
 			&.closed
 				max-height: 0
+				padding: 0
+
+				overflow: hidden
 
 		&__price_wr
 			width: 235px
 			padding-top: 30px
 
 			overflow: visible
+
+			@media(max-width:1023px)
+				width: 210px

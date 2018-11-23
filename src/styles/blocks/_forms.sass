@@ -30,6 +30,7 @@
 		display: inline-flex
 
 		color: #000000
+		font-size: 19px
 
 		width: 20%
 		height: 100%
@@ -56,6 +57,10 @@
 			background-image: url('../../static/img/icons/black-arr.svg')
 
 			width: 10px
+			height: 60px
+
+			@media(max-width:767px)
+				height: 50px
 
 	&__input
 		width: 80%
@@ -330,6 +335,7 @@ label input, label textarea
 
 		@media(max-width:1023px)
 			width: 100%
+			height: 45px
 			min-width: 400px
 			margin-left: 0
 			margin-bottom: 19px
@@ -357,8 +363,13 @@ label input, label textarea
 
 		align-items: center
 
+		background-color: #fff
+
 		border: none
 		outline: 0
+
+		@media(max-width:767px)
+			padding-left: 16px
 
 	&__btn
 		width: 25%
@@ -393,7 +404,7 @@ label input, label textarea
 
 			height: 20px
 			width: 20px
-			top: 2px
+			top: 0
 			left: 0
 
 			background: url('../../static/img/icons/white-arr.svg') no-repeat center center
@@ -700,7 +711,8 @@ label input, label textarea
 		padding-left: 20px
 
 	&__select
-		padding-left: 20px
+		padding: 0 16px
+
 
 	&__txt_area
 		height: 110px

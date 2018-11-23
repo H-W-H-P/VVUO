@@ -179,7 +179,7 @@
 			
 			// A
 			// margin-left: 30px
-			margin: 4px 0 0 0 
+			margin: 0
 			// margin-left: 0px
 			// margin-top: 4px
 
@@ -294,6 +294,7 @@
 		position: relative
 
 		box-sizing: border-box
+		vertical-align: top
 
 		@media(max-width:1439px)
 			width: 33.333%
@@ -314,9 +315,7 @@
 
 		&-small
 			height: 130px
-
-			@media(max-width:1023px)
-				padding-top: 130px
+			padding-top: 130px
 
 	&__date
 		padding: 30px 0 10px
@@ -337,6 +336,21 @@
 	&__text
 		font-size: 12px
 		line-height: 22px
+
+	&__link
+		color: $blackTxt
+		line-height: 16px
+
+		justify-content: flex-start
+
+		margin-bottom: 95px
+		height: 16px
+
+		&::after
+			background-image: url('../../static/img/icons/black-arr.svg')
+
+		@media(max-width:767px)
+			font-size: 12px
 
 	&__btn
 		position: absolute
@@ -994,7 +1008,8 @@
 				width: 100%
 
 		&__title1
-			font-size: 110px
+			font-size: 90px
+			font-family: 'hirakakustd';
 
 			@media(max-width:767px)
 				font-size: 70px
@@ -1016,6 +1031,7 @@
 
 			@media(max-width:767px)
 				font-size: 24px
+				line-height: 34px
 
 		&__link
 			width: 75px
@@ -1481,6 +1497,10 @@
 			background-size: cover
 			background-position-x: 100%
 
+			@media(max-width: 1023px)
+				padding-right: 0
+				margin-right: 0
+
 		&__desc
 			padding-bottom: 70px
 
@@ -1504,6 +1524,10 @@
 			@media(max-width: 1439px)
 				height: 95px
 				width: 95px
+
+			@media(max-width: 767px)
+				height: 90px
+				width: 90px
 
 		&__btn1
 
@@ -1633,8 +1657,8 @@
 			position: absolute
 			content: ''
 
-			width: 60%
-			height: 1px
+			width: 42%
+			height: 2px
 			left: 50%
 			top: 50%
 			transform: translate(-50%, -50%) rotate(90deg)
@@ -1657,6 +1681,7 @@
 
 		display: block
 		position: absolute
+		z-index: 10
 
 		left: 0
 		top: 0
@@ -1822,7 +1847,7 @@
 		@media(max-width:1023px)
 			width: 100%
 
-			z-index: 2
+			z-index: 10
 			order: 2
 
 			background-color: #fff
@@ -1962,6 +1987,7 @@
 	&__low_title
 		font-size: 12px
 		text-transform: uppercase
+		letter-spacing: 1px
 
 		padding-bottom: 20px
 
