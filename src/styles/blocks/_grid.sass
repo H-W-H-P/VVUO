@@ -179,7 +179,7 @@
 			
 			// A
 			// margin-left: 30px
-			margin: 4px 0 0 0 
+			margin: 0
 			// margin-left: 0px
 			// margin-top: 4px
 
@@ -994,7 +994,8 @@
 				width: 100%
 
 		&__title1
-			font-size: 110px
+			font-size: 90px
+			font-family: 'hirakakustd';
 
 			@media(max-width:767px)
 				font-size: 70px
@@ -1016,6 +1017,7 @@
 
 			@media(max-width:767px)
 				font-size: 24px
+				line-height: 34px
 
 		&__link
 			width: 75px
@@ -1433,6 +1435,10 @@
 			background-size: cover
 			background-position-x: 100%
 
+			@media(max-width: 1023px)
+				padding-right: 0
+				margin-right: 0
+
 		&__desc
 			padding-bottom: 70px
 
@@ -1456,6 +1462,10 @@
 			@media(max-width: 1439px)
 				height: 95px
 				width: 95px
+
+			@media(max-width: 767px)
+				height: 90px
+				width: 90px
 
 		&__btn1
 
@@ -1585,8 +1595,8 @@
 			position: absolute
 			content: ''
 
-			width: 60%
-			height: 1px
+			width: 42%
+			height: 2px
 			left: 50%
 			top: 50%
 			transform: translate(-50%, -50%) rotate(90deg)
@@ -1914,6 +1924,7 @@
 	&__low_title
 		font-size: 12px
 		text-transform: uppercase
+		letter-spacing: 1px
 
 		padding-bottom: 20px
 
