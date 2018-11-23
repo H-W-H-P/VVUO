@@ -1178,8 +1178,17 @@
 	display: -o-flex
 	display: flex
 
+	min-height: 870px
+
+	@media(max-width:1439px)
+		min-height: 750px
+
 	@media(max-width:1023px)
+		min-height: 880px
 		padding: 0
+
+	@media(max-width:767px)
+		min-height: 600px
 
 	&__left
 		width: 50%

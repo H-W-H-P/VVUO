@@ -230,16 +230,18 @@ $(document).ready(function () {
 
   function callback (event) {
     var items = event.item.count
-    $('.main_slider__comm_numb').text('0' + items)
+    if (items < 10) items = '0' + items
+    $('.main_slider__comm_numb').text(items)
   }
 
   function callback2 (event) {
     var items = event.item.index
     items = items + 1
+    if (items < 10) items = '0' + items
     var allItems = event.item.count
     var progBarWidth = items / allItems * 100
     progBarWidth = progBarWidth + '%'
-    $('.main_slider__curr_numb').text('0' + items)
+    $('.main_slider__curr_numb').text(items)
     $('.main_slider__progr').width(progBarWidth)
   }
 
