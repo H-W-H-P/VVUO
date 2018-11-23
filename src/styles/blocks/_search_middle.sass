@@ -212,9 +212,16 @@
 
 		&::before
 			opacity: 1
-
 		&::after
 			opacity: 0
+
+		@media(max-width:1023px)
+			color: inherit
+
+			&::before
+				opacity: 0
+			&::after
+				opacity: 1
 
 
 

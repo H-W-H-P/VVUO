@@ -135,6 +135,8 @@ button
 				margin-left: 30px
 
 
+
+
 .btn_w_arr
 	display: -webkit-flex
 	display: -moz-flex
@@ -168,6 +170,8 @@ button
 		transition: all ease .4s
 
 	&:hover
+	
+
 		&::after
 			transform: translateX(10px)
 
@@ -176,11 +180,26 @@ button
 			@media(max-width:1023px)
 				transform: none
 
+				border-color: initial
+
 		.hover_bl
 			opacity: 1
 
 			@media(max-width:1023px)
 				opacity: 0
+
+
+.advantages__link
+	&:hover
+		&::after
+			@media(max-width:1023px)
+				border-color: transparent
+
+.footer__cons
+	&:hover
+		&::after
+			@media(max-width:1023px)
+				border-color: transparent
 
 .zoomImgWr
 	transition: all ease .4s
@@ -535,6 +554,9 @@ button
 			&:hover
 				background-image: url('../../static/img/icons/arr-long-mainBlue.svg') !important
 
+				@media(max-width:1023px)
+					background-image: url('../../static/img/icons/arr-long-black.svg') !important
+
 		button.owl-next
 			transform: scaleX(-1)
 
@@ -560,6 +582,9 @@ button
 
 			&:hover
 				background-image: url('../../static/img/icons/arr-long-mainBlue.svg') !important
+
+				@media(max-width:1023px)
+					background-image: url('../../static/img/icons/arr-long-black.svg') !important
 
 			&::after
 				position: absolute
