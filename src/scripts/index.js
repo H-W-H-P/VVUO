@@ -1,9 +1,12 @@
 import $ from 'jquery'
 import 'owl.carousel'
+import ymaps from 'ymaps'
 
 require('jquery-ui-bundle')
 require('jquery-ui-touch-punch')
 require('slick-carousel')
+
+const YTPlayer = require('yt-player')
 
 // const create360Viewer = require('360-image-viewer')
 // const canvasFit = require('canvas-fit')
@@ -144,6 +147,36 @@ $(document).ready(function () {
       zoomImgToggle = true
     }
     return false
+  })
+
+  var player = new YTPlayer('.player', {
+    autoplay: true,
+    controls: false,
+    info: false,
+    annotations: false,
+    modestbranding: false,
+    related: false
+  })
+
+  $('.videoZoom').click(function () {
+    if ($(this).hasClass('video-on')) {
+      $(this).removeClass('video-on')
+      player.stop()
+      player.destroy()
+    } else {
+      player = new YTPlayer('.player', {
+        autoplay: true,
+        controls: false,
+        info: false,
+        annotations: false,
+        modestbranding: false,
+        related: false
+      })
+      var dataVideo = $(this).data('video')
+      player.load(dataVideo)
+      player.play()
+      $(this).addClass('video-on')
+    }
   })
 
   // 360 creating
@@ -455,18 +488,12 @@ $(document).ready(function () {
   })
 
   // map
-  const loadGoogleMapsApi = require('load-google-maps-api')
-
-  loadGoogleMapsApi().then(function (googleMaps) {
-    googleMaps.Map(document.querySelector('.map'), {
-      center: {
-        lat: 40.7484405,
-        lng: -73.9944191
-      },
-      zoom: 12,
-      key: 'AIzaSyCKq7IFsP3Ugif1ZKOq54V7CNQiAleK4Bg'
+  ymaps.load().then(maps => {
+    const map = new maps.Map('contacts_page__map', {
+      center: [55.76, 37.64],
+      zoom: 12
     })
-  }).catch(function (error) {
-    console.error(error)
+    map.panes.get('ground').getElement().style.filter = 'grayscale(100%)'
   })
+    .catch(error => console.log('Failed to load Yandex Maps', error))
 })

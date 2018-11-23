@@ -201,6 +201,14 @@ button
 		&::after
 			opacity: 0
 
+	.grid2__icon2_triangle
+		border: 10px solid #fff
+
+	.player
+		z-index: 10
+
+		opacity: 1
+
 .cross
 
 	&_lane
@@ -490,6 +498,24 @@ button
 
 .relative_wr
 	position: relative
+
+.player
+	position: fixed
+	z-index: -10
+
+	opacity: 0
+	transition: all ease .4s
+
+	left: 0
+	top: 0
+	width: 100%
+
+	@media(min-width:1024px)
+		height: 100%
+
+	@media(max-width:1023px)
+		top: 50%
+		transform: translateY(-50%)
 
 // placements
 // absolute X center
