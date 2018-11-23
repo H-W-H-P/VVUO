@@ -64,7 +64,7 @@
 
 	&__input
 		width: 80%
-		padding-left: 80px
+		padding-left: 0px
 
 		float: left
 
@@ -104,10 +104,21 @@
 
 
 
+
 // Form decore
 label input, label textarea
 	width: 100%
 	height: 100%
+
+.input_decore_label_catalog
+	height: 100%
+	display: block
+
+	.label_text
+		left: 79px
+
+		@media(max-width:767px)
+			display: none
 
 .border
 	position: absolute
@@ -149,6 +160,16 @@ label input, label textarea
 		~ .border
 			transform: scaleX(1)
 
+.input_decore_catalog
+	box-sizing: border-box
+	
+	padding-left: 79px
+
+	&:focus
+		~ .label_text
+			transform: translateY(-50%)
+			opacity: 0
+
 .label_text
 	position: absolute
 	z-index: 1
@@ -156,7 +177,8 @@ label input, label textarea
 	top: 50%
 	left: 29px
 
-	// margin-top: -7px
+	width: 86%
+
 	transform: translateY(-50%)
 
 	transform-origin: 0 0
@@ -617,6 +639,9 @@ label input, label textarea
 
 .pop_up
 
+	&__label_text
+		left: 20px
+
 	&__bg
 		position: fixed
 		z-index: -10
@@ -669,7 +694,7 @@ label input, label textarea
 		width: 100%
 		height: 45px
 		margin-bottom: 20px
-		padding: 0 20px
+		padding: 0 0
 
 		font-size: 14px
 		color: $gray9
@@ -680,12 +705,21 @@ label input, label textarea
 
 		border: 1px solid  $gray2
 
+		display: block
+
+	&__input_padd
+		padding-left: 20px
+
 	&__select
 		padding: 0 16px
+
 
 	&__txt_area
 		height: 110px
 		padding-top: 15px
+
+		.label_text
+			top: 18px
 
 	&__btn
 		width: 100%

@@ -491,6 +491,12 @@
 
 			padding-bottom: 20px
 
+			transition: all ease .4s
+
+			&:hover
+				color: $main-blue
+
+
 		&__cat
 			padding: 5px 20px 5px 0
 			margin: 10px 0 20px
@@ -498,6 +504,13 @@
 			letter-spacing: .5px
 
 			transition: all ease .4s
+
+			&:hover
+				color: $main-blue
+
+				&::after
+					border-color: $main-blue
+
 
 			&.closed
 				padding: 5px 20px 5px 0

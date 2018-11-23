@@ -20,6 +20,9 @@
 
 		position: relative
 
+		width: 35px
+		height: 37px
+
 		// A		
 		@media(max-width:1439px)
 			padding-left: 31px
@@ -36,6 +39,12 @@
 			img:last-child
 				opacity: 1
 
+			@media(max-width:1023px)
+				img:first-child
+					opacity: 1
+				img:last-child
+					opacity: 0
+
 
 	&__search_icon_hov
 		position: absolute
@@ -44,6 +53,9 @@
 
 		right: 4px
 		bottom: 5px
+
+		width: 30px
+		height: 29px
 
 	.header__search_form
 		display: none
@@ -362,8 +374,14 @@
 			background-color: $main-blue
 			color: #fff
 
+			@media(max-width:1023px)
+				color: $main-blue
+				background-color: inherit
+
 		@media(max-width:1439px)
 			position: static
+
+		
 
 	&__btn_wr
 		display: inline-block

@@ -1079,7 +1079,42 @@
 			width: 20px
 			height: 10px
 
-			background-image: url('../../static/img/icons/arr-long-black.svg')
+			position: relative
+
+			&:hover
+				&::after
+					opacity: 0
+				&::before
+					opacity: 1
+
+
+			&::before,&::after
+				content: ''
+				position: absolute
+				display: block
+
+				width: 20px
+				height: 10px
+
+				left: 0
+				top: 0
+				bottom: 0
+				right: 100%
+
+				background-image: url('../../static/img/icons/arr-long-blue-catalog.svg')
+
+				
+				transition: all .5s ease
+
+				opacity: 0
+
+			&::after
+				background-image: url('../../static/img/icons/arr-long-black.svg')
+
+				transform: rotate(0deg)
+
+				opacity: 1
+
 
 		&__next
 			transform: rotate(180deg)
@@ -1096,9 +1131,17 @@
 			display: -o-flex
 			display: flex
 
+		&__active
+			background-color: #000
+			color: #fff
+
+			transform: translateY(-10px)
+
+
 		&__page
 			width: 40px
 			height: 40px
+			margin-right: 20px
 
 			justify-content: center
 			align-items: center
@@ -1108,6 +1151,11 @@
 			display: -ms-flex
 			display: -o-flex
 			display: flex
+
+			transition: all .5s ease
+
+			&:hover
+				transform: translateY(-10px)
 
 // complex title			
 
