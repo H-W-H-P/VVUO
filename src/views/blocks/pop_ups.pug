@@ -7,8 +7,16 @@
 		h6.pop_up__title.title Есть вопросы? Проконсультируем
 
 		form(action="").pop_up__content
-			input(type="text", placeholder="Ваше имя").pop_up__input
-			input(type="text", placeholder="Телефон").pop_up__input
+			label(for="").pop_up__input.input_decore_label
+				input(type="text", placeholder="").input_decore.pop_up__input_padd
+				span.label_text.pop_up__label_text Ваше имя
+				span.border
+				span.danger_text Неверное имя
+			label(for="").pop_up__input.input_decore_label
+				input(type="text", placeholder="").input_decore.pop_up__input_padd
+				span.label_text.pop_up__label_text Телефон
+				span.border
+				span.danger_text Неверный номер телефона
 			select#time(name="").pop_up__select.pop_up__input
 				option(value="default" disabled selected) Время для звонка
 				option(value="1") 12:00
@@ -27,15 +35,32 @@
 		h6.pop_up__title.title Заявка на подбор оборудования
 
 		form(action="").pop_up__content
-			input(type="text", placeholder="Ваше имя").pop_up__input
-			input(type="text", placeholder="E-mail").pop_up__input
-			input(type="text", placeholder="Телефон").pop_up__input
+			label(for="").pop_up__input.input_decore_label
+				input(type="text", placeholder="").input_decore.pop_up__input_padd
+				span.label_text.pop_up__label_text Ваше имя
+				span.border
+				span.danger_text Неверное имя
+			label(for="").pop_up__input.input_decore_label
+				input(type="text", placeholder="").input_decore.pop_up__input_padd
+				span.label_text.pop_up__label_text E-mail
+				span.border
+				span.danger_text E-mail
+			label(for="").pop_up__input.input_decore_label
+				input(type="text", placeholder="").input_decore.pop_up__input_padd
+				span.label_text.pop_up__label_text Телефон
+				span.border
+				span.danger_text Неверный номер телефона
+
 			select#time(name="").pop_up__select.pop_up__input
 				option(value="default" disabled selected) Время для звонка
 				option(value="1") 12:00
 				option(value="1") 14:00
 				option(value="1") 16:00
-			textarea(placeholder="Ваш комментарий").pop_up__input.pop_up__txt_area
+			label(for="").pop_up__input.pop_up__txt_area.input_decore_label
+				textarea(placeholder="").pop_up__input_padd.input_decore
+				span.label_text.pop_up__label_text Ваш комментарий
+				span.border
+				span.danger_text Ваш комментарий
 			button.pop_up__content_btn.btn_w_arr.pop_up__btn Отправить заявку
 				.hover_bl
 			p.pop_up__text Консультация бесплатно

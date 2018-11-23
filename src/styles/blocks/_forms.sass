@@ -151,6 +151,8 @@ label input, label textarea
 	top: 50%
 	left: 29px
 
+	width: 50%
+
 	// margin-top: -7px
 	transform: translateY(-50%)
 
@@ -606,6 +608,9 @@ label input, label textarea
 
 .pop_up
 
+	&__label_text
+		left: 20px
+
 	&__bg
 		position: fixed
 		z-index: -10
@@ -658,7 +663,7 @@ label input, label textarea
 		width: 100%
 		height: 45px
 		margin-bottom: 20px
-		padding: 0 20px
+		padding: 0 0
 
 		font-size: 14px
 		color: $gray9
@@ -669,9 +674,20 @@ label input, label textarea
 
 		border: 1px solid  $gray2
 
+		display: block
+
+	&__input_padd
+		padding-left: 20px
+
+	&__select
+		padding-left: 20px
+
 	&__txt_area
 		height: 110px
 		padding-top: 15px
+
+		.label_text
+			top: 18px
 
 	&__btn
 		width: 100%
