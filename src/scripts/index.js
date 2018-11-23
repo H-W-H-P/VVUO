@@ -70,7 +70,7 @@ $(document).ready(function () {
   })
 
   $('.shop_filters__cat').click(function () {
-    if (!$(this).closest('.conf_wr_filters').length) {
+    if ((!$(this).closest('.conf_wr_filters').length) && (windWidthResize > 1023)) {
       $(this).closest('.shop_filters__block').find('.shop_filters__cat_wr').toggleClass('closed')
       $(this).toggleClass('closed')
       if (windWidthResize >= 1440) {
@@ -149,14 +149,16 @@ $(document).ready(function () {
     return false
   })
 
-  var player = new YTPlayer('.player', {
-    autoplay: true,
-    controls: false,
-    info: false,
-    annotations: false,
-    modestbranding: false,
-    related: false
-  })
+  if ($('.player').length) {
+    var player = new YTPlayer('.player', {
+      autoplay: true,
+      controls: false,
+      info: false,
+      annotations: false,
+      modestbranding: false,
+      related: false
+    })
+  }
 
   $('.videoZoom').click(function () {
     if ($(this).hasClass('video-on')) {

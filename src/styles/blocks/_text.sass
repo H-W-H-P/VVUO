@@ -53,6 +53,7 @@
 
 	&__list_title
 		text-transform: uppercase
+		letter-spacing: 1px
 
 		padding-bottom: 20px
 
@@ -140,15 +141,17 @@
 		&__item	
 			@media(max-width:1023px)
 				padding: 0 75px 0 0
+				width: 45%
 
 				&:nth-child(2)
 					padding: 0 75px 0 0
 
 			@media(max-width:767px)
-				padding: 0
+				padding: 0 0 60px 0
+				width: 100%
 
 				&:nth-child(2)
-					padding: 0
+					padding: 0 0 60px 0
 
 .image_wr
 	height: 430px
@@ -173,7 +176,7 @@
 	&__text_wr
 		position: relative
 
-		width: 100%
+		width: 58%
 
 		background-color: $gray
 
