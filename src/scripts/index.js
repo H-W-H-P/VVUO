@@ -212,11 +212,22 @@ $(document).ready(function () {
   $('.shop_filters__price').slider({
     range: true,
     values: [priceLimits.left, priceLimits.right],
-    change: function (event, ui) {
+    // change: function (event, ui) {
+    //   // probably would needed later
+    //   console.log(event, ui)
+    // },
+    slide: function (event, ui) {
       // probably would needed later
-      console.log(event, ui)
+      var curValue = ui.value
+      var curPrice = curValue / maxPrice * 1000000
+      $('.ui-slider-handle.ui-state-active .price').html(curPrice)
     }
   })
+
+  var maxPrice = 10000
+
+  $('.ui-slider-handle:nth-last-child(2)').append('<div class="shop_filters__price_cont"><span class="price">100</span> ₽</div>')
+  $('.ui-slider-handle:last-child').append('<div class="shop_filters__price_cont"><span class="price">5000</span> ₽</div>')
 
   // owls
   $('.main_slider__right').owlCarousel({
@@ -230,16 +241,18 @@ $(document).ready(function () {
 
   function callback (event) {
     var items = event.item.count
-    $('.main_slider__comm_numb').text('0' + items)
+    if (items < 10) items = '0' + items
+    $('.main_slider__comm_numb').text(items)
   }
 
   function callback2 (event) {
     var items = event.item.index
     items = items + 1
+    if (items < 10) items = '0' + items
     var allItems = event.item.count
     var progBarWidth = items / allItems * 100
     progBarWidth = progBarWidth + '%'
-    $('.main_slider__curr_numb').text('0' + items)
+    $('.main_slider__curr_numb').text(items)
     $('.main_slider__progr').width(progBarWidth)
   }
 

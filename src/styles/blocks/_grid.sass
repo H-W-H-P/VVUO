@@ -1084,8 +1084,15 @@
 			&:hover
 				&::after
 					opacity: 0
+
+					@media(max-width:1023px)
+						opacity: 1
+
 				&::before
 					opacity: 1
+
+					@media(max-width:1023px)
+						opacity: 0
 
 
 			&::before,&::after
@@ -1157,6 +1164,9 @@
 			&:hover
 				transform: translateY(-10px)
 
+				@media(max-width:1023px)
+					transform: none
+
 // complex title			
 
 .comp_title
@@ -1168,8 +1178,17 @@
 	display: -o-flex
 	display: flex
 
+	min-height: 870px
+
+	@media(max-width:1439px)
+		min-height: 750px
+
 	@media(max-width:1023px)
+		min-height: 880px
 		padding: 0
+
+	@media(max-width:767px)
+		min-height: 600px
 
 	&__left
 		width: 50%
@@ -1237,8 +1256,8 @@
 		background-color: $yellow
 
 		@media(max-width:1439px)
-			left: 55%
-			width: 45%
+			left: 55.666%
+			width: 44.333%
 
 		@media(max-width:1023px)
 			left: 100%
@@ -1352,8 +1371,8 @@
 				display: none
 
 		@media(max-width:1439px)
-			margin-left: 55%
-			width: 45%
+			margin-left: 55.66%
+			width: 44.33%
 
 			justify-content: center
 
@@ -1388,7 +1407,7 @@
 			display: flex
 
 			margin-left: 0
-			width: 55%
+			width: 55.66%
 
 			float: left
 
@@ -1517,7 +1536,7 @@
 
 			@media(max-width: 1439px)
 				margin-left: 0
-				width: 55%
+				width: 55.66%
 				height: 95px
 
 		&__arrow
@@ -2052,6 +2071,8 @@
 				top: 0
 				left: 120px
 
+				background-color: $main-blue !important
+
 				@media(max-width:1439px)
 					left: auto
 					right: 0
@@ -2061,8 +2082,16 @@
 					height: 110px
 					width: 55px
 
-					background-color: $main-blue !important
+					position: relative
+					z-index: 2
+					
 					background-image: url('../../static/img/icons/arr-long-white.svg') !important
+
+					&:hover
+						background-image: url('../../static/img/icons/arr-long-black.svg') !important
+
+						@media(max-width:1023px)
+							background-image: url('../../static/img/icons/arr-long-white.svg') !important
 
 	&__bot
 		position: absolute

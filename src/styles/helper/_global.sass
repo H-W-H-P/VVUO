@@ -462,14 +462,23 @@ button
 
 .lanes
 	position: absolute
+
 	top: 0
 	bottom: 0
 	width: 1200px
 	left: 50%
 	transform: translateX(-50%)
+
 	@media(max-width:1439px)
 		position: static
+
 		transform: none
+
+		left: 30px
+		right: 30px
+		width: auto
+
+		position: absolute
 
 .vert_lane
 	position: absolute
@@ -488,18 +497,21 @@ button
 
 	@media(max-width:1439px)
 		left: 30px
+		left: 0
 
 	&:nth-child(2)
 		left: 25%
 
 		@media(max-width:1439px)
 			left: 34%
+			left: 33.3333%
 
 	&:nth-child(3)
 		left: 50%
 
 		@media(max-width:1439px)
 			left: 66%
+			left: 66.66666%
 
 	&:nth-child(4)
 		left: 75%
@@ -507,6 +519,7 @@ button
 		@media(max-width:1439px)
 			right: 30px
 			left: auto
+			right: 0
 
 	&:last-child
 		left: auto
@@ -612,10 +625,6 @@ button
 
 				@media(max-width:1023px)
 					background-image: url('../../static/img/icons/arr-long-black.svg') !important
-
-			&::after
-				position: absolute
-				content: ''
 
 		&::before
 			position: absolute

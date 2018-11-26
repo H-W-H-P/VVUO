@@ -124,13 +124,22 @@
 
 						color: $white
 
+						@media(max-width:1023px)
+							transform: none
+
 					&__icon
 						transform: rotate(90deg)
 
 						background-color: $white
 
+						@media(max-width:1023px)
+							transform: none
+
 					&__image
-						transform: translateY(-150px)						
+						transform: translateY(-150px)	
+
+						@media(max-width:1023px)
+							transform: none					
 
 		&__title
 			display: inline-block
@@ -222,6 +231,9 @@
 
 .catalog_open_wr
 	position: relative
+
+	@media(max-width:1023px)
+		display: none
 
 	&__item
 		display: -webkit-flex
@@ -647,3 +659,21 @@
 
 			@media(max-width:1023px)
 				width: 210px
+
+		&__price_cont
+			position: absolute
+
+			top: -20px
+			left: 50%
+			transform: translateX(-50%)
+
+			display: -webkit-flex
+			display: -moz-flex
+			display: -ms-flex
+			display: -o-flex
+			display: flex
+
+			color: $blackTxt !important
+
+			.price
+				padding-right: 4px
