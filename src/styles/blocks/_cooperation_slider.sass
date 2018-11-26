@@ -302,6 +302,11 @@ body
 		@media(max-width:767px)
 			right: 50%
 
+		&:hover
+			.slider_middle_prev, .slider_middle_next
+				background-color: #5280b4
+
+
 		.slider_middle_prev, .slider_middle_next
 			height: 111px
 			width: 55.5px
@@ -320,12 +325,6 @@ body
 			@media(max-width:767px)
 				height: 46px
 				width: 53px
-
-			&:hover
-				background-color: #5280b4
-
-				transition: all .4s ease
-
 
 			&:before
 				background: url('../../static/img/icons/arr-long-white.svg') no-repeat center center
@@ -350,6 +349,9 @@ body
 				bottom: 50%
 
 				transform: scale(-1) translateY(50%)
+
+				&:hover
+					
 
 	&__basic
 		width: 100%
