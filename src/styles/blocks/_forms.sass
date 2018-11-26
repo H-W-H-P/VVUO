@@ -35,6 +35,22 @@
 		width: 20%
 		height: 100%
 
+		transition: all .5s ease
+
+		&:hover
+			color: $main-blue
+
+			&::after
+				background-image: url('../../static/img/icons/blue-more-arr.svg')
+
+				@media(max-width:1023px)
+					background-image: url('../../static/img/icons/black-arr.svg')
+				
+
+		@media(max-width:1023px)
+			&:hover
+				color: inherit
+
 		@media(max-width:767px)
 			width: 40%
 
@@ -83,24 +99,30 @@
 
 			&::-webkit-input-placeholder
 				opacity: 0
+	
+	&__search_icon
+		
 
-	&::before
-		content: ''
-		position: absolute
+		&::before
+			content: ''
+			position: absolute
 
-		top: 50%
-		left: 30px
-		width: 34px
-		height: 34px
-		transform: translateY(-50%)
-		background-image: url('../../static/img/icons/search.svg')
-		background-repeat: no-repeat
-		background-size: contain
+			top: 50%
+			left: 30px
+			width: 34px
+			height: 34px
 
-		@media(max-width:767px)
-			width: 26px
-			height: 26px
-			left: 20px
+			transform: translateY(-50%)
+			transition: all .4s ease
+
+			background-image: url('../../static/img/icons/search.svg')
+			background-repeat: no-repeat
+			background-size: contain
+
+			@media(max-width:767px)
+				width: 26px
+				height: 26px
+				left: 20px
 
 
 
@@ -169,6 +191,9 @@ label input, label textarea
 		~ .label_text
 			transform: translateY(-50%)
 			opacity: 0
+		~ .search_form__search_icon
+			&::before
+				opacity: .4
 
 .label_text
 	position: absolute
@@ -573,14 +598,12 @@ label input, label textarea
 		margin-left: 0
 		margin-bottom: 49px
 		margin-right: 45px
-		// padding-left: 19px
 		width: 42.5%
 
 		@media(max-width:1439px)
 			margin-right: 0
 			width: 39%
 			margin-bottom: 39px
-			// padding-left: 20px
 			
 
 		@media(max-width:1023px)
