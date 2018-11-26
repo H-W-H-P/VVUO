@@ -212,11 +212,22 @@ $(document).ready(function () {
   $('.shop_filters__price').slider({
     range: true,
     values: [priceLimits.left, priceLimits.right],
-    change: function (event, ui) {
+    // change: function (event, ui) {
+    //   // probably would needed later
+    //   console.log(event, ui)
+    // },
+    slide: function (event, ui) {
       // probably would needed later
-      console.log(event, ui)
+      var curValue = ui.value
+      var curPrice = curValue / maxPrice * 1000000
+      $('.ui-slider-handle.ui-state-active .price').html(curPrice)
     }
   })
+
+  var maxPrice = 10000
+
+  $('.ui-slider-handle:nth-last-child(2)').append('<div class="shop_filters__price_cont"><span class="price">100</span> ₽</div>')
+  $('.ui-slider-handle:last-child').append('<div class="shop_filters__price_cont"><span class="price">5000</span> ₽</div>')
 
   // owls
   $('.main_slider__right').owlCarousel({
