@@ -46741,8 +46741,21 @@ var ThreeController = function(three, model, camera, element, controls, hud) {
 
       mouseMoved = true;
 
+      // mouse.x = event.clientX-500;
+      // mouse.y = event.clientY+100;
+
+   //    var element = document.getElementById('viewer');
+   //    var viewportOffset = element.getBoundingClientRect();
+	  // var top = viewportOffset.top;
+	  // var left = viewportOffset.left;
+
+   //    mouse.x = event.clientX - left;
+   //    mouse.y = event.clientY - top;
+
       mouse.x = event.clientX;
       mouse.y = event.clientY;
+
+      console.log(mouse.x, mouse.y)
 
       if (!mouseDown) {
         updateIntersections();        
@@ -46902,7 +46915,6 @@ var ThreeController = function(three, model, camera, element, controls, hud) {
         hudObject,
         false, false, true);
       if (hudIntersects.length > 0) {
-      	console.log(hudObject)
         rotateMouseOver = true;
         hud.setMouseover(true);
         intersectedObject = null;
@@ -47409,7 +47421,7 @@ var ThreeControls = function (object, domElement) {
 
 	function onMouseWheel( event ) {
 		event.preventDefault();
-		
+
 		if ( scope.enabled === false || scope.noZoom === true ) return;
 
 		var delta = 0;
