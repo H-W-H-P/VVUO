@@ -9,33 +9,9 @@ $(document).ready(function() {
       "type" : "7"
     },
     {
-      "name" : "Bedside table - White",
-      "image" : "models/model1.png",
-      "model" : "models/model1.js",
-      "type" : "1"
-    },
-    {
-      "name" : "telescope",
-      "image" : "models/model3.png",
-      "model" : "models/model7.js",
-      "type" : "1"
-    },
-    {
       "name" : "table",
-      "image" : "models/model4.png",
-      "model" : "models/model4.js",
-      "type" : "1"
-    },
-    {
-      "name" : "laptop",
-      "image" : "models/model6.png",
-      "model" : "models/model6.js",
-      "type" : "1"
-    },
-    {
-      "name" : "desk",
-      "image" : "models/model8.png",
-      "model" : "models/model8.js",
+      "image" : "static/const/models/model1/model.png",
+      "model" : "static/const/models/model1/model.js",
       "type" : "1"
     }
    //  {
