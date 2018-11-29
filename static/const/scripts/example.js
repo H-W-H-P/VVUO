@@ -42,6 +42,19 @@ var CameraButtons = function(blueprint3d) {
     $("#move-right").dblclick(preventDefault);
     $("#move-up").dblclick(preventDefault);
     $("#move-down").dblclick(preventDefault);
+
+    $('#d2').click(orbitControls.changeViewe_2d);
+    $('#d3').click(orbitControls.changeViewe_3d);
+    
+    $('.controlViwe').on('click', function(EO) {
+      let _target = EO.target;
+      let parent = $(_target).parent('li');
+      if ($(parent).hasClass('change_on')) {
+        return;
+      }
+     $('#d2').toggleClass('change_on');
+     $('#d3').toggleClass('change_on');
+    });
   }
 
   function preventDefault(e) {
@@ -196,6 +209,10 @@ var ModalEffects = function(blueprint3d) {
  */
 
 var SideMenu = function(blueprint3d, floorplanControls, modalEffects) {
+  $('#d3').on('click', function() {
+    console.log('++')
+    blueprint3d.model.floorplan.update();
+  })
   var blueprint3d = blueprint3d;
   var floorplanControls = floorplanControls;
   var modalEffects = modalEffects;
