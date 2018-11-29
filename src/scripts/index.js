@@ -425,13 +425,17 @@ $(document).ready(function () {
     infinite: true,
     dots: false,
     arrows: false,
-    vertical: true
+    vertical: true,
+    draggable: false,
+    cssEase: 'cubic-bezier(.17, 0, .58, 1)'
   })
 
   let slide2 = $('.slider_middle__slide_b').slick({
     infinite: true,
     dots: false,
-    arrows: false
+    arrows: false,
+    draggable: false,
+    cssEase: 'cubic-bezier(.69, .40, .58, 1)'
   })
 
   // let counter = 0
@@ -502,6 +506,19 @@ $(document).ready(function () {
     }
   })
 
+  function bwer () {
+    let ua = navigator.userAgent
+    console.log(ua.search(/Chrome/))
+
+    if (ua.search(/Firefox/) > 0) return 'Firefox'
+    if (ua.search(/Opera/) > 0) return 'Opera'
+    if (ua.search(/Chrome/) > 0) return 'Google Chrome'
+    if (ua.search(/Safari/) > 0) return 'Safari'
+    if (ua.search(/Konqueror/) > 0) return 'Konqueror'
+    if (ua.search(/Iceweasel/) > 0) return 'Debian Iceweasel'
+    if (ua.search(/SeaMonkey/) > 0) return 'SeaMonkey'
+  }
+  console.log(bwer())
   // map
   ymaps.load().then(maps => {
     const map = new maps.Map('contacts_page__map', {
