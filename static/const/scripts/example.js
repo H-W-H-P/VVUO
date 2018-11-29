@@ -18,8 +18,18 @@ var CameraButtons = function(blueprint3d) {
 
   function init() {
     // Camera controls
-    $("#zoom-in").click(zoomIn);
-    $("#zoom-out").click(zoomOut);  
+
+     $("#zoom-in").on('click', function(EO) {
+     	EO.preventDefault();
+     	return zoomIn();
+     });
+
+      $("#zoom-out").on('click', function(EO) {
+     	EO.preventDefault();
+     	return zoomOut();
+     });
+
+
     $("#zoom-in").dblclick(preventDefault);
     $("#zoom-out").dblclick(preventDefault);
 
@@ -43,17 +53,34 @@ var CameraButtons = function(blueprint3d) {
     $("#move-up").dblclick(preventDefault);
     $("#move-down").dblclick(preventDefault);
 
-    $('#d2').click(orbitControls.changeViewe_2d);
-    $('#d3').click(orbitControls.changeViewe_3d);
+    $('#constructor_2d').on('click', function(EO) {
+    	EO.preventDefault();
+    	return orbitControls.changeViewe_2d();
+    });
+
+     $('#constructor_3d').on('click', function(EO) {
+    	EO.preventDefault();
+    	return orbitControls.changeViewe_3d();
+    });
     
-    $('.controlViwe').on('click', function(EO) {
-      let _target = EO.target;
-      let parent = $(_target).parent('li');
-      if ($(parent).hasClass('change_on')) {
-        return;
+    $('.constructor__controlViwe').on('click', function(EO) {
+      let parent = EO.target;
+
+
+      if ($(parent).hasClass('constructor__controlViwe_blue')) {
+      	$('.constructor__controlViwe_wh').addClass('constructor_3d_active')
+      	if ($(parent).hasClass('constructor_2d_active')) {
+      		return;
+      	} else {
+      		$(parent).addClass('constructor_2d_active')
+      	}
+
+      } else {
+      	$('.constructor__controlViwe_blue').removeClass('constructor_2d_active')
+      	$('.constructor__controlViwe_wh').removeClass('constructor_3d_active')
       }
-     $('#d2').toggleClass('change_on');
-     $('#d3').toggleClass('change_on');
+
+     
     });
   }
 
@@ -80,13 +107,11 @@ var CameraButtons = function(blueprint3d) {
   }
 
   function zoomIn(e) {
-    e.preventDefault();
     orbitControls.dollyIn(1.1);
     orbitControls.update();
   }
 
   function zoomOut(e) {
-    e.preventDefault;
     orbitControls.dollyOut(1.1);
     orbitControls.update();
   }
@@ -209,8 +234,8 @@ var ModalEffects = function(blueprint3d) {
  */
 
 var SideMenu = function(blueprint3d, floorplanControls, modalEffects) {
-  $('#d3').on('click', function() {
-    console.log('++')
+  $('#constructor_3d').on('click', function(EO) {
+    EO.preventDefault();
     blueprint3d.model.floorplan.update();
   })
   var blueprint3d = blueprint3d;
@@ -356,8 +381,8 @@ var SideMenu = function(blueprint3d, floorplanControls, modalEffects) {
     });
   }
 
-  blueprint3d.model.scene.addItem(1, 'static/const/models/model1/model.js', {resizable: true});
-  blueprint3d.model.scene.addItem(1, 'static/const/models/model3/model.js', {resizable: true});
+  // blueprint3d.model.scene.addItem(1, 'static/const/models/model1/model.js', {resizable: true});
+  // blueprint3d.model.scene.addItem(1, 'static/const/models/model3/model.js', {resizable: true});
 
   init();
 

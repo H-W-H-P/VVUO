@@ -1,0 +1,233 @@
+.constructor
+
+	&__control_view
+
+		position: absolute
+
+		top: 8px
+		right: 8px
+
+		display: -webkit-flex
+		display: -moz-flex
+		display: -ms-flex
+		display: -o-flex
+		display: flex
+
+	&__controlViwe
+		width: 47px
+		height: 40px
+
+		display: -webkit-flex
+		display: -moz-flex
+		display: -ms-flex
+		display: -o-flex
+		display: flex
+		justify-content: center
+		align-items: center
+		align-content: center
+
+		cursor: pointer
+
+		transition: all .5s linear
+
+	&__controlViwe_blue
+		background-color: #fff
+
+		&:before
+			content: ''
+
+			position: absolute
+
+			transition: all .4s ease
+
+			box-sizing: border-box
+
+			height: 20px
+			width: 20px
+
+			display: block
+
+			border: 2px solid #000
+
+			transition: border-color .3s ease
+
+		&:hover
+			&:before
+				border-color: #5b8ec8
+
+	&__controlViwe_wh
+		background-color: #5b8ec8
+
+		position: relative
+
+		transition: all .4s ease
+
+		&:before, &:after
+			content: ''
+
+			position: absolute
+
+			top: 50%
+			left: 50%
+
+			background: url(../../static/img/icons/cub-white.svg) no-repeat center center / cover
+
+			width: 23px
+			height: 26px
+
+			transform: translate(-50%, -50%)
+
+		&:after
+			opacity: 0
+
+			background: url(../../static/img/icons/cub-black.svg) no-repeat center center / cover
+
+
+		&:hover
+			background-color: #507bad
+
+
+	&__control_zoom
+		position: absolute
+
+		bottom: 8px
+		right: 8px
+	
+	&__zoom
+		width: 40px
+		height: 40px
+		margin-top: 1px
+
+		position: relative
+
+		display: -webkit-flex
+		display: -moz-flex
+		display: -ms-flex
+		display: -o-flex
+		display: flex
+		justify-content: center
+		align-items: center
+
+		background-color: #fff
+
+	&__zoom_circle
+		width: 20px
+		height: 20px
+
+		border: 2px solid #000
+
+		border-radius: 50%
+
+		top: 0
+		left: 0
+
+		cursor: pointer
+
+		transition: all .4s ease
+
+		&:hover
+			border-color: #5b8ec8
+
+			@media(max-width:1023px)
+
+				border-color: #000
+
+	&__zoom_plus
+		&:before, &:after
+			content: ''
+
+			position: absolute
+
+			top: 50%
+			left: 50%
+
+			background: #000
+
+			width: 7px
+			height: 1px
+
+			transform: translate(-50%, -50%)
+
+			transition: all .4s ease
+
+		
+
+		&:hover
+
+			&:before, &:after
+
+				background: #5b8ec8
+
+			@media(max-width:1023px)
+
+				&:before, &:after
+
+					background: #000
+
+		&:after
+			transform: translate(-50%, -50%) rotate(90deg)
+
+	&__zoom_minus
+		&:before
+			content: ''
+
+			position: absolute
+
+			top: 50%
+			left: 50%
+
+			background: #000
+
+			width: 7px
+			height: 1px
+
+			transform: translate(-50%, -50%)
+
+			transition: all .4s ease
+
+		&:hover
+
+			&:before, &:after
+
+				background: #5b8ec8
+
+			@media(max-width:1023px)
+
+				&:before, &:after
+
+					background: #000
+
+.constructor_2d_active
+	background: #5b8ec8
+
+	transition: all .5s linear
+
+	&:before
+
+		border-color: #fff
+
+	&:hover
+		background-color: #507bad
+
+		&:before
+			border-color: #fff
+
+.constructor_3d_active
+	background: #fff
+
+	&:hover
+		background: #fff
+	
+	&:after
+		opacity: 1
+
+	&:before
+		opacity: 0
+
+
+
+
+
+
+
+
