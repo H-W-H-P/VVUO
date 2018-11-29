@@ -13,7 +13,11 @@
  * Date: 2015-04-28T16:01Z
  */
 
+
+
 (function( global, factory ) {
+
+	
 
 	if ( typeof module === "object" && typeof module.exports === "object" ) {
 		// For CommonJS and CommonJS-like environments where a proper `window`
@@ -44733,6 +44737,7 @@ Item.prototype.updateHighlight = function() {
 Item.prototype.mouseOver = function() {
     this.hover = true;
     this.updateHighlight();
+    console.log('heh')
 };
 
 Item.prototype.mouseOff = function() {
@@ -46661,7 +46666,8 @@ var ThreeController = function(three, model, camera, element, controls, hud) {
         var pos = item.position.clone();
         pos.y = 0;   
         var vec = three.projectVector(pos); 
-        clickPressed(vec); 
+        // clickPressed(vec); 
+        // prod change
     }
     item.position_set = true;
   }
@@ -46744,18 +46750,24 @@ var ThreeController = function(three, model, camera, element, controls, hud) {
       // mouse.x = event.clientX-500;
       // mouse.y = event.clientY+100;
 
-   //    var element = document.getElementById('viewer');
-   //    var viewportOffset = element.getBoundingClientRect();
-	  // var top = viewportOffset.top;
-	  // var left = viewportOffset.left;
+      var element = document.getElementById('viewer');
+      var viewportOffset = element.getBoundingClientRect();
+	  var top = viewportOffset.top;
+	  var left = viewportOffset.left;
+	  var coefHeight = window.innerHeight / element.offsetHeight;
+	  var coefWidth = 1.1;
 
-   //    mouse.x = event.clientX - left;
-   //    mouse.y = event.clientY - top;
+	  // prod change
+
+      // mouse.x = event.clientX - left;
+      mouse.y = event.clientY - top;
+      mouse.y = mouse.y * coefHeight;
 
       mouse.x = event.clientX;
-      mouse.y = event.clientY;
+      mouse.x = mouse.x * coefWidth;
+      // mouse.y = event.clientY;
 
-      console.log(mouse.x, mouse.y)
+      // console.log(mouse.x, mouse.y)
 
       if (!mouseDown) {
         updateIntersections();        
@@ -47078,9 +47090,15 @@ Contributors:
  */
 
 var JQUERY = require('jquery');
-var THREE = require('three')
+var THREE = require('three');
+
+
+
 
 var ThreeControls = function (object, domElement) {
+	//console.log(this.target)
+
+	// prod change
 
 	this.object = object;
 	this.domElement = (domElement !== undefined) ? domElement : document;
@@ -47128,6 +47146,8 @@ var ThreeControls = function (object, domElement) {
 
 	this.needsUpdate = true;
 
+	
+
 	// internals
 
 	var scope = this;
@@ -47154,20 +47174,22 @@ var ThreeControls = function (object, domElement) {
 	var STATE = { NONE : -1, ROTATE : 0, DOLLY : 1, PAN : 2, TOUCH_ROTATE : 3, TOUCH_DOLLY : 4, TOUCH_PAN : 5 };
 	var state = STATE.NONE;
 
+	var trigger2d = false;
+
 	this.controlsActive = function() {
 		return (state === STATE.NONE);
 	}
 
-  this.setPan = function( vec3 ) {
-      pan = vec3;
-  };
+	this.setPan = function( vec3 ) {
+	  pan = vec3;
+	};
 
-  this.panTo = function(vec3) {
-  	var newTarget = new THREE.Vector3(vec3.x, scope.target.y, vec3.z);
-  	var delta = scope.target.clone().sub(newTarget);
-  	pan.sub(delta);
-  	scope.update();
-  };
+	this.panTo = function(vec3) {
+		var newTarget = new THREE.Vector3(vec3.x, scope.target.y, vec3.z);
+		var delta = scope.target.clone().sub(newTarget);
+		pan.sub(delta);
+		scope.update();
+	};
 
 	this.rotateLeft = function ( angle ) {
 		if ( angle === undefined ) {
@@ -47253,6 +47275,7 @@ var ThreeControls = function (object, domElement) {
 		}
 
 		scale /= dollyScale;
+		
 	};
 
 	this.dollyOut = function ( dollyScale ) {
@@ -47304,6 +47327,7 @@ var ThreeControls = function (object, domElement) {
 
 		thetaDelta = 0;
 		phiDelta = 0;
+		
 		scale = 1;
 		pan.set(0,0,0);
 
@@ -47320,6 +47344,7 @@ var ThreeControls = function (object, domElement) {
 	}
 
 	function onMouseDown( event ) {
+		if (trigger2d) return;
 
 		if ( scope.enabled === false ) { return; }
 		event.preventDefault();
@@ -47352,13 +47377,84 @@ var ThreeControls = function (object, domElement) {
 
 	}
 
-	function onMouseMove( event ) {
 
+
+	this.updateMy = function (value) {
+		
+		var position = this.object.position;
+		var offset = position.clone().sub( this.target );
+
+	
+		// angle from z-axis around y-axis
+		var theta = Math.atan2( offset.x, offset.z );
+
+		// angle from y-axis
+		var phi = Math.atan2( Math.sqrt( offset.x * offset.x + offset.z * offset.z ), offset.y );
+
+		if ( this.autoRotate ) {
+			this.rotateLeft( getAutoRotationAngle() );
+		}
+
+		theta += thetaDelta;
+		phi += phiDelta;
+
+		// restrict phi to be between desired limits
+		phi = Math.max( this.minPolarAngle, Math.min( this.maxPolarAngle, phi ) );
+
+		// restrict phi to be betwee EPS and PI-EPS
+		phi = Math.max( EPS, Math.min( Math.PI - EPS, phi ) );
+
+		var radius = offset.length() * scale;
+
+		// restrict radius to be between desired limits
+		radius = Math.max( this.minDistance, Math.min( this.maxDistance, radius ) );
+		
+		// move target to panned location
+		this.target.add( pan );
+
+		if (value) {
+			offset.x = 0;
+			offset.y = 1200;
+			offset.z = -1;
+		} 
+
+
+		position.copy( this.target ).add( offset );
+
+		this.object.lookAt( this.target );
+
+		thetaDelta = 0;
+		phiDelta = 0;
+		scale = 1;
+		pan.set(0,0,0);
+
+		this.cameraMovedCallbacks.fire();
+		this.needsUpdate = true;
+	};
+
+
+
+	this.changeViewe_2d = function() {
+		if (trigger2d) return;
+		trigger2d = true;
+		scope.updateMy('2d');
+	
+	}
+	this.changeViewe_3d = function() {
+		trigger2d = false;
+	}
+
+
+	function onMouseMove( event ) {
+	
 		if ( scope.enabled === false ) return;
 
 		event.preventDefault();
 
 		var element = scope.domElement === document ? scope.domElement.body : scope.domElement;
+
+		
+		
 
 		if ( state === STATE.ROTATE ) {
 
@@ -47369,8 +47465,10 @@ var ThreeControls = function (object, domElement) {
 
 			// rotating across whole screen goes 360 degrees around
 			scope.rotateLeft( 2 * Math.PI * rotateDelta.x / element.clientWidth * scope.rotateSpeed );
+			
 			// rotating up and down along whole screen attempts to go 360, but limited to 180
 			scope.rotateUp( 2 * Math.PI * rotateDelta.y / element.clientHeight * scope.rotateSpeed );
+			
 
 			rotateStart.copy( rotateEnd );
 
@@ -47420,6 +47518,7 @@ var ThreeControls = function (object, domElement) {
 	}
 
 	function onMouseWheel( event ) {
+
 		event.preventDefault();
 
 		if ( scope.enabled === false || scope.noZoom === true ) return;
@@ -47575,6 +47674,7 @@ var ThreeControls = function (object, domElement) {
 		state = STATE.NONE;
 	}
 
+	
 	this.domElement.addEventListener( 'contextmenu', function ( event ) { event.preventDefault(); }, false );
 	this.domElement.addEventListener( 'mousedown', onMouseDown, false );
 	this.domElement.addEventListener( 'mousewheel', onMouseWheel, false );
@@ -48449,9 +48549,10 @@ var ThreeMain = function(model, element, canvasElement, opts) {
   }
 
   function spin() {
+	  return;
     if (options.spin && !mouseOver && !hasClicked) {
       var theta = 2 * Math.PI * options.spinSpeed * (Date.now() - lastRender);
-      scope.controls.rotateLeft(theta);
+      // scope.controls.rotateLeft(theta);
       scope.controls.update()
     }
   }
@@ -48992,3 +49093,4 @@ utils.subtract = function(array, subArray) {
 module.exports = utils;
 
 },{}]},{},[3]);
+
