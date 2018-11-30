@@ -44330,10 +44330,16 @@ var FloorplannerView = function(floorplan, viewmodel, canvas) {
   }
 
   function cmToFeet(cm) {
-    var realFeet = ((cm*0.393700) / 12);
-    var feet = Math.floor(realFeet);
-    var inches = Math.round((realFeet - feet) * 12);
-    return feet + "'" + inches + '"';
+    //var realFeet = ((cm*0.393700) / 12);
+    //var feet = Math.floor(realFeet);
+	//var inches = Math.round((realFeet - feet) * 12);
+	let metrerFull = (cm / 100).toFixed(1);
+	let pointBetween = metrerFull.indexOf('.');
+
+	let metterFinal = metrerFull.slice(0, pointBetween);
+	let cmFinal = metrerFull.slice(pointBetween + 1);
+
+    return `${metterFinal}m${cmFinal}cm`;
   }
 
   function drawEdgeLabel(edge) {
@@ -47415,7 +47421,7 @@ var ThreeControls = function (object, domElement) {
 		if (value) {
 			offset.x = 0;
 			offset.y = 1200;
-			offset.z = -1;
+			offset.z = 1;
 		} 
 
 
