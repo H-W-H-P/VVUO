@@ -6,3 +6,4 @@ import '@/styles/app.sass'
 
 // Scripts
 import './scripts'
+import './scripts/items'

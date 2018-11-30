@@ -256,17 +256,17 @@ $(document).ready(function () {
     $('.main_slider__progr').width(progBarWidth)
   }
 
-  $('.config__owl').owlCarousel({
-    items: 4,
-    loop: false,
-    dots: false,
-    nav: true,
-    responsive: {
-      1024: {
-        items: 5
-      }
-    }
-  })
+  // $('.config__owl').owlCarousel({
+  //   items: 4,
+  //   loop: false,
+  //   dots: false,
+  //   nav: true,
+  //   responsive: {
+  //     1024: {
+  //       items: 5
+  //     }
+  //   }
+  // })
 
   $('.big_image__wr2').owlCarousel({
     items: 1,
