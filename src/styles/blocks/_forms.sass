@@ -245,6 +245,108 @@ label input, label textarea
 	padding-top: 36px
 	padding-bottom: 178px
 
+	button
+		color: #fff
+
+	.have_question__select_wrap
+		display: none
+
+
+	.conf_wr_filters__cat_wr.closed
+		@media (max-width: 1439px)
+			padding: 0
+
+	.conf_wr__cat.closed
+		@media (max-width: 1439px)
+			color: rgba(40,40,43,.5)
+	
+	.conf_wr_filters__input_wr
+		@media (max-width: 1439px)
+			display: block
+
+	.have_question__select_new
+		margin: 0
+		padding: 11px 20px 0px 29px
+
+		font-size: 14px
+		font-weight: normal
+
+		position: relative
+
+	.css_arr:after
+		right: 20px
+
+	.shop_filters__cat:hover:after
+		border-color: #000
+
+	.shop_filters__cat
+		color: rgba(40,40,43,.5)
+
+		font-weight: normal
+
+		display: block
+
+		padding: 0
+		margin: 0
+
+		position: static
+
+		&:hover 
+			padding: 0
+			margin: 0
+
+			color: rgba(40,40,43,.5)
+	
+	.shop_filters__cat.closed
+		padding: 0
+		margin: 0
+
+
+	.shop_filters__cat_wr
+		position: absolute
+
+		transition: all .5s ease
+
+		top: 100%
+		left: -1px
+
+		width: 100%
+
+		background-color: #fff
+
+		border-left: 1px solid #dcdfe2
+		border-right: 1px solid #dcdfe2
+		border-bottom: 1px solid #dcdfe2
+
+		@media (max-width: 1439px)
+			padding: 0
+
+	.conf_wr_filters-side__chbx
+		border-bottom: none
+
+		padding-left: 29px
+
+	@media (max-width: 1439px)
+		.shop_filters__block
+			width: 30.3333%
+
+		.conf_wr__cat
+			transform: none
+
+	@media (max-width: 1023px)
+		.have_question__select_new
+			display: none
+
+		.have_question__select_wrap
+			display: block
+
+		.shop_filters__block
+			width: 100%
+
+	
+
+
+
 	
 	@media(max-width:1439px)
 		padding-top: 30px
@@ -393,8 +495,11 @@ label input, label textarea
 		border: none
 		outline: 0
 
+		-webkit-appearance: none
+
 		@media(max-width:767px)
 			padding-left: 16px
+
 
 	&__btn
 		width: 25%
@@ -429,7 +534,7 @@ label input, label textarea
 
 			height: 20px
 			width: 20px
-			top: 0
+			top: 2px
 			left: 0
 
 			background: url('../../static/img/icons/white-arr.svg') no-repeat center center

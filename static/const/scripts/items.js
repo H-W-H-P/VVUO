@@ -50,54 +50,54 @@ $(document).ready(function() {
   //     }
   //   })
 
-   let type = [];
-   let objType = {};
+  //  let type = [];
+  //  let objType = {};
 
-   let label = $('.conf_wr_filters-side__chbx').each((value, key) => {
-    if ($(key).attr('data-type')) {
-      type.push($(key).attr('data-type'))
-    }
-  });
+  //  let label = $('.conf_wr_filters-side__chbx').each((value, key) => {
+  //   if ($(key).attr('data-type')) {
+  //     type.push($(key).attr('data-type'))
+  //   }
+  // });
 
-   type.forEach((value, key) => {
-    let i = 0;
-    objType[value] = i;
+  //  type.forEach((value, key) => {
+  //   let i = 0;
+  //   objType[value] = i;
 
-    items.forEach((valueItem, key) => {
-      if (valueItem['types'] === value) {
-        i++;
-        objType[value] = i;
-      }
-    });
+  //   items.forEach((valueItem, key) => {
+  //     if (valueItem['types'] === value) {
+  //       i++;
+  //       objType[value] = i;
+  //     }
+  //   });
 
-  });
-
-
-   for (let key in objType) {
-    $('.conf_wr_filters-side__chbx').each((valueLabel, keyLabel) => {
-      if ($(keyLabel).attr('data-type') === key) {
-        $(keyLabel).attr('data-amount', `${objType[key]}`)
-      }
-    });
-  }
+  // });
 
 
+  //  for (let key in objType) {
+  //   $('.conf_wr_filters-side__chbx').each((valueLabel, keyLabel) => {
+  //     if ($(keyLabel).attr('data-type') === key) {
+  //       $(keyLabel).attr('data-amount', `${objType[key]}`)
+  //     }
+  //   });
+  // }
 
 
-  $('.conf_wr_filters-side__chbx').on('clicks', function(EO) {
-    $('.config__owl').empty();
 
-    let htmlItem = `<a href='#' class='config__item'>
-    <div class='config__img_wr'></div>
-    <img src='static/img/pictures/shop2.png' class='config__icon>
-    <div class='config__arrow'>
-    <img src='static/img/icons/gray-arr.svg' class='config__icon'>
-    <img src='static/img/icons/white-arr.svg' class='config__icon config__icon-hov'>
-    </div>
-    <p class='config__name'>Стол для учителя</p>
-    <p class='config__desc'>100х36 см</p>
-    <p class='config__price'>1200 ₽</p>
-    </a>`;
+
+  // $('.conf_wr_filters-side__chbx').on('clicks', function(EO) {
+  //   $('.config__owl').empty();
+
+  //   let htmlItem = `<a href='#' class='config__item'>
+  //   <div class='config__img_wr'></div>
+  //   <img src='static/img/pictures/shop2.png' class='config__icon>
+  //   <div class='config__arrow'>
+  //   <img src='static/img/icons/gray-arr.svg' class='config__icon'>
+  //   <img src='static/img/icons/white-arr.svg' class='config__icon config__icon-hov'>
+  //   </div>
+  //   <p class='config__name'>Стол для учителя</p>
+  //   <p class='config__desc'>100х36 см</p>
+  //   <p class='config__price'>1200 ₽</p>
+  //   </a>`;
 
     // $('.config__owl').append(htmlItem);
 
@@ -117,7 +117,7 @@ $(document).ready(function() {
   
 
 
-  })
+  // })
 
 
 

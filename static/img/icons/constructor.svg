@@ -1,12 +1,18 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="58" height="59" viewBox="0 0 58 59">
-    <defs>
-        <linearGradient id="a" x1="0%" x2="86%" y1="49.992%" y2="49.992%">
-            <stop offset="0%" stop-color="#00BCE8"/>
-            <stop offset="100%" stop-color="#4480BC"/>
-        </linearGradient>
-    </defs>
-    <g fill="none" fill-rule="evenodd">
-        <path stroke="#28282B" stroke-width="2" d="M20 1.5h19v19H20zM57 20.5H38v37h19v-37z"/>
-        <path fill="url(#a)" d="M18 37V19h21v39.5H0V37h18z" transform="translate(1)"/>
-    </g>
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 21.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Слой_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 64 63" style="enable-background:new 0 0 64 63;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:none;stroke:#28282B;stroke-width:2;}
+	.st1{fill:url(#Combined-Shape_1_);}
+</style>
+<title>constructor-icon</title>
+<desc>Created with Sketch.</desc>
+<rect id="Rectangle-2" x="22.1" y="3.5" class="st0" width="18.9" height="19"/>
+<path id="Rectangle-2-Copy-5" class="st0" d="M59,22.5H40v37h19V22.5z"/>
+<linearGradient id="Combined-Shape_1_" gradientUnits="userSpaceOnUse" x1="-367.3333" y1="184.3544" x2="-366.4733" y2="184.3544" gradientTransform="matrix(39 0 0 -39.5 14329 7323)">
+	<stop  offset="0" style="stop-color:#00BCE8"/>
+	<stop  offset="1" style="stop-color:#4480BC"/>
+</linearGradient>
+<path id="Combined-Shape" class="st1" d="M21,39.3V21.5h21v20.9v18.1H21.4H3V39.3H21z"/>
 </svg>
