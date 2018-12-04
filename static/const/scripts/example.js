@@ -366,6 +366,7 @@ var SideMenu = function(blueprint3d, floorplanControls, modalEffects) {
 
   // TODO: this doesn't really belong here
   function initItems() {
+    console.log(this)
     $("#add-items").find(".add-item").mousedown(function(e) {
       var modelUrl = $(this).attr("model-url");
       var itemType = parseInt($(this).attr("model-type"));
@@ -381,8 +382,8 @@ var SideMenu = function(blueprint3d, floorplanControls, modalEffects) {
     });
   }
 
-  // blueprint3d.model.scene.addItem(1, 'static/const/models/model1/model.js', {resizable: true});
-  // blueprint3d.model.scene.addItem(1, 'static/const/models/model3/model.js', {resizable: true});
+  blueprint3d.model.scene.addItem(1, 'static/const/models/model1/model.js', {resizable: true});
+  blueprint3d.model.scene.addItem(1, 'static/const/models/model3/model.js', {resizable: true});
 
   init();
 

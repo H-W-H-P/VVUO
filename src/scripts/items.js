@@ -17,7 +17,7 @@ var items = [
     'type': '7',
     'types': 'мебель1',
     'category': 'мебель',
-    'size': '600'
+    'size': '900'
   },
   {
     'name': 'Closed Door',
@@ -26,7 +26,7 @@ var items = [
     'type': '7',
     'types': 'мебель1',
     'category': 'мебель',
-    'size': '600'
+    'size': '200'
   },
   {
     'name': 'table',
@@ -275,24 +275,26 @@ $('.conf_wr_filters-side__chbx').on('click', function (EO) {
 
   let htmlItem
   let nameFilter = $(EO.target).attr('data-type')
+  let numItem = 0
 
   items.forEach((valueItem, key) => {
     if (valueItem['types'] !== nameFilter) {
       return
     }
-
-    htmlItem = `<a href='#' class='config__item '>
-      <div class='config__img_wr'></div>
-      <img src='static/img/pictures/shop2.png' class='config__icon>
+    htmlItem = `<a href='#' class='config__item popUpCall' id="items-wrapper add-items" data-item="${numItem}" data-pop_up=".pop_up__items">
+      <div class='config__img_wr add-item' thumbnail   model-name="Closed Door"  model-url="static/const/models/model1/model.js"  model-type="1"   >
+      <img src='static/img/pictures/shop2.png' class='items_pop_up__img_items'>
       <div class='config__arrow'>
       <img src='static/img/icons/gray-arr.svg' class='config__icon'>
       <img src='static/img/icons/white-arr.svg' class='config__icon config__icon-hov'>
+      </div>
       </div>
       <p class='config__name'>Стол для учителя</p>
       <p class='config__desc'>100х36 см</p>
       <p class='config__price'>${valueItem['size']} ₽</p>
       </a>`
     $('.config__owl').append(htmlItem)
+    numItem++
   })
 
   courOwl = $('.config__owl').owlCarousel({
@@ -311,12 +313,71 @@ $('.conf_wr_filters-side__chbx').on('click', function (EO) {
 time = performance.now() - time
 console.log('Время выполнения = ', time)
 
+function slideItem (prop) {
+  let dataItemSelect
+  let itemNext
+  let lengthItem = $('.config__item').length
+  let counter = 0
+  // l
+  // l
+  function slideItemBtn (e, val) {
+    e.preventDefault()
+    let selectItem = $('.item_select').eq(0)
+
+    if (val === 'next') {
+      dataItemSelect = $(selectItem).attr('data-item')
+      dataItemSelect++
+      if (dataItemSelect) {
+        counter = dataItemSelect
+      }
+      if (counter >= lengthItem) {
+        return
+      }
+      $(selectItem).removeClass('item_select')
+    } else {
+      dataItemSelect = $(selectItem).attr('data-item')
+      dataItemSelect--
+      if (dataItemSelect) {
+        counter = dataItemSelect
+      }
+      if (counter <= 0) {
+        return
+      }
+      $(selectItem).removeClass('item_select')
+    }
+    itemNext = $(`.config__item[data-item="${dataItemSelect}"]`)
+    $(itemNext).addClass('item_select')
+    // l
+    createContentItem(itemNext)
+  }
+  $('.slider_middle_next').on('click', function (EO) {
+    let e = EO
+    slideItemBtn(e, 'next')
+  })
+  $('.slider_middle_prev').on('click', function (EO) {
+    let e = EO
+    slideItemBtn(e, 'prev')
+  })
+}
+
 // items click
+function createContentItem (prop) {
+  let itemImg = $(prop).find('.items_pop_up__img_items').clone()
+  let itemPrice = $(prop).find('.config__price').html()
+  $('.items_pop_up__wrap_img').html(itemImg)
+  $('.items_pop_up__price').html(itemPrice)
+}
 $('.conf_wr__over').on('click', function (EO) {
-  let item = $(EO.target).parent()
+  EO.preventDefault()
+  let item = $(EO.target).closest('.config__item')
   if (!$(item).hasClass('config__item')) {
     return
   }
-  EO.preventDefault()
-  // $('.pop_up_items').addClass('pop_up_active')
+
+  createContentItem(item)
+  $(item).addClass('item_select')
+  $('.pop_up__items').addClass('pop_up_active')
+  $('body').addClass('pop_up_cond')
+  $('html').addClass('pop_up_cond')
+  slideItem()
 })

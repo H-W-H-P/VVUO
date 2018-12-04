@@ -947,12 +947,16 @@ label input, label textarea
 	
 	&_consult
 
+	&__items
+		z-index: -10
 
+		opacity: 0
 
 	&_active
 		z-index: 10
 
 		opacity: 1
+
 
 	&_cond
 		overflow: hidden
@@ -981,13 +985,10 @@ label input, label textarea
 		padding-left: 0
 		padding-right: 0
 
+	
+
 
 .items_pop_up
-	opacity: 1
-	z-index: 400
-
-	background-color: pink
-
 	max-width: 1049px
 	padding: 0
 
@@ -998,8 +999,6 @@ label input, label textarea
 	display: flex
 
 	box-sizing: border-box
-
-	display: none
 
 	&__side
 		width: 50%
@@ -1034,12 +1033,42 @@ label input, label textarea
 
 		font-weight: bold
 
+	&__wrap_img
+		width: 100%
+		height: 100%
+
+	&__img_items
+		width: 100%
+		max-width: 100%
+		height: 100%
+
+		object-fit: cover
+
+		display: block
+
 	&__nav.slider_middle__nav
 		bottom: 0
 		right: 0
+		left: initial
+
+		width: 129px
+		height: 93px
+
+		&:hover
+			.slider_middle_prev, .slider_middle_next
+				background-color: #e0d7cf
 
 		.slider_middle_prev, .slider_middle_next
-			background-color: #e0d7cf
+			background-color: #e0d7ce
+
+			height: 100%
+			width: 50%
+
+			display: block
+
+			&::before
+				background: url(../../static/img/icons/arr-long-black.svg) no-repeat center center / 100%
+
 
 	&__btn.main_slider__btn
 		width: 292px
@@ -1049,3 +1078,5 @@ label input, label textarea
 
 		right: initial
 		left: 0
+
+		font-size: 18px
