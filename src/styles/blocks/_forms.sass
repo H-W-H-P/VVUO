@@ -248,104 +248,11 @@ label input, label textarea
 	button
 		color: #fff
 
-	.have_question__select_wrap
+	&__select_wrap
 		display: none
 
-
-	.conf_wr_filters__cat_wr.closed
-		@media (max-width: 1439px)
-			padding: 0
-
-	.conf_wr__cat.closed
-		@media (max-width: 1439px)
-			color: rgba(40,40,43,.5)
-	
-	.conf_wr_filters__input_wr
-		@media (max-width: 1439px)
-			display: block
-
-	.have_question__select_new
-		margin: 0
-		padding: 11px 20px 0px 29px
-
-		font-size: 14px
-		font-weight: normal
-
-		position: relative
-
-	.css_arr:after
-		right: 20px
-
-	.shop_filters__cat:hover:after
-		border-color: #000
-
-	.shop_filters__cat
-		color: rgba(40,40,43,.5)
-
-		font-weight: normal
-
-		display: block
-
-		padding: 0
-		margin: 0
-
-		position: static
-
-		&:hover 
-			padding: 0
-			margin: 0
-
-			color: rgba(40,40,43,.5)
-	
-	.shop_filters__cat.closed
-		padding: 0
-		margin: 0
-
-
-	.shop_filters__cat_wr
-		position: absolute
-
-		transition: all .5s ease
-
-		top: 100%
-		left: -1px
-
-		width: 100%
-
-		background-color: #fff
-
-		border-left: 1px solid #dcdfe2
-		border-right: 1px solid #dcdfe2
-		border-bottom: 1px solid #dcdfe2
-
-		@media (max-width: 1439px)
-			padding: 0
-
-	.conf_wr_filters-side__chbx
-		border-bottom: none
-
-		padding-left: 29px
-
-	@media (max-width: 1439px)
-		.shop_filters__block
-			width: 30.3333%
-
-		.conf_wr__cat
-			transform: none
-
-	@media (max-width: 1023px)
-		.have_question__select_new
+		@media (max-width: 1023px)
 			display: none
-
-		.have_question__select_wrap
-			display: block
-
-		.shop_filters__block
-			width: 100%
-
-	
-
-
 
 	
 	@media(max-width:1439px)
@@ -553,9 +460,6 @@ label input, label textarea
 			min-width: 272px
 
 
-		
-
-
 	&__consalt_free	
 		margin: 0
 		padding-top: 10px
@@ -570,6 +474,160 @@ label input, label textarea
 
 		@media(max-width:1023px)
 			width: 100%
+
+
+
+.select__wr
+
+	border: none
+	border-left: 1px solid transparent
+
+	display: -webkit-flex
+	display: -moz-flex
+	display: -ms-flex
+	display: -o-flex
+	display: flex
+	justify-content: center
+	align-content: center
+	align-items: center
+
+	position: relative
+
+	box-sizing: border-box
+
+.select
+	width: 100%
+	height: 100%
+
+	cursor: pointer
+
+	label, span
+		font-size: 14px
+
+		color: rgba(40,40,43,.5)
+
+	&__expand
+		width: 0
+		height: 40px
+
+		position: absolute
+
+		top: 0
+		right: 0
+
+		&::after
+			z-index: 2
+
+			position: absolute
+			content: ""
+			right: 20px
+			top: 50%
+			transform: translateY(-70%) rotate(-45deg)
+			width: 6px
+			height: 6px
+			transition: all .2s ease
+			border-left: 2px solid #28282b
+			border-bottom: 2px solid #28282b
+
+		&:hover
+			&::after
+				opacity: 1
+
+		&:checked
+			&::after
+				transform: translateY(-70%) rotate(135deg)
+
+	&__expandLabel
+		display: block
+
+		width: 100%
+		height: 40px
+
+		position: absolute
+
+		top: 0
+		left: 0
+
+		cursor: pointer
+
+	&__close
+		display: none
+
+	&__closeLabel
+		width: 100vw
+		height: 100vh
+
+		position: fixed
+
+		top: 0
+		left: 0
+
+		display: none
+
+	&__items
+		width: 100%
+
+		position: absolute
+
+		top: 0
+		left: 0
+
+		outline: 1px solid #dcdfe2
+
+
+		padding-top: 40px
+
+		box-sizing: border-box
+
+		z-index: 10
+
+	&__input
+		display: none
+
+	&__label
+		transition: all 250ms cubic-bezier(.4,.25,.3,1)
+
+		display: block
+
+		height: 0
+		padding-left: 20px
+
+		font-size: 1.2rem
+		line-height: 40px
+
+		overflow: hidden
+		color: #3e3e3e
+		background-color: #fff
+
+		cursor: pointer
+
+	&__label_placeholder
+		height: 40px
+
+		position: absolute
+
+		top: 0
+		left: 0
+		vertical-align: middle
+
+		background-color: transparent
+
+
+	&__expand:checked + .select__closeLabel
+			// display: block
+
+			+ .select__options .select__label
+				height: 40px
+
+				&:hover
+					background-color: #f7f7f7
+
+			+ .select__expandLabel
+				display: none
+
+	&__input:checked + .select__label
+		height: 40px
+		margin-top: -40px
 
 
 
