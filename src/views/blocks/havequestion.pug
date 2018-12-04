@@ -18,9 +18,9 @@ section.have_question.max_width
                 //- span.border
                 select#time(name="").have_question__select
                     option(value="default" disabled selected) Время для звонка
-                    option(value="1") 12:00
-                    option(value="1") 14:00
-                    option(value="1") 16:00
+                    option(value="8-12") утро 8:00 - 12:00
+                    option(value="12-15") день 12:00 - 15:00
+                    option(value="16-20") вечер 16:00 - 20:00
 
             .have_question__secect_style.select__wr.have_question__input
                 ul.select
@@ -34,13 +34,13 @@ section.have_question.max_width
 
                         ul.select__options
                             li.select__option
-                                input(type="radio" name="awesomeness").select__input#sel1
+                                input(type="radio" name="awesomeness" value="8-12").select__input#sel1
                                 label(for="sel1").select__label утро 8:00 - 12:00
                             li.select__option
-                                input(type="radio" name="awesomeness").select__input#sel2
+                                input(type="radio" name="awesomeness" value="12-15").select__input#sel2
                                 label(for="sel2").select__label день 12:00 - 15:00
                             li.select__option
-                                input(type="radio" name="awesomeness").select__input#sel3
+                                input(type="radio" name="awesomeness" value="16-20").select__input#sel3
                                 label(for="sel3").select__label вечер 16:00 - 20:00
                         label(for="awesomeness-opener").select__expandLabel
         .have_question__field_send
