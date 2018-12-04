@@ -49,6 +49,8 @@
 
 			transition: all ease .4s
 
+
+
 			@media(max-width:1023px)
 				width: 50%
 
@@ -175,11 +177,20 @@
 							transform: none
 							
 
-					&__image
-						transform: translateY(-150px)	
+					&__wrap_hover
+						transform: translateY(-240px)	
+
+						.catalog_wr__bottom_side
+							opacity: 1
+
+						.catalog_wr__shine
+							opacity: 1
 
 						@media(max-width:1023px)
-							transform: none					
+							transform: none			
+
+					&__wrap_hover_2
+						transform: translateY(-160px)
 
 		&__title
 			display: inline-block
@@ -226,6 +237,66 @@
 			@media(max-width:1023px)
 				left: 40px
 				display: none
+		
+		&__wrap_hover
+			transition: all .9s ease
+
+			.catalog_wr__bottom_side
+				bottom: -410px
+
+				opacity: 0
+				
+				transition: all .8s ease .9s
+			
+			.catalog_wr__shine
+				bottom: -384px
+				right: 1px
+
+				opacity: 0
+
+				transition: all .8s ease 1s
+
+		&__wrap_hover_1
+			transform: translateY(-40px)
+
+		&__wrap_hover_2
+
+			.catalog_wr__bottom_side
+				bottom: -271px
+				right: -37px
+				width: 188px
+
+			.catalog_wr__shine
+				bottom: -261px
+				right: 1px
+				width: 150px
+
+		&__wrap_hover_3
+			transform: translateY(-90px)
+
+			.catalog_wr__image
+				right: -43px
+
+			.catalog_wr__bottom_side
+				bottom: -297px
+
+			.catalog_wr__shine
+				bottom: -297px
+				right: 0
+				width: 150px
+
+		&__wrap_hover_4
+			transform: translateY(-90px)
+
+			.catalog_wr__bottom_side
+				bottom: -360px
+				right: -41px
+
+			.catalog_wr__shine
+				bottom: -320px
+				right: 0
+				width: 150px
+
 
 		&__image
 			position: absolute

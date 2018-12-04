@@ -281,7 +281,7 @@ $('.conf_wr_filters-side__chbx').on('click', function (EO) {
       return
     }
 
-    htmlItem = `<a href='#' class='config__item thumbnail add-item thumbnail add-item' model-name="Closed Door" model-type="7">
+    htmlItem = `<a href='#' class='config__item '>
       <div class='config__img_wr'></div>
       <img src='static/img/pictures/shop2.png' class='config__icon>
       <div class='config__arrow'>
@@ -310,3 +310,13 @@ $('.conf_wr_filters-side__chbx').on('click', function (EO) {
 
 time = performance.now() - time
 console.log('Время выполнения = ', time)
+
+// items click
+$('.conf_wr__over').on('click', function (EO) {
+  let item = $(EO.target).parent()
+  if (!$(item).hasClass('config__item')) {
+    return
+  }
+  EO.preventDefault()
+  // $('.pop_up_items').addClass('pop_up_active')
+})

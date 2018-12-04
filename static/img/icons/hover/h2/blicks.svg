@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="146" height="96" fill="none" viewBox="0 0 146 96">
+    <g fill="#fff" fill-opacity=".7" filter="url(#a)">
+        <circle cx="140.476" cy="26.112" r="1.506"/>
+        <circle cx="71.18" cy="51.721" r="1.506"/>
+        <circle cx="63.145" cy="5.524" r="1.506"/>
+        <circle cx="90.01" cy="37.912" r=".502"/>
+        <circle cx="131.561" cy="70.929" r=".502"/>
+        <circle cx="23.601" cy="40.8" r=".502"/>
+        <circle cx="53.73" cy="30.757" r=".502"/>
+        <circle cx="73.816" cy="91.015" r=".502"/>
+        <circle cx="116.75" cy="50.34" r="1.004"/>
+        <circle cx="119.691" cy="17.55" r="1.004"/>
+        <circle cx="28.372" cy="10.168" r="1.004"/>
+        <circle cx="4.519" cy="57.722" r=".502"/>
+        <circle cx="42.696" cy="69.422" r="1.004"/>
+    </g>
+    <defs>
+        <filter id="a" width="146" height="95.534" x="0" y="0" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse">
+            <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+            <feColorMatrix in="SourceAlpha" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"/>
+            <feOffset/>
+            <feGaussianBlur stdDeviation="2"/>
+            <feColorMatrix values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 1 0"/>
+            <feBlend in2="BackgroundImageFix" result="effect1_dropShadow"/>
+            <feBlend in="SourceGraphic" in2="effect1_dropShadow" result="shape"/>
+            <feGaussianBlur result="effect2_foregroundBlur" stdDeviation=".5"/>
+        </filter>
+    </defs>
+</svg>

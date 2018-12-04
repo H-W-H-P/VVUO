@@ -964,8 +964,76 @@ label input, label textarea
 		line-height: 1.71
 
 		opacity: 0.6
+	
+	&__browser
+		padding-left: 0
+		padding-right: 0
 
 
-.pop_up_browser
-	padding-left: 0
-	padding-right: 0
+.items_pop_up
+	opacity: 1
+	z-index: 400
+
+	background-color: pink
+
+	max-width: 1049px
+	padding: 0
+
+	display: -webkit-flex
+	display: -moz-flex
+	display: -ms-flex
+	display: -o-flex
+	display: flex
+
+	box-sizing: border-box
+
+	display: none
+
+	&__side
+		width: 50%
+
+		position: relative
+
+	&__left_bar
+		background-color: grey
+
+	&__title
+		padding-top: 80px
+		padding-left: 70px
+		width: 100%
+
+		text-align: left
+
+	&__txt
+		width: 100%
+		padding-left: 70px
+		padding-bottom: 40px
+		margin: 0
+
+		text-align: left
+
+	&__price
+		width: 100%
+		padding-left: 70px
+		padding-bottom: 62px
+		margin: 0
+
+		font-size: 30px
+
+		font-weight: bold
+
+	&__nav.slider_middle__nav
+		bottom: 0
+		right: 0
+
+		.slider_middle_prev, .slider_middle_next
+			background-color: #e0d7cf
+
+	&__btn.main_slider__btn
+		width: 292px
+		height: 93px
+
+		position: relative
+
+		right: initial
+		left: 0
