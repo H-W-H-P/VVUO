@@ -44330,10 +44330,16 @@ var FloorplannerView = function(floorplan, viewmodel, canvas) {
   }
 
   function cmToFeet(cm) {
-    var realFeet = ((cm*0.393700) / 12);
-    var feet = Math.floor(realFeet);
-    var inches = Math.round((realFeet - feet) * 12);
-    return feet + "'" + inches + '"';
+    //var realFeet = ((cm*0.393700) / 12);
+    //var feet = Math.floor(realFeet);
+	//var inches = Math.round((realFeet - feet) * 12);
+	let metrerFull = (cm / 100).toFixed(1);
+	let pointBetween = metrerFull.indexOf('.');
+
+	let metterFinal = metrerFull.slice(0, pointBetween);
+	let cmFinal = metrerFull.slice(pointBetween + 1);
+
+    return `${metterFinal}m${cmFinal}cm`;
   }
 
   function drawEdgeLabel(edge) {
@@ -46885,7 +46891,9 @@ var ThreeController = function(three, model, camera, element, controls, hud) {
         controls.enabled = false;
         break;
       case states.DRAGGING:
-        three.setCursorStyle("move");
+       three.setCursorStyleUrl("../../static/img/icons/hand-arrows-coursor-2.svg");
+        //three.setCursorStyle("move");
+        
         clickPressed();
         controls.enabled = false;
         break;
@@ -46899,7 +46907,7 @@ var ThreeController = function(three, model, camera, element, controls, hud) {
         break;
       case states.DRAGGING:
         if (mouseoverObject) {
-          three.setCursorStyle("pointer");
+          // three.setCursorStyle("pointer");
         } else {
           three.setCursorStyle("auto");
         }
@@ -47062,7 +47070,8 @@ var ThreeController = function(three, model, camera, element, controls, hud) {
       } else {
         mouseoverObject = intersectedObject;
         mouseoverObject.mouseOver();
-        three.setCursorStyle("pointer");
+       three.setCursorStyle("pointer");
+       three.setCursorStyleUrl("../../static/img/icons/hand-arrows-coursor-2.svg");
         scope.needsUpdate = true;
       }
     } else if (mouseoverObject != null) {
@@ -47415,7 +47424,7 @@ var ThreeControls = function (object, domElement) {
 		if (value) {
 			offset.x = 0;
 			offset.y = 1200;
-			offset.z = -1;
+			offset.z = 1;
 		} 
 
 
@@ -48633,6 +48642,9 @@ var ThreeMain = function(model, element, canvasElement, opts) {
   this.setCursorStyle = function(cursorStyle) {
     domElement.style.cursor = cursorStyle;
   };
+  this.setCursorStyleUrl = function(cursorStyle) {
+  	domElement.style.cursor = `url(${cursorStyle}) 25 15, auto`;
+  }
 
   this.updateWindowSize = function() {
     scope.heightMargin = 0;

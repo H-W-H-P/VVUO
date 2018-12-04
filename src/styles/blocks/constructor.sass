@@ -1,7 +1,9 @@
+body 
+	//cursor: url(../../static/img/icons/hand-arrows-coursor-2.svg), auto
+
 .constructor
 
 	&__control_view
-
 		position: absolute
 
 		top: 8px
@@ -12,6 +14,10 @@
 		display: -ms-flex
 		display: -o-flex
 		display: flex
+
+		@media(max-width:1439px)
+			top: 21px
+			right: 18px
 
 	&__controlViwe
 		width: 47px
@@ -55,6 +61,10 @@
 			&:before
 				border-color: #5b8ec8
 
+			@media(max-width:1023px)
+				&:before
+					border-color: #000
+
 	&__controlViwe_wh
 		background-color: #5b8ec8
 
@@ -86,12 +96,19 @@
 		&:hover
 			background-color: #507bad
 
+			@media(max-width:1023px)
+				background-color: #5b8ec8
+
 
 	&__control_zoom
 		position: absolute
 
 		bottom: 8px
 		right: 8px
+
+		@media(max-width:1439px)
+			bottom: 21px
+			right: 18px
 	
 	&__zoom
 		width: 40px
@@ -149,9 +166,7 @@
 			transform: translate(-50%, -50%)
 
 			transition: all .4s ease
-
 		
-
 		&:hover
 
 			&:before, &:after
@@ -188,13 +203,11 @@
 		&:hover
 
 			&:before, &:after
-
 				background: #5b8ec8
 
 			@media(max-width:1023px)
 
 				&:before, &:after
-
 					background: #000
 
 .constructor_2d_active
@@ -203,7 +216,6 @@
 	transition: all .5s linear
 
 	&:before
-
 		border-color: #fff
 
 	&:hover
