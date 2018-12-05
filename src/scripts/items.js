@@ -283,7 +283,7 @@ $('.conf_wr_filters-side__chbx').on('click', function (EO) {
       return
     }
     htmlItem = `<a href='#' class='config__item popUpCall' id="items-wrapper add-items" data-item="${numItem}" data-pop_up=".pop_up__items">
-      <div class='config__img_wr add-item' thumbnail   model-name="Closed Door"  model-url="static/const/models/model1/model.js"  model-type="1"   >
+      <div class='config__img_wr add-item'   >
       <img src='${valueItem['image']}' class='items_pop_up__img_items'>
       <div class='config__arrow'>
       <img src='static/img/icons/gray-arr.svg' class='config__icon'>
@@ -397,6 +397,10 @@ function slideItem (prop) {
     $('.slider_middle_next').unbind()
   }
   $('.pop_up__toggle').on('click', function () {
+    closePopUp()
+  })
+  $('.my_add_item').on('click', function (EO) {
+    EO.preventDefault()
     closePopUp()
   })
 }
