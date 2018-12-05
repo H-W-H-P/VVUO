@@ -41,16 +41,19 @@ $(document).ready(function () {
   })
 
   var priceLimits = {
-    left: 10,
+    left: 1,
     right: 50
   }
 
   $('.prFil').on('input', function (e) {
     var priceVal = $(this).val()
+    // curValue / maxPrice * 1000000
     if ($(this).hasClass('prFilLeft')) {
-      priceLimits.left = priceVal
+      $('.ui-slider-handle:nth-last-child(2) .price').text(priceVal)
+      priceLimits.left = priceVal / 100
     } else {
-      priceLimits.right = priceVal
+      $('.ui-slider-handle:last-child .price').text(priceVal)
+      priceLimits.right = priceVal / 100
     }
     $('.shop_filters__price').slider('option', 'values', [ priceLimits.left, priceLimits.right ])
   })
@@ -221,6 +224,8 @@ $(document).ready(function () {
       var curValue = ui.value
       var curPrice = curValue / maxPrice * 1000000
       $('.ui-slider-handle.ui-state-active .price').html(curPrice)
+      if (ui.handleIndex === 1) $('.prFilRight').val(curPrice)
+      else $('.prFilLeft').val(curPrice)
     }
   })
 
@@ -521,11 +526,11 @@ $(document).ready(function () {
   console.log(bwer())
   // map
   ymaps.load().then(maps => {
-    // const map = new maps.Map('contacts_page__map', {
-    //   center: [55.76, 37.64],
-    //   zoom: 12
-    // })
-    // map.panes.get('ground').getElement().style.filter = 'grayscale(100%)'
+    const map = new maps.Map('contacts_page__map', {
+      center: [55.76, 37.64],
+      zoom: 12
+    })
+    map.panes.get('ground').getElement().style.filter = 'grayscale(100%)'
   })
     .catch(error => console.log('Failed to load Yandex Maps', error))
 })
