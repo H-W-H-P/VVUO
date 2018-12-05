@@ -381,12 +381,21 @@ var SideMenu = function(blueprint3d, floorplanControls, modalEffects) {
     });
   }
 
-  // blueprint3d.model.scene.addItem(1, 'static/const/models/model1/model.js', {resizable: true});
-  // blueprint3d.model.scene.addItem(1, 'static/const/models/model3/model.js', {resizable: true});
+  blueprint3d.model.scene.addItem(1, 'static/const/models/model1/model.js', {resizable: true});
+  blueprint3d.model.scene.addItem(1, 'static/const/models/model3/model.js', {resizable: true});
 
   init();
 
+  $('.my_add_item').on('click', function() {
+    $('body, html').removeClass('pop_up_cond');
+    $('.items_pop_up').removeClass('pop_up_active');
+    blueprint3d.model.scene.addItem(1, 'static/const/models/model1/model.js', {resizable: true});
+
+  })
+
 }
+
+
 
 /*
  * Change floor and wall textures
