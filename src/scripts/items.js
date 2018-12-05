@@ -12,7 +12,7 @@ var items = [
   },
   {
     'name': 'Closed Door',
-    'image': 'https://blueprint-dev.s3.amazonaws.com/uploads/item_picture/image/646/thumbnail_Screen_Shot_2014-10-27_at_8.04.12_PM.png',
+    'image': 'static/img/pictures/shop2.png',
     'model': 'https://blueprint-dev.s3.amazonaws.com/uploads/item_model/model/617/closed-door28x80_baked.js',
     'type': '7',
     'types': 'мебель1',
@@ -35,7 +35,7 @@ var items = [
     'type': '1',
     'types': 'мебель2',
     'category': 'мебель',
-    'size': '500'
+    'size': 'мебель2'
   },
   {
     'name': 'table',
@@ -174,21 +174,18 @@ var items = [
   }
 ]
 
-let type = []
-let objType = {}
-
 let nameCategory = {}
-let itemsTypes = []
-var time = performance.now()
-
-function searchTypesAndCategory (propItems, propsCategory, propsTypes) {
+// Узнаем Категории
+function searchTypesAndCategory (propItems, propsCategory) {
   propItems.forEach((value) => {
     nameCategory[value['category']] = 1
   })
-
   createCotegory(propsCategory)
 }
 
+searchTypesAndCategory(items, nameCategory)
+
+// Создаем Категории
 function createCotegory (prop) {
   let nameCategoryNew = Object.getOwnPropertyNames(prop)
   let tamplateCatrgory
@@ -200,14 +197,25 @@ function createCotegory (prop) {
       </div>`
     $('.wrap_filter').append(tamplateCatrgory)
   })
-  createTypes(items, nameCategory)
+  createTypes(items, nameCategoryNew)
 }
 
+// Создаем ПодКатегорий
 function createTypes (propItems, propsCategory) {
-  let nameCategoryNew = Object.getOwnPropertyNames(propsCategory)
   let nameTypes
   let counter = 0
-  // 5
+  // -
+  propsCategory.forEach((value, key) => {
+    nameTypes = {}
+    propItems.forEach((v, k) => {
+      if (value === v['category']) {
+        nameTypes[v['types']] = 1
+      }
+    })
+    createTypesLabel(nameTypes)
+  })
+
+  // Создаем ПодКатегорий добавление в html
   function createTypesLabel (props) {
     let nameTypesNew = Object.getOwnPropertyNames(props)
     let tamplateTypesLabel
@@ -220,31 +228,23 @@ function createTypes (propItems, propsCategory) {
     })
     counter++
   }
-
-  nameCategoryNew.forEach((value, key) => {
-    nameTypes = {}
-    propItems.forEach((v, k) => {
-      if (value === v['category']) {
-        nameTypes[v['types']] = 1
-      }
-    })
-    createTypesLabel(nameTypes)
-  })
 }
 
-searchTypesAndCategory(items, nameCategory, itemsTypes)
+// s
+// s
+// s
+// Работа с кликами Попапом Слайдером
 
-// s
-// s
-// s
-// s
-
+// - ищем все Label
+let type = []
 $('.conf_wr_filters-side__chbx').each((value, key) => {
   if ($(key).attr('data-type')) {
     type.push($(key).attr('data-type'))
   }
 })
 
+// - узнаем сколько из в объекте Items
+let objType = {}
 type.forEach((value, key) => {
   let i = 0
   objType[value] = i
@@ -257,6 +257,7 @@ type.forEach((value, key) => {
   })
 })
 
+// - проставляем каждому label кол-во найден совпадений (кол-во товаров)
 for (let key in objType) {
   $('.conf_wr_filters-side__chbx').each((valueLabel, keyLabel) => {
     if ($(keyLabel).attr('data-type') === key) {
@@ -265,8 +266,8 @@ for (let key in objType) {
   })
 }
 
+// - по клику на Label создаем карусель и показываем items
 let courOwl
-
 $('.conf_wr_filters-side__chbx').on('click', function (EO) {
   if (courOwl) {
     courOwl.trigger('destroy.owl.carousel')
@@ -283,7 +284,7 @@ $('.conf_wr_filters-side__chbx').on('click', function (EO) {
     }
     htmlItem = `<a href='#' class='config__item popUpCall' id="items-wrapper add-items" data-item="${numItem}" data-pop_up=".pop_up__items">
       <div class='config__img_wr add-item' thumbnail   model-name="Closed Door"  model-url="static/const/models/model1/model.js"  model-type="1"   >
-      <img src='static/img/pictures/shop2.png' class='items_pop_up__img_items'>
+      <img src='${valueItem['image']}' class='items_pop_up__img_items'>
       <div class='config__arrow'>
       <img src='static/img/icons/gray-arr.svg' class='config__icon'>
       <img src='static/img/icons/white-arr.svg' class='config__icon config__icon-hov'>
@@ -310,9 +311,35 @@ $('.conf_wr_filters-side__chbx').on('click', function (EO) {
   })
 })
 
-time = performance.now() - time
-console.log('Время выполнения = ', time)
+// - работа с попапом
+// -
+// - клик по карточки - открытие попапа
+$('.conf_wr__over').on('click', function (EO) {
+  EO.preventDefault()
+  let item = $(EO.target).closest('.config__item')
+  if (!$(item).hasClass('config__item')) {
+    return
+  }
 
+  createContentItem(item)
+  $(item).addClass('item_select')
+  $('.pop_up__items').addClass('pop_up_active')
+  $('body').addClass('pop_up_cond')
+  $('html').addClass('pop_up_cond')
+  slideItem()
+})
+
+// - заполнение попапа (img ptice)
+function createContentItem (prop) {
+  let itemImg = $(prop).find('.items_pop_up__img_items').clone()
+  let itemPrice = $(prop).find('.config__price').html()
+  $('.items_pop_up__wrap_img').html(itemImg)
+  $('.items_pop_up__price').html(itemPrice)
+}
+
+// -
+// -
+// - попап next - prev
 function slideItem (prop) {
   let dataItemSelect
   let itemNext
@@ -324,6 +351,7 @@ function slideItem (prop) {
     e.preventDefault()
     let selectItem = $('.item_select').eq(0)
 
+    // - листаем карточки товаров
     if (val === 'next') {
       dataItemSelect = $(selectItem).attr('data-item')
       dataItemSelect++
@@ -347,9 +375,12 @@ function slideItem (prop) {
     }
     itemNext = $(`.config__item[data-item="${dataItemSelect}"]`)
     $(itemNext).addClass('item_select')
-    // l
+    // -
+    // l // - заполнение попапа (img ptice)
     createContentItem(itemNext)
   }
+
+  // - вешаем обраюотчики на кнопки
   $('.slider_middle_next').on('click', function (EO) {
     let e = EO
     slideItemBtn(e, 'next')
@@ -359,25 +390,3 @@ function slideItem (prop) {
     slideItemBtn(e, 'prev')
   })
 }
-
-// items click
-function createContentItem (prop) {
-  let itemImg = $(prop).find('.items_pop_up__img_items').clone()
-  let itemPrice = $(prop).find('.config__price').html()
-  $('.items_pop_up__wrap_img').html(itemImg)
-  $('.items_pop_up__price').html(itemPrice)
-}
-$('.conf_wr__over').on('click', function (EO) {
-  EO.preventDefault()
-  let item = $(EO.target).closest('.config__item')
-  if (!$(item).hasClass('config__item')) {
-    return
-  }
-
-  createContentItem(item)
-  $(item).addClass('item_select')
-  $('.pop_up__items').addClass('pop_up_active')
-  $('body').addClass('pop_up_cond')
-  $('html').addClass('pop_up_cond')
-  slideItem()
-})
