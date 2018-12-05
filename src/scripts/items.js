@@ -8,7 +8,7 @@ var items = [
     'type': '7',
     'types': 'мебель1',
     'category': 'мебель',
-    'size': '600'
+    'price': '600',
   },
   {
     'name': 'Closed Door',
@@ -17,7 +17,7 @@ var items = [
     'type': '7',
     'types': 'мебель1',
     'category': 'мебель',
-    'size': '600'
+    'price': '600',
   },
   {
     'name': 'Closed Door',
@@ -26,43 +26,51 @@ var items = [
     'type': '7',
     'types': 'мебель1',
     'category': 'мебель',
-    'size': '600'
+    'price': '600',
   },
   {
     'name': 'table',
+    'desc1': 'Стол для учителя',
+    'desc2': 'Вторая категория описания'
     'image': 'static/const/models/model1/model.png',
     'model': 'static/const/models/model1/model.js',
     'type': '1',
     'types': 'мебель2',
     'category': 'мебель',
-    'size': '500'
+    'price': '500',
   },
   {
     'name': 'table',
+    'desc1': 'Стол для учителя',
+    'desc2': 'Вторая категория описания'
     'image': 'static/const/models/model1/model.png',
     'model': 'static/const/models/model1/model.js',
     'type': '1',
     'types': 'мебель3',
     'category': 'мебель',
-    'size': '500'
+    'price': '500',
   },
   {
     'name': 'table',
+    'desc1': 'Стол для учителя',
+    'desc2': 'Вторая категория описания'
     'image': 'static/const/models/model1/model.png',
     'model': 'static/const/models/model1/model.js',
     'type': '1',
     'types': 'мебель4',
     'category': 'мебель',
-    'size': '500'
+    'price': '500',
   },
   {
     'name': 'table',
+    'desc1': 'Стол для учителя',
+    'desc2': 'Вторая категория описания'
     'image': 'static/const/models/model1/model.png',
     'model': 'static/const/models/model1/model.js',
     'type': '1',
     'types': 'мебель5',
     'category': 'мебель',
-    'size': '500'
+    'price': '500',
   },
   {
     'name': 'table',
@@ -71,7 +79,7 @@ var items = [
     'type': '1',
     'types': 'мебель6',
     'category': 'мебель',
-    'size': '500'
+    'price': '500',
   },
   {
     'name': 'table',
@@ -80,7 +88,7 @@ var items = [
     'type': '1',
     'types': 'препораты2',
     'category': 'препораты',
-    'size': '500'
+    'price': '500',
   },
   {
     'name': 'table',
@@ -89,7 +97,7 @@ var items = [
     'type': '1',
     'types': 'мебель7',
     'category': 'мебель',
-    'size': '500'
+    'price': '500',
   },
   {
     'name': 'table',
@@ -98,7 +106,7 @@ var items = [
     'type': '1',
     'types': 'мебель8',
     'category': 'мебель',
-    'size': '500'
+    'price': '500',
   },
   {
     'name': 'table',
@@ -107,7 +115,7 @@ var items = [
     'type': '1',
     'types': 'препораты',
     'category': 'препораты',
-    'size': '500'
+    'price': '500',
   },
   {
     'name': 'table',
@@ -116,7 +124,7 @@ var items = [
     'type': '1',
     'types': 'мебель9',
     'category': 'мебель',
-    'size': '500'
+    'price': '500',
   },
   {
     'name': 'table',
@@ -125,7 +133,7 @@ var items = [
     'type': '1',
     'types': 'мебель10',
     'category': 'мебель',
-    'size': '500'
+    'price': '500',
   },
   {
     'name': 'table',
@@ -134,7 +142,7 @@ var items = [
     'type': '1',
     'types': 'мебель11',
     'category': 'мебель',
-    'size': '500'
+    'price': '500',
   },
   // {
   //   'name': 'table',
@@ -143,7 +151,7 @@ var items = [
   //   'type': '1',
   //   'types': 'Пончики',
   //   'category': 'Пончики',
-  //   'size': '500'
+  //   'price': '500',
   // },
   {
     'name': 'table',
@@ -152,7 +160,7 @@ var items = [
     'type': '1',
     'types': 'другое',
     'category': 'другое',
-    'size': '1500'
+    'price': '1500,'
   },
   {
     'name': 'table',
@@ -161,7 +169,7 @@ var items = [
     'type': '1',
     'types': 'другое',
     'category': 'другое',
-    'size': '1500'
+    'price': '1500,'
   },
   {
     'name': 'table',
@@ -170,7 +178,7 @@ var items = [
     'type': '1',
     'types': 'другое',
     'category': 'другое',
-    'size': '1500'
+    'price': '1500,'
   }
 ]
 
@@ -290,7 +298,7 @@ $('.conf_wr_filters-side__chbx').on('click', function (EO) {
       </div>
       <p class='config__name'>Стол для учителя</p>
       <p class='config__desc'>100х36 см</p>
-      <p class='config__price'>${valueItem['size']} ₽</p>
+      <p class='config__price'>${valueItem['price']} ₽</p,>
       </a>`
     $('.config__owl').append(htmlItem)
   })
