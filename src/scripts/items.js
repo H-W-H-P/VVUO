@@ -309,6 +309,10 @@ $('.conf_wr_filters-side__chbx').on('click', function (EO) {
       }
     }
   })
+  courOwl.on('initialize.owl.carousel', function () {
+    console.log('asfsfadsgv')
+    $('.conf_wr__preloader').hide()
+  })
 })
 
 // - работа с попапом
@@ -320,7 +324,6 @@ $('.conf_wr__over').on('click', function (EO) {
   if (!$(item).hasClass('config__item')) {
     return
   }
-
   createContentItem(item)
   $(item).addClass('item_select')
   $('.pop_up__items').addClass('pop_up_active')
@@ -354,7 +357,6 @@ function slideItem (prop) {
     // - листаем карточки товаров
     if (val === 'next') {
       dataItemSelect = $(selectItem).attr('data-item')
-      console.log(dataItemSelect)
       dataItemSelect++
       if (dataItemSelect) {
         counter = dataItemSelect

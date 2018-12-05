@@ -182,16 +182,15 @@
 							.hover_bl
 			.conf_wr__over
 				h7.config__title.title.config-cond2__title Стул
+				.conf_wr__preloader
+					.bigSqr
+						.square.first
+						.square.second
+						.square.third
+						.square.fourth
+					//- .text loading
 				.config__owl.owl-carousel.slider_T1
-					a(href="#").config__item
-						.config__img_wr
-							img(src="static/img/pictures/shop2.png", alt="").config__img
-							.config__arrow
-								img(src="static/img/icons/gray-arr.svg", alt="").config__icon
-								img(src="static/img/icons/white-arr.svg", alt="").config__icon.config__icon-hov
-						p.config__name Стол для учителя
-						p.config__desc 100х36 см
-						p.config__price 1200 ₽
+					
 			.config__body
 				.config__top_line
 					.config__number 6000
@@ -200,6 +199,9 @@
 				include constructor
 			a(href="").conf_wr__quart.btn_w_arr.conf_wr__order.conf_wr__order2 Заказать
 				.hover_bl
+			input(type="text")#div
+			div#context-menu-delete.remove_item delete
+
 
 	section.mob.conf_wr__mob
 		img(src="static/img/icons/comp.svg", width="100", alt="")
