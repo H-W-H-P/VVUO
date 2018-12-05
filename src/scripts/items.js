@@ -276,7 +276,7 @@ $('.conf_wr_filters-side__chbx').on('click', function (EO) {
 
   let htmlItem
   let nameFilter = $(EO.target).attr('data-type')
-  let numItem = 0
+  let numItem = 1
 
   items.forEach((valueItem, key) => {
     if (valueItem['types'] !== nameFilter) {
@@ -350,15 +350,16 @@ function slideItem (prop) {
   function slideItemBtn (e, val) {
     e.preventDefault()
     let selectItem = $('.item_select').eq(0)
-
+    // -
     // - листаем карточки товаров
     if (val === 'next') {
       dataItemSelect = $(selectItem).attr('data-item')
+      console.log(dataItemSelect)
       dataItemSelect++
       if (dataItemSelect) {
         counter = dataItemSelect
       }
-      if (counter >= lengthItem) {
+      if (counter > lengthItem) {
         return
       }
       $(selectItem).removeClass('item_select')
@@ -368,7 +369,7 @@ function slideItem (prop) {
       if (dataItemSelect) {
         counter = dataItemSelect
       }
-      if (counter <= 0) {
+      if (dataItemSelect === 0) {
         return
       }
       $(selectItem).removeClass('item_select')
@@ -379,7 +380,7 @@ function slideItem (prop) {
     // l // - заполнение попапа (img ptice)
     createContentItem(itemNext)
   }
-
+  // -
   // - вешаем обраюотчики на кнопки
   $('.slider_middle_next').on('click', function (EO) {
     let e = EO
@@ -388,5 +389,14 @@ function slideItem (prop) {
   $('.slider_middle_prev').on('click', function (EO) {
     let e = EO
     slideItemBtn(e, 'prev')
+  })
+  function closePopUp () {
+    $('.item_select').removeClass('item_select')
+    counter = 0
+    $('.slider_middle_prev').unbind()
+    $('.slider_middle_next').unbind()
+  }
+  $('.pop_up__toggle').on('click', function () {
+    closePopUp()
   })
 }
