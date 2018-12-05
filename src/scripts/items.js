@@ -12,12 +12,12 @@ var items = [
   },
   {
     'name': 'Closed Door',
-    'image': 'https://blueprint-dev.s3.amazonaws.com/uploads/item_picture/image/646/thumbnail_Screen_Shot_2014-10-27_at_8.04.12_PM.png',
+    'image': 'static/img/pictures/shop2.png',
     'model': 'https://blueprint-dev.s3.amazonaws.com/uploads/item_model/model/617/closed-door28x80_baked.js',
     'type': '7',
     'types': 'мебель1',
     'category': 'мебель',
-    'size': '600'
+    'size': '900'
   },
   {
     'name': 'Closed Door',
@@ -26,7 +26,7 @@ var items = [
     'type': '7',
     'types': 'мебель1',
     'category': 'мебель',
-    'size': '600'
+    'size': '200'
   },
   {
     'name': 'table',
@@ -35,7 +35,7 @@ var items = [
     'type': '1',
     'types': 'мебель2',
     'category': 'мебель',
-    'size': '500'
+    'size': 'мебель2'
   },
   {
     'name': 'table',
@@ -174,21 +174,18 @@ var items = [
   }
 ]
 
-let type = []
-let objType = {}
-
 let nameCategory = {}
-let itemsTypes = []
-var time = performance.now()
-
-function searchTypesAndCategory (propItems, propsCategory, propsTypes) {
+// Узнаем Категории
+function searchTypesAndCategory (propItems, propsCategory) {
   propItems.forEach((value) => {
     nameCategory[value['category']] = 1
   })
-
   createCotegory(propsCategory)
 }
 
+searchTypesAndCategory(items, nameCategory)
+
+// Создаем Категории
 function createCotegory (prop) {
   let nameCategoryNew = Object.getOwnPropertyNames(prop)
   let tamplateCatrgory
@@ -200,14 +197,25 @@ function createCotegory (prop) {
       </div>`
     $('.wrap_filter').append(tamplateCatrgory)
   })
-  createTypes(items, nameCategory)
+  createTypes(items, nameCategoryNew)
 }
 
+// Создаем ПодКатегорий
 function createTypes (propItems, propsCategory) {
-  let nameCategoryNew = Object.getOwnPropertyNames(propsCategory)
   let nameTypes
   let counter = 0
-  // 5
+  // -
+  propsCategory.forEach((value, key) => {
+    nameTypes = {}
+    propItems.forEach((v, k) => {
+      if (value === v['category']) {
+        nameTypes[v['types']] = 1
+      }
+    })
+    createTypesLabel(nameTypes)
+  })
+
+  // Создаем ПодКатегорий добавление в html
   function createTypesLabel (props) {
     let nameTypesNew = Object.getOwnPropertyNames(props)
     let tamplateTypesLabel
@@ -220,31 +228,23 @@ function createTypes (propItems, propsCategory) {
     })
     counter++
   }
-
-  nameCategoryNew.forEach((value, key) => {
-    nameTypes = {}
-    propItems.forEach((v, k) => {
-      if (value === v['category']) {
-        nameTypes[v['types']] = 1
-      }
-    })
-    createTypesLabel(nameTypes)
-  })
 }
 
-searchTypesAndCategory(items, nameCategory, itemsTypes)
+// s
+// s
+// s
+// Работа с кликами Попапом Слайдером
 
-// s
-// s
-// s
-// s
-
+// - ищем все Label
+let type = []
 $('.conf_wr_filters-side__chbx').each((value, key) => {
   if ($(key).attr('data-type')) {
     type.push($(key).attr('data-type'))
   }
 })
 
+// - узнаем сколько из в объекте Items
+let objType = {}
 type.forEach((value, key) => {
   let i = 0
   objType[value] = i
@@ -257,6 +257,7 @@ type.forEach((value, key) => {
   })
 })
 
+// - проставляем каждому label кол-во найден совпадений (кол-во товаров)
 for (let key in objType) {
   $('.conf_wr_filters-side__chbx').each((valueLabel, keyLabel) => {
     if ($(keyLabel).attr('data-type') === key) {
@@ -265,8 +266,8 @@ for (let key in objType) {
   })
 }
 
+// - по клику на Label создаем карусель и показываем items
 let courOwl
-
 $('.conf_wr_filters-side__chbx').on('click', function (EO) {
   if (courOwl) {
     courOwl.trigger('destroy.owl.carousel')
@@ -275,24 +276,26 @@ $('.conf_wr_filters-side__chbx').on('click', function (EO) {
 
   let htmlItem
   let nameFilter = $(EO.target).attr('data-type')
+  let numItem = 1
 
   items.forEach((valueItem, key) => {
     if (valueItem['types'] !== nameFilter) {
       return
     }
-
-    htmlItem = `<a href='#' class='config__item '>
-      <div class='config__img_wr'></div>
-      <img src='static/img/pictures/shop2.png' class='config__icon>
+    htmlItem = `<a href='#' class='config__item popUpCall' id="items-wrapper add-items" data-item="${numItem}" data-pop_up=".pop_up__items">
+      <div class='config__img_wr add-item'   >
+      <img src='${valueItem['image']}' class='items_pop_up__img_items'>
       <div class='config__arrow'>
       <img src='static/img/icons/gray-arr.svg' class='config__icon'>
       <img src='static/img/icons/white-arr.svg' class='config__icon config__icon-hov'>
+      </div>
       </div>
       <p class='config__name'>Стол для учителя</p>
       <p class='config__desc'>100х36 см</p>
       <p class='config__price'>${valueItem['size']} ₽</p>
       </a>`
     $('.config__owl').append(htmlItem)
+    numItem++
   })
 
   courOwl = $('.config__owl').owlCarousel({
@@ -308,15 +311,96 @@ $('.conf_wr_filters-side__chbx').on('click', function (EO) {
   })
 })
 
-time = performance.now() - time
-console.log('Время выполнения = ', time)
-
-// items click
+// - работа с попапом
+// -
+// - клик по карточки - открытие попапа
 $('.conf_wr__over').on('click', function (EO) {
-  let item = $(EO.target).parent()
+  EO.preventDefault()
+  let item = $(EO.target).closest('.config__item')
   if (!$(item).hasClass('config__item')) {
     return
   }
-  EO.preventDefault()
-  // $('.pop_up_items').addClass('pop_up_active')
+
+  createContentItem(item)
+  $(item).addClass('item_select')
+  $('.pop_up__items').addClass('pop_up_active')
+  $('body').addClass('pop_up_cond')
+  $('html').addClass('pop_up_cond')
+  slideItem()
 })
+
+// - заполнение попапа (img ptice)
+function createContentItem (prop) {
+  let itemImg = $(prop).find('.items_pop_up__img_items').clone()
+  let itemPrice = $(prop).find('.config__price').html()
+  $('.items_pop_up__wrap_img').html(itemImg)
+  $('.items_pop_up__price').html(itemPrice)
+}
+
+// -
+// -
+// - попап next - prev
+function slideItem (prop) {
+  let dataItemSelect
+  let itemNext
+  let lengthItem = $('.config__item').length
+  let counter = 0
+  // l
+  // l
+  function slideItemBtn (e, val) {
+    e.preventDefault()
+    let selectItem = $('.item_select').eq(0)
+    // -
+    // - листаем карточки товаров
+    if (val === 'next') {
+      dataItemSelect = $(selectItem).attr('data-item')
+      console.log(dataItemSelect)
+      dataItemSelect++
+      if (dataItemSelect) {
+        counter = dataItemSelect
+      }
+      if (counter > lengthItem) {
+        return
+      }
+      $(selectItem).removeClass('item_select')
+    } else {
+      dataItemSelect = $(selectItem).attr('data-item')
+      dataItemSelect--
+      if (dataItemSelect) {
+        counter = dataItemSelect
+      }
+      if (dataItemSelect === 0) {
+        return
+      }
+      $(selectItem).removeClass('item_select')
+    }
+    itemNext = $(`.config__item[data-item="${dataItemSelect}"]`)
+    $(itemNext).addClass('item_select')
+    // -
+    // l // - заполнение попапа (img ptice)
+    createContentItem(itemNext)
+  }
+  // -
+  // - вешаем обраюотчики на кнопки
+  $('.slider_middle_next').on('click', function (EO) {
+    let e = EO
+    slideItemBtn(e, 'next')
+  })
+  $('.slider_middle_prev').on('click', function (EO) {
+    let e = EO
+    slideItemBtn(e, 'prev')
+  })
+  function closePopUp () {
+    $('.item_select').removeClass('item_select')
+    counter = 0
+    $('.slider_middle_prev').unbind()
+    $('.slider_middle_next').unbind()
+  }
+  $('.pop_up__toggle').on('click', function () {
+    closePopUp()
+  })
+  $('.my_add_item').on('click', function (EO) {
+    EO.preventDefault()
+    closePopUp()
+  })
+}
