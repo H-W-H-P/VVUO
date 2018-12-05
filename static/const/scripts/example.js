@@ -130,6 +130,7 @@ var ContextMenu = function(blueprint3d) {
   var three = blueprint3d.three;
 
   function init() {
+
     $("#context-menu-delete").click(function(event) {
         selectedItem.remove();
     });
@@ -161,6 +162,9 @@ var ContextMenu = function(blueprint3d) {
     $("#item-width").val(cmToIn(selectedItem.getWidth()).toFixed(0));
     $("#item-height").val(cmToIn(selectedItem.getHeight()).toFixed(0));
     $("#item-depth").val(cmToIn(selectedItem.getDepth()).toFixed(0));
+    
+    $("#div").val(cmToIn(selectedItem.getDepth()).toFixed(0));
+
 
     $("#context-menu").show();
 

@@ -2563,6 +2563,8 @@
 		padding-right: 120px
 		margin-right: -120px
 
+		position: relative
+
 		&-filters
 			display: none
 
@@ -2577,6 +2579,65 @@
 
 		@media(max-width:1023px)
 			overflow: visible
+
+	&__preloader
+		position: absolute
+		display: inline-block
+
+		line-height: 16px
+
+		z-index: 140
+
+		top: 60%
+		left: 50%
+
+		transform: translate(-50%, -50%)
+
+		.bigSqr
+			position: relative
+			display: inline-block
+			width: 44px
+			height: 40px
+			overflow: hidden
+			transform-origin: bottom left
+			animation: bigSqrShrink 1s linear infinite
+
+		.square
+			position: absolute
+			width: 20px
+			height: 20px
+			background: #5b8ec8
+			border: 1px solid transparent
+
+		.first
+			left: 0px
+			top: 20px
+
+		.second
+			left: 21px
+			top: 20px
+			animation: drop2 1s linear infinite
+
+		.third
+			left: 0px
+			top: 0px
+			animation: drop3 1s linear infinite
+
+		.fourth
+			left: 21px
+			top: 0px
+			animation: drop4 1s linear infinite
+
+		.text
+			line-height: 16px
+			font-family: "Open Sans","Roboto",Arial , sans-serif
+			font-weight: 400
+			color: #5b8ec8
+			display: block
+			margin: 10px auto
+			padding: 3px
+
+
 
 	&__cat
 
@@ -2862,7 +2923,8 @@
 		background-color: $gray
 
 		padding: 30px 90px 10px 30px
-		// max-height: 265px
+		min-height: 209px
+		max-height: 209px
 
 		overflow: hidden
 
@@ -2882,3 +2944,35 @@
 			@media(max-width:1023px)
 				top: 10px
 				right: 20px
+
+@keyframes bigSqrShrink
+  0%
+    transform: scale(1)
+  90%
+    transform: scale(1)
+  100%
+    transform: scale(0.5)
+  
+@keyframes drop2
+  0%
+    transform: translateY(-50px)
+  25%
+    transform: translate(0)
+  100%
+    transform: translate(0)
+    
+@keyframes drop3
+  0%
+    transform: translateY(-50px)
+  50%
+    transform: translate(0)
+  100%
+    transform: translate(0)
+ 
+@keyframes drop4
+  0%
+    transform: translateY(-50px)
+  75%
+    transform: translate(0)
+  100%
+    transform: translate(0)

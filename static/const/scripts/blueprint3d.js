@@ -44735,15 +44735,16 @@ Item.prototype.updateHighlight = function() {
     var on = this.hover || this.selected;
     this.highlighted = on;
     var hex = on ? this.emissiveColor : 0x000000;
+
     utils.forEach(this.material.materials, function(material) {
         material.emissive.setHex(hex);
     });
+    
 }
 
 Item.prototype.mouseOver = function() {
     this.hover = true;
     this.updateHighlight();
-    console.log('heh')
 };
 
 Item.prototype.mouseOff = function() {
@@ -44754,6 +44755,7 @@ Item.prototype.mouseOff = function() {
 Item.prototype.setSelected = function() {
     this.selected = true;
     this.updateHighlight();
+
 };
 
 Item.prototype.setUnselected = function() {
