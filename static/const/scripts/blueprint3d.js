@@ -46755,8 +46755,14 @@ var ThreeController = function(three, model, camera, element, controls, hud) {
 
       mouseMoved = true;
 
-      mouse.x = event.clientX;
-      mouse.y = event.clientY;
+      // mouse.x = event.clientX;
+      // mouse.y = event.clientY;
+      
+      // almost work
+      // mouse.x = event.clientX;
+      // mouse.x = mouse.x * coefWidth;
+      // mouse.y = event.clientY - top;
+      // mouse.y = mouse.y * coefHeight;
 
       var element = document.getElementById('viewer');
       var viewportOffset = element.getBoundingClientRect();
@@ -46768,11 +46774,11 @@ var ThreeController = function(three, model, camera, element, controls, hud) {
 	  // prod change
 
       // mouse.x = event.clientX - left;
-      // mouse.y = event.clientY - top;
-      // mouse.y = mouse.y * coefHeight;
+      mouse.y = event.clientY - top;
+      mouse.y = mouse.y * coefHeight;
 
       // mouse.x = event.clientX - left;
-      // mouse.x = mouse.x * coefWidth;
+      mouse.x = mouse.x * coefWidth;
       // mouse.y = event.clientY;
 
       console.log(mouse.x, mouse.y)
