@@ -1000,6 +1000,9 @@ label input, label textarea
 
 	box-sizing: border-box
 
+	@media(max-width:1439px)
+		max-width: 940px
+
 	&__side
 		width: 50%
 
@@ -1011,9 +1014,12 @@ label input, label textarea
 	&__title
 		padding-top: 80px
 		padding-left: 70px
-		width: 100%
+		width: auto
 
 		text-align: left
+
+		@media(max-width:1439px)
+			padding-left: 50px
 
 	&__txt
 		width: 100%
@@ -1023,8 +1029,11 @@ label input, label textarea
 
 		text-align: left
 
+		@media(max-width:1439px)
+			padding-left: 50px
+
 	&__price
-		width: 100%
+		width: auto
 		padding-left: 70px
 		padding-bottom: 62px
 		margin: 0
@@ -1032,6 +1041,9 @@ label input, label textarea
 		font-size: 30px
 
 		font-weight: bold
+
+		@media(max-width:1439px)
+			padding-left: 50px
 
 	&__wrap_img
 		width: 100%
@@ -1045,6 +1057,7 @@ label input, label textarea
 		object-fit: cover
 
 		display: block
+	
 
 	&__nav.slider_middle__nav
 		bottom: 0
@@ -1058,6 +1071,7 @@ label input, label textarea
 			.slider_middle_prev, .slider_middle_next
 				background-color: #e0d7cf
 
+
 		.slider_middle_prev, .slider_middle_next
 			background-color: #e0d7ce
 
@@ -1068,6 +1082,49 @@ label input, label textarea
 
 			&::before
 				background: url(../../static/img/icons/arr-long-black.svg) no-repeat center center / 100%
+
+
+		.slider_middle_next
+			&::after
+				left: auto
+				right: 26px
+				bottom: 50%
+
+		.slider_middle_prev
+			&::after
+				transform: translateY(-50%) scale(1)
+	
+	&__nav_contr
+		&::after
+			content: ""
+
+			display: block
+			position: absolute
+
+			transform: translateY(-50%) scale(-1)
+			opacity: 0
+		
+			height: 20px
+			width: 20px
+			padding-top: 4px
+
+			top: 50%
+			left: 26px
+
+			background: url(../../static/img/icons/arr-long-blue-catalog.svg) no-repeat center center / 100%
+
+		&:hover
+			&::before
+				opacity: 0
+
+				@media(max-width:1023px)
+					opacity: 1
+
+			&::after
+				opacity: 1
+				
+				@media(max-width:1023px)
+					opacity: 0
 
 
 	&__btn.main_slider__btn
