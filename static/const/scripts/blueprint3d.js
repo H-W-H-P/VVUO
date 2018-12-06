@@ -3094,6 +3094,7 @@ jQuery.Callbacks = function( options ) {
 		stack = !options.once && [],
 		// Fire callbacks
 		fire = function( data ) {
+			
 			memory = options.memory && data;
 			fired = true;
 			firingIndex = firingStart || 0;
@@ -3123,6 +3124,7 @@ jQuery.Callbacks = function( options ) {
 		self = {
 			// Add a callback or a collection of callbacks to the list
 			add: function() {
+				
 				if ( list ) {
 					// First, we save the current length
 					var start = list.length;
@@ -46438,7 +46440,6 @@ var Scene = function(model, textureDir) {
       item.initObject();
       scope.itemLoadedCallbacks.fire(item);
     }
-
     scope.itemLoadingCallbacks.fire();
     loader.load(
       fileName,

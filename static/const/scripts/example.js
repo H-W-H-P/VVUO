@@ -394,7 +394,6 @@ var SideMenu = function(blueprint3d, floorplanControls, modalEffects) {
     $('body, html').removeClass('pop_up_cond');
     $('.items_pop_up').removeClass('pop_up_active');
     blueprint3d.model.scene.addItem(1, 'static/const/models/model1/model.js', {resizable: true});
-
   })
 
 }
