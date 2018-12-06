@@ -12,6 +12,141 @@ var items = [
   },
   {
     'name': 'Closed Door',
+    'image': 'https://blueprint-dev.s3.amazonaws.com/uploads/item_picture/image/646/thumbnail_Screen_Shot_2014-10-27_at_8.04.12_PM.png',
+    'model': 'https://blueprint-dev.s3.amazonaws.com/uploads/item_model/model/617/closed-door28x80_baked.js',
+    'type': '7',
+    'types': 'мебель1',
+    'category': 'мебель',
+    'size': '600'
+  },
+  {
+    'name': 'Closed Door',
+    'image': 'https://blueprint-dev.s3.amazonaws.com/uploads/item_picture/image/646/thumbnail_Screen_Shot_2014-10-27_at_8.04.12_PM.png',
+    'model': 'https://blueprint-dev.s3.amazonaws.com/uploads/item_model/model/617/closed-door28x80_baked.js',
+    'type': '7',
+    'types': 'мебель1',
+    'category': 'мебель',
+    'size': '600'
+  },
+  {
+    'name': 'Closed Door',
+    'image': 'https://blueprint-dev.s3.amazonaws.com/uploads/item_picture/image/646/thumbnail_Screen_Shot_2014-10-27_at_8.04.12_PM.png',
+    'model': 'https://blueprint-dev.s3.amazonaws.com/uploads/item_model/model/617/closed-door28x80_baked.js',
+    'type': '7',
+    'types': 'мебель1',
+    'category': 'мебель',
+    'size': '600'
+  },
+  {
+    'name': 'Closed Door',
+    'image': 'https://blueprint-dev.s3.amazonaws.com/uploads/item_picture/image/646/thumbnail_Screen_Shot_2014-10-27_at_8.04.12_PM.png',
+    'model': 'https://blueprint-dev.s3.amazonaws.com/uploads/item_model/model/617/closed-door28x80_baked.js',
+    'type': '7',
+    'types': 'мебель1',
+    'category': 'мебель',
+    'size': '600'
+  },
+  {
+    'name': 'Closed Door',
+    'image': 'https://blueprint-dev.s3.amazonaws.com/uploads/item_picture/image/646/thumbnail_Screen_Shot_2014-10-27_at_8.04.12_PM.png',
+    'model': 'https://blueprint-dev.s3.amazonaws.com/uploads/item_model/model/617/closed-door28x80_baked.js',
+    'type': '7',
+    'types': 'мебель1',
+    'category': 'мебель',
+    'size': '600'
+  },
+  {
+    'name': 'Closed Door',
+    'image': 'https://blueprint-dev.s3.amazonaws.com/uploads/item_picture/image/646/thumbnail_Screen_Shot_2014-10-27_at_8.04.12_PM.png',
+    'model': 'https://blueprint-dev.s3.amazonaws.com/uploads/item_model/model/617/closed-door28x80_baked.js',
+    'type': '7',
+    'types': 'мебель1',
+    'category': 'мебель',
+    'size': '600'
+  },
+  {
+    'name': 'Closed Door',
+    'image': 'https://blueprint-dev.s3.amazonaws.com/uploads/item_picture/image/646/thumbnail_Screen_Shot_2014-10-27_at_8.04.12_PM.png',
+    'model': 'https://blueprint-dev.s3.amazonaws.com/uploads/item_model/model/617/closed-door28x80_baked.js',
+    'type': '7',
+    'types': 'мебель1',
+    'category': 'мебель',
+    'size': '600'
+  },
+  {
+    'name': 'Closed Door',
+    'image': 'https://blueprint-dev.s3.amazonaws.com/uploads/item_picture/image/646/thumbnail_Screen_Shot_2014-10-27_at_8.04.12_PM.png',
+    'model': 'https://blueprint-dev.s3.amazonaws.com/uploads/item_model/model/617/closed-door28x80_baked.js',
+    'type': '7',
+    'types': 'мебель1',
+    'category': 'мебель',
+    'size': '600'
+  },
+  {
+    'name': 'Closed Door',
+    'image': 'https://blueprint-dev.s3.amazonaws.com/uploads/item_picture/image/646/thumbnail_Screen_Shot_2014-10-27_at_8.04.12_PM.png',
+    'model': 'https://blueprint-dev.s3.amazonaws.com/uploads/item_model/model/617/closed-door28x80_baked.js',
+    'type': '7',
+    'types': 'мебель1',
+    'category': 'мебель',
+    'size': '600'
+  },
+  {
+    'name': 'Closed Door',
+    'image': 'https://blueprint-dev.s3.amazonaws.com/uploads/item_picture/image/646/thumbnail_Screen_Shot_2014-10-27_at_8.04.12_PM.png',
+    'model': 'https://blueprint-dev.s3.amazonaws.com/uploads/item_model/model/617/closed-door28x80_baked.js',
+    'type': '7',
+    'types': 'мебель1',
+    'category': 'мебель',
+    'size': '600'
+  },
+  {
+    'name': 'Closed Door',
+    'image': 'https://blueprint-dev.s3.amazonaws.com/uploads/item_picture/image/646/thumbnail_Screen_Shot_2014-10-27_at_8.04.12_PM.png',
+    'model': 'https://blueprint-dev.s3.amazonaws.com/uploads/item_model/model/617/closed-door28x80_baked.js',
+    'type': '7',
+    'types': 'мебель1',
+    'category': 'мебель',
+    'size': '600'
+  },
+  {
+    'name': 'Closed Door',
+    'image': 'https://blueprint-dev.s3.amazonaws.com/uploads/item_picture/image/646/thumbnail_Screen_Shot_2014-10-27_at_8.04.12_PM.png',
+    'model': 'https://blueprint-dev.s3.amazonaws.com/uploads/item_model/model/617/closed-door28x80_baked.js',
+    'type': '7',
+    'types': 'мебель1',
+    'category': 'мебель',
+    'size': '600'
+  },
+  {
+    'name': 'Closed Door',
+    'image': 'https://blueprint-dev.s3.amazonaws.com/uploads/item_picture/image/646/thumbnail_Screen_Shot_2014-10-27_at_8.04.12_PM.png',
+    'model': 'https://blueprint-dev.s3.amazonaws.com/uploads/item_model/model/617/closed-door28x80_baked.js',
+    'type': '7',
+    'types': 'мебель1',
+    'category': 'мебель',
+    'size': '600'
+  },
+  {
+    'name': 'Closed Door',
+    'image': 'https://blueprint-dev.s3.amazonaws.com/uploads/item_picture/image/646/thumbnail_Screen_Shot_2014-10-27_at_8.04.12_PM.png',
+    'model': 'https://blueprint-dev.s3.amazonaws.com/uploads/item_model/model/617/closed-door28x80_baked.js',
+    'type': '7',
+    'types': 'мебель1',
+    'category': 'мебель',
+    'size': '600'
+  },
+  {
+    'name': 'Closed Door',
+    'image': 'https://blueprint-dev.s3.amazonaws.com/uploads/item_picture/image/646/thumbnail_Screen_Shot_2014-10-27_at_8.04.12_PM.png',
+    'model': 'https://blueprint-dev.s3.amazonaws.com/uploads/item_model/model/617/closed-door28x80_baked.js',
+    'type': '7',
+    'types': 'мебель1',
+    'category': 'мебель',
+    'size': '600'
+  },
+  {
+    'name': 'Closed Door',
     'image': 'static/img/pictures/shop2.png',
     'model': 'https://blueprint-dev.s3.amazonaws.com/uploads/item_model/model/617/closed-door28x80_baked.js',
     'type': '7',
@@ -269,6 +404,7 @@ for (let key in objType) {
 // - по клику на Label создаем карусель и показываем items
 let courOwl
 $('.conf_wr_filters-side__chbx').on('click', function (EO) {
+  $('.conf_wr__preloader_wrap').removeClass('conf_wr__preloader_wrap-disable')
   if (courOwl) {
     courOwl.trigger('destroy.owl.carousel')
   }
@@ -303,16 +439,18 @@ $('.conf_wr_filters-side__chbx').on('click', function (EO) {
     loop: false,
     dots: false,
     nav: true,
+    onInitialized: callbackOwl,
     responsive: {
       1024: {
         items: 5
       }
     }
   })
-  courOwl.on('initialize.owl.carousel', function () {
-    console.log('asfsfadsgv')
-    $('.conf_wr__preloader').hide()
-  })
+  function callbackOwl () {
+    setTimeout(function () {
+      $('.conf_wr__preloader_wrap').addClass('conf_wr__preloader_wrap-disable')
+    }, 500)
+  }
 })
 
 // - работа с попапом

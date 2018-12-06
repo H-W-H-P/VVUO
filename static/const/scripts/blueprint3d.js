@@ -3094,6 +3094,7 @@ jQuery.Callbacks = function( options ) {
 		stack = !options.once && [],
 		// Fire callbacks
 		fire = function( data ) {
+			
 			memory = options.memory && data;
 			fired = true;
 			firingIndex = firingStart || 0;
@@ -3123,6 +3124,7 @@ jQuery.Callbacks = function( options ) {
 		self = {
 			// Add a callback or a collection of callbacks to the list
 			add: function() {
+
 				if ( list ) {
 					// First, we save the current length
 					var start = list.length;
@@ -44078,6 +44080,7 @@ var Floorplanner = function(canvas, floorplan) {
   }
 
   function mousedown() {
+
     mouseDown = true;
     mouseMoved = false;
     lastX = rawMouseX;
@@ -46438,7 +46441,6 @@ var Scene = function(model, textureDir) {
       item.initObject();
       scope.itemLoadedCallbacks.fire(item);
     }
-
     scope.itemLoadingCallbacks.fire();
     loader.load(
       fileName,
@@ -46810,6 +46812,7 @@ var ThreeController = function(three, model, camera, element, controls, hud) {
   }
 
   function mouseDownEvent( event ) {
+
     if (scope.enabled) {
       event.preventDefault();
 
@@ -47022,7 +47025,7 @@ var ThreeController = function(three, model, camera, element, controls, hud) {
         direction);
     raycaster.linePrecision = linePrecision;
     var intersections;
-    if (objects instanceof Array){
+    if (objects instanceof Array) {
       intersections = raycaster.intersectObjects(objects, recursive);
     } else {
       intersections = raycaster.intersectObject(objects, recursive);
@@ -47361,6 +47364,7 @@ var ThreeControls = function (object, domElement) {
 	}
 
 	function onMouseDown( event ) {
+
 		if (trigger2d) return;
 
 		if ( scope.enabled === false ) { return; }
