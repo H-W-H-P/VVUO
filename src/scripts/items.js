@@ -335,7 +335,7 @@ function createCotegory (prop) {
   let tamplateCatrgory
   $('.wrap_filter').empty()
   nameCategoryNew.forEach((value, key) => {
-    tamplateCatrgory = `<div class='shop_filters__block conf_wr__block shop_filters__block_wrap'>
+    tamplateCatrgory = `<div class='shop_filters__block conf_wr__block shop_filters__block_wrap' data-wrapOwl="${key}">
       <a href='#' class='shop_filters__cat bold css_arr closed conf_wr__cat item_category'>${value}</a>
       <div class="conf_wr_filters__cat_wr shop_filters__cat_wr closed"></div>
       </div>`
@@ -374,9 +374,9 @@ function createTypes (propItems, propsCategory) {
   }
 }
 
-// s
-// s
-// s
+// -
+// -
+// -
 // Работа с кликами Попапом Слайдером
 
 // - ищем все Label
@@ -410,54 +410,110 @@ for (let key in objType) {
   })
 }
 
+// Toggle tab on mobile
+let toogleTab
+$('.item_category').on('click', function () {
+  if ($(window).width() > 1439) {
+    return false
+  }
+  let _this = this
+  if (!$(this).hasClass('closed')) {
+    toogleTab = null
+    return
+  }
+  if (toogleTab) {
+    toogleTab(_this)
+  } else {
+    toogleTab = toogleTabMobileItem(_this)
+  }
+})
+
+function toogleTabMobileItem (_this) {
+  let self
+  if (!self) {
+    self = _this
+  }
+  // -
+  function foo (value) {
+    if (self) {
+      $(self).toggleClass('closed')
+      $(self).closest('.shop_filters__block').find('.shop_filters__cat_wr').toggleClass('closed')
+    }
+    self = value
+  }
+  return foo
+}
+
+// -
+// -
+// -
+$(window).resize(function () {
+  if ($(window).width() < 1439) {
+    // -
+  }
+})
+
 // - по клику на Label создаем карусель и показываем items
-let courOwl
 $('.conf_wr_filters-side__chbx').on('click', function (EO) {
   $('.conf_wr__preloader_wrap').removeClass('conf_wr__preloader_wrap-disable')
-  if (courOwl) {
-    courOwl.trigger('destroy.owl.carousel')
-  }
-  $('.config__owl').empty()
-
-  let htmlItem
-  let nameFilter = $(EO.target).attr('data-type')
-  let numItem = 1
-  let self
-
+  let e = EO
+  let wrapOwlAmount = $(EO.target).closest('.shop_filters__block_wrap').attr('data-wrapOwl')
+  // -
   if ($(window).width() < 1439) {
-    let htmlTemplateWrapOwl = `<div class='conf_wr__over-filters conf_wr__over'>
+    createOwlMobile(e, wrapOwlAmount)
+  } else {
+    createOwlDesktop(e)
+  }
+  // -
+  createOwl()
+})
+
+function createOwlDesktop (e) {
+  let EO = e
+  $('.config__owl_desktop').empty()
+  let nameFilter = $(EO.target).attr('data-type')
+  createItemforSlider(nameFilter, '.config__owl_desktop .config__owl')
+}
+
+function createOwlMobile (e, wrapOwlAmount) {
+  let EO = e
+  let nameFilter = $(EO.target).attr('data-type')
+  let wrapInOwl
+  let _wrapOwlAmount = wrapOwlAmount
+  // -
+  if ($(EO.target).closest('.shop_filters__block_wrap').find('.config__owl_mobile').length > 0) {
+    $(EO.target).closest('.shop_filters__block_wrap').find('.config__owl_mobile .config__owl').empty()
+  } else {
+    wrapInOwl = $(`.shop_filters__block_wrap[data-wrapOwl="${wrapOwlAmount}"]`)
+    let htmlTemplateWrapOwl = `<div class='conf_wr__over-filters conf_wr__over config__owl_mobile'>
       <div class='config__owl owl-carousel slider_T1 config__owl-filter'>
       </div>
       </div>`
-    $(this).closest('.shop_filters__cat_wr').append(htmlTemplateWrapOwl)
-    self = this
+    $(wrapInOwl).append(htmlTemplateWrapOwl)
+    let htmlTemplateholder = `<div class='conf_wr__preloader_wrap'>
+      <div class='conf_wr__preloader'>
+      <div class='bigSqr'>
+      <div class='square first'></div>
+      <div class='square second'></div>
+      <div class='square third'></div>
+      <div class='square fourth'></div>
+      </div>
+      <div class='text'>loading</div>
+      </div>
+      </div>`
+    $('.config__owl_mobile').append(htmlTemplateholder)
   }
+  createItemforSlider(nameFilter, '.config__owl_mobile .config__owl', _wrapOwlAmount)
+}
 
-  items.forEach((valueItem, key) => {
-    if (valueItem['types'] !== nameFilter) {
-      return
-    }
-    htmlItem = `<a href='#' class='config__item popUpCall' id="items-wrapper add-items" data-item="${numItem}" data-pop_up=".pop_up__items">
-      <div class='config__img_wr add-item'   >
-      <img src='${valueItem['image']}' class='items_pop_up__img_items'>
-      <div class='config__arrow'>
-      <img src='static/img/icons/gray-arr.svg' class='config__icon'>
-      <img src='static/img/icons/white-arr.svg' class='config__icon config__icon-hov'>
-      </div>
-      </div>
-      <p class='config__name'>Стол для учителя</p>
-      <p class='config__desc'>100х36 см</p>
-      <p class='config__price'>${valueItem['size']} ₽</p>
-      </a>`
-    if ($(window).width() < 1439) {
-      console.log($(self).parent())
-      $(self).parent().parent().find('.config__owl').append(htmlItem)
-    } else {
-      $('.config__owl').append(htmlItem)
-    }
-    numItem++
-  })
-
+let courOwl
+$('.shop_filters__cat').on('click', function () {
+  $(this).parent().find('.config__owl_mobile').remove()
+})
+function createOwl (wrapOwlAmount) {
+  if (courOwl) {
+    courOwl.trigger('destroy.owl.carousel')
+  }
   courOwl = $('.config__owl').owlCarousel({
     items: 4,
     loop: false,
@@ -475,7 +531,39 @@ $('.conf_wr_filters-side__chbx').on('click', function (EO) {
       $('.conf_wr__preloader_wrap').addClass('conf_wr__preloader_wrap-disable')
     }, 500)
   }
-})
+}
+
+function createItemforSlider (nameFilter, nameWrap, _wrapOwlAmount) {
+  let numItem = 1
+  let htmlItem
+  let pushHear
+
+  if (!_wrapOwlAmount) {
+    pushHear = '.config__owl'
+  } else {
+    pushHear = `.shop_filters__block_wrap[data-wrapOwl="${_wrapOwlAmount}"] .config__owl`
+  }
+  // -
+  items.forEach((valueItem, key) => {
+    if (valueItem['types'] !== nameFilter) {
+      return
+    }
+    htmlItem = `<a href='#' class='config__item popUpCall' id="items-wrapper add-items" data-item="${numItem}" data-pop_up=".pop_up__items">
+      <div class='config__img_wr add-item'   >
+      <img src='${valueItem['image']}' class='items_pop_up__img_items'>
+      <div class='config__arrow'>
+      <img src='static/img/icons/gray-arr.svg' class='config__icon'>
+      <img src='static/img/icons/white-arr.svg' class='config__icon config__icon-hov'>
+      </div>
+      </div>
+      <p class='config__name'>Стол для учителя</p>
+      <p class='config__desc'>100х36 см</p>
+      <p class='config__price'>${valueItem['size']} ₽</p>
+      </a>`
+    $(pushHear).append(htmlItem)
+    numItem++
+  })
+}
 
 // - работа с попапом
 // -
