@@ -24,6 +24,15 @@ var items = [
     'image': 'https://blueprint-dev.s3.amazonaws.com/uploads/item_picture/image/646/thumbnail_Screen_Shot_2014-10-27_at_8.04.12_PM.png',
     'model': 'https://blueprint-dev.s3.amazonaws.com/uploads/item_model/model/617/closed-door28x80_baked.js',
     'type': '7',
+    'types': 'Home',
+    'category': 'Home',
+    'size': '600'
+  },
+  {
+    'name': 'Closed Door',
+    'image': 'https://blueprint-dev.s3.amazonaws.com/uploads/item_picture/image/646/thumbnail_Screen_Shot_2014-10-27_at_8.04.12_PM.png',
+    'model': 'https://blueprint-dev.s3.amazonaws.com/uploads/item_model/model/617/closed-door28x80_baked.js',
+    'type': '7',
     'types': 'мебель1',
     'category': 'мебель',
     'size': '600'
@@ -413,6 +422,16 @@ $('.conf_wr_filters-side__chbx').on('click', function (EO) {
   let htmlItem
   let nameFilter = $(EO.target).attr('data-type')
   let numItem = 1
+  let self
+
+  if ($(window).width() < 1439) {
+    let htmlTemplateWrapOwl = `<div class='conf_wr__over-filters conf_wr__over'>
+      <div class='config__owl owl-carousel slider_T1 config__owl-filter'>
+      </div>
+      </div>`
+    $(this).closest('.shop_filters__cat_wr').append(htmlTemplateWrapOwl)
+    self = this
+  }
 
   items.forEach((valueItem, key) => {
     if (valueItem['types'] !== nameFilter) {
@@ -430,7 +449,12 @@ $('.conf_wr_filters-side__chbx').on('click', function (EO) {
       <p class='config__desc'>100х36 см</p>
       <p class='config__price'>${valueItem['size']} ₽</p>
       </a>`
-    $('.config__owl').append(htmlItem)
+    if ($(window).width() < 1439) {
+      console.log($(self).parent())
+      $(self).parent().parent().find('.config__owl').append(htmlItem)
+    } else {
+      $('.config__owl').append(htmlItem)
+    }
     numItem++
   })
 

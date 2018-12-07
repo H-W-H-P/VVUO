@@ -120,6 +120,18 @@
 									label(for="").config__label Высота
 									input(type="text").config__input
 							.config__center
+								.config__add_window.config__add_item_center
+									.config__add_window_img
+										img(src="../../../static/img/icons/window-icon.svg", alt="window")
+									.config__add_wrap_txt
+										p.config__add_txt Добавить
+										p.config__add_txt.config__add_link окно
+								.config__add_door.config__add_item_center
+									.config__add_window_img
+										img(src="../../../static/img/icons/door-icon.svg", alt="door")
+									.config__add_wrap_txt
+										p.config__add_txt Добавить
+										p.config__add_txt.config__add_link дверь
 							.config__right
 								a(href="#").btn_w_arr.shop_filters__btn.trs.config__next Применить
 									.hover_bl
@@ -130,7 +142,7 @@
 						.shop_filters__input_wr.conf_wr_filters__input_wr
 							input(type="checkbox").checkbox#input5
 							label(for="input5").conf_wr_filters-side__chbx.label_checkbox(data-type="chair") Стул
-						a(href="#").shop_filters__cat_link.trs.conf_wr_filters-side__cat Показать ещё +
+						//- a(href="#").shop_filters__cat_link.trs.conf_wr_filters-side__cat Показать ещё +
 						.conf_wr__over-filters.conf_wr__over
 							.config__owl.owl-carousel.slider_T1.config__owl-filter
 								//- a(href="#").config__item
