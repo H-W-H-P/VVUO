@@ -46765,7 +46765,7 @@ var ThreeController = function(three, model, camera, element, controls, hud) {
 	  var coefHeight = window.innerHeight / element.offsetHeight;
 	  var coefWidth = 1.1;
 
-	  console.log(right)
+	  // console.log(right)
 
       mouse.x = event.clientX;
       mouse.y = event.clientY;
@@ -47470,8 +47470,6 @@ var ThreeControls = function (object, domElement) {
 
 
 	function onMouseMove( event ) {
-
-		// prod change
 	
 		if ( scope.enabled === false ) return;
 
