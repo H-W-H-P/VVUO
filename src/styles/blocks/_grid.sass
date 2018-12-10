@@ -2443,12 +2443,6 @@
 
 			position: relative
 
-		&__desk_toggle
-			display: none
-
-			@media(max-width:1439px)
-			 display: block
-
 		&__wrap .conf_wr_filters-side__reset
 			@media(max-width:1439px)
 				display: none
@@ -2528,6 +2522,12 @@
 				&::before,
 				&::after
 					display: none
+
+				&:hover
+					color: #5b8ec8
+
+					@media(max-width:1439px)
+						color: #28282b
 
 			&__cat
 				padding-left: 0
@@ -3028,6 +3028,23 @@
 
 		cursor: pointer
 
+		transition: all .4s ease
+	
+	&__add_wrap_txt
+		&:hover
+			.config__add_txt_hover
+				color: #5b8ec8
+
+			.config__add_link
+				&::before, &::after
+					transform: translateY(-50%) translateX(50%)
+
+				&::before
+					opacity: 0
+
+				&::after
+					opacity: 1
+
 	&__add_window_img
 		cursor: pointer
 
@@ -3038,7 +3055,7 @@
 
 		cursor: pointer
 
-		&::before
+		&::before, &::after
 			content: ''
 
 			display: block
@@ -3048,11 +3065,17 @@
 			right: 5px
 
 			transform: translateY(-50%)
+			transition: all .4s ease
 
 			width: 10px
 			height: 10px
 
 			background: url('../../static/img/icons/black-arr.svg') no-repeat center center / cover
+
+		&::after
+			opacity: 0
+
+			background: url('../../static/img/icons/blue-more-arr.svg') no-repeat center center / cover
 
 	&__add_item_center
 		display: -webkit-flex

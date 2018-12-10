@@ -106,7 +106,9 @@ $(document).ready(function () {
   function resizing1 () {
     if (windWidthResize <= 1440) {
       $('.conf_wr__plan .shop_filters__cat_wr, .conf_wr_filters__plan').removeClass('closed')
-    } else $('.conf_wr__plan .shop_filters__cat_wr, .conf_wr_filters__plan').addClass('closed')
+    } else {
+      $('.conf_wr__plan .shop_filters__cat_wr, .conf_wr_filters__plan').addClass('closed')
+    }
   }
 
   // $(window).resize(resizing2)
