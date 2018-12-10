@@ -393,7 +393,7 @@ function resetStateCatalog (obj) {
   }
 }
 
-$('.conf_wr_filters-side__reset').on('click', function () {
+$('.conf_wr_filters__plan, .conf_wr_filters-side__reset').on('click', function () {
   resetStateCatalog(stateCatalog)
 })
 // // -
@@ -786,12 +786,6 @@ $(window).resize(function () {
 
 function tabToogle () {
   if (window.innerWidth < 1440) {
-    if (stateCatalog['catalog']) {
-      if (!$('.conf_wr_filters__plan').hasClass('closed')) {
-        $('.conf_wr_filters__plan').addClass('closed')
-        $('.conf_wr_filters__plan').next().addClass('closed')
-      }
-    }
     if (stateCatalog['open']) {
       $('.item_category').each((v, k) => {
         if ($(k).parent().attr('data-wrapowl') !== stateCatalog['catalog']) {
@@ -808,6 +802,10 @@ function tabToogle () {
           $(k).next().toggleClass('closed')
         }
       })
+      if (!$('.conf_wr_filters__plan').hasClass('closed')) {
+        $('.conf_wr_filters__plan').addClass('closed')
+        $('.conf_wr_filters__plan').next().addClass('closed')
+      }
     }
   }
 }

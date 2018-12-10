@@ -101,7 +101,6 @@ $(document).ready(function () {
     return false
   })
 
-  $(window).resize(resizing1)
   resizing1()
 
   function resizing1 () {
@@ -110,14 +109,14 @@ $(document).ready(function () {
     } else $('.conf_wr__plan .shop_filters__cat_wr, .conf_wr_filters__plan').addClass('closed')
   }
 
-  $(window).resize(resizing2)
-  resizing2()
+  // $(window).resize(resizing2)
+  // resizing2()
 
-  function resizing2 () {
-    if (windWidthResize <= 767) {
-      $('.conf_wr_filters').removeClass('opened')
-    }
-  }
+  // function resizing2 () {
+  //   if (windWidthResize <= 767) {
+  //     $('.conf_wr_filters').removeClass('opened')
+  //   }
+  // }
 
   // pop ups
 

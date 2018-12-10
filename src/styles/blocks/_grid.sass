@@ -2217,6 +2217,8 @@
 .conf_wr
 	position: relative
 
+
+
 	&__desk-small
 		display: none
 
@@ -2441,6 +2443,16 @@
 
 			position: relative
 
+		&__desk_toggle
+			display: none
+
+			@media(max-width:1439px)
+			 display: block
+
+		&__wrap .conf_wr_filters-side__reset
+			@media(max-width:1439px)
+				display: none
+
 		&.opened
 			max-height: 2000px
 			padding-bottom: 100px
@@ -2526,7 +2538,7 @@
 
 				.conf_wr_filters__plan
 					color: $blackTxt
-
+	
 		&__plan
 			color: $main-blue
 
@@ -2581,6 +2593,11 @@
 
 		@media(max-width:1023px)
 			overflow: visible
+	
+	&__wrap_slider
+		position: relative
+
+		max-height: 231px
 
 	&__preloader
 		position: absolute
@@ -2600,6 +2617,7 @@
 
 		width: 100%
 		height: 100%
+		padding-right: 120px
 
 		background-color: #fff
 
@@ -2727,6 +2745,8 @@
 
 	@media(max-width:1439px)
 		width: 100%
+
+		padding-top: 0
 
 	&__wr
 
@@ -2886,6 +2906,8 @@
 
 		z-index: 400
 
+		width: 169px
+
 		&:hover
 			.config__arrow
 				background-color: #5b8ec8
@@ -2911,10 +2933,11 @@
 	&__img_wr
 		position: relative
 
-		height: 120px
+		height: 100px
+		width: 169px
 
 		.items_pop_up__img_items
-			object-fit: cover
+			object-fit: fill
 
 	&__arrow
 		position: absolute
@@ -2963,11 +2986,13 @@
 	&__owl
 		background-color: $gray
 
-		padding: 30px 90px 10px 30px
-		min-height: 209px
-		max-height: 209px
+		padding: 30px 90px 0px 30px
+		min-height: 201px
+		max-height: 201px
 
-		overflow: hidden
+
+		&-visible
+			overflow: hidden
 
 		@media(max-width:1439px)
 			padding: 30px 0
