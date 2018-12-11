@@ -2495,6 +2495,8 @@
 
 				background-color: initial
 
+				padding-top: 10px
+
 			@media(max-width:1023px)
 				margin-right: -30px
 				width: auto
@@ -2554,7 +2556,7 @@
 			@media(max-width:1439px)
 				display: inline-block
 
-				padding-right: 10px
+				padding-right: 20px
 
 		&__cat_wr
 
@@ -2788,6 +2790,9 @@
 	&__left
 		padding: 24px 0 0 30px
 
+		@media(max-width:1023px)
+			width: 50%
+
 	&__inp_wr
 		width: 100%
 
@@ -2820,6 +2825,8 @@
 
 		@media(max-width:1439px)
 			margin-left: 35px
+
+			margin-top: 65px
 
 	&__top_line,
 	&__left_line
@@ -2972,6 +2979,14 @@
 
 	&__name
 		padding: 20px 0 5px
+		width: 100%
+
+		overflow: hidden
+		white-space: nowrap
+		text-overflow: ellipsis
+
+		&:hover
+			overflow: visible
 
 	&__price
 		font-weight: bold
@@ -2995,7 +3010,7 @@
 			overflow: hidden
 
 		@media(max-width:1439px)
-			padding: 30px 0
+			padding: 30px 0 0 0
 
 		@media(max-width:1023px)
 			position: static
@@ -3007,8 +3022,8 @@
 			top: -46px
 			right: 110px
 
-			@media(max-width:1023px)
-				top: 10px
+			@media(max-width:1439px)
+				top: -86px
 				right: 20px
 
 	&__center
