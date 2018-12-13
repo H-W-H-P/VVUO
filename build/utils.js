@@ -91,18 +91,19 @@ exports.pageFile = function (dev = true) {
     var options = {
       filename: path.resolve(__dirname, `../dist/${distfile}`),
       template: file,
-      inject: true
+      inject: true,
+      minify: false
     }
 
     if (!dev) {
       // generate dist index.html with correct asset hash for caching.
       // you can customize output by editing /index.html
       // see https://github.com/ampedandwired/html-webpack-plugin
-      options.minify = {
-        removeComments: true,
-        collapseWhitespace: true,
-        removeAttributeQuotes: true
-      }
+      // options.minify = {
+        // removeComments: true,
+        // collapseWhitespace: true,
+        // removeAttributeQuotes: true
+      // }
       // necessary to consistently work with multiple chunks via CommonsChunkPlugin
       options.chunksSortMode = 'dependency'
     }
