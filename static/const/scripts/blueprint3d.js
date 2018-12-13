@@ -44252,7 +44252,7 @@ var FloorplannerView = function(floorplan, viewmodel, canvas) {
   // wall config
   var wallWidth = 5;
   var wallWidthHover = 7;
-  var wallColor = "#dddddd"
+  var wallColor = "#000"
   var wallColorHover = "#008cba"
   var edgeColor = "#888888"
   var edgeColorHover = "#008cba"
@@ -44391,6 +44391,7 @@ var FloorplannerView = function(floorplan, viewmodel, canvas) {
   }
 
   function drawRoom(room) {
+  	return
     drawPolygon(
       utils.map(room.corners, function(corner) {
         return viewmodel.convertX(corner.x);
@@ -48522,8 +48523,13 @@ var ThreeMain = function(model, element, canvasElement, opts) {
   function init() {
     THREE.ImageUtils.crossOrigin = "";
 
+    // prod change
+
     domElement = scope.element.get(0) // Container
     camera = new THREE.PerspectiveCamera(45, 1, 1, 10000);
+
+     // camera = new THREE.OrthographicCamera( -600, 350, 350 / 2, -400, 1, 100000 );
+     console.log(950 / - 2)
     renderer = new THREE.WebGLRenderer({
       antialias: true,
       preserveDrawingBuffer: true // required to support .toDataURL()

@@ -5,5 +5,5 @@ import '@/styles/app.sass'
 // import 'owl.carousel'
 
 // Scripts
-import './scripts'
 import './scripts/items'
+import './scripts'

@@ -196,6 +196,8 @@
 			width: 33.33333%
 			min-width: 33.33333%
 
+
+
 		@media(max-width:1023px)
 			width: 100%
 
@@ -2221,6 +2223,8 @@
 .conf_wr
 	position: relative
 
+
+
 	&__desk-small
 		display: none
 
@@ -2445,6 +2449,10 @@
 
 			position: relative
 
+		&__wrap .conf_wr_filters-side__reset
+			@media(max-width:1439px)
+				display: none
+
 		&.opened
 			max-height: 2000px
 			padding-bottom: 100px
@@ -2493,6 +2501,8 @@
 
 				background-color: initial
 
+				padding-top: 10px
+
 			@media(max-width:1023px)
 				margin-right: -30px
 				width: auto
@@ -2521,6 +2531,12 @@
 				&::after
 					display: none
 
+				&:hover
+					color: #5b8ec8
+
+					@media(max-width:1439px)
+						color: #28282b
+
 			&__cat
 				padding-left: 0
 
@@ -2530,7 +2546,7 @@
 
 				.conf_wr_filters__plan
 					color: $blackTxt
-
+	
 		&__plan
 			color: $main-blue
 
@@ -2546,7 +2562,7 @@
 			@media(max-width:1439px)
 				display: inline-block
 
-				padding-right: 10px
+				padding-right: 20px
 
 		&__cat_wr
 
@@ -2585,6 +2601,11 @@
 
 		@media(max-width:1023px)
 			overflow: visible
+	
+	&__wrap_slider
+		position: relative
+
+		max-height: 231px
 
 	&__preloader
 		position: absolute
@@ -2604,11 +2625,14 @@
 
 		width: 100%
 		height: 100%
+		padding-right: 120px
 
 		background-color: #fff
 
 		opacity: 1
 		z-index: 120
+
+		top: 0
 
 		
 
@@ -2700,6 +2724,7 @@
 		@media(max-width:1023px)
 			z-index: 2
 
+
 	&__plan
 
 		@media(max-width:1023px)
@@ -2728,6 +2753,8 @@
 
 	@media(max-width:1439px)
 		width: 100%
+
+		padding-top: 0
 
 	&__wr
 
@@ -2764,8 +2791,13 @@
 	&__right
 		width: 33.3333333%
 
+		box-sizing: border-box
+
 	&__left
 		padding: 24px 0 0 30px
+
+		@media(max-width:1023px)
+			width: 50%
 
 	&__inp_wr
 		width: 100%
@@ -2799,6 +2831,8 @@
 
 		@media(max-width:1439px)
 			margin-left: 35px
+
+			margin-top: 65px
 
 	&__top_line,
 	&__left_line
@@ -2885,6 +2919,8 @@
 
 		z-index: 400
 
+		width: 169px
+
 		&:hover
 			.config__arrow
 				background-color: #5b8ec8
@@ -2910,10 +2946,11 @@
 	&__img_wr
 		position: relative
 
-		height: 120px
+		height: 100px
+		width: 169px
 
 		.items_pop_up__img_items
-			object-fit: cover
+			object-fit: fill
 
 	&__arrow
 		position: absolute
@@ -2948,6 +2985,14 @@
 
 	&__name
 		padding: 20px 0 5px
+		width: 100%
+
+		overflow: hidden
+		white-space: nowrap
+		text-overflow: ellipsis
+
+		&:hover
+			overflow: visible
 
 	&__price
 		font-weight: bold
@@ -2962,14 +3007,16 @@
 	&__owl
 		background-color: $gray
 
-		padding: 30px 90px 10px 30px
-		min-height: 209px
-		max-height: 209px
+		padding: 30px 90px 0px 30px
+		min-height: 201px
+		max-height: 201px
 
-		overflow: hidden
+
+		&-visible
+			overflow: hidden
 
 		@media(max-width:1439px)
-			padding: 30px 0
+			padding: 30px 0 0 0
 
 		@media(max-width:1023px)
 			position: static
@@ -2981,9 +3028,92 @@
 			top: -46px
 			right: 110px
 
-			@media(max-width:1023px)
-				top: 10px
+			@media(max-width:1439px)
+				top: -86px
 				right: 20px
+
+	&__center
+		padding-top: 40px
+
+	&__add_window
+		padding-bottom: 38px
+
+	&__add_txt
+		font-weight: bold
+
+		font-size: 12px
+
+		margin: 0
+		padding-left: 20px
+		padding-top: 10px
+
+		cursor: pointer
+
+		transition: all .4s ease
+	
+	&__add_wrap_txt
+		&:hover
+			.config__add_txt_hover
+				color: #5b8ec8
+
+			.config__add_link
+				&::before, &::after
+					transform: translateY(-50%) translateX(50%)
+
+				&::before
+					opacity: 0
+
+				&::after
+					opacity: 1
+
+	&__add_window_img
+		cursor: pointer
+
+	&__add_link
+		padding-top: 3px
+
+		position: relative
+
+		cursor: pointer
+
+		&::before, &::after
+			content: ''
+
+			display: block
+			position: absolute
+
+			top: 60%
+			right: 5px
+
+			transform: translateY(-50%)
+			transition: all .4s ease
+
+			width: 10px
+			height: 10px
+
+			background: url('../../static/img/icons/black-arr.svg') no-repeat center center / cover
+
+		&::after
+			opacity: 0
+
+			background: url('../../static/img/icons/blue-more-arr.svg') no-repeat center center / cover
+
+	&__add_item_center
+		display: -webkit-flex
+		display: -moz-flex
+		display: -ms-flex
+		display: -o-flex
+		display: flex
+
+	&__wrap-no_desk
+		display: -webkit-flex
+		display: -moz-flex
+		display: -ms-flex
+		display: -o-flex
+		display: flex
+
+		padding-bottom: 20px
+
 
 
 @keyframes bigSqrShrink

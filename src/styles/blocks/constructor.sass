@@ -238,21 +238,34 @@ body
 
 
 .remove_item
-	color: #fff
-	background-color: #d9534f
-	border-color: #d43f3a
+	background-color: #fff
 	display: block
-	width: 100%
-	padding: 6px 12px
-	margin-bottom: 0
-	font-size: 14px
-	font-weight: normal
-	line-height: 1.42857143
-	text-align: center
-	white-space: nowrap
-	vertical-align: middle
-	touch-action: manipulation
+
 	cursor: pointer
-	user-select: none
-	border: 1px solid transparent
-	border-radius: 4px
+
+	width: 40px
+	height: 40px
+
+	position: absolute
+
+	right: 8px
+	bottom: 130px
+	&:before
+		content: ''
+
+		position: absolute
+
+		top: 50%
+		left: 50%
+
+		background-image: url(../../static/img/icons/basket-del.svg)
+		background-repeat: no-repeat
+		background-position: center center
+
+		width: 23px
+		height: 26px
+
+		transform: translate(-50%, -50%)
+
+	@media(max-width:1439px)
+		right: 18px

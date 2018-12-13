@@ -7,6 +7,7 @@ var CameraButtons = function(blueprint3d) {
 
   var orbitControls = blueprint3d.three.controls;
   var three = blueprint3d.three;
+  var threes = blueprint3d;
 
   var panSpeed = 30;
   var directions = {
@@ -60,6 +61,7 @@ var CameraButtons = function(blueprint3d) {
 
      $('#constructor_3d').on('click', function(EO) {
     	EO.preventDefault();
+      console.log(threes)
     	return orbitControls.changeViewe_3d();
     });
     
@@ -249,7 +251,7 @@ var SideMenu = function(blueprint3d, floorplanControls, modalEffects) {
   var ACTIVE_CLASS = "active";
 
   var tabs = {
-    "FLOORPLAN" : $("#floorplan_tab"),
+    // "FLOORPLAN" : $("body"),
     "SHOP" : $("#items_tab"),
     "DESIGN" : $("#design_tab")
   }
@@ -386,14 +388,35 @@ var SideMenu = function(blueprint3d, floorplanControls, modalEffects) {
   }
 
   blueprint3d.model.scene.addItem(1, 'static/const/models/model1/model.js', {resizable: true});
-  blueprint3d.model.scene.addItem(1, 'static/const/models/model3/model.js', {resizable: true});
+  // blueprint3d.model.scene.addItem(1, 'static/const/models/model3/model.js', {resizable: true});
+  // blueprint3d.model.scene.addItem(1, 'static/const/models/newObj/o1/3d_print.js', {resizable: true});
+  // blueprint3d.model.scene.addItem(1, 'static/const/models/newObj/o2/Atom.js', {resizable: true});
+  // blueprint3d.model.scene.addItem(1, 'static/const/models/newObj/o3/IntDesc.js', {resizable: true});
+  // blueprint3d.model.scene.addItem(1, 'static/const/models/newObj/o4/PC_key.js', {resizable: true});
+  // blueprint3d.model.scene.addItem(1, 'static/const/models/newObj/o5/lab1.js', {resizable: true});
+  // blueprint3d.model.scene.addItem(1, 'static/const/models/newObj/o6/lab2.2.js', {resizable: true});
+  // blueprint3d.model.scene.addItem(1, 'static/const/models/newObj/o7/lab2.js', {resizable: true});
+  // blueprint3d.model.scene.addItem(1, 'static/const/models/newObj/o8/lab3.js', {resizable: true});
+  // blueprint3d.model.scene.addItem(1, 'static/const/models/newObj/o9/Laptop.js', {resizable: true});
+  // blueprint3d.model.scene.addItem(1, 'static/const/models/newObj/o10/PC_monitor.js', {resizable: true});
+  // blueprint3d.model.scene.addItem(1, 'static/const/models/newObj/o11/PC_mouse.js', {resizable: true});
+  // blueprint3d.model.scene.addItem(1, 'static/const/models/newObj/o12/Osc.js', {resizable: true});
+  // blueprint3d.model.scene.addItem(1, 'static/const/models/newObj/o13/PC_all.js', {resizable: true});
+  // blueprint3d.model.scene.addItem(1, 'static/const/models/newObj/o14/PC_build.js', {resizable: true});
+  // blueprint3d.model.scene.addItem(1, 'static/const/models/newObj/o15/Projector.js', {resizable: true});
+  // blueprint3d.model.scene.addItem(1, 'static/const/models/newObj/o16/Seat.js', {resizable: true});
+  // blueprint3d.model.scene.addItem(1, 'static/const/models/newObj/o17/Stol.js', {resizable: true});
+  // blueprint3d.model.scene.addItem(1, 'static/const/models/newObj/o18/Stolar_all.js', {resizable: true});
+  // blueprint3d.model.scene.addItem(1, 'static/const/models/newObj/o19/Telescope.js', {resizable: true});
 
   init();
 
   $('.my_add_item').on('click', function() {
     $('body, html').removeClass('pop_up_cond');
     $('.items_pop_up').removeClass('pop_up_active');
-    blueprint3d.model.scene.addItem(1, 'static/const/models/model1/model.js', {resizable: true});
+    let linkJs = $('.my_add_item').attr('data-jsLink')
+    console.log(linkJs)
+    blueprint3d.model.scene.addItem(1, `${linkJs}`, {resizable: true});
   })
 
 }

@@ -106,7 +106,7 @@
 		form(action="").shop_filters.conf_wr_filters-side
 			.shop_filters__block.conf_wr__block.conf_wr__plan
 				a(href="#").shop_filters__cat.bold.css_arr.closed.conf_wr_filters__plan.conf_wr__cat План помещения
-				.shop_filters__cat_wr.closed
+				.shop_filters__cat_wr.closed.shop_filters__desk_toggle
 					.config__wr.config__wr-filter
 						.config__wrap.config__wrap-no_desk
 							.config__left
@@ -120,6 +120,18 @@
 									label(for="").config__label Высота
 									input(type="text").config__input
 							.config__center
+								.config__add_window.config__add_item_center
+									.config__add_window_img
+										img(src="../../../static/img/icons/window-icon.svg", alt="window")
+									.config__add_wrap_txt
+										p.config__add_txt Добавить
+										p.config__add_txt.config__add_link окно
+								.config__add_door.config__add_item_center
+									.config__add_window_img
+										img(src="../../../static/img/icons/door-icon.svg", alt="door")
+									.config__add_wrap_txt
+										p.config__add_txt Добавить
+										p.config__add_txt.config__add_link дверь
 							.config__right
 								a(href="#").btn_w_arr.shop_filters__btn.trs.config__next Применить
 									.hover_bl
@@ -130,35 +142,13 @@
 						.shop_filters__input_wr.conf_wr_filters__input_wr
 							input(type="checkbox").checkbox#input5
 							label(for="input5").conf_wr_filters-side__chbx.label_checkbox(data-type="chair") Стул
-						a(href="#").shop_filters__cat_link.trs.conf_wr_filters-side__cat Показать ещё +
-						.conf_wr__over-filters.conf_wr__over
-							.config__owl.owl-carousel.slider_T1.config__owl-filter
-								//- a(href="#").config__item
-								//- 	.config__img_wr
-								//- 		img(src="static/img/pictures/shop2.png", alt="").config__img
-								//- 		.config__arrow
-								//- 			img(src="static/img/icons/gray-arr.svg", alt="").config__icon
-								//- 			img(src="static/img/icons/white-arr.svg", alt="").config__icon.config__icon-hov
-								//- 	p.config__name Стол для учителя
-								//- 	p.config__desc 100х36 см
-								//- 	p.config__price 1200 ₽
+						//- a(href="#").shop_filters__cat_link.trs.conf_wr_filters-side__cat Показать ещё +
 				.shop_filters__block.conf_wr__block.shop_filters__block_wrap
 					a(href="#").shop_filters__cat.bold.css_arr.closed.conf_wr__cat.item_category Кот
 					.conf_wr_filters__cat_wr.shop_filters__cat_wr.closed
 						.shop_filters__input_wr.conf_wr_filters__input_wr
 							input(type="checkbox").checkbox#input1
 							label(for="input1").conf_wr_filters-side__chbx.label_checkbox Начальная школа
-						.conf_wr__over-filters.conf_wr__over
-							.config__owl.owl-carousel.slider_T1.config__owl-filter
-								//- a(href="#").config__item
-								//- 	.config__img_wr
-								//- 		img(src="static/img/pictures/shop2.png", alt="").config__img
-								//- 		.config__arrow
-								//- 			img(src="static/img/icons/gray-arr.svg", alt="").config__icon
-								//- 			img(src="static/img/icons/white-arr.svg", alt="").config__icon.config__icon-hov
-								//- 	p.config__name Стол для учителя
-								//- 	p.config__desc 100х36 см
-								//- 	p.config__price 1200 ₽
 			.shop_filters__wrap.conf_wr_filters__wrap.conf_wr_filters-side__wrap
 				a(href="#").shop_filters__reset.bold.trs.conf_wr_filters-side__reset Сбросить
 
@@ -177,20 +167,33 @@
 							label(for="").config__label Высота
 							input(type="text").config__input
 					.config__center
+						.config__add_window.config__add_item_center
+							.config__add_window_img
+								img(src="../../../static/img/icons/window-icon.svg", alt="window")
+							.config__add_wrap_txt
+								p.config__add_txt.config__add_txt_hover Добавить
+								p.config__add_txt.config__add_link.config__add_txt_hover окно
+						.config__add_door.config__add_item_center
+							.config__add_window_img
+								img(src="../../../static/img/icons/door-icon.svg", alt="door")
+							.config__add_wrap_txt
+								p.config__add_txt.config__add_txt_hover Добавить
+								p.config__add_txt.config__add_link.config__add_txt_hover дверь
 					.config__right
 						a(href="#").btn_w_arr.shop_filters__btn.trs.config__next Применить
 							.hover_bl
 			.conf_wr__over
 				h7.config__title.title.config-cond2__title Стул
-				.conf_wr__preloader_wrap
-					.conf_wr__preloader
-						.bigSqr
-							.square.first
-							.square.second
-							.square.third
-							.square.fourth
-						.text loading
-				.config__owl.owl-carousel.slider_T1
+				.conf_wr__wrap_slider
+					.conf_wr__preloader_wrap
+						.conf_wr__preloader
+							.bigSqr
+								.square.first
+								.square.second
+								.square.third
+								.square.fourth
+							.text loading
+					.config__owl.owl-carousel.slider_T1.config__owl_desktop
 					
 			.config__body
 				.config__top_line
@@ -200,8 +203,6 @@
 				include constructor
 			a(href="").conf_wr__quart.btn_w_arr.conf_wr__order.conf_wr__order2 Заказать
 				.hover_bl
-			div#context-menu-delete.remove_item delete
-
 
 	section.mob.conf_wr__mob
 		img(src="static/img/icons/comp.svg", width="100", alt="")
