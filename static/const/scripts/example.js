@@ -7,6 +7,7 @@ var CameraButtons = function(blueprint3d) {
 
   var orbitControls = blueprint3d.three.controls;
   var three = blueprint3d.three;
+  var threes = blueprint3d;
 
   var panSpeed = 30;
   var directions = {
@@ -60,6 +61,7 @@ var CameraButtons = function(blueprint3d) {
 
      $('#constructor_3d').on('click', function(EO) {
     	EO.preventDefault();
+      console.log(threes)
     	return orbitControls.changeViewe_3d();
     });
     
@@ -249,7 +251,7 @@ var SideMenu = function(blueprint3d, floorplanControls, modalEffects) {
   var ACTIVE_CLASS = "active";
 
   var tabs = {
-    "FLOORPLAN" : $("#floorplan_tab"),
+    // "FLOORPLAN" : $("body"),
     "SHOP" : $("#items_tab"),
     "DESIGN" : $("#design_tab")
   }

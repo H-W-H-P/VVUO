@@ -532,6 +532,33 @@ $(document).ready(function () {
       zoom: 12
     })
     map.panes.get('ground').getElement().style.filter = 'grayscale(100%)'
+  }).catch(error => console.log('Failed to load Yandex Maps', error))
+
+  $('.news__link').on('click', function (EO) {
+    EO.preventDefault()
+    $.ajax('link', {
+      type: 'GET',
+      dataType: 'json',
+      success: dataLoaded,
+      error: errorHandler
+    })
+    dataLoaded()
   })
-    .catch(error => console.log('Failed to load Yandex Maps', error))
+
+  function dataLoaded (date) {
+    let htmlTemplate = `
+      <a href='#' class='news__not_slide news__item news_page__item news__item-big'>
+      <img class="news__image news__image-big" src="static/img/pictures/bg.jpg">
+      <p class="news__date">13/12/2018</p>
+      <h7 class="news__desc news_page__desc">Kаборатория Современных телекоммуникационных технологий</h7>
+      <p class="news__text news_page__text">В Петербурге прошло ведущее промышленное мероприятие Северо-Запада «Петербургская  техническая ярмарка 2018»</p>
+      </a>`
+    for (let i = 0; i < 2; i++) {
+      $('.news__pad_top').append(htmlTemplate)
+    }
+  }
+
+  function errorHandler (jqXHR, statusStr, errorStr) {
+    console.log(statusStr + ' ' + errorStr)
+  }
 })
