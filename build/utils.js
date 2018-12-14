@@ -91,8 +91,7 @@ exports.pageFile = function (dev = true) {
     var options = {
       filename: path.resolve(__dirname, `../dist/${distfile}`),
       template: file,
-      inject: true,
-      minify: false
+      inject: true
     }
 
     if (!dev) {

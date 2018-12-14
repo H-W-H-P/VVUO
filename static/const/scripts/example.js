@@ -388,7 +388,7 @@ var SideMenu = function(blueprint3d, floorplanControls, modalEffects) {
   }
 
   blueprint3d.model.scene.addItem(1, 'static/const/models/model1/model.js', {resizable: true});
-  // blueprint3d.model.scene.addItem(1, 'static/const/models/model3/model.js', {resizable: true});
+  blueprint3d.model.scene.addItem(1, 'static/const/models/model3/model.js', {resizable: true});
   // blueprint3d.model.scene.addItem(1, 'static/const/models/newObj/o1/3d_print.js', {resizable: true});
   // blueprint3d.model.scene.addItem(1, 'static/const/models/newObj/o2/Atom.js', {resizable: true});
   // blueprint3d.model.scene.addItem(1, 'static/const/models/newObj/o3/IntDesc.js', {resizable: true});
