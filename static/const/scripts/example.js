@@ -417,6 +417,7 @@ var SideMenu = function(blueprint3d, floorplanControls, modalEffects) {
   // blueprint3d.model.scene.addItem(1, 'static/const/models/newObj/o18/model.js', {resizable: true});
   // blueprint3d.model.scene.addItem(1, 'static/const/models/newObj/o19/model.js', {resizable: true});
 
+
   init();
 
   $('.my_add_item').on('click', function() {

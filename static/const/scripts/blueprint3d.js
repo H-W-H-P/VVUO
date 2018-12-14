@@ -46755,8 +46755,18 @@ var ThreeController = function(three, model, camera, element, controls, hud) {
 
       mouseMoved = true;
 
-      // mouse.x = event.clientX;
-      // mouse.y = event.clientY;
+      var element = document.getElementById('viewer');
+      var viewportOffset = element.getBoundingClientRect();
+	  var top = viewportOffset.top;
+	  var left = viewportOffset.left;
+	  var right = window.innerWidth - left - element.offsetWidth;
+	  var coefHeight = window.innerHeight / element.offsetHeight;
+	  var coefWidth = 1.1;
+
+	  // console.log(right)
+
+      mouse.x = event.clientX;
+      mouse.y = event.clientY;
       
       // almost work
       // mouse.x = event.clientX;
@@ -46764,21 +46774,14 @@ var ThreeController = function(three, model, camera, element, controls, hud) {
       // mouse.y = event.clientY - top;
       // mouse.y = mouse.y * coefHeight;
 
-      var element = document.getElementById('viewer');
-      var viewportOffset = element.getBoundingClientRect();
-	  var top = viewportOffset.top;
-	  var left = viewportOffset.left;
-	  var coefHeight = window.innerHeight / element.offsetHeight;
-	  var coefWidth = 1.1;
-
 	  // prod change
 
       // mouse.x = event.clientX - left;
-      mouse.y = event.clientY - top;
-      mouse.y = mouse.y * coefHeight;
+      // mouse.y = event.clientY - top;
+      // mouse.y = mouse.y * coefHeight;
 
-      // mouse.x = event.clientX - left;
-      mouse.x = mouse.x * coefWidth;
+      // mouse.x = event.clientX - right;
+      // mouse.x = mouse.x * coefWidth;
       // mouse.y = event.clientY;
 
       // console.log(mouse.x, mouse.y)
@@ -46974,9 +46977,12 @@ var ThreeController = function(three, model, camera, element, controls, hud) {
 
   // sets coords to -1 to 1
   function normalizeVector2(vec2) {
+  	// prod change
      var retVec = new THREE.Vector2();
-     retVec.x = ((vec2.x - three.widthMargin) / (window.innerWidth - three.widthMargin)) * 2 - 1;
-     retVec.y = -((vec2.y - three.heightMargin) / (window.innerHeight - three.heightMargin)) * 2 + 1;
+  	 var helper = window.innerWidth - three.element.outerWidth() - three.element.offset().left;
+  	 var helper2 = three.element.offset().top - $(window).scrollTop();
+     retVec.x = ((vec2.x - three.widthMargin) / (window.innerWidth - three.widthMargin - helper)) * 2 - 1;
+     retVec.y = -((vec2.y - helper2) / (three.element.outerHeight())) * 2 + 1;
      return retVec;
   }
 
@@ -47010,6 +47016,7 @@ var ThreeController = function(three, model, camera, element, controls, hud) {
   this.getIntersections = function(vec2, objects, filterByNormals, onlyVisible, recursive, linePrecision ) {
 
     var vector = mouseToVec3(vec2);
+    // console.log(vector)
 
     onlyVisible = onlyVisible || false;
     filterByNormals = filterByNormals || false;
@@ -47464,8 +47471,6 @@ var ThreeControls = function (object, domElement) {
 
 
 	function onMouseMove( event ) {
-
-		// prod change
 	
 		if ( scope.enabled === false ) return;
 
@@ -48521,10 +48526,12 @@ var ThreeMain = function(model, element, canvasElement, opts) {
     // prod change
 
     domElement = scope.element.get(0) // Container
-    camera = new THREE.PerspectiveCamera(45, 1, 1, 10000);
+    camera = new THREE.PerspectiveCamera(50, 1, 1, 10000);
+    // camera.fov = 10;
+	// camera.updateProjectionMatrix();
+	// need to scale camera back. Fov = perepsective
 
-     // camera = new THREE.OrthographicCamera( -600, 350, 350 / 2, -400, 1, 100000 );
-     console.log(950 / - 2)
+	// camera = new THREE.OrthographicCamera( -600, 350, 350 / 2, -400, 1, 100000 );
     renderer = new THREE.WebGLRenderer({
       antialias: true,
       preserveDrawingBuffer: true // required to support .toDataURL()
