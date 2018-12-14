@@ -387,6 +387,13 @@ var SideMenu = function(blueprint3d, floorplanControls, modalEffects) {
     });
   }
 
+  $('.config__add_window_img').on('click', function() {
+    blueprint3d.model.scene.addItem(2, 'static/const/models/newObj/window/window.js', {resizable: true});
+  });
+  $('.config__add_door_img').on('click', function() {
+    blueprint3d.model.scene.addItem(7, 'static/const/models/newObj/door/door.js', {resizable: true});
+  });
+
   blueprint3d.model.scene.addItem(1, 'static/const/models/model1/model.js', {resizable: true});
   // blueprint3d.model.scene.addItem(1, 'static/const/models/model3/model.js', {resizable: true});
   // blueprint3d.model.scene.addItem(1, 'static/const/models/newObj/o1/3d_print.js', {resizable: true});

@@ -306,6 +306,10 @@ $(document).ready(function () {
     if (window.innerWidth >= 1440) {
       return false
     }
+    if (!$('.conf_wr_filters__plan').hasClass('closed')) {
+      $('.conf_wr_filters__plan').addClass('closed')
+      $('.conf_wr_filters__plan').next().addClass('closed')
+    }
     if (!$(this).hasClass('closed')) {
       clearMobSlider()
       resetStateCatalog(stateCatalog)
@@ -394,7 +398,8 @@ $(document).ready(function () {
   })
 
   // - клик по карточки - открытие попапа
-  $('.conf_wr__over, .conf_wr__wrap_slider').on('click', function (EO) {
+  $('.conf_wr__over, .conf_wr__wrap_slider, .shop_filters__block').on('click', function (EO) {
+    console.log('+++')
     let _this = this
     EO.preventDefault()
     let item = $(EO.target).closest('.config__item')
