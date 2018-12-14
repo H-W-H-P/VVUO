@@ -83,12 +83,6 @@ $(document).ready(function () {
     return false
   })
 
-  // $('.config__next, .conf_wr_filters-side__chbx').click(function () {
-  //   $('.config').removeClass('config-cond1').addClass('config-cond2')
-  //   $('.conf_wr_filters-side').addClass('conf_wr_filters-side-cond2')
-  //   return false
-  // })
-
   $('.conf_wr_filters-side__reset').click(function () {
     $('.config').addClass('config-cond1').removeClass('config-cond2')
     $('.conf_wr_filters-side').removeClass('conf_wr_filters-side-cond2')
