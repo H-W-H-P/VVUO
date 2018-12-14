@@ -394,27 +394,28 @@ var SideMenu = function(blueprint3d, floorplanControls, modalEffects) {
     blueprint3d.model.scene.addItem(7, 'static/const/models/newObj/door/door.js', {resizable: true});
   });
 
-  blueprint3d.model.scene.addItem(1, 'static/const/models/model1/model.js', {resizable: true});
+
+  // blueprint3d.model.scene.addItem(1, 'static/const/models/model1/model.js', {resizable: true});
   // blueprint3d.model.scene.addItem(1, 'static/const/models/model3/model.js', {resizable: true});
-  // blueprint3d.model.scene.addItem(1, 'static/const/models/newObj/o1/3d_print.js', {resizable: true});
-  // blueprint3d.model.scene.addItem(1, 'static/const/models/newObj/o2/Atom.js', {resizable: true});
-  // blueprint3d.model.scene.addItem(1, 'static/const/models/newObj/o3/IntDesc.js', {resizable: true});
-  // blueprint3d.model.scene.addItem(1, 'static/const/models/newObj/o4/PC_key.js', {resizable: true});
-  // blueprint3d.model.scene.addItem(1, 'static/const/models/newObj/o5/lab1.js', {resizable: true});
-  // blueprint3d.model.scene.addItem(1, 'static/const/models/newObj/o6/lab2.2.js', {resizable: true});
-  // blueprint3d.model.scene.addItem(1, 'static/const/models/newObj/o7/lab2.js', {resizable: true});
-  // blueprint3d.model.scene.addItem(1, 'static/const/models/newObj/o8/lab3.js', {resizable: true});
-  // blueprint3d.model.scene.addItem(1, 'static/const/models/newObj/o9/Laptop.js', {resizable: true});
-  // blueprint3d.model.scene.addItem(1, 'static/const/models/newObj/o10/PC_monitor.js', {resizable: true});
-  // blueprint3d.model.scene.addItem(1, 'static/const/models/newObj/o11/PC_mouse.js', {resizable: true});
-  // blueprint3d.model.scene.addItem(1, 'static/const/models/newObj/o12/Osc.js', {resizable: true});
-  // blueprint3d.model.scene.addItem(1, 'static/const/models/newObj/o13/PC_all.js', {resizable: true});
-  // blueprint3d.model.scene.addItem(1, 'static/const/models/newObj/o14/PC_build.js', {resizable: true});
-  // blueprint3d.model.scene.addItem(1, 'static/const/models/newObj/o15/Projector.js', {resizable: true});
-  // blueprint3d.model.scene.addItem(1, 'static/const/models/newObj/o16/Seat.js', {resizable: true});
-  // blueprint3d.model.scene.addItem(1, 'static/const/models/newObj/o17/Stol.js', {resizable: true});
-  // blueprint3d.model.scene.addItem(1, 'static/const/models/newObj/o18/Stolar_all.js', {resizable: true});
-  // blueprint3d.model.scene.addItem(1, 'static/const/models/newObj/o19/Telescope.js', {resizable: true});
+  // blueprint3d.model.scene.addItem(1, 'static/const/models/newObj/o1/model.js', {resizable: true});
+  // blueprint3d.model.scene.addItem(1, 'static/const/models/newObj/o2/model.js', {resizable: true});
+  // blueprint3d.model.scene.addItem(1, 'static/const/models/newObj/o3/model.js', {resizable: true});
+  // blueprint3d.model.scene.addItem(1, 'static/const/models/newObj/o4/model.js', {resizable: true});
+  // blueprint3d.model.scene.addItem(1, 'static/const/models/newObj/o5/model.js', {resizable: true});
+  // blueprint3d.model.scene.addItem(1, 'static/const/models/newObj/o6/model.js', {resizable: true});
+  // blueprint3d.model.scene.addItem(1, 'static/const/models/newObj/o7/model.js', {resizable: true});
+  // blueprint3d.model.scene.addItem(1, 'static/const/models/newObj/o8/model.js', {resizable: true});
+  // blueprint3d.model.scene.addItem(1, 'static/const/models/newObj/o9/model.js', {resizable: true});
+  // blueprint3d.model.scene.addItem(1, 'static/const/models/newObj/o10/model.js', {resizable: true});
+  // blueprint3d.model.scene.addItem(1, 'static/const/models/newObj/o11/model.js', {resizable: true});
+  // blueprint3d.model.scene.addItem(1, 'static/const/models/newObj/o12/model.js', {resizable: true});
+  // blueprint3d.model.scene.addItem(1, 'static/const/models/newObj/o13/model.js', {resizable: true});
+  // blueprint3d.model.scene.addItem(1, 'static/const/models/newObj/o14/model.js', {resizable: true});
+  // blueprint3d.model.scene.addItem(1, 'static/const/models/newObj/o15/model.js', {resizable: true});
+  // blueprint3d.model.scene.addItem(1, 'static/const/models/newObj/o16/model.js', {resizable: true});
+  // blueprint3d.model.scene.addItem(1, 'static/const/models/newObj/o17/model.js', {resizable: true});
+  // blueprint3d.model.scene.addItem(1, 'static/const/models/newObj/o18/model.js', {resizable: true});
+  // blueprint3d.model.scene.addItem(1, 'static/const/models/newObj/o19/model.js', {resizable: true});
 
   init();
 

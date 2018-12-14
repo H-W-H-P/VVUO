@@ -96,11 +96,22 @@ $(document).ready(function () {
     }
   }
 
+  function deleteActiveTabColor () {
+    $('.conf_wr_filters_active').each((v, k) => {
+      $(k).removeClass('conf_wr_filters_active')
+    })
+  }
+
   $('.conf_wr_filters-side__reset').on('click', function () {
     resetStateCatalog(stateCatalog)
+    deleteActiveTabColor()
   })
   // - по клику на Label создаем карусель и показываем items
   $('.conf_wr_filters-side__chbx').on('click', function (EO) {
+    $('.conf_wr_filters_active').each((v, k) => {
+      $(k).removeClass('conf_wr_filters_active')
+    })
+    $(this).toggleClass('conf_wr_filters_active')
     $('.conf_wr__preloader_wrap').removeClass('conf_wr__preloader_wrap-disable')
     stateCatalog['open'] = true
     stateCatalog['catalog'] = $(EO.target).closest('.shop_filters__block_wrap').attr('data-wrapOwl')
@@ -306,6 +317,7 @@ $(document).ready(function () {
     if (window.innerWidth >= 1440) {
       return false
     }
+    deleteActiveTabColor()
     if (!$('.conf_wr_filters__plan').hasClass('closed')) {
       $('.conf_wr_filters__plan').addClass('closed')
       $('.conf_wr_filters__plan').next().addClass('closed')
@@ -348,6 +360,7 @@ $(document).ready(function () {
         stateCatalog['catalog'] = $(self).parent().attr('data-wrapOwl')
         stateCatalog['label'] = $(self).parent().find('.shop_filters__cat_wr div:first-child').find('label').attr('data-type')
         createWrapMobile()
+        $(self).parent().find('.conf_wr_filters-side__chbx').eq(0).addClass('conf_wr_filters_active')
       }
     }
     baz(_self)
@@ -398,8 +411,7 @@ $(document).ready(function () {
   })
 
   // - клик по карточки - открытие попапа
-  $('.conf_wr__over, .conf_wr__wrap_slider, .shop_filters__block').on('click', function (EO) {
-    console.log('+++')
+  $('.conf_wr__over, .shop_filters__block').on('click', function (EO) {
     let _this = this
     EO.preventDefault()
     let item = $(EO.target).closest('.config__item')
@@ -432,13 +444,15 @@ $(document).ready(function () {
   function slideItem (prop) {
     let dataItemSelect
     let itemNext
-    let lengthItem = $('.config__item').length
+    let lengthItem
     let counter = 0
     // l
     // l
     function slideItemBtn (e, val) {
+      lengthItem = $('.config__item').length
       e.preventDefault()
       let selectItem = $('.item_select').eq(0)
+
       // -
       // - листаем карточки товаров
       if (val === 'next') {
