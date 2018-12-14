@@ -285,6 +285,13 @@ var SideMenu = function(blueprint3d, floorplanControls, modalEffects) {
 
     $("#update-floorplan").click(floorplanUpdate);
 
+    $('.config__next').click(function () {      
+      setCurrentState(scope.states.FLOORPLAN);
+      floorplanUpdate();
+      $('.config__input').val('');
+      return false;
+    })
+
     initLeftMenu();
 
     blueprint3d.three.updateWindowSize();
@@ -388,15 +395,15 @@ var SideMenu = function(blueprint3d, floorplanControls, modalEffects) {
   }
 
   $('.config__add_window_img').on('click', function() {
-    blueprint3d.model.scene.addItem(2, 'static/const/models/newObj/window/window.js', {resizable: true});
+    blueprint3d.model.scene.addItem(3, 'static/const/models/newObj/window/window.js', {resizable: true});
   });
   $('.config__add_door_img').on('click', function() {
     blueprint3d.model.scene.addItem(7, 'static/const/models/newObj/door/door.js', {resizable: true});
   });
 
 
-  // blueprint3d.model.scene.addItem(1, 'static/const/models/model1/model.js', {resizable: true});
-  // blueprint3d.model.scene.addItem(1, 'static/const/models/model3/model.js', {resizable: true});
+  blueprint3d.model.scene.addItem(1, 'static/const/models/model1/model.js', {resizable: true});
+  blueprint3d.model.scene.addItem(1, 'static/const/models/model3/model.js', {resizable: true});
   // blueprint3d.model.scene.addItem(1, 'static/const/models/newObj/o1/model.js', {resizable: true});
   // blueprint3d.model.scene.addItem(1, 'static/const/models/newObj/o2/model.js', {resizable: true});
   // blueprint3d.model.scene.addItem(1, 'static/const/models/newObj/o3/model.js', {resizable: true});
@@ -583,6 +590,6 @@ $(document).ready(function() {
 
   // This serialization format needs work
   // Load a simple rectangle room
-  data = '{"floorplan":{"corners":{"8f4a050d-e102-3c3f-5af9-3d9133555d76":{"x":294.64,"y":-227.58400000000006,"pos":"left-bot"},"4e312eca-6c4f-30d1-3d9a-a19a9d1ee359":{"x":294.64,"y":232.664,"pos":"left-top"},"11d25193-4411-fbbf-78cb-ae7c0283164b":{"x":1044.7019999999998,"y":232.664,"pos":"right-top"},"edf0de13-df9f-cd6a-7d11-9bd13c36ce12":{"x":1044.7019999999998,"y":-227.58400000000006,"pos":"right-bot"}},"walls":[{"corner1":"8f4a050d-e102-3c3f-5af9-3d9133555d76","corner2":"4e312eca-6c4f-30d1-3d9a-a19a9d1ee359"},{"corner1":"8f4a050d-e102-3c3f-5af9-3d9133555d76","corner2":"edf0de13-df9f-cd6a-7d11-9bd13c36ce12"},{"corner1":"edf0de13-df9f-cd6a-7d11-9bd13c36ce12","corner2":"11d25193-4411-fbbf-78cb-ae7c0283164b"},{"corner1":"11d25193-4411-fbbf-78cb-ae7c0283164b","corner2":"4e312eca-6c4f-30d1-3d9a-a19a9d1ee359"}],"wallTextures":[],"floorTextures":{}},"items":[]}'
+  data = '{"floorplan":{"corners":{"8f4a050d-e102-3c3f-5af9-3d9133555d76":{"x":0,"y":0,"pos":"left-bot"},"4e312eca-6c4f-30d1-3d9a-a19a9d1ee359":{"x":0,"y":400,"pos":"left-top"},"11d25193-4411-fbbf-78cb-ae7c0283164b":{"x":700,"y":400,"pos":"right-top"},"edf0de13-df9f-cd6a-7d11-9bd13c36ce12":{"x":700,"y":0,"pos":"right-bot"}},"walls":[{"corner1":"8f4a050d-e102-3c3f-5af9-3d9133555d76","corner2":"4e312eca-6c4f-30d1-3d9a-a19a9d1ee359"},{"corner1":"8f4a050d-e102-3c3f-5af9-3d9133555d76","corner2":"edf0de13-df9f-cd6a-7d11-9bd13c36ce12"},{"corner1":"edf0de13-df9f-cd6a-7d11-9bd13c36ce12","corner2":"11d25193-4411-fbbf-78cb-ae7c0283164b"},{"corner1":"11d25193-4411-fbbf-78cb-ae7c0283164b","corner2":"4e312eca-6c4f-30d1-3d9a-a19a9d1ee359"}],"wallTextures":[],"floorTextures":{}},"items":[]}'
   blueprint3d.model.loadSerialized(data);
 });

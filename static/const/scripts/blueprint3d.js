@@ -46293,6 +46293,20 @@ var Room = function(floorplan, corners) {
     }
   }
 
+  $(document).on('change', '#confWallA', function () {
+  	corners[2].x = Number($(this).val());
+  	corners[1].x = Number($(this).val());
+  	updateWalls();
+  	// updateInteriorCorners();
+  	// generatePlane();
+  })
+
+  $(document).on('change', '#confWallB', function () {
+  	corners[2].y = Number($(this).val());
+  	corners[3].y = Number($(this).val());
+  	updateWalls();
+  })
+
   // populates each wall's half edge relating to this room
   // this creates a fancy doubly connected edge list (DCEL)
   function updateWalls() {
@@ -46464,7 +46478,9 @@ var Wall = function(start, end) {
   var start = start;
   var end = end;
 
-  this.thickness = 10;
+  // prod change wall height/thick
+
+  this.thickness = 1;
   this.height = 250;
 
   // front is the plane from start to end
@@ -46755,36 +46771,8 @@ var ThreeController = function(three, model, camera, element, controls, hud) {
 
       mouseMoved = true;
 
-      var element = document.getElementById('viewer');
-      var viewportOffset = element.getBoundingClientRect();
-	  var top = viewportOffset.top;
-	  var left = viewportOffset.left;
-	  var right = window.innerWidth - left - element.offsetWidth;
-	  var coefHeight = window.innerHeight / element.offsetHeight;
-	  var coefWidth = 1.1;
-
-	  // console.log(right)
-
       mouse.x = event.clientX;
       mouse.y = event.clientY;
-      
-      // almost work
-      // mouse.x = event.clientX;
-      // mouse.x = mouse.x * coefWidth;
-      // mouse.y = event.clientY - top;
-      // mouse.y = mouse.y * coefHeight;
-
-	  // prod change
-
-      // mouse.x = event.clientX - left;
-      // mouse.y = event.clientY - top;
-      // mouse.y = mouse.y * coefHeight;
-
-      // mouse.x = event.clientX - right;
-      // mouse.x = mouse.x * coefWidth;
-      // mouse.y = event.clientY;
-
-      // console.log(mouse.x, mouse.y)
 
       if (!mouseDown) {
         updateIntersections();        
