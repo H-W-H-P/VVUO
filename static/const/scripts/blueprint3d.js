@@ -44080,7 +44080,6 @@ var Floorplanner = function(canvas, floorplan) {
   }
 
   function mousedown() {
-
     mouseDown = true;
     mouseMoved = false;
     lastX = rawMouseX;
@@ -46353,8 +46352,7 @@ var OnFloorItem = require('../items/on_floor_item');
 var WallFloorItem = require('../items/wall_floor_item');
 var WallItem = require('../items/wall_item');
 
-var utils = require('../utils/utils')
-
+var utils = require('../utils/utils');
 
 var Scene = function(model, textureDir) {
   var scope = this;
@@ -46428,7 +46426,6 @@ var Scene = function(model, textureDir) {
 
   this.addItem = function(itemType, fileName, metadata, position, rotation, scale, fixed) {
     itemType = itemType || 1;
-
     var loaderCallback = function(geometry, materials) {
       var item = new item_types[itemType](
         model,
@@ -46787,7 +46784,7 @@ var ThreeController = function(three, model, camera, element, controls, hud) {
       // mouse.x = mouse.x * coefWidth;
       // mouse.y = event.clientY;
 
-      console.log(mouse.x, mouse.y)
+      // console.log(mouse.x, mouse.y)
 
       if (!mouseDown) {
         updateIntersections();        
@@ -46807,7 +46804,7 @@ var ThreeController = function(three, model, camera, element, controls, hud) {
           hud.update();
           scope.needsUpdate = true;
           break;
-      }      
+      }
     }
   }
 
@@ -47372,7 +47369,6 @@ var ThreeControls = function (object, domElement) {
 	}
 
 	function onMouseDown( event ) {
-
 		if (trigger2d) return;
 
 		if ( scope.enabled === false ) { return; }
