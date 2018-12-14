@@ -424,7 +424,6 @@ var SideMenu = function(blueprint3d, floorplanControls, modalEffects) {
     $('body, html').removeClass('pop_up_cond');
     $('.items_pop_up').removeClass('pop_up_active');
     let linkJs = $('.my_add_item').attr('data-jsLink')
-    console.log(linkJs)
     blueprint3d.model.scene.addItem(1, `${linkJs}`, {resizable: true});
   })
 

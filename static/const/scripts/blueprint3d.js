@@ -46669,8 +46669,8 @@ var ThreeController = function(three, model, camera, element, controls, hud) {
   // invoked via callback when item is loaded
   function itemLoaded(item) {
     if (!item.position_set) {
-        scope.setSelectedObject(item);
-        switchState(states.DRAGGING);  
+        // scope.setSelectedObject(item);
+        // switchState(states.DRAGGING);  
         var pos = item.position.clone();
         pos.y = 0;   
         var vec = three.projectVector(pos); 
@@ -48527,11 +48527,10 @@ var ThreeMain = function(model, element, canvasElement, opts) {
 
     domElement = scope.element.get(0) // Container
     camera = new THREE.PerspectiveCamera(50, 1, 1, 10000);
-    // camera.fov = 10;
+	// camera.fov = 10;
 	// camera.updateProjectionMatrix();
 	// need to scale camera back. Fov = perepsective
 
-	// camera = new THREE.OrthographicCamera( -600, 350, 350 / 2, -400, 1, 100000 );
     renderer = new THREE.WebGLRenderer({
       antialias: true,
       preserveDrawingBuffer: true // required to support .toDataURL()
