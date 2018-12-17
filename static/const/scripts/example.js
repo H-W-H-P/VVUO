@@ -2,7 +2,7 @@
 /*
  * Camera Buttons
  */
-
+let listItem = {};
 var CameraButtons = function(blueprint3d) {
 
   var orbitControls = blueprint3d.three.controls;
@@ -61,14 +61,11 @@ var CameraButtons = function(blueprint3d) {
 
      $('#constructor_3d').on('click', function(EO) {
     	EO.preventDefault();
-      console.log(threes)
     	return orbitControls.changeViewe_3d();
     });
     
     $('.constructor__controlViwe').on('click', function(EO) {
       let parent = EO.target;
-
-
       if ($(parent).hasClass('constructor__controlViwe_blue')) {
       	$('.constructor__controlViwe_wh').addClass('constructor_3d_active')
       	if ($(parent).hasClass('constructor_2d_active')) {
@@ -76,13 +73,10 @@ var CameraButtons = function(blueprint3d) {
       	} else {
       		$(parent).addClass('constructor_2d_active')
       	}
-
       } else {
       	$('.constructor__controlViwe_blue').removeClass('constructor_2d_active')
       	$('.constructor__controlViwe_wh').removeClass('constructor_3d_active')
       }
-
-     
     });
   }
 
@@ -126,6 +120,11 @@ var CameraButtons = function(blueprint3d) {
  */ 
 
 var ContextMenu = function(blueprint3d) {
+  function removeItemFromList(props) {
+    let nameGoods = props.name;
+    listItem[nameGoods]--;
+    console.log(listItem)
+  }
 
   var scope = this;
   var selectedItem;
@@ -134,6 +133,7 @@ var ContextMenu = function(blueprint3d) {
   function init() {
 
     $("#context-menu-delete").click(function(event) {
+      removeItemFromList(selectedItem);
         selectedItem.remove();
     });
 
@@ -427,13 +427,32 @@ var SideMenu = function(blueprint3d, floorplanControls, modalEffects) {
 
   init();
 
+  
+
   $('.my_add_item').on('click', function() {
     $('body, html').removeClass('pop_up_cond');
     $('.items_pop_up').removeClass('pop_up_active');
-    let linkJs = $('.my_add_item').attr('data-jsLink')
-    console.log(linkJs)
-    blueprint3d.model.scene.addItem(1, `${linkJs}`, {resizable: true});
+    let linkJs = $('.my_add_item').attr('data-jsLink');
+    let nameGoods = $('.my_add_item').attr('data-goodsGoods');
+    addItemInList(nameGoods)
+    blueprint3d.model.scene.addItem(1, `${linkJs}`, {resizable: true}, `${nameGoods}`);
   })
+
+  function getListSelectedItem() {
+    let items;
+    let htmlJsn = $('.constructor').attr('data-json');
+    items = JSON.parse(htmlJsn);
+    items.forEach((v, k) => {
+      listItem[v['name']] = 0;
+    });
+  }
+  getListSelectedItem()
+
+  function addItemInList(props) {
+    listItem[props]++;
+    console.log(listItem)
+    $('.list_items').val(JSON.stringify(listItem))
+  }
 
 }
 
