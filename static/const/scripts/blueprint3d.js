@@ -47841,27 +47841,24 @@ var ThreeEdge = function(scene, edge, controls) {
   	return !isNaN(parseFloat(n)) && isFinite(n);
   }
 
-  $('.shop_filters__btn').on('click', function() {
-
+  $('.trs').on('click', function() {
   	let nameInput;
   	if (window.innerWidth >= 1440) {
   		nameInput = '.config__input_height'
   	} else {
   		nameInput = '.config__input_height_mobile'
-  	}
-
+  	}			
 
   	if (!isNumeric($(nameInput).val())) {
   		wall.height = 240;
   	} else {
-
   		wall.height = $(nameInput).val();
   	}
 
-  	removeFromScene();
-  	updateTexture();
-  	updatePlanes();
-  	addToScene();
+  	// removeFromScene();
+  	// updateTexture();
+  	// updatePlanes();
+  	// addToScene();
   })
 
   function updateObjectVisibility() {

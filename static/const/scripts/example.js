@@ -286,9 +286,11 @@ var SideMenu = function(blueprint3d, floorplanControls, modalEffects) {
     $("#update-floorplan").click(floorplanUpdate);
 
     $('.config__next').click(function () {      
-      setCurrentState(scope.states.FLOORPLAN);
-      floorplanUpdate();
-      $('.config__input').val('');
+      setTimeout(function() {
+        setCurrentState(scope.states.FLOORPLAN);
+        floorplanUpdate();
+        $('.config__input').val('');
+      }, 10);
       return false;
     })
 
