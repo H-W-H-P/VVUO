@@ -154,7 +154,7 @@ $(document).ready(function () {
       if (valueItem['types'] !== nameFilter) {
         return
       }
-      htmlItem = `<a href='#' class='config__item popUpCall' id="items-wrapper add-items" data-item="${numItem}" data-pop_up=".pop_up__items" data-js="${valueItem['model']}">
+      htmlItem = `<a href='#' class='config__item popUpCall' id="items-wrapper add-items" data-item="${numItem}" data-pop_up=".pop_up__items" data-goods="${valueItem['name']}" data-js="${valueItem['model']}">
         <div class='config__img_wr add-item'   >
         <img src='${valueItem['image']}' class='items_pop_up__img_items'>
         <div class='config__arrow'>
@@ -420,6 +420,7 @@ $(document).ready(function () {
     }
     createContentItem(item)
     addLinkJs(item)
+    addNameGoods(item)
     $(item).addClass('item_select')
     $('.pop_up__items').addClass('pop_up_active')
     $('body').addClass('pop_up_cond')
@@ -438,6 +439,11 @@ $(document).ready(function () {
   function addLinkJs (prop) {
     let linkJs = $(prop).attr('data-js')
     $('.my_add_item').attr('data-jsLink', linkJs)
+  }
+
+  function addNameGoods (prop) {
+    let nameGoods = $(prop).attr('data-goods')
+    $('.my_add_item').attr('data-goodsGoods', nameGoods)
   }
 
   // - попап next - prev

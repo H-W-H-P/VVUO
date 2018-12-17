@@ -46424,7 +46424,7 @@ var Scene = function(model, textureDir) {
     }
   }
 
-  this.addItem = function(itemType, fileName, metadata, position, rotation, scale, fixed) {
+  this.addItem = function(itemType, fileName, metadata, name, position, rotation, scale, fixed) {
     itemType = itemType || 1;
     var loaderCallback = function(geometry, materials) {
       var item = new item_types[itemType](
@@ -46438,6 +46438,7 @@ var Scene = function(model, textureDir) {
       scope.add(item);
       item.initObject();
       scope.itemLoadedCallbacks.fire(item);
+      item.name = `${name}`;
     }
     scope.itemLoadingCallbacks.fire();
     loader.load(
@@ -46445,6 +46446,7 @@ var Scene = function(model, textureDir) {
       loaderCallback,
       textureDir
     );
+
   }
 }
 
@@ -47201,6 +47203,10 @@ var ThreeControls = function (object, domElement) {
 
 	var trigger2d = false;
 
+	this.d2 = false;
+
+
+
 	this.controlsActive = function() {
 		return (state === STATE.NONE);
 	}
@@ -47352,8 +47358,9 @@ var ThreeControls = function (object, domElement) {
 
 		thetaDelta = 0;
 		phiDelta = 0;
-		
+
 		scale = 1;
+		
 		pan.set(0,0,0);
 
 		this.cameraMovedCallbacks.fire();
@@ -47405,7 +47412,6 @@ var ThreeControls = function (object, domElement) {
 
 
 	this.updateMy = function (value) {
-		
 		var position = this.object.position;
 		var offset = position.clone().sub( this.target );
 
@@ -47439,7 +47445,7 @@ var ThreeControls = function (object, domElement) {
 
 		if (value) {
 			offset.x = 0;
-			offset.y = 1200;
+			offset.y = 5200;
 			offset.z = 1;
 		} 
 
@@ -47452,6 +47458,7 @@ var ThreeControls = function (object, domElement) {
 		phiDelta = 0;
 		scale = 1;
 		pan.set(0,0,0);
+	
 
 		this.cameraMovedCallbacks.fire();
 		this.needsUpdate = true;
@@ -47700,6 +47707,16 @@ var ThreeControls = function (object, domElement) {
 	}
 
 	
+
+	this.stateZoom2d =  function() {
+		scope.maxDistance = 5500;
+	}
+
+	this.stateZoom3d = function() {
+		scope.maxDistance = 1500;
+	}
+
+	
 	this.domElement.addEventListener( 'contextmenu', function ( event ) { event.preventDefault(); }, false );
 	this.domElement.addEventListener( 'mousedown', onMouseDown, false );
 	this.domElement.addEventListener( 'mousewheel', onMouseWheel, false );
@@ -47707,6 +47724,8 @@ var ThreeControls = function (object, domElement) {
 	this.domElement.addEventListener( 'touchstart', touchstart, false );
 	this.domElement.addEventListener( 'touchend', touchend, false );
 	this.domElement.addEventListener( 'touchmove', touchmove, false );
+	$('#constructor_2d').on('click', this.stateZoom2d)
+	$('#constructor_3d').on('click', this.stateZoom3d)
 
 	window.addEventListener( 'keydown', onKeyDown, false );
 };
@@ -47748,6 +47767,25 @@ var ThreeEdge = function(scene, edge, controls) {
     updateTexture();
     updatePlanes();
     addToScene();
+
+    $('#constructor_2d').on('click', function(EO) {
+    	fillerColor = 0x000000;
+    	sideColor = 0x000000;
+    	removeFromScene();
+    	updateTexture();
+    	updatePlanes(1);
+    	addToScene();
+    	
+    });
+
+    $('#constructor_3d').on('click', function(EO) {
+    	fillerColor = 0xdddddd;
+    	sideColor = 0xcccccc;
+    	removeFromScene();
+    	updateTexture();
+    	updatePlanes()
+    	addToScene();
+    });
   }
 
   function redraw() {
@@ -47769,6 +47807,7 @@ var ThreeEdge = function(scene, edge, controls) {
   }
 
   function addToScene() {
+
     utils.forEach(planes, function(plane) {
       scene.add(plane);
     });
@@ -47810,6 +47849,33 @@ var ThreeEdge = function(scene, edge, controls) {
     updateObjectVisibility();
   }
 
+  function isNumeric(n) {
+  	return !isNaN(parseFloat(n)) && isFinite(n);
+  }
+
+  $('.shop_filters__btn').on('click', function() {
+
+  	let nameInput;
+  	if (window.innerWidth >= 1440) {
+  		nameInput = '.config__input_height'
+  	} else {
+  		nameInput = '.config__input_height_mobile'
+  	}
+
+
+  	if (!isNumeric($(nameInput).val())) {
+  		wall.height = 240;
+  	} else {
+
+  		wall.height = $(nameInput).val();
+  	}
+
+  	removeFromScene();
+  	updateTexture();
+  	updatePlanes();
+  	addToScene();
+  })
+
   function updateObjectVisibility() {
     utils.forEach(wall.items, function(item) {
       item.updateEdgeVisibility(scope.visible, front);
@@ -47840,9 +47906,16 @@ var ThreeEdge = function(scene, edge, controls) {
     }
   }
 
-  function updatePlanes() {
+  function updatePlanes(value) {
+  	var color;
+  	if (value) {
+		color = 0x000000;
+  	} else {
+  		color: 0xffffff;
+  	}
+
     var wallMaterial = new THREE.MeshBasicMaterial({
-      color: 0xffffff,
+      color: color,
       ambientColor: 0xffffff,
       //ambient: scope.wall.color,
       side: THREE.FrontSide,
@@ -47892,7 +47965,9 @@ var ThreeEdge = function(scene, edge, controls) {
       wall.height, sideColor));
   }
 
-  // start, end have x and y attributes (i.e. corners)
+  // start, end have x and y attributes (i.e. corners) 
+  // EXOX
+ 
   function makeWall(start, end, transform, invTransform, material) {
     v1 = toVec3(start);
     v2 = toVec3(end);
@@ -48508,6 +48583,8 @@ var ThreeMain = function(model, element, canvasElement, opts) {
 
   var hud;
 
+  var cam2d_state;
+
   this.heightMargin;
   this.widthMargin;
   this.elementHeight;
@@ -48519,16 +48596,42 @@ var ThreeMain = function(model, element, canvasElement, opts) {
   this.wallClicked = JQUERY.Callbacks(); // wall
   this.floorClicked = JQUERY.Callbacks(); // floor
   this.nothingClicked = JQUERY.Callbacks();
+  // this.cam2;
+
+  function cameraState_2d() {
+  	camera.fov = 10;
+  	scope.controls.update();
+  	camera.updateProjectionMatrix();
+
+  }
+
+  function cameraState_3d() {
+  	camera.fov = 50;
+  	scope.controls.update();
+  	camera.updateProjectionMatrix();
+  }
   
   function init() {
     THREE.ImageUtils.crossOrigin = "";
 
+    $('#constructor_2d').on('click', cameraState_2d);
+    $('#constructor_3d').on('click', cameraState_3d);
+
+
+
     // prod change
 
     domElement = scope.element.get(0) // Container
+
+    
     camera = new THREE.PerspectiveCamera(50, 1, 1, 10000);
-	// camera.fov = 10;
-	// camera.updateProjectionMatrix();
+
+  	// camera = new THREE.PerspectiveCamera(1, 1, 1, 10000);
+  	// camera.fov = 10;
+
+
+    // camera = new THREE.PerspectiveCamera(50, 1, 1, 10000);
+    	// camera.updateProjectionMatrix();
 	// need to scale camera back. Fov = perepsective
 
     renderer = new THREE.WebGLRenderer({
