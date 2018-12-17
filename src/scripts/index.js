@@ -84,8 +84,8 @@ $(document).ready(function () {
   })
 
   $('.config__next, .conf_wr_filters-side__chbx').click(function () {
-    $('.config').removeClass('config-cond1').addClass('config-cond2')
-    $('.conf_wr_filters-side').addClass('conf_wr_filters-side-cond2')
+    // $('.config').removeClass('config-cond1').addClass('config-cond2')
+    // $('.conf_wr_filters-side').addClass('conf_wr_filters-side-cond2')
     return false
   })
 
