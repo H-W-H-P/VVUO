@@ -54,7 +54,7 @@ var CameraButtons = function(blueprint3d) {
     $("#move-up").dblclick(preventDefault);
     $("#move-down").dblclick(preventDefault);
 
-    $('#constructor_2d').on('click', function(EO) {
+    $('#constructor_2d, .conf_wr__order_btn').on('click', function(EO) {
     	EO.preventDefault();
     	return orbitControls.changeViewe_2d();
     });
@@ -124,8 +124,7 @@ var ContextMenu = function(blueprint3d) {
     let nameGoods = props.name;
     listItem[nameGoods]--;
     console.log(listItem)
-    // $('.list_items').val(JSON.stringify(listItem))
-    $('.list_items').attr('data-list', JSON.stringify(listItem))
+    $('.list_items').val(JSON.stringify(listItem))
   }
 
   var scope = this;
@@ -398,10 +397,10 @@ var SideMenu = function(blueprint3d, floorplanControls, modalEffects) {
     });
   }
 
-  $('.config__add_window_img').on('click', function() {
+  $('.config__add_window').on('click', function() {
     blueprint3d.model.scene.addItem(3, 'static/const/models/newObj/window/window.js', {resizable: true});
   });
-  $('.config__add_door_img').on('click', function() {
+  $('.config__add_door').on('click', function() {
     blueprint3d.model.scene.addItem(7, 'static/const/models/newObj/door/door.js', {resizable: true});
   });
 
@@ -454,8 +453,7 @@ var SideMenu = function(blueprint3d, floorplanControls, modalEffects) {
   function addItemInList(props) {
     listItem[props]++;
     console.log(listItem)
-    // $('.list_items').val(JSON.stringify(listItem))
-    $('.list_items').attr('data-list', JSON.stringify(listItem))
+    $('.list_items').val(JSON.stringify(listItem))
   }
 
 }

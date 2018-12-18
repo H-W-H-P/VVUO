@@ -47720,7 +47720,7 @@ var ThreeControls = function (object, domElement) {
 	this.domElement.addEventListener( 'touchstart', touchstart, false );
 	this.domElement.addEventListener( 'touchend', touchend, false );
 	this.domElement.addEventListener( 'touchmove', touchmove, false );
-	$('#constructor_2d').on('click', this.stateZoom2d)
+	$('#constructor_2d, .conf_wr__order_btn').on('click', this.stateZoom2d)
 	$('#constructor_3d').on('click', this.stateZoom3d)
 
 	window.addEventListener( 'keydown', onKeyDown, false );
@@ -47765,22 +47765,14 @@ var ThreeEdge = function(scene, edge, controls) {
     addToScene();
 
     $('#constructor_2d').on('click', function(EO) {
-    	// fillerColor = 0x000000;
-    	// sideColor = 0x000000;
-   		// removeFromScene();
-    	// updateTexture();
-    	// updatePlanes(1);
-    	// addToScene();
-    	
+
+    	console.log(planes)
+
     });
 
     $('#constructor_3d').on('click', function(EO) {
-    	// fillerColor = 0xdddddd;
-    	// sideColor = 0xcccccc;
-    	// removeFromScene();
-    	// updateTexture();
-    	// updatePlanes()
-    	// addToScene();
+
+
     });
   }
 
@@ -47863,10 +47855,6 @@ var ThreeEdge = function(scene, edge, controls) {
   		wall.height = $(nameInput).val();
   	}
 
-  	// removeFromScene();
-  	// updateTexture();
-  	// updatePlanes();
-  	// addToScene();
   })
 
   function updateObjectVisibility() {
@@ -48608,7 +48596,7 @@ var ThreeMain = function(model, element, canvasElement, opts) {
   function init() {
     THREE.ImageUtils.crossOrigin = "";
 
-    $('#constructor_2d').on('click', cameraState_2d);
+    $('#constructor_2d, .conf_wr__order_btn').on('click', cameraState_2d);
     $('#constructor_3d').on('click', cameraState_3d);
 
 
@@ -48674,6 +48662,8 @@ var ThreeMain = function(model, element, canvasElement, opts) {
     });
 
     //canvas = new ThreeCanvas(canvasElement, scope);
+
+    $('.conf_wr__order_btn').on('click', getImg)
   }
 
   function spin() {
@@ -48687,9 +48677,40 @@ var ThreeMain = function(model, element, canvasElement, opts) {
 
   // prod changes
 
+  function getImg() {
+  	$('.constructor__preloader').addClass('constructor__preloader_active');
+  	$('#constructor_2d').addClass('constructor_2d_active');
+  	$('#constructor_3d').addClass('constructor_3d_active');
+  	setTimeout(function() {
+  		scope.dataUrl();
+  	}, 500);
+  	setTimeout(function() {
+  		$('.constructor__preloader').removeClass('constructor__preloader_active');
+  	}, 1000);
+  }
+
   this.dataUrl = function() {
-    var dataUrl = renderer.domElement.toDataURL("image/png");
-    return dataUrl;
+  	var imgData, imgNode;
+  	var strDownloadMime = "image/octet-stream";
+  	var strMime = "image/octet-stream";
+
+    var imgData = renderer.domElement.toDataURL("image/png");
+
+    var saveFile = function (strData, filename) {
+        var link = document.createElement('a');
+        if (typeof link.download === 'string') {
+            link.download = filename;
+            link.href = strData;
+            link.click();
+        } else {
+            location.replace(uri);
+        }
+    }
+
+    saveFile(imgData.replace(strMime, strDownloadMime), "test.jpg");
+    $('body').append(imgData.replace(strMime, strDownloadMime))
+    console.log(imgData)
+    // return dataUrl;
   }
 
   this.stopSpin = function() {

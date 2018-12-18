@@ -112,7 +112,7 @@ $(document).ready(function () {
       $(k).removeClass('conf_wr_filters_active')
     })
     $(this).toggleClass('conf_wr_filters_active')
-    $('.conf_wr__preloader_wrap').removeClass('conf_wr__preloader_wrap-disable')
+    $('.conf_wr__preloader_filter').removeClass('conf_wr__preloader_wrap-disable')
     stateCatalog['open'] = true
     stateCatalog['catalog'] = $(EO.target).closest('.shop_filters__block_wrap').attr('data-wrapOwl')
     stateCatalog['label'] = $(this).attr('data-type')
@@ -213,17 +213,18 @@ $(document).ready(function () {
     }
     function callbackOwl () {
       setTimeout(function () {
-        $('.conf_wr__preloader_wrap').addClass('conf_wr__preloader_wrap-disable')
+        $('.conf_wr__preloader_filter').addClass('conf_wr__preloader_wrap-disable')
         $('.config__owl').removeClass('config__owl-visible')
       }, 500)
     }
   }
   // // -
   let wrapM
+
   function createWrapMobile (mob) {
     if (!wrapM) {
       wrapM = `<div class='conf_wr__wrap_slider conf_wr__wrap_slider_mob'>
-        <div class='conf_wr__preloader_wrap'>
+        <div class='conf_wr__preloader_wrap conf_wr__preloader_filter'>
         <div class='conf_wr__preloader'>
         <div class='bigSqr'>
         <div class='square first'></div>
@@ -398,6 +399,7 @@ $(document).ready(function () {
   $('.conf_wr_filters__plan').on('click', function () {
     if (window.innerWidth >= 1440) {
       $(this).next().toggleClass('closed')
+      deleteActiveTabColor()
     } else {
       $('.item_category').each((v, k) => {
         if (!$(k).hasClass('closed')) {
@@ -484,6 +486,7 @@ $(document).ready(function () {
       }
       itemNext = $(`.config__item[data-item="${dataItemSelect}"]`)
       $(itemNext).addClass('item_select')
+      $('.my_add_item').attr('data-jsLink', $('.item_select').attr('data-js'))
       // -
       // l // - заполнение попапа (img ptice)
       createContentItem(itemNext)

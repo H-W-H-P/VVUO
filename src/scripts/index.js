@@ -582,4 +582,20 @@ $(document).ready(function () {
   function errorHandler (jqXHR, statusStr, errorStr) {
     console.log(statusStr + ' ' + errorStr)
   }
+
+  $('.simple_title_wr_5__inp').focusout('click', function () {
+    $('.list_name_proj').val($(this).val())
+  })
+
+  $('.conf_wr__order_btn').on('click', function (EO) {
+    console.log($('.list_items').val())
+    if (!$('.list_name_proj').val()) {
+      EO.preventDefault()
+      $('.simple_title_wr_5__inp_wr').addClass('invalid')
+      setTimeout(() => {
+        $('.simple_title_wr_5__inp_wr').removeClass('invalid')
+      }, 1000)
+      return false
+    }
+  })
 })
