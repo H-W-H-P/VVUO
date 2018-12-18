@@ -44563,9 +44563,11 @@ FloorItem.prototype.isValidPosition = function(vec3) {
     }
 
     // check if we are outside all other objects
-    /*
+    
     if (this.obstructFloorMoves) {
-        var objects = this.model.items.getItems();
+    	// console.log(this.model)
+    	// console.log(this.scene.getItems())
+        var objects = this.scene.getItems();
         for (var i = 0; i < objects.length; i++) {
             if (objects[i] === this || !objects[i].obstructFloorMoves) {
                 continue;
@@ -44576,7 +44578,7 @@ FloorItem.prototype.isValidPosition = function(vec3) {
                 return false;
             }
         }
-    }*/
+    }
 
     return true;
 }
@@ -44856,6 +44858,8 @@ Item.prototype.getCorners = function(xDim, yDim, position) {
         {x: c3.x, y: c3.z},
         {x: c4.x, y: c4.z}
     ];
+
+    // console.log(corners)
 
     return corners;
 }
@@ -46482,8 +46486,6 @@ var Wall = function(start, end) {
   var start = start;
   var end = end;
 
-  // prod change wall height/thick
-
   this.thickness = 1;
   this.height = 250;
 
@@ -46969,7 +46971,6 @@ var ThreeController = function(three, model, camera, element, controls, hud) {
 
   // sets coords to -1 to 1
   function normalizeVector2(vec2) {
-  	// prod change
      var retVec = new THREE.Vector2();
   	 var helper = window.innerWidth - three.element.outerWidth() - three.element.offset().left;
   	 var helper2 = three.element.offset().top - $(window).scrollTop();
