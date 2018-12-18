@@ -2335,6 +2335,18 @@
 		@media(max-width:767px)
 			font-size: 12px
 
+
+	&__order2
+		width: 33.3333%
+		margin-top: 70px
+
+		@media(max-width:1439px)
+			display: none
+
+	&__order2_form
+		&::after
+			content: none
+
 	&__order
 		background-color: $main-blue
 
@@ -2343,12 +2355,11 @@
 		&::after
 			border: none
 
-	&__order2
-		width: 33.3333%
-		margin-top: 70px
+		&_btn
+			width: 100%
+			margin-top: 0
 
-		@media(max-width:1439px)
-			display: none
+			cursor: pointer
 
 	&__btn2
 		color: $blackTxt
@@ -2609,6 +2620,7 @@
 		position: relative
 
 		max-height: 231px
+
 
 	&__preloader
 		position: absolute
@@ -3013,6 +3025,7 @@
 		padding: 30px 90px 0px 30px
 		min-height: 201px
 		max-height: 201px
+		height: 201px
 
 
 		&-visible
@@ -3070,6 +3083,9 @@
 					opacity: 1
 
 	&__add_window_img
+		cursor: pointer
+
+	&__add_door_img
 		cursor: pointer
 
 	&__add_link
