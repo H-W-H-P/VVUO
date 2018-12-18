@@ -47762,7 +47762,7 @@ var ThreeEdge = function(scene, edge, controls) {
     $('#constructor_2d').on('click', function(EO) {
     	// fillerColor = 0x000000;
     	// sideColor = 0x000000;
-    	// removeFromScene();
+   		// removeFromScene();
     	// updateTexture();
     	// updatePlanes(1);
     	// addToScene();
@@ -47898,6 +47898,7 @@ var ThreeEdge = function(scene, edge, controls) {
   	var color;
   	if (value) {
 		color = 0x000000;
+
   	} else {
   		color: 0xffffff;
   	}

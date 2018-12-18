@@ -124,6 +124,8 @@ var ContextMenu = function(blueprint3d) {
     let nameGoods = props.name;
     listItem[nameGoods]--;
     console.log(listItem)
+    // $('.list_items').val(JSON.stringify(listItem))
+    $('.list_items').attr('data-list', JSON.stringify(listItem))
   }
 
   var scope = this;
@@ -403,7 +405,6 @@ var SideMenu = function(blueprint3d, floorplanControls, modalEffects) {
     blueprint3d.model.scene.addItem(7, 'static/const/models/newObj/door/door.js', {resizable: true});
   });
 
-
   blueprint3d.model.scene.addItem(1, 'static/const/models/model1/model.js', {resizable: true});
   // blueprint3d.model.scene.addItem(1, 'static/const/models/model3/model.js', {resizable: true});
   // blueprint3d.model.scene.addItem(1, 'static/const/models/newObj/o1/model.js', {resizable: true});
@@ -453,7 +454,8 @@ var SideMenu = function(blueprint3d, floorplanControls, modalEffects) {
   function addItemInList(props) {
     listItem[props]++;
     console.log(listItem)
-    $('.list_items').val(JSON.stringify(listItem))
+    // $('.list_items').val(JSON.stringify(listItem))
+    $('.list_items').attr('data-list', JSON.stringify(listItem))
   }
 
 }
