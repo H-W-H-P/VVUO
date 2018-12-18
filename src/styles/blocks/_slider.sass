@@ -332,6 +332,20 @@
 
 			background-color: $yellow
 
+	&__price
+		position: absolute
+
+		left: 30px
+		bottom: 150px
+		width: 400%
+
+		@media(max-width: 1023px)
+			left: 106px
+
+		@media(max-width:767px)
+			left: 34px
+			bottom: 68px
+
 	&__progr_bar
 		margin: 0 6px
 		height: 2px
@@ -413,8 +427,10 @@
 
 		display: inline-block
 
+		position: relative
+
 		@media(max-width:767px)
-			padding-bottom: 140px
+			padding-bottom: 150px
 
 	&__left
 		position: absolute

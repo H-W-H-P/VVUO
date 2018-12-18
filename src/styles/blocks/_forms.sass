@@ -172,7 +172,8 @@ label input, label textarea
 	@media(max-width:767px)
 		padding-left: 20px
 
-	&:focus
+	&:focus,
+	&.hasCont
 		~ .label_text
 			transform: translateY(-40px) scale(.75)
 
@@ -181,6 +182,9 @@ label input, label textarea
 
 		~ .border
 			transform: scaleX(1)
+
+.cooperating_form__area .input_decore
+	padding-top: 8px
 
 .input_decore_catalog
 	box-sizing: border-box

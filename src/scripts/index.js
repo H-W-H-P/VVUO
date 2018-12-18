@@ -5,6 +5,7 @@ import ymaps from 'ymaps'
 require('jquery-ui-bundle')
 require('jquery-ui-touch-punch')
 require('slick-carousel')
+require('jquery-mask-plugin')
 
 const YTPlayer = require('yt-player')
 
@@ -13,6 +14,13 @@ const YTPlayer = require('yt-player')
 
 $(document).ready(function () {
   // click handlers
+
+  $('.input_decore').focusout(function () {
+    $(this).removeClass('hasCont')
+    if ($(this).val()) {
+      $(this).addClass('hasCont')
+    }
+  })
 
   $('.header__toggle').click(function () {
     $('.header').toggleClass('open')
@@ -235,6 +243,8 @@ $(document).ready(function () {
   $('.ui-slider-handle:nth-last-child(2)').append('<div class="shop_filters__price_cont"><span class="price">100</span> ₽</div>')
   $('.ui-slider-handle:last-child').append('<div class="shop_filters__price_cont"><span class="price">5000</span> ₽</div>')
 
+  $('.input_decore[type=tel]').mask('(000) 000-0000')
+
   // owls
   $('.main_slider__right').owlCarousel({
     items: 1,
@@ -252,7 +262,18 @@ $(document).ready(function () {
   }
 
   function callback2 (event) {
+    var item = event.currentTarget
     var items = event.item.index
+    item = $(item).find('.main_slider__image').eq(items)
+    var dataTitle = item.data('title')
+    var dataSrc = item.data('src')
+    var dataCat = item.data('cat')
+    var dataPrice = item.data('price')
+    $('.main_slider__title').html(dataTitle)
+    $('.main_slider__btn').attr('href', dataSrc)
+    $('.main_slider__desc').html(dataCat)
+    $('.main_slider__price').html(dataPrice)
+    if (!dataPrice) $('.main_slider__price').html('')
     items = items + 1
     if (items < 10) items = '0' + items
     var allItems = event.item.count

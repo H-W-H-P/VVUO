@@ -47757,22 +47757,22 @@ var ThreeEdge = function(scene, edge, controls) {
     addToScene();
 
     $('#constructor_2d').on('click', function(EO) {
-    	fillerColor = 0x000000;
-    	sideColor = 0x000000;
-    	removeFromScene();
-    	updateTexture();
-    	updatePlanes(1);
-    	addToScene();
+    	// fillerColor = 0x000000;
+    	// sideColor = 0x000000;
+    	// removeFromScene();
+    	// updateTexture();
+    	// updatePlanes(1);
+    	// addToScene();
     	
     });
 
     $('#constructor_3d').on('click', function(EO) {
-    	fillerColor = 0xdddddd;
-    	sideColor = 0xcccccc;
-    	removeFromScene();
-    	updateTexture();
-    	updatePlanes()
-    	addToScene();
+    	// fillerColor = 0xdddddd;
+    	// sideColor = 0xcccccc;
+    	// removeFromScene();
+    	// updateTexture();
+    	// updatePlanes()
+    	// addToScene();
     });
   }
 
@@ -48675,6 +48675,8 @@ var ThreeMain = function(model, element, canvasElement, opts) {
       scope.controls.update()
     }
   }
+
+  // prod changes
 
   this.dataUrl = function() {
     var dataUrl = renderer.domElement.toDataURL("image/png");
