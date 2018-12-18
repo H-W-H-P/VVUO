@@ -44567,6 +44567,7 @@ FloorItem.prototype.isValidPosition = function(vec3) {
     if (this.obstructFloorMoves) {
         var objects = this.scene.getItems();
         var thisObjHeight = this.halfSize.y;
+        var triggerino = true;
         for (var i = 0; i < objects.length; i++) {
             if (objects[i] === this || !objects[i].obstructFloorMoves) {
                 continue;
@@ -44575,9 +44576,12 @@ FloorItem.prototype.isValidPosition = function(vec3) {
                 utils.polygonPolygonIntersect(corners, objects[i].getCorners('x', 'z'))) {
                 var intersectedObjHeight = objects[i].halfSize.y;
             	this.position.y = thisObjHeight + intersectedObjHeight*2;
-                return false;
+            	triggerino = false
+                // return false;
             }
-            this.position.y = thisObjHeight;
+            if (triggerino) {
+            	this.position.y = thisObjHeight;
+            }
         }
     }
 
