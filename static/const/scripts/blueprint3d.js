@@ -44565,18 +44565,19 @@ FloorItem.prototype.isValidPosition = function(vec3) {
     // check if we are outside all other objects
     
     if (this.obstructFloorMoves) {
-    	// console.log(this.model)
-    	// console.log(this.scene.getItems())
         var objects = this.scene.getItems();
+        var thisObjHeight = this.halfSize.y;
         for (var i = 0; i < objects.length; i++) {
             if (objects[i] === this || !objects[i].obstructFloorMoves) {
                 continue;
             }
             if (!utils.polygonOutsidePolygon(corners, objects[i].getCorners('x', 'z')) ||
                 utils.polygonPolygonIntersect(corners, objects[i].getCorners('x', 'z'))) {
-                //console.log('object not outside other objects');
+                var intersectedObjHeight = objects[i].halfSize.y;
+            	this.position.y = thisObjHeight + intersectedObjHeight*2;
                 return false;
             }
+            this.position.y = thisObjHeight;
         }
     }
 

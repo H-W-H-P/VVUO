@@ -406,7 +406,7 @@ var SideMenu = function(blueprint3d, floorplanControls, modalEffects) {
   });
 
   blueprint3d.model.scene.addItem(1, 'static/const/models/model1/model.js', {resizable: true});
-  // blueprint3d.model.scene.addItem(1, 'static/const/models/model3/model.js', {resizable: true});
+  blueprint3d.model.scene.addItem(1, 'static/const/models/model3/model.js', {resizable: true});
   // blueprint3d.model.scene.addItem(1, 'static/const/models/newObj/o1/model.js', {resizable: true});
   // blueprint3d.model.scene.addItem(1, 'static/const/models/newObj/o2/model.js', {resizable: true});
   // blueprint3d.model.scene.addItem(1, 'static/const/models/newObj/o3/model.js', {resizable: true});
