@@ -46218,6 +46218,8 @@ var Room = function(floorplan, corners) {
 
   this.customTexture = false;
 
+  // prod change floor
+
   var defaultTexture = {
     url: "static/const/images/hardwood.png",
     scale: 400
@@ -46713,7 +46715,7 @@ var ThreeController = function(three, model, camera, element, controls, hud) {
       if (scope.isRotating()) {
         selectedObject.rotate(intersection);        
       } else {
-        selectedObject.clickDragged(intersection);                
+        selectedObject.clickDragged(intersection);        
       }
     }
   }

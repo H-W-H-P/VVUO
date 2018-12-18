@@ -548,11 +548,11 @@ $(document).ready(function () {
   console.log(bwer())
   // map
   ymaps.load().then(maps => {
-    const map = new maps.Map('contacts_page__map', {
-      center: [55.76, 37.64],
-      zoom: 12
-    })
-    map.panes.get('ground').getElement().style.filter = 'grayscale(100%)'
+    // const map = new maps.Map('contacts_page__map', {
+    //   center: [55.76, 37.64],
+    //   zoom: 12
+    // })
+    // map.panes.get('ground').getElement().style.filter = 'grayscale(100%)'
   }).catch(error => console.log('Failed to load Yandex Maps', error))
 
   $('.news__link').on('click', function (EO) {
