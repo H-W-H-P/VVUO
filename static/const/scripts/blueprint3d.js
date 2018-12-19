@@ -44519,11 +44519,13 @@ var FloorItem = function(three, metadata, geometry, material, position, rotation
 FloorItem.prototype = Object.create(Item.prototype);
 
 FloorItem.prototype.placeInRoom = function() {
+	// prod change
     if (!this.position_set) {
         var center = this.model.floorplan.getCenter();
         this.position.x = center.x;
         this.position.z = center.z;
-        this.position.y = 0.5 * ( this.geometry.boundingBox.max.y - this.geometry.boundingBox.min.y );        
+        this.position.y = 0.5 * ( this.geometry.boundingBox.max.y - this.geometry.boundingBox.min.y );
+        console.log(this)
     }
 };
 
@@ -46230,7 +46232,8 @@ var Room = function(floorplan, corners) {
   // prod change floor
 
   var defaultTexture = {
-    url: "static/const/images/grid3.png",
+    // url: "static/const/images/grid3.png",
+    url: "static/const/images/hardwood.png",
     scale: 400
   }
 
@@ -46467,6 +46470,7 @@ var Scene = function(model, textureDir) {
       scope.add(item);
       item.initObject();
       scope.itemLoadedCallbacks.fire(item);
+      console.log(item)
       item.name = `${name}`;
     }
     scope.itemLoadingCallbacks.fire();
@@ -46983,6 +46987,7 @@ var ThreeController = function(three, model, camera, element, controls, hud) {
   }
 
   // sets coords to -1 to 1
+  // prod change
   function normalizeVector2(vec2) {
      var retVec = new THREE.Vector2();
   	 var helper = window.innerWidth - three.element.outerWidth() - three.element.offset().left;
@@ -47127,9 +47132,6 @@ var THREE = require('three');
 
 
 var ThreeControls = function (object, domElement) {
-	//console.log(this.target)
-
-	// prod change
 
 	this.object = object;
 	this.domElement = (domElement !== undefined) ? domElement : document;
@@ -48602,22 +48604,9 @@ var ThreeMain = function(model, element, canvasElement, opts) {
     $('#constructor_2d, .conf_wr__order_btn').on('click', cameraState_2d);
     $('#constructor_3d').on('click', cameraState_3d);
 
-
-
-    // prod change
-
     domElement = scope.element.get(0) // Container
-
     
     camera = new THREE.PerspectiveCamera(50, 1, 1, 10000);
-
-  	// camera = new THREE.PerspectiveCamera(1, 1, 1, 10000);
-  	// camera.fov = 10;
-
-
-    // camera = new THREE.PerspectiveCamera(50, 1, 1, 10000);
-    	// camera.updateProjectionMatrix();
-	// need to scale camera back. Fov = perepsective
 
     renderer = new THREE.WebGLRenderer({
       antialias: true,
