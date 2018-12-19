@@ -46230,9 +46230,13 @@ var Room = function(floorplan, corners) {
   // prod change floor
 
   var defaultTexture = {
-    url: "static/const/images/hardwood.png",
+    url: "static/const/images/grid3.png",
     scale: 400
   }
+
+  // $('#constructor_2d').on('click', function(EO) {
+  // 	defaultTexture.url = "static/const/images/grid3.png"
+  // });
 
   var floorChangeCallbacks = JQUERY.Callbacks();
 
@@ -46696,11 +46700,15 @@ var ThreeController = function(three, model, camera, element, controls, hud) {
   // invoked via callback when item is loaded
   function itemLoaded(item) {
     if (!item.position_set) {
-        // scope.setSelectedObject(item);
-        // switchState(states.DRAGGING);  
-        var pos = item.position.clone();
-        pos.y = 0;   
-        var vec = three.projectVector(pos); 
+        scope.setSelectedObject(item);
+        switchState(states.DRAGGING);  
+        // var pos = item.position.clone();
+        // console.log('mouse ', mouse)
+        // console.log('pos ', pos)
+        // // pos.y = 0;   
+        // // var vec = three.projectVector(pos);
+        // var vec = mouse;
+        // console.log('vec ', vec) 
         // clickPressed(vec); 
         // prod change
     }
@@ -47765,14 +47773,9 @@ var ThreeEdge = function(scene, edge, controls) {
     addToScene();
 
     $('#constructor_2d').on('click', function(EO) {
-
-    	console.log(planes)
-
-    });
-
-    $('#constructor_3d').on('click', function(EO) {
-
-
+    	$.each(planes, function (key, value) {
+    		value.material.color.r = value.material.color.g = value.material.color.b = 0;
+    	});
     });
   }
 
