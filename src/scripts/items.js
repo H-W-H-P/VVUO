@@ -1,32 +1,8 @@
 import $ from 'jquery'
 $(document).ready(function () {
-  var itemsState = [
-    {
-      'name': 'table',
-      'image': 'static/const/models/newObj//o1/model.png',
-      'model': 'static/const/models/newObj/o1/model.js',
-      'type': '1',
-      'types': 'мебель1',
-      'category': 'мебель',
-      'size': '520'
-    },
-    {
-      'name': 'table',
-      'image': 'static/const/models/newObj//o2/model.png',
-      'model': 'static/const/models/newObj/o2/model.js',
-      'type': '1',
-      'types': 'другое',
-      'category': 'другое',
-      'size': '520'
-    }
-  ]
   let items
   let htmlJsn = $('.constructor').attr('data-json')
-  if (htmlJsn) {
-    items = JSON.parse(htmlJsn)
-  } else {
-    items = itemsState
-  }
+  items = JSON.parse(htmlJsn)
 
   let nameCategory = {}
   // Узнаем Категории
@@ -106,6 +82,7 @@ $(document).ready(function () {
     resetStateCatalog(stateCatalog)
     deleteActiveTabColor()
   })
+
   // - по клику на Label создаем карусель и показываем items
   $('.conf_wr_filters-side__chbx').on('click', function (EO) {
     $('.conf_wr_filters_active').each((v, k) => {
@@ -124,6 +101,25 @@ $(document).ready(function () {
       return false
     }
     createOwl()
+    // let self = this
+    // setTimeout(() => {
+    //   $('.conf_wr_filters_active').each((v, k) => {
+    //     $(k).removeClass('conf_wr_filters_active')
+    //   })
+    //   $(self).toggleClass('conf_wr_filters_active')
+    //   $('.conf_wr__preloader_filter').removeClass('conf_wr__preloader_wrap-disable')
+    //   stateCatalog['open'] = true
+    //   stateCatalog['catalog'] = $(EO.target).closest('.shop_filters__block_wrap').attr('data-wrapOwl')
+    //   stateCatalog['label'] = $(self).attr('data-type')
+    //   // -
+    //   if (window.innerWidth >= 1440) {
+    //     createOwlDesktop(self)
+    //   } else {
+    //     createOwlMoboles(self)
+    //     return false
+    //   }
+    //   createOwl()
+    // }, 20)
   })
   // CREATE
   function createOwlDesktop (e) {
@@ -326,7 +322,9 @@ $(document).ready(function () {
     courOwlMob = null
   }
   // < 1440
+  var time
   $('.item_category').on('click', function () {
+    time = performance.now()
     let _this = this
     if (window.innerWidth >= 1440) {
       return false
@@ -352,6 +350,8 @@ $(document).ready(function () {
         }
       })
     }
+    time = performance.now() - time
+    console.log('Время выполнения = ', time)
     if (!_this) {
       return
     }

@@ -47841,7 +47841,7 @@ var ThreeEdge = function(scene, edge, controls) {
   		nameInput = '.config__input_height'
   	} else {
   		nameInput = '.config__input_height_mobile'
-  	}			
+  	}		
 
   	if (!isNumeric($(nameInput).val())) {
   		wall.height = 240;
@@ -48668,7 +48668,7 @@ var ThreeMain = function(model, element, canvasElement, opts) {
       scope.controls.update()
     }
   }
-	
+
 
   // prod changes
 
@@ -48688,6 +48688,7 @@ var ThreeMain = function(model, element, canvasElement, opts) {
   	var imgData, imgNode;
   	var strDownloadMime = "image/octet-stream";
   	var strMime = "image/octet-stream";
+  	$('.list_name_img').val(imgData)
 
     var imgData = renderer.domElement.toDataURL("image/png");
 
