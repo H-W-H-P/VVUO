@@ -598,6 +598,4 @@ $(document).ready(function () {
       return false
     }
   })
-
-  // My js Items
 })

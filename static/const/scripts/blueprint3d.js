@@ -46684,6 +46684,10 @@ var ThreeController = function(three, model, camera, element, controls, hud) {
     scene.itemRemovedCallbacks.add(itemRemoved);
     scene.itemLoadedCallbacks.add(itemLoaded);
     setGroundPlane();
+
+    $('.conf_wr__order_btn').on('click', function() {
+    	scope.setSelectedObject(null);
+    })
   }
 
   // invoked via callback when item is loaded
