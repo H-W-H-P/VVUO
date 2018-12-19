@@ -219,7 +219,20 @@ $(document).ready(function () {
     }
   }
   // // -
-  let wrapM
+  let wrapM = `<div class='conf_wr__wrap_slider conf_wr__wrap_slider_mob'>
+        <div class='conf_wr__preloader_wrap conf_wr__preloader_filter'>
+        <div class='conf_wr__preloader'>
+        <div class='bigSqr'>
+        <div class='square first'></div>
+        <div class='square second'></div>
+        <div class='square third'></div>
+        <div class='square fourth'></div>
+        </div>
+        <div class='text'>loading</div>
+        </div>
+        </div>
+        <div class='config__owl owl-carousel slider_T1 config__owl_mobiles'></div>
+        </div> `
 
   function createWrapMobile (mob) {
     if (!wrapM) {

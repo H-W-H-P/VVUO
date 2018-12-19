@@ -48668,6 +48668,7 @@ var ThreeMain = function(model, element, canvasElement, opts) {
       scope.controls.update()
     }
   }
+	
 
   // prod changes
 
