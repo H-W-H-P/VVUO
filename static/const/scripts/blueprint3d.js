@@ -46311,19 +46311,22 @@ var Room = function(floorplan, corners) {
     }
   }
 
-  $(document).on('change', '#confWallA', function () {
-  	corners[2].x = Number($(this).val());
-  	corners[1].x = Number($(this).val());
+  // $(document).on('click', '.config__next', function () {
+  $('.config__next').click(function() {
+  	corners[2].x = Number($('#confWallA').val());
+  	corners[1].x = Number($('#confWallA').val());
+  	corners[2].y = Number($('#confWallB').val());
+  	corners[3].y = Number($('#confWallB').val());
   	updateWalls();
   	// updateInteriorCorners();
   	// generatePlane();
   })
 
-  $(document).on('change', '#confWallB', function () {
-  	corners[2].y = Number($(this).val());
-  	corners[3].y = Number($(this).val());
-  	updateWalls();
-  })
+  // $(document).on('click', '.config__next', function () {
+  // 	corners[2].y = Number($('#confWallB').val());
+  // 	corners[3].y = Number($('#confWallB').val());
+  // 	updateWalls();
+  // })
 
   // populates each wall's half edge relating to this room
   // this creates a fancy doubly connected edge list (DCEL)
@@ -48302,7 +48305,7 @@ var ThreeHUD = function(three) {
   var tolerance = 10;
   var height = 25;
   var distance = 20;
-  var color = "#ffffff";
+  var color = "#000000";
   var hoverColor = "#5b8ec8";
 
   var activeObject = null;

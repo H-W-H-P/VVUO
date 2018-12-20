@@ -109,6 +109,43 @@ $(document).ready(function () {
     return false
   })
 
+  // var inputValue = 0
+
+  $('#confWallA, #confWallB').keydown(function () {
+    if (($(this).val() > 1500)) {
+      // $(this).val(1500)
+      // return false
+    } else {
+      // inputValue = $(this).val()
+    }
+  })
+
+  document.getElementById('confWallA').addEventListener('keypress', ForNumbers, false)
+  document.getElementById('confWallB').addEventListener('keypress', ForNumbers, false)
+  document.getElementsByClassName('confWallA-desk')[0].addEventListener('keypress', ForNumbers, false)
+  document.getElementsByClassName('confWallB-desk')[0].addEventListener('keypress', ForNumbers, false)
+  function ForNumbers (evt) {
+    var charCode = (evt.which) ? evt.which : event.keyCode
+    if ((charCode >= 48 && charCode <= 57) || (charCode >= 96 && charCode <= 105) || (charCode === 8) || (charCode === 9) || (charCode === 13) || (charCode >= 35 && charCode <= 46)) {
+      if (parseInt(this.value + String.fromCharCode(charCode), 10) <= 1500) return true
+    }
+    evt.preventDefault()
+    evt.stopPropagation()
+    return false
+  }
+
+  document.getElementsByClassName('config__input_height_mobile')[0].addEventListener('keypress', ForNumbers2, false)
+  document.getElementsByClassName('config__input_height')[0].addEventListener('keypress', ForNumbers2, false)
+  function ForNumbers2 (evt) {
+    var charCode = (evt.which) ? evt.which : event.keyCode
+    if ((charCode >= 48 && charCode <= 57) || (charCode >= 96 && charCode <= 105) || (charCode === 8) || (charCode === 9) || (charCode === 13) || (charCode >= 35 && charCode <= 46)) {
+      if (parseInt(this.value + String.fromCharCode(charCode), 10) <= 300) return true
+    }
+    evt.preventDefault()
+    evt.stopPropagation()
+    return false
+  }
+
   resizing1()
 
   function resizing1 () {
