@@ -46232,8 +46232,8 @@ var Room = function(floorplan, corners) {
   // prod change floor
 
   var defaultTexture = {
-    // url: "static/const/images/grid3.png",
-    url: "static/const/images/hardwood.png",
+    url: "static/const/images/grid3.png",
+    // url: "static/const/images/hardwood.png",
     scale: 400
   }
 
