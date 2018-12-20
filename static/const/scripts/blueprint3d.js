@@ -44519,11 +44519,13 @@ var FloorItem = function(three, metadata, geometry, material, position, rotation
 FloorItem.prototype = Object.create(Item.prototype);
 
 FloorItem.prototype.placeInRoom = function() {
+	// prod change
     if (!this.position_set) {
         var center = this.model.floorplan.getCenter();
         this.position.x = center.x;
         this.position.z = center.z;
-        this.position.y = 0.5 * ( this.geometry.boundingBox.max.y - this.geometry.boundingBox.min.y );        
+        this.position.y = 0.5 * ( this.geometry.boundingBox.max.y - this.geometry.boundingBox.min.y );
+        console.log(this)
     }
 };
 
@@ -44563,20 +44565,27 @@ FloorItem.prototype.isValidPosition = function(vec3) {
     }
 
     // check if we are outside all other objects
-    /*
+    
     if (this.obstructFloorMoves) {
-        var objects = this.model.items.getItems();
+        var objects = this.scene.getItems();
+        var thisObjHeight = this.halfSize.y;
+        var triggerino = true;
         for (var i = 0; i < objects.length; i++) {
             if (objects[i] === this || !objects[i].obstructFloorMoves) {
                 continue;
             }
             if (!utils.polygonOutsidePolygon(corners, objects[i].getCorners('x', 'z')) ||
                 utils.polygonPolygonIntersect(corners, objects[i].getCorners('x', 'z'))) {
-                //console.log('object not outside other objects');
-                return false;
+                var intersectedObjHeight = objects[i].halfSize.y;
+            	this.position.y = thisObjHeight + intersectedObjHeight*2;
+            	triggerino = false
+                // return false;
+            }
+            if (triggerino) {
+            	this.position.y = thisObjHeight;
             }
         }
-    }*/
+    }
 
     return true;
 }
@@ -44856,6 +44865,8 @@ Item.prototype.getCorners = function(xDim, yDim, position) {
         {x: c3.x, y: c3.z},
         {x: c4.x, y: c4.z}
     ];
+
+    // console.log(corners)
 
     return corners;
 }
@@ -46221,9 +46232,14 @@ var Room = function(floorplan, corners) {
   // prod change floor
 
   var defaultTexture = {
-    url: "static/const/images/hardwood.png",
+    url: "static/const/images/grid3.png",
+    // url: "static/const/images/hardwood.png",
     scale: 400
   }
+
+  // $('#constructor_2d').on('click', function(EO) {
+  // 	defaultTexture.url = "static/const/images/grid3.png"
+  // });
 
   var floorChangeCallbacks = JQUERY.Callbacks();
 
@@ -46454,6 +46470,7 @@ var Scene = function(model, textureDir) {
       scope.add(item);
       item.initObject();
       scope.itemLoadedCallbacks.fire(item);
+      console.log(item)
       item.name = `${name}`;
     }
     scope.itemLoadingCallbacks.fire();
@@ -46481,8 +46498,6 @@ var Wall = function(start, end) {
   
   var start = start;
   var end = end;
-
-  // prod change wall height/thick
 
   this.thickness = 1;
   this.height = 250;
@@ -46693,11 +46708,15 @@ var ThreeController = function(three, model, camera, element, controls, hud) {
   // invoked via callback when item is loaded
   function itemLoaded(item) {
     if (!item.position_set) {
-        // scope.setSelectedObject(item);
-        // switchState(states.DRAGGING);  
-        var pos = item.position.clone();
-        pos.y = 0;   
-        var vec = three.projectVector(pos); 
+        scope.setSelectedObject(item);
+        switchState(states.DRAGGING);  
+        // var pos = item.position.clone();
+        // console.log('mouse ', mouse)
+        // console.log('pos ', pos)
+        // // pos.y = 0;   
+        // // var vec = three.projectVector(pos);
+        // var vec = mouse;
+        // console.log('vec ', vec) 
         // clickPressed(vec); 
         // prod change
     }
@@ -46972,8 +46991,8 @@ var ThreeController = function(three, model, camera, element, controls, hud) {
   }
 
   // sets coords to -1 to 1
+  // prod change
   function normalizeVector2(vec2) {
-  	// prod change
      var retVec = new THREE.Vector2();
   	 var helper = window.innerWidth - three.element.outerWidth() - three.element.offset().left;
   	 var helper2 = three.element.offset().top - $(window).scrollTop();
@@ -47117,9 +47136,6 @@ var THREE = require('three');
 
 
 var ThreeControls = function (object, domElement) {
-	//console.log(this.target)
-
-	// prod change
 
 	this.object = object;
 	this.domElement = (domElement !== undefined) ? domElement : document;
@@ -47793,12 +47809,10 @@ var ThreeEdge = function(scene, edge, controls) {
     updatePlanes();
     addToScene();
 
-    $('#constructor_2d').on('click', function(EO) {
-
-    });
-
     $('#constructor_3d').on('click', function(EO) {
-
+    	$.each(planes, function (key, value) {
+    		value.material.color.r = value.material.color.g = value.material.color.b = 0;
+    	});
     });
   }
 
@@ -48625,22 +48639,9 @@ var ThreeMain = function(model, element, canvasElement, opts) {
     $('#constructor_2d, .conf_wr__order_btn').on('click', cameraState_2d);
     $('#constructor_3d').on('click', cameraState_3d);
 
-
-
-    // prod change
-
     domElement = scope.element.get(0) // Container
-
     
     camera = new THREE.PerspectiveCamera(50, 1, 1, 10000);
-
-  	// camera = new THREE.PerspectiveCamera(1, 1, 1, 10000);
-  	// camera.fov = 10;
-
-
-    // camera = new THREE.PerspectiveCamera(50, 1, 1, 10000);
-    	// camera.updateProjectionMatrix();
-	// need to scale camera back. Fov = perepsective
 
     renderer = new THREE.WebGLRenderer({
       antialias: true,
