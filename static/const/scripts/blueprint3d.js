@@ -47335,17 +47335,17 @@ var ThreeControls = function (object, domElement) {
 		phi = Math.max( EPS, Math.min( Math.PI - EPS, phi ) );
 
 		var radius = offset.length() * scale;
+		
 
 		// restrict radius to be between desired limits
 		radius = Math.max( this.minDistance, Math.min( this.maxDistance, radius ) );
-		
 		// move target to panned location
 		this.target.add( pan );
-
+		// console.log(offset)
 		offset.x = radius * Math.sin( phi ) * Math.sin( theta );
 		offset.y = radius * Math.cos( phi );
 		offset.z = radius * Math.sin( phi ) * Math.cos( theta );
-
+		
 		position.copy( this.target ).add( offset );
 
 		this.object.lookAt( this.target );
@@ -47437,11 +47437,11 @@ var ThreeControls = function (object, domElement) {
 		// move target to panned location
 		this.target.add( pan );
 
-		if (value) {
-			offset.x = 0;
-			offset.y = 5200;
-			offset.z = 1;
-		} 
+		// if (value) {
+		// 	offset.x = 0;
+		// 	offset.y = 5200;
+		// 	offset.z = 1;
+		// } 
 
 
 		position.copy( this.target ).add( offset );
@@ -47450,7 +47450,7 @@ var ThreeControls = function (object, domElement) {
 
 		thetaDelta = 0;
 		phiDelta = 0;
-		scale = 1;
+		// scale = 1;
 		pan.set(0,0,0);
 	
 
@@ -47464,7 +47464,37 @@ var ThreeControls = function (object, domElement) {
 		if (trigger2d) return;
 		trigger2d = true;
 		scope.updateMy('2d');
+
+		// scope.dollyIn();
+		// scope.update();
+		var position = this.object.position;
+		var offset = position.clone().sub( this.target );
+
+		// console.log(scope)
+
+		offset.x = 0;
+		// offset.y = 5500;
+		offset.z = 1;
+
+
+
+
+
+
+
+		position.copy( this.target ).add( offset );
+
+		this.object.lookAt( this.target );
+
+		thetaDelta = 0;
+		phiDelta = 0;
+		// scale = 1;
+		pan.set(0,0,0);
 	
+
+		this.cameraMovedCallbacks.fire();
+		this.needsUpdate = true;
+
 	}
 	this.changeViewe_3d = function() {
 		trigger2d = false;
@@ -47513,12 +47543,12 @@ var ThreeControls = function (object, domElement) {
 
 				scope.dollyOut();
 
+
 			}
 
 			dollyStart.copy( dollyEnd );
 
 		} else if ( state === STATE.PAN ) {
-
 			if ( scope.noPan === true ) return;
 
 			panEnd.set( event.clientX, event.clientY );
@@ -47559,11 +47589,12 @@ var ThreeControls = function (object, domElement) {
 
 		if ( delta > 0 ) {
 			scope.dollyOut();
-
 		} else {
-
 			scope.dollyIn();
+
 		}
+
+
     scope.update();
 	}
 
@@ -47764,12 +47795,9 @@ var ThreeEdge = function(scene, edge, controls) {
 
     $('#constructor_2d').on('click', function(EO) {
 
-    	console.log(planes)
-
     });
 
     $('#constructor_3d').on('click', function(EO) {
-
 
     });
   }
