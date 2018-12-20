@@ -120,11 +120,21 @@ $(document).ready(function () {
     }
   })
 
-  document.getElementById('confWallA').addEventListener('keypress', ForNumbers, false)
-  document.getElementById('confWallB').addEventListener('keypress', ForNumbers, false)
-  document.getElementsByClassName('confWallA-desk')[0].addEventListener('keypress', ForNumbers, false)
-  document.getElementsByClassName('confWallB-desk')[0].addEventListener('keypress', ForNumbers, false)
-  function ForNumbers (evt) {
+  $('.simple_title_cooperating__more').click(function () {
+    $('html, body').animate({ scrollTop: $('.cooperating_form').offset().top }, 2000)
+    return false
+  })
+
+  if ($('#confWallA').length) {
+    // max lenght/height of the walls handlers
+    document.getElementById('confWallA').addEventListener('keypress', wallMaxLength, false)
+    document.getElementById('confWallB').addEventListener('keypress', wallMaxLength, false)
+    document.getElementsByClassName('confWallA-desk')[0].addEventListener('keypress', wallMaxLength, false)
+    document.getElementsByClassName('confWallB-desk')[0].addEventListener('keypress', wallMaxLength, false)
+    document.getElementsByClassName('config__input_height_mobile')[0].addEventListener('keypress', wallMaxHeight, false)
+    document.getElementsByClassName('config__input_height')[0].addEventListener('keypress', wallMaxHeight, false)
+  }
+  function wallMaxLength (evt) {
     var charCode = (evt.which) ? evt.which : event.keyCode
     if ((charCode >= 48 && charCode <= 57) || (charCode >= 96 && charCode <= 105) || (charCode === 8) || (charCode === 9) || (charCode === 13) || (charCode >= 35 && charCode <= 46)) {
       if (parseInt(this.value + String.fromCharCode(charCode), 10) <= 1500) return true
@@ -133,10 +143,7 @@ $(document).ready(function () {
     evt.stopPropagation()
     return false
   }
-
-  document.getElementsByClassName('config__input_height_mobile')[0].addEventListener('keypress', ForNumbers2, false)
-  document.getElementsByClassName('config__input_height')[0].addEventListener('keypress', ForNumbers2, false)
-  function ForNumbers2 (evt) {
+  function wallMaxHeight (evt) {
     var charCode = (evt.which) ? evt.which : event.keyCode
     if ((charCode >= 48 && charCode <= 57) || (charCode >= 96 && charCode <= 105) || (charCode === 8) || (charCode === 9) || (charCode === 13) || (charCode >= 35 && charCode <= 46)) {
       if (parseInt(this.value + String.fromCharCode(charCode), 10) <= 300) return true
@@ -585,11 +592,11 @@ $(document).ready(function () {
   console.log(bwer())
   // map
   ymaps.load().then(maps => {
-    // const map = new maps.Map('contacts_page__map', {
-    //   center: [55.76, 37.64],
-    //   zoom: 12
-    // })
-    // map.panes.get('ground').getElement().style.filter = 'grayscale(100%)'
+    const map = new maps.Map('contacts_page__map', {
+      center: [55.76, 37.64],
+      zoom: 12
+    })
+    map.panes.get('ground').getElement().style.filter = 'grayscale(100%)'
   }).catch(error => console.log('Failed to load Yandex Maps', error))
 
   // $('.news__link').on('click', function (EO) {

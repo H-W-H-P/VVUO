@@ -1,5 +1,8 @@
 import $ from 'jquery'
 $(document).ready(function () {
+  if (!$('.constructor')[0]) {
+    return false
+  }
   let items
   let htmlJsn = $('.constructor').attr('data-json')
   items = JSON.parse(htmlJsn)

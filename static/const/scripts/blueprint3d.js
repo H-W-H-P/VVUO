@@ -46322,12 +46322,6 @@ var Room = function(floorplan, corners) {
   	// generatePlane();
   })
 
-  // $(document).on('click', '.config__next', function () {
-  // 	corners[2].y = Number($('#confWallB').val());
-  // 	corners[3].y = Number($('#confWallB').val());
-  // 	updateWalls();
-  // })
-
   // populates each wall's half edge relating to this room
   // this creates a fancy doubly connected edge list (DCEL)
   function updateWalls() {
@@ -47812,7 +47806,7 @@ var ThreeEdge = function(scene, edge, controls) {
     updatePlanes();
     addToScene();
 
-    $('#constructor_3d').on('click', function(EO) {
+    $('#constructor_2d').on('click', function(EO) {
     	$.each(planes, function (key, value) {
     		value.material.color.r = value.material.color.g = value.material.color.b = 0;
     	});
@@ -48641,6 +48635,7 @@ var ThreeMain = function(model, element, canvasElement, opts) {
 
     $('#constructor_2d, .conf_wr__order_btn').on('click', cameraState_2d);
     $('#constructor_3d').on('click', cameraState_3d);
+    $('.config__next').on('click', cameraState_3d);
 
     domElement = scope.element.get(0) // Container
     
