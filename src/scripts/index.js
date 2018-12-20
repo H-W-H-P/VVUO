@@ -647,4 +647,72 @@ $(document).ready(function () {
       return false
     }
   })
+
+  $('.open_page_pdf').on('click', function (EO) {
+    EO.preventDefault()
+    $('.page_pdf').addClass('page_pdf--active')
+    getListPdf.getListItem()
+    getListPdf.createRowTable()
+  })
+
+  let getListPdf = (function () {
+    let listItem
+    let selectetItem = {}
+
+    function getListItem () {
+      listItem = $('.list_items').val()
+      listItem = JSON.parse(listItem)
+      getItemSelect()
+      return listItem
+    }
+
+    function getItemSelect () {
+      for (let i in listItem) {
+        if (listItem[i]) {
+          selectetItem[i] = listItem[i]
+        }
+      }
+    }
+
+    function createRowTable () {
+      $('.page_pdf__table_body').empty()
+      let fullprice = 0
+      let row = $(`<tr class='page_pdf__table_item'>
+        <td class='page_pdf__table_item_article'></td>
+        <td class='page_pdf__table_item_goods'></td>
+        <td class='page_pdf__table_item_price'></td>
+        <td class='page_pdf__table_item_quantity'></td>
+        <td class='page_pdf__table_item_price_full'></td>
+        </tr>`)
+      let htmlJsn = $('.constructor').attr('data-json')
+      htmlJsn = JSON.parse(htmlJsn)
+      // -
+      for (var i in selectetItem) {
+        htmlJsn.some((v, k) => {
+          if (i === v['name']) {
+            let rowClone = $(row).clone()
+            $(rowClone).find('.page_pdf__table_item_article').html('1')
+            $(rowClone).find('.page_pdf__table_item_goods').html(v['name'])
+            $(rowClone).find('.page_pdf__table_item_price').html(v['size'])
+            $(rowClone).find('.page_pdf__table_item_quantity').html(selectetItem[i])
+            let priceFull = v['size'] * selectetItem[i]
+            $(rowClone).find('.page_pdf__table_item_price_full').html(priceFull)
+            $('.page_pdf__table_body')[0].appendChild($(rowClone)[0])
+            console.log('++')
+            return v
+          }
+        })
+      }
+      $('.page_pdf__table_item_price_full').each((v, k) => {
+        let c = $(k).html()
+        fullprice += Number(c)
+      })
+      $('.final_price').html(`${fullprice} &#8381`)
+    }
+
+    return {
+      getListItem: getListItem,
+      createRowTable: createRowTable
+    }
+  })()
 })
