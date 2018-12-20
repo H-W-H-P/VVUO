@@ -109,6 +109,11 @@ $(document).ready(function () {
     return false
   })
 
+  $(document).on('click', '.label_checkbox', function () {
+    var thisID = $(this).attr('for')
+    $('#' + thisID).toggleClass('checked')
+  })
+
   // var inputValue = 0
 
   $('#confWallA, #confWallB').keydown(function () {

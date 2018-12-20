@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="47px" height="65px" viewBox="0 0 47 65" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 49.2 (51160) - http://www.bohemiancoding.com/sketch -->
+    <title>geo-icon</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M0.145681871,13.9248193 C0.145681871,21.328707 5.91166374,27.3309596 13.0260912,27.3309596 C20.1405187,27.3309596 25.9065006,21.328707 25.9065006,13.9248193 C25.9065006,6.52000702 20.1405187,0.517754386 13.0260912,0.517754386 C5.91166374,0.517754386 0.145681871,6.52000702 0.145681871,13.9248193" id="path-1"></path>
+        <linearGradient x1="0%" y1="49.9922106%" x2="86%" y2="49.9922106%" id="linearGradient-3">
+            <stop stop-color="#00BCE8" offset="0%"></stop>
+            <stop stop-color="#4480BC" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Ui-kit" transform="translate(-383.000000, -1686.000000)">
+            <g id="icons" transform="translate(281.000000, 1101.000000)">
+                <g id="geo-icon" transform="translate(101.000000, 583.000000)">
+                    <g transform="translate(3.438596, 3.578947)">
+                        <path d="M0,21.9871595 C0,21.746325 0.00359049647,21.5054905 0.0116691135,21.2655931 C0.375206882,9.45626843 9.66112839,0 21.0609547,0 C32.6932657,0 42.122807,9.84422752 42.122807,21.9871595 C42.122807,34.1300914 21.0609547,60.8421053 21.0609547,60.8421053 C21.0609547,60.8421053 6.0901848,43.3259971 2.05805725,30.0782252 L13.754386,23.2631579" id="Stroke-6" stroke="#232327" stroke-width="3"></path>
+                        <g id="Group-5" transform="translate(7.736842, 7.157895)">
+                            <mask id="mask-2" fill="white">
+                                <use xlink:href="#path-1"></use>
+                            </mask>
+                            <g id="Clip-4"></g>
+                            <path d="M0.145681871,13.9248193 C0.145681871,21.328707 5.91166374,27.3309596 13.0260912,27.3309596 C20.1405187,27.3309596 25.9065006,21.328707 25.9065006,13.9248193 C25.9065006,6.52000702 20.1405187,0.517754386 13.0260912,0.517754386 C5.91166374,0.517754386 0.145681871,6.52000702 0.145681871,13.9248193" id="Fill-3" fill="url(#linearGradient-3)" mask="url(#mask-2)"></path>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
