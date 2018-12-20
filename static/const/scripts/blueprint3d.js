@@ -47453,11 +47453,11 @@ var ThreeControls = function (object, domElement) {
 		// move target to panned location
 		this.target.add( pan );
 
-		// if (value) {
-		// 	offset.x = 0;
-		// 	offset.y = 5200;
-		// 	offset.z = 1;
-		// } 
+		if (value) {
+			offset.x = 0;
+			offset.y = 5200;
+			offset.z = 1;
+		} 
 
 
 		position.copy( this.target ).add( offset );
@@ -47765,7 +47765,7 @@ var ThreeControls = function (object, domElement) {
 	this.domElement.addEventListener( 'touchstart', touchstart, false );
 	this.domElement.addEventListener( 'touchend', touchend, false );
 	this.domElement.addEventListener( 'touchmove', touchmove, false );
-	$('#constructor_2d, .conf_wr__order_btn').on('click', this.stateZoom2d)
+	$('#constructor_2d, .conf_wr__order_btn, .open_page_pdf').on('click', this.stateZoom2d)
 	$('#constructor_3d').on('click', this.stateZoom3d)
 
 	window.addEventListener( 'keydown', onKeyDown, false );
@@ -48636,7 +48636,7 @@ var ThreeMain = function(model, element, canvasElement, opts) {
   function init() {
     THREE.ImageUtils.crossOrigin = "";
 
-    $('#constructor_2d, .conf_wr__order_btn').on('click', cameraState_2d);
+    $('#constructor_2d, .conf_wr__order_btn, .open_page_pdf').on('click', cameraState_2d);
     $('#constructor_3d').on('click', cameraState_3d);
 
     domElement = scope.element.get(0) // Container
@@ -48691,6 +48691,12 @@ var ThreeMain = function(model, element, canvasElement, opts) {
     //canvas = new ThreeCanvas(canvasElement, scope);
 
     $('.conf_wr__order_btn').on('click', getImg)
+    $('.open_page_pdf').on('click', function() {
+    	setTimeout(() => {
+    		var imgData = renderer.domElement.toDataURL("image/png");
+    	    $('.page_pdf__config_img').attr('src', imgData)
+    	}, 100)
+    })
   }
 
   function spin() {
@@ -48721,12 +48727,14 @@ var ThreeMain = function(model, element, canvasElement, opts) {
   	var imgData, imgNode;
   	var strDownloadMime = "image/octet-stream";
   	var strMime = "image/octet-stream";
-  	$('.list_name_img').val(imgData)
+  	
 
     var imgData = renderer.domElement.toDataURL("image/png");
+    $('.list_name_img').val(imgData)
 
     var saveFile = function (strData, filename) {
         var link = document.createElement('a');
+        // $('body')[0].appendChild(link)
         if (typeof link.download === 'string') {
             link.download = filename;
             link.href = strData;
@@ -48738,8 +48746,8 @@ var ThreeMain = function(model, element, canvasElement, opts) {
 
     saveFile(imgData.replace(strMime, strDownloadMime), "test.jpg");
     $('body').append(imgData.replace(strMime, strDownloadMime))
-    console.log(imgData)
     // return dataUrl;
+    // console.log(imgData)
   }
 
   this.stopSpin = function() {

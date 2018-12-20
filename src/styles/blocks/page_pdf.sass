@@ -1,0 +1,201 @@
+.info_client
+	display: -webkit-flex
+	display: -moz-flex
+	display: -ms-flex
+	display: -o-flex
+	display: flex
+	align-items: center
+
+	height: 100%
+
+	&__side
+		width: 33.33%
+
+
+	&__text
+		font-size: 14px
+		line-height: 1.71
+
+		margin: 0
+		padding-bottom: 5px
+
+		&--bold
+			font-weight: bold
+// -
+// -
+// -
+// -
+// -
+// -
+
+@keyframes tab
+    0% 
+        opacity: 0
+    100% 
+        opacity: 1
+
+
+.page_pdf
+	width: 100%
+
+	display: none
+
+	
+
+	&--active
+		display: block
+	
+		animation: tab linear .3s forwards
+
+		position: absolute
+
+		top: 0
+		z-index: 100
+
+	.max_width
+		max-width: 900px
+
+		margin-left: 120px
+		padding: 0
+
+
+		@media(max-width:1439px)
+			margin-left: 30px
+	
+
+	&__header
+		background-color: #f4f6f6
+
+	&__header_middle
+		padding-bottom: 50px
+	
+	&__header_bottom
+		height: 60px
+
+		border-top: 1px solid rgba(178,130,130, .1)
+		
+		&_text
+			padding-bottom: 0	
+
+	&__back
+		font-size: 12px
+
+		display: -webkit-flex
+		display: -moz-flex
+		display: -ms-flex
+		display: -o-flex
+		display: flex
+		align-items: center
+
+		position: relative
+
+		padding-left: 20px
+
+
+		&::before
+			content: ""
+
+			position: absolute
+			display: block
+
+			width: 10px
+			height: 28px
+			
+			top: 50%
+			left: 0
+
+			transition: all .4s ease
+			transform: scaleX(-1) translateY(-50%)
+
+			background-image: url('../../static/img/icons/black-arr.svg')
+			background-repeat: no-repeat
+			background-position: 50%
+
+	&__config_wrap
+		background-color: #f4f6f6
+		
+		padding: 20px 40px 20px 40px
+
+		.config__number
+			font-size: 12px
+
+		.config__left_line
+			left: initial
+			right: -30px
+
+	&__config_img
+		max-width: 100%
+		width: 100%
+		
+
+	&__title
+		font-size: 58px
+		line-height: 1.17
+
+		padding-bottom: 40px
+		padding-top: 40px
+	
+	&__body
+		margin-bottom: 70px
+
+	&__footer
+		// -
+	&__table
+		border-collapse: collapse
+
+		width: 100%
+		max-width: 100%
+
+		font-size: 12px
+
+		text-align: left
+
+		&_head
+			// display: block
+			font-size: 14px
+
+			user-select: none
+			-webkit-user-select: none
+
+			color: #5b8ec8
+			th
+				border-bottom: 3px solid #5b8ec8
+
+				padding-bottom: 10px
+
+		&_item
+			cursor: pointer
+
+			transition: all .3s ease
+
+			& > * 
+				padding: 20px 0 20px 0
+
+				border-bottom: 1px solid rgba(40, 40, 43, .1)
+
+			&:hover
+				background-color: rgba(0, 0, 0, .05)
+				
+				@media(max-width:1023px)
+					background-color: initial
+	
+	&__order
+		display: -webkit-flex
+		display: -moz-flex
+		display: -ms-flex
+		display: -o-flex
+		display: flex
+
+		margin-top: 50px
+		margin-bottom: 65px
+
+		& > *
+			width: 33.33%
+	
+	&__form
+		margin-top: 0
+	
+	&__full_price
+		background-color: transparent
+
+		border: none

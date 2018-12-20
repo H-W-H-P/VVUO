@@ -54,7 +54,7 @@ var CameraButtons = function(blueprint3d) {
     $("#move-up").dblclick(preventDefault);
     $("#move-down").dblclick(preventDefault);
 
-    $('#constructor_2d, .conf_wr__order_btn').on('click', function(EO) {
+    $('#constructor_2d, .conf_wr__order_btn, .open_page_pdf').on('click', function(EO) {
     	EO.preventDefault();
     	return orbitControls.changeViewe_2d();
     });
