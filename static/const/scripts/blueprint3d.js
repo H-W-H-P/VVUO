@@ -46706,8 +46706,10 @@ var ThreeController = function(three, model, camera, element, controls, hud) {
   // invoked via callback when item is loaded
   function itemLoaded(item) {
     if (!item.position_set) {
-        scope.setSelectedObject(item);
-        switchState(states.DRAGGING);  
+	    setTimeout(function() {
+	    	scope.setSelectedObject(item);
+	        switchState(states.DRAGGING);  
+	    }, 1000);
         // var pos = item.position.clone();
         // console.log('mouse ', mouse)
         // console.log('pos ', pos)
@@ -48325,6 +48327,8 @@ var ThreeHUD = function(three) {
       activeObject = null;
     }
   }
+
+  // prod change
 
   function itemSelected(item) {
     if (selectedItem != item) {
