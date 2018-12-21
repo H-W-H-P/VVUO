@@ -1,0 +1,12 @@
+extends ../layouts/pages
+
+block append head
+	block title
+		- var title='pdf_page';
+
+block content	
+	include ../blocks/lanes
+	include ../blocks/pdf_page
+	include ../blocks/footer
+	include ../blocks/pop_ups
+	
