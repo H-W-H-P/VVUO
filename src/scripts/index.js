@@ -664,13 +664,59 @@ $(document).ready(function () {
       return false
     }
   })
-
+  // PDF PAGE
   $('.open_page_pdf').on('click', function (EO) {
     EO.preventDefault()
     $('.page_pdf').addClass('page_pdf--active')
+    $('.have_question, .footer').addClass('pdf_control')
     getListPdf.getListItem()
     getListPdf.createRowTable()
+    controlHeight()
   })
+
+  $('.page_pdf__back').on('click', function (EO) {
+    EO.preventDefault()
+    $('.page_pdf').addClass('page_pdf--close')
+    setTimeout(() => {
+      $('.page_pdf').removeClass('page_pdf--close page_pdf--active')
+    }, 500)
+    $('.have_question, .footer').removeClass('pdf_control')
+    $('.have_question').css({
+      'position': 'static',
+      'width': 'auto'
+    })
+    $('.footer').css({
+      'position': 'static',
+      'width': 'auto'
+    })
+  })
+
+  $(window).resize(function () {
+    if ($('.page_pdf').hasClass('page_pdf--active')) {
+      controlHeight()
+    }
+  })
+
+  function controlHeight () {
+    let heightPdf = $('.page_pdf').outerHeight()
+    let haveQuestionTop = heightPdf + 155
+    let heightQuestion = $('.have_question').outerHeight()
+    let footerTop = heightQuestion + haveQuestionTop
+    $('.have_question').css({
+      'position': 'absolute',
+      'left': 0,
+      'width': '100%',
+      'background': 'white',
+      'top': haveQuestionTop
+    })
+    $('.footer').css({
+      'position': 'absolute',
+      'left': 0,
+      'width': '100%',
+      'background': 'white',
+      'top': footerTop
+    })
+  }
 
   let getListPdf = (function () {
     let listItem
@@ -678,12 +724,17 @@ $(document).ready(function () {
 
     function getListItem () {
       listItem = $('.list_items').val()
+      if (!listItem) {
+        return false
+      }
       listItem = JSON.parse(listItem)
       getItemSelect()
       return listItem
     }
 
     function getItemSelect () {
+      selectetItem = null
+      selectetItem = {}
       for (let i in listItem) {
         if (listItem[i]) {
           selectetItem[i] = listItem[i]
@@ -695,11 +746,18 @@ $(document).ready(function () {
       $('.page_pdf__table_body').empty()
       let fullprice = 0
       let row = $(`<tr class='page_pdf__table_item'>
-        <td class='page_pdf__table_item_article'></td>
-        <td class='page_pdf__table_item_goods'></td>
-        <td class='page_pdf__table_item_price'></td>
-        <td class='page_pdf__table_item_quantity'></td>
-        <td class='page_pdf__table_item_price_full'></td>
+        <td class='page_pdf__table_item_article'>
+        <p class="page_pdf__table_mob_title page_pdf__table_mob_title_hide.page_pdf__table_txt">Артикул</p>
+        <p class="page_pdf__table_mob_title page_pdf__table_txt page_pdf__table_mob_title_title"></p>
+        </td>
+        <td class='page_pdf__table_item_goods'>
+        </td>
+        <td class='page_pdf__table_item_price'>
+        </td>
+        <td class='page_pdf__table_item_quantity'>
+        </td>
+        <td class='page_pdf__table_item_price_full'>
+        </td>
         </tr>`)
       let htmlJsn = $('.constructor').attr('data-json')
       htmlJsn = JSON.parse(htmlJsn)
@@ -708,10 +766,10 @@ $(document).ready(function () {
         htmlJsn.some((v, k) => {
           if (i === v['name']) {
             let rowClone = $(row).clone()
-            $(rowClone).find('.page_pdf__table_item_article').html('1')
-            $(rowClone).find('.page_pdf__table_item_goods').html(v['name'])
-            $(rowClone).find('.page_pdf__table_item_price').html(v['size'])
-            $(rowClone).find('.page_pdf__table_item_quantity').html(selectetItem[i])
+            $(rowClone).find('.page_pdf__table_mob_title_title').html('1')
+            $(rowClone).find('.page_pdf__table_item_goods').html(`${v['name']}`)
+            $(rowClone).find('.page_pdf__table_item_price').html(`${v['size']} ₽`)
+            $(rowClone).find('.page_pdf__table_item_quantity').html(`${selectetItem[i]} шт.`)
             let priceFull = v['size'] * selectetItem[i]
             $(rowClone).find('.page_pdf__table_item_price_full').html(priceFull)
             $('.page_pdf__table_body')[0].appendChild($(rowClone)[0])

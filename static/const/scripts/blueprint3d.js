@@ -22193,7 +22193,6 @@ THREE.Material.prototype = {
 	constructor: THREE.Material,
 
 	setValues: function ( values ) {
-
 		if ( values === undefined ) return;
 
 		for ( var key in values ) {
@@ -22202,6 +22201,7 @@ THREE.Material.prototype = {
 			// console.log(key, newValue)
 
 			if ( newValue === undefined ) {
+				
 
 				// newValue = 14540253;
 
@@ -47946,6 +47946,7 @@ var ThreeEdge = function(scene, edge, controls) {
       map: texture,
       lightMap: lightMap
     });
+
     
     var fillerMaterial = new THREE.MeshBasicMaterial({
       color: fillerColor,

@@ -1,12 +1,15 @@
 section.page_pdf
 	.page_pdf__header
-		.page_pdf__header_top.max_width
+		.page_pdf__header_top
 			.page_pdf__back_w
 				a(href="#").page_pdf__back Назад
 			.page_pdf__top
+				.simple_title_wr_5__inp_wr.page_pdf__new_project
+					form(action="#")
+						input(type="text", placeholder="Ваш новый проект").simple_title_wr_5__inp.bold.page_pdf__title_form
 				h1.title.page_pdf__name_order.page_pdf__title Конфигурация к заказу №2345
 		.page_pdf__header_middle
-			.info_client.max_width
+			.info_client
 				.info_client__left_bar.info_client__side
 					p.info_client__text ФИО
 					p.info_client__text Телефон
@@ -16,21 +19,21 @@ section.page_pdf
 					p.info_client__text.info_client__text--bold +7 (926)123-34-55
 					p.info_client__text.info_client__text--bold III@mail.ru
 		.page_pdf__header_bottom
-			.info_client.max_width
+			.info_client
 				.info_client__left_bar.info_client__side
 					p.info_client__text.page_pdf__header_bottom_text Комментарий
 				.info_client__right_bar.info_client__side
 					p.info_client__text.info_client__text--bold Комментарий
 	.page_pdf__body.max_width
 		.config__body.page_pdf__config_wrap
-			img(src="../../../static/img/pictures/pdf_stub_.PNG", alt="img").page_pdf__config_img
+			img(src="", alt="img").page_pdf__config_img
 			.config__top_line
 				.config__number 6000
 			.config__left_line
 				.config__number 4500
 	.page_pdf__footer.max_width
 		table.page_pdf__table
-			thead
+			thead.page_pdf__table_head_wrap
 				tr.page_pdf__table_head
 					th Артикул
 					th Название товара
@@ -39,7 +42,9 @@ section.page_pdf
 					th Цена
 			tbody.page_pdf__table_body
 				tr.page_pdf__table_item
-					td.page_pdf__table_item_article 12345 - пусто
+					td.page_pdf__table_item_article 
+						p.page_pdf__table_mob_title.page_pdf__table_mob_title_hide Артикул
+						p.page_pdf__table_mob_title.page_pdf__table_mob_title_title 12345 - пусто
 					td.page_pdf__table_item_goods Стол белый 120x80 см - пусто
 					td.page_pdf__table_item_price 6 000 ₽ - пусто
 					td.page_pdf__table_item_quantity 5 шт. - пусто
@@ -68,94 +73,46 @@ section.page_pdf
 					td.page_pdf__table_item_price 6 000 ₽ - пусто
 					td.page_pdf__table_item_quantity 5 шт. - пусто
 					td.page_pdf__table_item_price_full 30 000 ₽ - пусто
-				tr.page_pdf__table_item
-					td.page_pdf__table_item_article 12345 - пусто
-					td.page_pdf__table_item_goods Стол белый 120x80 см - пусто
-					td.page_pdf__table_item_price 6 000 ₽ - пусто
-					td.page_pdf__table_item_quantity 5 шт. - пусто
-					td.page_pdf__table_item_price_full 30 000 ₽ - пусто
-				tr.page_pdf__table_item
-					td.page_pdf__table_item_article 12345 - пусто
-					td.page_pdf__table_item_goods Стол белый 120x80 см - пусто
-					td.page_pdf__table_item_price 6 000 ₽ - пусто
-					td.page_pdf__table_item_quantity 5 шт. - пусто
-					td.page_pdf__table_item_price_full 30 000 ₽ - пусто
-				tr.page_pdf__table_item
-					td.page_pdf__table_item_article 12345 - пусто
-					td.page_pdf__table_item_goods Стол белый 120x80 см - пусто
-					td.page_pdf__table_item_price 6 000 ₽ - пусто
-					td.page_pdf__table_item_quantity 5 шт. - пусто
-					td.page_pdf__table_item_price_full 30 000 ₽ - пусто
-				tr.page_pdf__table_item
-					td.page_pdf__table_item_article 12345 - пусто
-					td.page_pdf__table_item_goods Стол белый 120x80 см - пусто
-					td.page_pdf__table_item_price 6 000 ₽ - пусто
-					td.page_pdf__table_item_quantity 5 шт. - пусто
-					td.page_pdf__table_item_price_full 30 000 ₽ - пусто
-				tr.page_pdf__table_item
-					td.page_pdf__table_item_article 12345 - пусто
-					td.page_pdf__table_item_goods Стол белый 120x80 см - пусто
-					td.page_pdf__table_item_price 6 000 ₽ - пусто
-					td.page_pdf__table_item_quantity 5 шт. - пусто
-					td.page_pdf__table_item_price_full 30 000 ₽ - пусто
-				tr.page_pdf__table_item
-					td.page_pdf__table_item_article 12345 - пусто
-					td.page_pdf__table_item_goods Стол белый 120x80 см - пусто
-					td.page_pdf__table_item_price 6 000 ₽ - пусто
-					td.page_pdf__table_item_quantity 5 шт. - пусто
-					td.page_pdf__table_item_price_full 30 000 ₽ - пусто
-				tr.page_pdf__table_item
-					td.page_pdf__table_item_article 12345 - пусто
-					td.page_pdf__table_item_goods Стол белый 120x80 см - пусто
-					td.page_pdf__table_item_price 6 000 ₽ - пусто
-					td.page_pdf__table_item_quantity 5 шт. - пусто
-					td.page_pdf__table_item_price_full 30 000 ₽ - пусто
-				tr.page_pdf__table_item
-					td.page_pdf__table_item_article 12345 - пусто
-					td.page_pdf__table_item_goods Стол белый 120x80 см - пусто
-					td.page_pdf__table_item_price 6 000 ₽ - пусто
-					td.page_pdf__table_item_quantity 5 шт. - пусто
-					td.page_pdf__table_item_price_full 30 000 ₽ - пусто
-				tr.page_pdf__table_item
-					td.page_pdf__table_item_article 12345 - пусто
-					td.page_pdf__table_item_goods Стол белый 120x80 см - пусто
-					td.page_pdf__table_item_price 6 000 ₽ - пусто
-					td.page_pdf__table_item_quantity 5 шт. - пусто
-					td.page_pdf__table_item_price_full 30 000 ₽ - пусто
-				tr.page_pdf__table_item
-					td.page_pdf__table_item_article 12345 - пусто
-					td.page_pdf__table_item_goods Стол белый 120x80 см - пусто
-					td.page_pdf__table_item_price 6 000 ₽ - пусто
-					td.page_pdf__table_item_quantity 5 шт. - пусто
-					td.page_pdf__table_item_price_full 30 000 ₽ - пусто
-				tr.page_pdf__table_item
-					td.page_pdf__table_item_article 12345 - пусто
-					td.page_pdf__table_item_goods Стол белый 120x80 см - пусто
-					td.page_pdf__table_item_price 6 000 ₽ - пусто
-					td.page_pdf__table_item_quantity 5 шт. - пусто
-					td.page_pdf__table_item_price_full 30 000 ₽ - пусто
-				tr.page_pdf__table_item
-					td.page_pdf__table_item_article 12345 - пусто
-					td.page_pdf__table_item_goods Стол белый 120x80 см - пусто
-					td.page_pdf__table_item_price 6 000 ₽ - пусто
-					td.page_pdf__table_item_quantity 5 шт. - пусто
-					td.page_pdf__table_item_price_full 30 000 ₽ - пусто
-				tr.page_pdf__table_item
-					td.page_pdf__table_item_article 12345 - пусто
-					td.page_pdf__table_item_goods Стол белый 120x80 см - пусто
-					td.page_pdf__table_item_price 6 000 ₽ - пусто
-					td.page_pdf__table_item_quantity 5 шт. - пусто
-					td.page_pdf__table_item_price_full 30 000 ₽ - пусто
-				tr.page_pdf__table_item
-					td.page_pdf__table_item_article 12345 - пусто
-					td.page_pdf__table_item_goods Стол белый 120x80 см - пусто
-					td.page_pdf__table_item_price 6 000 ₽ - пусто
-					td.page_pdf__table_item_quantity 5 шт. - пусто
-					td.page_pdf__table_item_price_full 30 000 ₽ - пусто
+				//- tr.page_pdf__table_item
+				//- 	td.page_pdf__table_item_article 12345 - пусто
+				//- 	td.page_pdf__table_item_goods Стол белый 120x80 см - пусто
+				//- 	td.page_pdf__table_item_price 6 000 ₽ - пусто
+				//- 	td.page_pdf__table_item_quantity 5 шт. - пусто
+				//- 	td.page_pdf__table_item_price_full 30 000 ₽ - пусто
+				//- tr.page_pdf__table_item
+				//- 	td.page_pdf__table_item_article 12345 - пусто
+				//- 	td.page_pdf__table_item_goods Стол белый 120x80 см - пусто
+				//- 	td.page_pdf__table_item_price 6 000 ₽ - пусто
+				//- 	td.page_pdf__table_item_quantity 5 шт. - пусто
+				//- 	td.page_pdf__table_item_price_full 30 000 ₽ - пусто
+				//- tr.page_pdf__table_item
+				//- 	td.page_pdf__table_item_article 12345 - пусто
+				//- 	td.page_pdf__table_item_goods Стол белый 120x80 см - пусто
+				//- 	td.page_pdf__table_item_price 6 000 ₽ - пусто
+				//- 	td.page_pdf__table_item_quantity 5 шт. - пусто
+				//- 	td.page_pdf__table_item_price_full 30 000 ₽ - пусто
+				//- tr.page_pdf__table_item
+				//- 	td.page_pdf__table_item_article 12345 - пусто
+				//- 	td.page_pdf__table_item_goods Стол белый 120x80 см - пусто
+				//- 	td.page_pdf__table_item_price 6 000 ₽ - пусто
+				//- 	td.page_pdf__table_item_quantity 5 шт. - пусто
+				//- 	td.page_pdf__table_item_price_full 30 000 ₽ - пусто
+				//- tr.page_pdf__table_item
+				//- 	td.page_pdf__table_item_article 12345 - пусто
+				//- 	td.page_pdf__table_item_goods Стол белый 120x80 см - пусто
+				//- 	td.page_pdf__table_item_price 6 000 ₽ - пусто
+				//- 	td.page_pdf__table_item_quantity 5 шт. - пусто
+				//- 	td.page_pdf__table_item_price_full 30 000 ₽ - пусто
+				//- tr.page_pdf__table_item
+				//- 	td.page_pdf__table_item_article 12345 - пусто
+				//- 	td.page_pdf__table_item_goods Стол белый 120x80 см - пусто
+				//- 	td.page_pdf__table_item_price 6 000 ₽ - пусто
+				//- 	td.page_pdf__table_item_quantity 5 шт. - пусто
+				//- 	td.page_pdf__table_item_price_full 30 000 ₽ - пусто
 	.page_pdf__order.max_width
 		p.conf_wr__quart.page_pdf__full_price
 			span.conf_wr__18 Итоговая цена
 			b.conf_wr__bold.final_price 320 000 ₽
 		form(action="#").conf_wr__quart.btn_w_arr.conf_wr__order.conf_wr__order2.conf_wr__order2_form.page_pdf__form
-			button.conf_wr__quart.btn_w_arr.conf_wr__order.conf_wr__order2.conf_wr__order_btn Заказать
+			button.conf_wr__quart.btn_w_arr.conf_wr__order.conf_wr__order2.conf_wr__order_btn.page_pdf__order_btn Заказать
 				.hover_bl
