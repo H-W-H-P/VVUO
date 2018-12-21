@@ -597,10 +597,25 @@ $(document).ready(function () {
   console.log(bwer())
   // map
   ymaps.load().then(maps => {
-    const map = new maps.Map('contacts_page__map', {
-      center: [55.76, 37.64],
-      zoom: 12
+    var map = new maps.Map('contacts_page__map', {
+      center: [55.762245, 37.558131],
+      zoom: 10
     })
+    var myPlacemark = new maps.Placemark([55.762245, 37.558131], {
+      hintContent: 'Виртуальная выставка учебного оборудования'
+    }, {
+      // Опции.
+      // Необходимо указать данный тип макета.
+      iconLayout: 'default#image',
+      // Своё изображение иконки метки.
+      iconImageHref: 'static/img/icons/geo-icon.svg',
+      // Размеры метки.
+      iconImageSize: [47, 65],
+      // Смещение левого верхнего угла иконки относительно
+      // её "ножки" (точки привязки).
+      iconImageOffset: [-23, -32]
+    })
+    map.geoObjects.add(myPlacemark)
     map.panes.get('ground').getElement().style.filter = 'grayscale(100%)'
   }).catch(error => console.log('Failed to load Yandex Maps', error))
 

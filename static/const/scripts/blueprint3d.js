@@ -44514,6 +44514,7 @@ var utils = require('../utils/utils')
 
 var FloorItem = function(three, metadata, geometry, material, position, rotation, scale) {
     Item.call(this, three, metadata, geometry, material, position, rotation, scale);
+    console.log(three)
 };
 
 FloorItem.prototype = Object.create(Item.prototype);
