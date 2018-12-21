@@ -22199,8 +22199,11 @@ THREE.Material.prototype = {
 		for ( var key in values ) {
 
 			var newValue = values[ key ];
+			// console.log(key, newValue)
 
 			if ( newValue === undefined ) {
+
+				// newValue = 14540253;
 
 				console.warn( "THREE.Material: '" + key + "' parameter is undefined." );
 				continue;
@@ -45006,9 +45009,9 @@ WallItem.prototype.removed = function() {
 }
 
 WallItem.prototype.redrawWall = function() {
-    if (this.addToWall) {
-        this.currentWallEdge.wall.fireRedraw();
-    }
+    // if (this.addToWall) {
+    //     this.currentWallEdge.wall.fireRedraw();
+    // }
 }
 
 WallItem.prototype.updateEdgeVisibility = function(visible, front) {
@@ -46707,7 +46710,7 @@ var ThreeController = function(three, model, camera, element, controls, hud) {
   function itemLoaded(item) {
     if (!item.position_set) {
         // scope.setSelectedObject(item);
-        // switchState(states.DRAGGING);  
+        // switchState(states.DRAGGING);
         // var pos = item.position.clone();
         // console.log('mouse ', mouse)
         // console.log('pos ', pos)
