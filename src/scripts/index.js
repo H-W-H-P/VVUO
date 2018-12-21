@@ -292,7 +292,97 @@ $(document).ready(function () {
   $('.ui-slider-handle:nth-last-child(2)').append('<div class="shop_filters__price_cont"><span class="price">100</span> ₽</div>')
   $('.ui-slider-handle:last-child').append('<div class="shop_filters__price_cont"><span class="price">5000</span> ₽</div>')
 
-  $('.input_decore[type=tel]').mask('(000) 000-0000')
+  // validation
+
+  $('.input_decore').keypress(function () {
+    $(this).closest('.input_decore_label').removeClass('danger')
+  })
+
+  $('.have_question__btn').click(function () {
+    var trigger = true
+    $(this).closest('form').find('.input_decore').each(function (i) {
+      var _this = this
+      if (!validate(_this, trigger)) {
+        $(this).closest('.input_decore_label').addClass('danger')
+        trigger = false
+      }
+    })
+    if (!trigger) return false
+  })
+
+  $('.pop_up__btn').click(function () {
+    var trigger = true
+    $(this).closest('form').find('.input_decore').each(function (i) {
+      var _this = this
+      if (!validate(_this, trigger)) {
+        $(this).closest('.input_decore_label').addClass('danger')
+        trigger = false
+      }
+    })
+    if (!trigger) return false
+  })
+
+  function validate (_this, trigger) {
+    var ckName = /^[А-Яа-яA-Za-z\s]{1,20}$/
+    var ckText = /^[А-Яа-яA-Za-z0-9,.!?\s]{1,5000}$/
+    var ckTel = /\(?([0-9]{3})\)?([ .-]?)([0-9]{3})\2([0-9]{4})/
+    var ckNumber = /^\d+$/
+    var ckDate = /^(\d{1,2}).(\d{1,2}).(\d{2}|\d{4})$/
+    var ckEmail = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i
+
+    var type = $(_this).attr('type')
+    // console.log(type)
+    if (type === 'number') {
+      if (!ckNumber.test($(_this).val())) {
+        return false
+      } else {
+        return true
+      }
+    } if (type === 'text') {
+      if (!ckText.test($(_this).val())) {
+        return false
+      } else {
+        return true
+      }
+    } if (type === 'password') {
+      if (!ckText.test($(_this).val())) {
+        return false
+      } else {
+        return true
+      }
+    } if (type === 'date') {
+      console.log('date')
+      if (!ckDate.test($(_this).val())) {
+        return false
+      } else {
+        return true
+      }
+    } if (type === 'email') {
+      if (!ckEmail.test($(_this).val())) {
+        return false
+      } else {
+        return true
+      }
+    } if (type === 'tel') {
+      if (!ckTel.test($(_this).val())) {
+        return false
+      } else {
+        return true
+      }
+    } if (type === 'name') {
+      if (!ckName.test($(_this).val())) {
+        return false
+      } else {
+        return true
+      }
+    } else {
+      return true
+    }
+  }
+
+  validate()
+
+  $('.input_decore[type=tel]').mask('(000) 000 0000')
 
   // owls
   $('.main_slider__right').owlCarousel({
