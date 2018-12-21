@@ -46148,6 +46148,7 @@ var Model = function(textureDir) {
     var objects = scope.scene.getItems();
     for ( var i = 0; i < objects.length; i++ ) {
       var object = objects[i];
+      console.log(object)
       items_arr[i] = {
         item_name: object.metadata.itemName,
         item_type: object.metadata.itemType,

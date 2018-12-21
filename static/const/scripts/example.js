@@ -629,6 +629,7 @@ $(document).ready(function() {
 
   // Simple hack for exporting rooms.
   $(window).dblclick(function() {
+    console.log(blueprint3d)
     console.log(blueprint3d.model.exportSerialized())
   })
 
