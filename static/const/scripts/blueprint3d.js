@@ -22198,9 +22198,12 @@ THREE.Material.prototype = {
 		for ( var key in values ) {
 
 			var newValue = values[ key ];
+			// console.log(key, newValue)
 
 			if ( newValue === undefined ) {
 				
+
+				// newValue = 14540253;
 
 				console.warn( "THREE.Material: '" + key + "' parameter is undefined." );
 				continue;
@@ -44514,6 +44517,7 @@ var utils = require('../utils/utils')
 
 var FloorItem = function(three, metadata, geometry, material, position, rotation, scale) {
     Item.call(this, three, metadata, geometry, material, position, rotation, scale);
+    console.log(three)
 };
 
 FloorItem.prototype = Object.create(Item.prototype);
@@ -45005,9 +45009,9 @@ WallItem.prototype.removed = function() {
 }
 
 WallItem.prototype.redrawWall = function() {
-    if (this.addToWall) {
-        this.currentWallEdge.wall.fireRedraw();
-    }
+    // if (this.addToWall) {
+    //     this.currentWallEdge.wall.fireRedraw();
+    // }
 }
 
 WallItem.prototype.updateEdgeVisibility = function(visible, front) {
@@ -46144,6 +46148,7 @@ var Model = function(textureDir) {
     var objects = scope.scene.getItems();
     for ( var i = 0; i < objects.length; i++ ) {
       var object = objects[i];
+      console.log(object)
       items_arr[i] = {
         item_name: object.metadata.itemName,
         item_type: object.metadata.itemType,
@@ -46311,18 +46316,15 @@ var Room = function(floorplan, corners) {
     }
   }
 
-  $(document).on('change', '#confWallA', function () {
-  	corners[2].x = Number($(this).val());
-  	corners[1].x = Number($(this).val());
+  // $(document).on('click', '.config__next', function () {
+  $('.config__next').click(function() {
+  	corners[2].x = Number($('#confWallA').val());
+  	corners[1].x = Number($('#confWallA').val());
+  	corners[2].y = Number($('#confWallB').val());
+  	corners[3].y = Number($('#confWallB').val());
   	updateWalls();
   	// updateInteriorCorners();
   	// generatePlane();
-  })
-
-  $(document).on('change', '#confWallB', function () {
-  	corners[2].y = Number($(this).val());
-  	corners[3].y = Number($(this).val());
-  	updateWalls();
   })
 
   // populates each wall's half edge relating to this room
@@ -46708,8 +46710,8 @@ var ThreeController = function(three, model, camera, element, controls, hud) {
   // invoked via callback when item is loaded
   function itemLoaded(item) {
     if (!item.position_set) {
-        scope.setSelectedObject(item);
-        switchState(states.DRAGGING);  
+        // scope.setSelectedObject(item);
+        // switchState(states.DRAGGING);
         // var pos = item.position.clone();
         // console.log('mouse ', mouse)
         // console.log('pos ', pos)
@@ -47809,7 +47811,7 @@ var ThreeEdge = function(scene, edge, controls) {
     updatePlanes();
     addToScene();
 
-    $('#constructor_3d').on('click', function(EO) {
+    $('#constructor_2d').on('click', function(EO) {
     	$.each(planes, function (key, value) {
     		value.material.color.r = value.material.color.g = value.material.color.b = 0;
     	});
@@ -48303,7 +48305,7 @@ var ThreeHUD = function(three) {
   var tolerance = 10;
   var height = 25;
   var distance = 20;
-  var color = "#ffffff";
+  var color = "#000000";
   var hoverColor = "#5b8ec8";
 
   var activeObject = null;
@@ -48328,6 +48330,8 @@ var ThreeHUD = function(three) {
       activeObject = null;
     }
   }
+
+  // prod change
 
   function itemSelected(item) {
     if (selectedItem != item) {
@@ -48639,6 +48643,7 @@ var ThreeMain = function(model, element, canvasElement, opts) {
 
     $('#constructor_2d, .conf_wr__order_btn, .open_page_pdf').on('click', cameraState_2d);
     $('#constructor_3d').on('click', cameraState_3d);
+    $('.config__next').on('click', cameraState_3d);
 
     domElement = scope.element.get(0) // Container
     

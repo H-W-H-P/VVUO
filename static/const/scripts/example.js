@@ -286,7 +286,23 @@ var SideMenu = function(blueprint3d, floorplanControls, modalEffects) {
 
     $("#update-floorplan").click(floorplanUpdate);
 
-    $('.config__next').click(function () {      
+    $('.config__next').click(function () {
+      // check and set min wall height if < 2.1m
+      var wallHeight = $('.config__input_height_mobile').val() > 210 ? $('.config__input_height_mobile').val() : $('.config__input_height').val();
+      wallHeight = $('.config__input_height').val() > 210 ? $('.config__input_height').val() : 250;
+      $('.config__input_height').val(wallHeight);
+      $('.config__input_height_mobile').val(wallHeight);
+      // check and set min wallA length if < 3m
+      var wallA = $('#confWallA').val() > 300 ? $('#confWallA').val() : $('.confWallA-desk').val();
+      wallA = $('.confWallA-desk').val() > 300 ? $('.confWallA-desk').val() : 300;
+      $('.confWallA-desk').val(wallA);
+      $('#confWallA').val(wallA);
+      // check and set min wallB height if < 3m
+      var wallB = $('#confWallB').val() > 300 ? $('#confWallB').val() : $('.confWallB-desk').val();
+      wallB = $('.confWallB-desk').val() > 300 ? $('.confWallB-desk').val() : 300;
+      $('.confWallB-desk').val(wallB);
+      $('#confWallB').val(wallB);
+
       setTimeout(function() {
         setCurrentState(scope.states.FLOORPLAN);
         floorplanUpdate();
@@ -588,6 +604,13 @@ var ViewerFloorplanner = function(blueprint3d) {
 
 $(document).ready(function() {
 
+  window.addEventListener("keydown", function(e) {
+      // space and arrow keys
+      if([32, 37, 38, 39, 40].indexOf(e.keyCode) > -1) {
+          e.preventDefault();
+      }
+  }, false);
+
   // main setup
   var opts = {
     floorplannerElement: 'floorplanner-canvas',
@@ -606,6 +629,7 @@ $(document).ready(function() {
 
   // Simple hack for exporting rooms.
   $(window).dblclick(function() {
+    console.log(blueprint3d)
     console.log(blueprint3d.model.exportSerialized())
   })
 

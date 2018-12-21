@@ -30,9 +30,18 @@ li
 	padding: 0
 
 input,
-textarea,
-button
+textarea
 	all: unset
+
+button	
+    border: none
+    background: none
+    font-family: avantgardegothicc;
+    font-size: 100%
+    font-weight: 100%
+    padding: 0
+    margin: 0
+    outline: 0
 
 // sizes
 
@@ -415,6 +424,7 @@ button
 		transition: all ease .4s
 
 .checkbox:checked + .label_checkbox
+.checkbox.checked + .label_checkbox
 
 	&::after
 		opacity: 1
@@ -583,6 +593,8 @@ button
 
 		button.owl-prev,
 		button.owl-next
+			all: unset
+			cursor: pointer
 			width: 20px
 			padding: 10px !important
 			background-image: url('../../static/img/icons/arr-long-black.svg') !important
