@@ -44583,22 +44583,61 @@ FloorItem.prototype.isValidPosition = function(vec3, appearBool) {
     // prod change
     
     if (this.obstructFloorMoves) {
+    	// sorry about this
         var objects = this.scene.getItems();
         var thisObjHeight = this.halfSize.y;
         var triggerino = true;
+        var intersectArr = [];
+        var dataArray = $('#floorplanner').attr('data-array');
+        dataArray = dataArray.split(',').map(Number);
+        var nonIntersectArr = dataArray ? dataArray : [];
         for (var i = 0; i < objects.length; i++) {
-        	// console.log(utils.polygonOutsidePolygon(corners, objects[i].getCorners('x', 'z')))
-        	// console.log(utils.polygonPolygonIntersect(corners, objects[i].getCorners('x', 'z')))
             if (objects[i] === this || !objects[i].obstructFloorMoves) {
                 continue;
             }
+            for (var k = 0; k < objects.length; k++) {
+            	if (!utils.polygonOutsidePolygon(objects[k].getCorners('x', 'z'), objects[i].getCorners('x', 'z')) ||
+                utils.polygonPolygonIntersect(objects[k].getCorners('x', 'z'), objects[i].getCorners('x', 'z'))) {
+            		if (i == k) {
+
+            		} else {
+                		if (nonIntersectArr.includes(k)) {
+	            			nonIntersectArr = jQuery.grep(nonIntersectArr, function(value) {
+							  return value != k;
+							});
+	                	}
+                		if (nonIntersectArr.includes(i)) {
+	            			nonIntersectArr = jQuery.grep(nonIntersectArr, function(value) {
+							  return value != i;
+							});
+	            		}
+	            		if (!intersectArr.includes(k)) {
+	                		intersectArr.push(k);
+	                	}
+	            		if (!intersectArr.includes(i)) {
+	                		intersectArr.push(i);
+	                	}
+            		}
+                } else {
+                	if ((!intersectArr.includes(k)) && (!nonIntersectArr.includes(k))) {
+                		nonIntersectArr.push(k);
+                	}  
+                	if ((!intersectArr.includes(i)) && (!nonIntersectArr.includes(i))) {
+                		nonIntersectArr.push(i);
+                	}
+                }
+            }
+    
+        	console.log('array is: ', nonIntersectArr)
             if (!utils.polygonOutsidePolygon(corners, objects[i].getCorners('x', 'z')) ||
                 utils.polygonPolygonIntersect(corners, objects[i].getCorners('x', 'z'))) {
-                var intersectedObjHeight = objects[i].halfSize.y;
-            	// objects[i].position.y = intersectedObjHeight;
+            	console.log(corners, objects[i].getCorners('x', 'z'))
+            	countToTwo++;
+                var intersectedObjHeight = objects[i].halfSize.y;   
+                // almost works        	
+                // if (countToTwo < 2) objects[i].position.y = intersectedObjHeight;
             	this.position.y = thisObjHeight + intersectedObjHeight*2;
             	triggerino = false;
-            	countToTwo++;
                 // return false;
             }
             if (triggerino) {
@@ -44615,6 +44654,12 @@ FloorItem.prototype.isValidPosition = function(vec3, appearBool) {
             if (countToTwo >= 2) {
             	return false;
             }
+	    setTimeout(function() {
+	    	$.each(nonIntersectArr, function (i, v) {
+	    		objects[v].position.y = objects[v].halfSize.y;
+	    	});
+	    }, 100);
+    	$('#floorplanner').attr('data-array', nonIntersectArr)
         }
     }
 
@@ -44767,7 +44812,6 @@ Item.prototype.initObject = function() {
     this.placeInRoom();
     var ifDelete = this.placeInRoom();
     if (ifDelete === 1) {
-    	console.log(this)
     	this.remove();
     }
     // select and stuff
