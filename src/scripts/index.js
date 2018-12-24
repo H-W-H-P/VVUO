@@ -109,6 +109,55 @@ $(document).ready(function () {
     return false
   })
 
+  $(document).on('click', '.label_checkbox', function () {
+    var thisID = $(this).attr('for')
+    $('#' + thisID).toggleClass('checked')
+  })
+
+  // var inputValue = 0
+
+  $('#confWallA, #confWallB').keydown(function () {
+    if (($(this).val() > 1500)) {
+      // $(this).val(1500)
+      // return false
+    } else {
+      // inputValue = $(this).val()
+    }
+  })
+
+  $('.simple_title_cooperating__more').click(function () {
+    $('html, body').animate({ scrollTop: $('.cooperating_form').offset().top }, 2000)
+    return false
+  })
+
+  if ($('#confWallA').length) {
+    // max lenght/height of the walls handlers
+    document.getElementById('confWallA').addEventListener('keypress', wallMaxLength, false)
+    document.getElementById('confWallB').addEventListener('keypress', wallMaxLength, false)
+    document.getElementsByClassName('confWallA-desk')[0].addEventListener('keypress', wallMaxLength, false)
+    document.getElementsByClassName('confWallB-desk')[0].addEventListener('keypress', wallMaxLength, false)
+    document.getElementsByClassName('config__input_height_mobile')[0].addEventListener('keypress', wallMaxHeight, false)
+    document.getElementsByClassName('config__input_height')[0].addEventListener('keypress', wallMaxHeight, false)
+  }
+  function wallMaxLength (evt) {
+    var charCode = (evt.which) ? evt.which : event.keyCode
+    if ((charCode >= 48 && charCode <= 57) || (charCode >= 96 && charCode <= 105) || (charCode === 8) || (charCode === 9) || (charCode === 13) || (charCode >= 35 && charCode <= 46)) {
+      if (parseInt(this.value + String.fromCharCode(charCode), 10) <= 1500) return true
+    }
+    evt.preventDefault()
+    evt.stopPropagation()
+    return false
+  }
+  function wallMaxHeight (evt) {
+    var charCode = (evt.which) ? evt.which : event.keyCode
+    if ((charCode >= 48 && charCode <= 57) || (charCode >= 96 && charCode <= 105) || (charCode === 8) || (charCode === 9) || (charCode === 13) || (charCode >= 35 && charCode <= 46)) {
+      if (parseInt(this.value + String.fromCharCode(charCode), 10) <= 300) return true
+    }
+    evt.preventDefault()
+    evt.stopPropagation()
+    return false
+  }
+
   resizing1()
 
   function resizing1 () {
@@ -547,13 +596,30 @@ $(document).ready(function () {
   }
   console.log(bwer())
   // map
-  ymaps.load().then(maps => {
-    // const map = new maps.Map('contacts_page__map', {
-    //   center: [55.76, 37.64],
-    //   zoom: 12
-    // })
-    // map.panes.get('ground').getElement().style.filter = 'grayscale(100%)'
-  }).catch(error => console.log('Failed to load Yandex Maps', error))
+  if ($('.contacts_page__map').length) {
+    ymaps.load().then(maps => {
+      var map = new maps.Map('contacts_page__map', {
+        center: [55.762245, 37.558131],
+        zoom: 10
+      })
+      var myPlacemark = new maps.Placemark([55.762245, 37.558131], {
+        hintContent: 'Виртуальная выставка учебного оборудования'
+      }, {
+        // Опции.
+        // Необходимо указать данный тип макета.
+        iconLayout: 'default#image',
+        // Своё изображение иконки метки.
+        iconImageHref: 'static/img/icons/geo-icon.svg',
+        // Размеры метки.
+        iconImageSize: [47, 65],
+        // Смещение левого верхнего угла иконки относительно
+        // её "ножки" (точки привязки).
+        iconImageOffset: [-23, -32]
+      })
+      map.geoObjects.add(myPlacemark)
+      map.panes.get('ground').getElement().style.filter = 'grayscale(100%)'
+    }).catch(error => console.log('Failed to load Yandex Maps', error))
+  }
 
   // $('.news__link').on('click', function (EO) {
   //   EO.preventDefault()
