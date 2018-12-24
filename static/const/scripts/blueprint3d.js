@@ -46462,14 +46462,14 @@ var Scene = function(model, textureDir) {
 
   this.addItem = function(itemType, fileName, metadata, name, position, rotation, scale, fixed) {
     itemType = itemType || 1;
-    let _position = {x: 600, y: "42", z: 2}
-    console.log(_position)
+    // let _position = {x: 600, y: "42", z: 2}
+    // console.log(_position)
     var loaderCallback = function(geometry, materials) {
       var item = new item_types[itemType](
         model,
         metadata, geometry,
         new THREE.MeshFaceMaterial(materials),
-        _position, rotation, scale
+        position, rotation, scale
       );
       item.fixed = fixed || false;
       items.push(item);
