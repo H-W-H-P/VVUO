@@ -88,6 +88,8 @@ $(document).ready(function () {
 
   // - по клику на Label создаем карусель и показываем items
   $('.conf_wr_filters-side__chbx').on('click', function (EO) {
+    let nameCat = $(this).html()
+    $('.config-cond2__title').html(nameCat)
     $('.conf_wr_filters_active').each((v, k) => {
       $(k).removeClass('conf_wr_filters_active')
     })

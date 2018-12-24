@@ -102,6 +102,25 @@
 	script(src="static/const/scripts/jquery.js")
 	script(src="static/const/scripts/example.js")
 	#viewer
+		.instruction
+			.instruction__bg
+			.instruction__content
+				h2.instruction__title Инструкция
+				ol.instruction__list
+					li.instruction__item
+						span.instruction__counter 1.
+						p.instruction__text Настройте размер кабинета, расположение окон и дверей
+					li.instruction__item
+						span.instruction__counter 2.
+						p.instruction__text Выберите категорию слева и объект для размещения на плане
+					li.instruction__item
+						span.instruction__counter 3.
+						p.instruction__text Перемещайте и вращайте объект на плане
+					li.instruction__item
+						span.instruction__counter 4.
+						p.instruction__text Чтобы удалить объект, вы можете просто переместить за границы кабинета
+				a(href="#").instruction__link Нажмите, чтобы продолжить
+
 		.conf_wr__preloader_wrap.constructor__preloader
 			.conf_wr__preloader
 				.bigSqr

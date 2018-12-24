@@ -46224,7 +46224,6 @@ var Model = function(textureDir) {
     var objects = scope.scene.getItems();
     for ( var i = 0; i < objects.length; i++ ) {
       var object = objects[i];
-      console.log(object)
       items_arr[i] = {
         item_name: object.metadata.itemName,
         item_type: object.metadata.itemType,
@@ -46249,11 +46248,13 @@ var Model = function(textureDir) {
   }
 
   this.newRoom = function(floorplan, items) {
+  	
     this.scene.clearItems();
     this.floorplan.loadFloorplan(floorplan);
     utils.forEach(items, function(item) {
-      position = new THREE.Vector3(
-        item.xpos, item.ypos, item.zpos)    
+    	
+      position = new THREE.Vector3( item.xpos, item.ypos, item.zpos)    
+
       var metadata = {
         itemName: item.item_name,
         resizable: item.resizable,
@@ -46265,6 +46266,7 @@ var Model = function(textureDir) {
         y: item.scale_y,
         z: item.scale_z
       }
+
       scope.scene.addItem( 
         item.item_type, 
         item.model_url, 
@@ -46536,6 +46538,8 @@ var Scene = function(model, textureDir) {
 
   this.addItem = function(itemType, fileName, metadata, name, position, rotation, scale, fixed) {
     itemType = itemType || 1;
+    // let _position = {x: 600, y: "42", z: 2}
+    // console.log(_position)
     var loaderCallback = function(geometry, materials) {
       var item = new item_types[itemType](
         model,
@@ -46548,10 +46552,13 @@ var Scene = function(model, textureDir) {
       scope.add(item);
       item.initObject();
       scope.itemLoadedCallbacks.fire(item);
-      console.log(item)
+      
       item.name = `${name}`;
+      console.log(item)
     }
     scope.itemLoadingCallbacks.fire();
+
+
     loader.load(
       fileName,
       loaderCallback,
@@ -47844,7 +47851,7 @@ var ThreeControls = function (object, domElement) {
 	this.domElement.addEventListener( 'touchend', touchend, false );
 	this.domElement.addEventListener( 'touchmove', touchmove, false );
 	$('#constructor_2d, .conf_wr__order_btn, .open_page_pdf').on('click', this.stateZoom2d)
-	$('#constructor_3d').on('click', this.stateZoom3d)
+	$('#constructor_3d, .page_pdf__back').on('click', this.stateZoom3d)
 
 	window.addEventListener( 'keydown', onKeyDown, false );
 };
@@ -48718,7 +48725,7 @@ var ThreeMain = function(model, element, canvasElement, opts) {
     THREE.ImageUtils.crossOrigin = "";
 
     $('#constructor_2d, .conf_wr__order_btn, .open_page_pdf').on('click', cameraState_2d);
-    $('#constructor_3d').on('click', cameraState_3d);
+    $('#constructor_3d, .page_pdf__back').on('click', cameraState_3d);
     $('.config__next').on('click', cameraState_3d);
 
     domElement = scope.element.get(0) // Container

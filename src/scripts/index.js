@@ -624,60 +624,52 @@ $(document).ready(function () {
   })
 
   // search
-
-  $('.search_slider_catalog').owlCarousel({
-    items: 1,
-    // loop: true,
-    dots: false,
-    nav: false,
-    responsive: {
-      1439: {
-        items: 4
-      },
-      1024: {
-        items: 3
-      },
-      767: {
-        items: 2
-      }
+  $(window).resize(function () {
+    if (windWidthResize < 1023) {
+      initSearchWol(['.search_slider_catalog', '.search_slider_news', '.search_slider_other', '.search.search_slider_lab'])
+    } else {
+      destoryOwl(['.search_slider_catalog', '.search_slider_news', '.search_slider_other', '.search.search_slider_lab'])
+      triggerOwl = false
     }
   })
 
-  $('.search_slider_news').owlCarousel({
-    items: 1,
-    // loop: true,
-    dots: false,
-    nav: false,
-    responsive: {
-      1439: {
-        items: 4
-      },
-      1024: {
-        items: 3
-      },
-      767: {
-        items: 2
-      }
+  let triggerOwl = false
+  function initSearchWol (name) {
+    if (triggerOwl) {
+      return false
     }
-  })
-
-  $('.search_slider_other').owlCarousel({
-    items: 1,
-    // loop: true,
-    dots: false,
-    nav: false,
-    responsive: {
-      1439: {
-        items: 4
-      },
-      1024: {
-        items: 3
-      },
-      767: {
-        items: 2
-      }
+    if (windWidthResize > 1023) {
+      return false
     }
-  })
+    name.forEach((v, k) => {
+      $(v).owlCarousel({
+        // loop: true,
+        dots: false,
+        nav: false,
+        responsive: {
+          1439: {
+            items: 4
+          },
+          1024: {
+            items: 3
+          },
+          767: {
+            items: 2
+          },
+          0: {
+            items: 1
+          }
+        }
+      })
+    })
+    triggerOwl = true
+  }
+  initSearchWol(['.search_slider_catalog', '.search_slider_news', '.search_slider_other', '.search.search_slider_lab'])
+  function destoryOwl (name) {
+    name.forEach((v) => {
+      $(v).trigger('destroy.owl.carousel')
+    })
+  }
 
   function bwer () {
     let ua = navigator.userAgent
@@ -765,7 +757,7 @@ $(document).ready(function () {
   $('.open_page_pdf').on('click', function (EO) {
     EO.preventDefault()
     $('.page_pdf').addClass('page_pdf--active')
-    $('.have_question, .footer').addClass('pdf_control')
+    // $('.have_question, .footer').addClass('pdf_control')
     getListPdf.getListItem()
     getListPdf.createRowTable()
     controlHeight()
@@ -773,46 +765,18 @@ $(document).ready(function () {
 
   $('.page_pdf__back').on('click', function (EO) {
     EO.preventDefault()
+    $('.shop_wrap.conf_wr, .simple_title_wr .simple_title_wr_5__inp_wr, .simple_title_wr__date').removeClass('collapse')
+    $('.simple_title_wr_5').removeClass('simple_title_wr_5__pdf_active')
     $('.page_pdf').addClass('page_pdf--close')
     setTimeout(() => {
       $('.page_pdf').removeClass('page_pdf--close page_pdf--active')
-    }, 500)
-    $('.have_question, .footer').removeClass('pdf_control')
-    $('.have_question').css({
-      'position': 'static',
-      'width': 'auto'
-    })
-    $('.footer').css({
-      'position': 'static',
-      'width': 'auto'
-    })
-  })
-
-  $(window).resize(function () {
-    if ($('.page_pdf').hasClass('page_pdf--active')) {
-      controlHeight()
-    }
+    }, 1500)
+    // $('.page_pdf').removeClass('page_pdf--close page_pdf--active')
   })
 
   function controlHeight () {
-    let heightPdf = $('.page_pdf').outerHeight()
-    let haveQuestionTop = heightPdf + 155
-    let heightQuestion = $('.have_question').outerHeight()
-    let footerTop = heightQuestion + haveQuestionTop
-    $('.have_question').css({
-      'position': 'absolute',
-      'left': 0,
-      'width': '100%',
-      'background': 'white',
-      'top': haveQuestionTop
-    })
-    $('.footer').css({
-      'position': 'absolute',
-      'left': 0,
-      'width': '100%',
-      'background': 'white',
-      'top': footerTop
-    })
+    $('.simple_title_wr_5').addClass('simple_title_wr_5__pdf_active')
+    $('.shop_wrap.conf_wr, .simple_title_wr .simple_title_wr_5__inp_wr, .simple_title_wr__date').addClass('collapse')
   }
 
   let getListPdf = (function () {
@@ -887,4 +851,12 @@ $(document).ready(function () {
       createRowTable: createRowTable
     }
   })()
+
+  $('.instruction__link').on('click', function (EO) {
+    EO.preventDefault()
+    $('.instruction').addClass('instruction--animationClose')
+    setTimeout(() => {
+      $('.instruction').addClass('instruction--closed')
+    }, 1000)
+  })
 })

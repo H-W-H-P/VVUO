@@ -71,17 +71,30 @@
 
 .simple_title_wr_5 + .page_pdf--active
 	display: block
-	
+
 	animation: open linear .3s forwards
+
+	@media(max-width:1023px)
+		display: none
+
+	// position: absolute
+	// top: 155px
+	// z-index: 150
+	// background: #ffffff
+	// border: 1px solid red
+
+	.page_pdf__back_w
+		position: relative
+
+		z-index: 15
+
+.simple_title_wr_5 + .page_pdf--close
+	animation: close linear .3s forwards
 
 	position: absolute
 	top: 155px
 	z-index: 150
 	background: #ffffff
-	// border: 1px solid red
-
-.simple_title_wr_5 + .page_pdf--close
-	animation: close linear .3s forwards
 // -
 .pdf_control
 	margin-left: 8.33%
@@ -127,6 +140,10 @@
 
 		padding-top: 150px
 
+		position: relative
+		z-index: 150
+		overflow: hidden
+
 		@media(max-width:767px)
 			padding-top: 100px
 
@@ -135,7 +152,7 @@
 		margin-right: 120px
 
 		@media(max-width:1439px)
-			margin-left: 20px
+			margin-left: 30px
 			margin-right: 30px
 
 		@media(max-width:1023px)
@@ -217,6 +234,7 @@
 		@media(max-width:1023px)
 			max-width: 690px
 			max-height: 440px
+			min-height: 300px
 			height: auto
 			padding: 10px 30px 10px 30px
 
@@ -251,6 +269,10 @@
 
 		@media(max-width:767px)
 			font-size: 24px
+
+	&__top
+		position: relative
+		z-index: 100
 	
 	&__body
 		margin-bottom: 70px
