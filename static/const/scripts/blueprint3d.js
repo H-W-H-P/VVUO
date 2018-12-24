@@ -46148,7 +46148,6 @@ var Model = function(textureDir) {
     var objects = scope.scene.getItems();
     for ( var i = 0; i < objects.length; i++ ) {
       var object = objects[i];
-      console.log(object)
       items_arr[i] = {
         item_name: object.metadata.itemName,
         item_type: object.metadata.itemType,
@@ -46173,11 +46172,13 @@ var Model = function(textureDir) {
   }
 
   this.newRoom = function(floorplan, items) {
+  	
     this.scene.clearItems();
     this.floorplan.loadFloorplan(floorplan);
     utils.forEach(items, function(item) {
-      position = new THREE.Vector3(
-        item.xpos, item.ypos, item.zpos)    
+    	
+      position = new THREE.Vector3( item.xpos, item.ypos, item.zpos)    
+
       var metadata = {
         itemName: item.item_name,
         resizable: item.resizable,
@@ -46189,6 +46190,7 @@ var Model = function(textureDir) {
         y: item.scale_y,
         z: item.scale_z
       }
+
       scope.scene.addItem( 
         item.item_type, 
         item.model_url, 
@@ -46460,22 +46462,27 @@ var Scene = function(model, textureDir) {
 
   this.addItem = function(itemType, fileName, metadata, name, position, rotation, scale, fixed) {
     itemType = itemType || 1;
+    let _position = {x: 600, y: "42", z: 2}
+    console.log(_position)
     var loaderCallback = function(geometry, materials) {
       var item = new item_types[itemType](
         model,
         metadata, geometry,
         new THREE.MeshFaceMaterial(materials),
-        position, rotation, scale
+        _position, rotation, scale
       );
       item.fixed = fixed || false;
       items.push(item);
       scope.add(item);
       item.initObject();
       scope.itemLoadedCallbacks.fire(item);
-      console.log(item)
+      
       item.name = `${name}`;
+      console.log(item)
     }
     scope.itemLoadingCallbacks.fire();
+
+
     loader.load(
       fileName,
       loaderCallback,

@@ -527,60 +527,52 @@ $(document).ready(function () {
   })
 
   // search
-
-  $('.search_slider_catalog').owlCarousel({
-    items: 1,
-    // loop: true,
-    dots: false,
-    nav: false,
-    responsive: {
-      1439: {
-        items: 4
-      },
-      1024: {
-        items: 3
-      },
-      767: {
-        items: 2
-      }
+  $(window).resize(function () {
+    if (windWidthResize < 1023) {
+      initSearchWol(['.search_slider_catalog', '.search_slider_news', '.search_slider_other', '.search.search_slider_lab'])
+    } else {
+      destoryOwl(['.search_slider_catalog', '.search_slider_news', '.search_slider_other', '.search.search_slider_lab'])
+      triggerOwl = false
     }
   })
 
-  $('.search_slider_news').owlCarousel({
-    items: 1,
-    // loop: true,
-    dots: false,
-    nav: false,
-    responsive: {
-      1439: {
-        items: 4
-      },
-      1024: {
-        items: 3
-      },
-      767: {
-        items: 2
-      }
+  let triggerOwl = false
+  function initSearchWol (name) {
+    if (triggerOwl) {
+      return false
     }
-  })
-
-  $('.search_slider_other').owlCarousel({
-    items: 1,
-    // loop: true,
-    dots: false,
-    nav: false,
-    responsive: {
-      1439: {
-        items: 4
-      },
-      1024: {
-        items: 3
-      },
-      767: {
-        items: 2
-      }
+    if (windWidthResize > 1023) {
+      return false
     }
-  })
+    name.forEach((v, k) => {
+      $(v).owlCarousel({
+        // loop: true,
+        dots: false,
+        nav: false,
+        responsive: {
+          1439: {
+            items: 4
+          },
+          1024: {
+            items: 3
+          },
+          767: {
+            items: 2
+          },
+          0: {
+            items: 1
+          }
+        }
+      })
+    })
+    triggerOwl = true
+  }
+  initSearchWol(['.search_slider_catalog', '.search_slider_news', '.search_slider_other', '.search.search_slider_lab'])
+  function destoryOwl (name) {
+    name.forEach((v) => {
+      $(v).trigger('destroy.owl.carousel')
+    })
+  }
 
   function bwer () {
     let ua = navigator.userAgent
