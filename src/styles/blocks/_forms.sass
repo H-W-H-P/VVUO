@@ -674,10 +674,24 @@ label input, label textarea
 	@media(max-width:1439px)
 		padding-bottom: 146px
 
+		box-sizing: border-box
+
+		&__left_side
+			width: 34%
+
+		&__right_side
+			width: 69%
+
+		&__input:nth-child(1), &__input:nth-child(3)
+			margin-right: 10.6%
+
 	@media(max-width:1023px)
 		display: block
 
 		padding-left: 82px
+
+		&__left_side, &__right_side
+			width: 100%
 
 	@media(max-width:767px)
 		padding-left: 34px
@@ -698,20 +712,6 @@ label input, label textarea
 
 	&__left_side, &__right_side
 		width: 50%
-
-	@media(max-width:1439px)
-		box-sizing: border-box
-
-		&__left_side
-			width: 34%
-
-		&__right_side
-			width: 69%
-
-	@media(max-width:1023px)
-
-		&__left_side, &__right_side
-			width: 100%
 
 	&__title
 		width: 387px
@@ -808,11 +808,6 @@ label input, label textarea
 			font-size: 13px
 
 		
-
-	@media(max-width:1439px)
-		&__input:nth-child(1), &__input:nth-child(3)
-			margin-right: 10.6%
-
 	&__area
 		width: 551px
 		height: 118px

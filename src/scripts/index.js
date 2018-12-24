@@ -668,7 +668,7 @@ $(document).ready(function () {
   $('.open_page_pdf').on('click', function (EO) {
     EO.preventDefault()
     $('.page_pdf').addClass('page_pdf--active')
-    $('.have_question, .footer').addClass('pdf_control')
+    // $('.have_question, .footer').addClass('pdf_control')
     getListPdf.getListItem()
     getListPdf.createRowTable()
     controlHeight()
@@ -676,46 +676,18 @@ $(document).ready(function () {
 
   $('.page_pdf__back').on('click', function (EO) {
     EO.preventDefault()
+    $('.shop_wrap.conf_wr, .simple_title_wr .simple_title_wr_5__inp_wr, .simple_title_wr__date').removeClass('collapse')
+    $('.simple_title_wr_5').removeClass('simple_title_wr_5__pdf_active')
     $('.page_pdf').addClass('page_pdf--close')
     setTimeout(() => {
       $('.page_pdf').removeClass('page_pdf--close page_pdf--active')
-    }, 500)
-    $('.have_question, .footer').removeClass('pdf_control')
-    $('.have_question').css({
-      'position': 'static',
-      'width': 'auto'
-    })
-    $('.footer').css({
-      'position': 'static',
-      'width': 'auto'
-    })
-  })
-
-  $(window).resize(function () {
-    if ($('.page_pdf').hasClass('page_pdf--active')) {
-      controlHeight()
-    }
+    }, 1500)
+    // $('.page_pdf').removeClass('page_pdf--close page_pdf--active')
   })
 
   function controlHeight () {
-    let heightPdf = $('.page_pdf').outerHeight()
-    let haveQuestionTop = heightPdf + 155
-    let heightQuestion = $('.have_question').outerHeight()
-    let footerTop = heightQuestion + haveQuestionTop
-    $('.have_question').css({
-      'position': 'absolute',
-      'left': 0,
-      'width': '100%',
-      'background': 'white',
-      'top': haveQuestionTop
-    })
-    $('.footer').css({
-      'position': 'absolute',
-      'left': 0,
-      'width': '100%',
-      'background': 'white',
-      'top': footerTop
-    })
+    $('.simple_title_wr_5').addClass('simple_title_wr_5__pdf_active')
+    $('.shop_wrap.conf_wr, .simple_title_wr .simple_title_wr_5__inp_wr, .simple_title_wr__date').addClass('collapse')
   }
 
   let getListPdf = (function () {
