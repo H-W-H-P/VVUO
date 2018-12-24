@@ -17,11 +17,30 @@
 				span.label_text.pop_up__label_text Телефон
 				span.border
 				span.danger_text Неверный номер телефона
-			select#time(name="").pop_up__select.pop_up__input
-				option(value="default" disabled selected) Время для звонка
-				option(value="1") 12:00
-				option(value="1") 14:00
-				option(value="1") 16:00
+			//- select#time(name="").pop_up__select.pop_up__input
+			//- 	option(value="default" disabled selected) Время для звонка
+			//- 	option(value="1") 12:00
+			//- 	option(value="1") 14:00
+			//- 	option(value="1") 16:00
+			.have_question__secect_style.select__wr.have_question__input.pop_up_consult__select
+				ul.select
+					li
+						input(type="radio" name="awes").select__close#awes-close
+						span.select__label.select__label_placeholder Время для звонка
+					li.select__items
+						input(type="radio" name="awes").select__expand#awes-opener
+						label(for="awes-close").select__closeLabel
+						ul.select__options
+							li.select__option
+								input(type="radio" name="awes" value="8-12").select__input#sel4
+								label(for="sel4").select__label утро 8:00 - 12:00
+							li.select__option
+								input(type="radio" name="awes" value="12-15").select__input#sel5
+								label(for="sel5").select__label день 12:00 - 15:00
+							li.select__option
+								input(type="radio" name="awes" value="16-20").select__input#sel6
+								label(for="sel6").select__label вечер 16:00 - 20:00
+						label(for="awes-opener").select__expandLabel
 			button.pop_up__content_btn.btn_w_arr.pop_up__btn Отправить заявку
 				.hover_bl
 			p.pop_up__text Консультация бесплатно
@@ -51,11 +70,30 @@
 				span.border
 				span.danger_text Неверный номер телефона
 
-			select#time(name="").pop_up__select.pop_up__input
-				option(value="default" disabled selected) Время для звонка
-				option(value="1") 12:00
-				option(value="1") 14:00
-				option(value="1") 16:00
+			//- select#time(name="").pop_up__select.pop_up__input
+			//- 	option(value="default" disabled selected) Время для звонка
+			//- 	option(value="1") 12:00
+			//- 	option(value="1") 14:00
+			//- 	option(value="1") 16:00
+			.have_question__secect_style.select__wr.have_question__input.pop_up__equipment-select
+				ul.select
+					li
+						input(type="radio" name="aw").select__close#aw-close
+						span.select__label.select__label_placeholder Время для звонка
+					li.select__items
+						input(type="radio" name="aw").select__expand#aw-opener
+						label(for="aw-close").select__closeLabel
+						ul.select__options
+							li.select__option
+								input(type="radio" name="aw" value="8-12").select__input#sel7
+								label(for="sel7").select__label утро 8:00 - 12:00
+							li.select__option
+								input(type="radio" name="aw" value="12-15").select__input#sel8
+								label(for="sel8").select__label день 12:00 - 15:00
+							li.select__option
+								input(type="radio" name="aw" value="16-20").select__input#sel9
+								label(for="sel9").select__label вечер 16:00 - 20:00
+						label(for="aw-opener").select__expandLabel
 			label(for="").pop_up__input.pop_up__txt_area.input_decore_label
 				textarea(placeholder="").pop_up__input_padd.input_decore
 				span.label_text.pop_up__label_text Ваш комментарий
