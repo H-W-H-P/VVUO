@@ -22,6 +22,13 @@ $(document).ready(function () {
     }
   })
 
+  $('.input_decore').each(function () {
+    $(this).removeClass('hasCont')
+    if ($(this).val()) {
+      $(this).addClass('hasCont')
+    }
+  })
+
   $('.header__toggle').click(function () {
     $('.header').toggleClass('open')
     $(this).toggleClass('active')
