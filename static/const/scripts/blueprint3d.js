@@ -46702,7 +46702,7 @@ var ThreeController = function(three, model, camera, element, controls, hud) {
     scene.itemLoadedCallbacks.add(itemLoaded);
     setGroundPlane();
 
-    $('.conf_wr__order_btn').on('click', function() {
+    $('.conf_wr__order_btn, .open_page_pdf').on('click', function() {
     	scope.setSelectedObject(null);
     })
   }
