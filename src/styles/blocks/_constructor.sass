@@ -281,3 +281,128 @@ body
 
 	@media(max-width:1439px)
 		right: 18px
+
+.instruction
+	width: 100%
+	height: 100%
+
+	position: absolute
+	display: block
+
+	z-index: 450
+
+	top: 0
+	left: 0
+	bottom: 0
+	right: 0
+
+	&--animationClose
+		animation: fadeOut .4s ease both
+
+	&--closed
+		display: none
+
+	&__bg
+		background-color:  #f4f6f6
+
+		opacity: .5
+
+		position: absolute
+
+		z-index: -1
+
+		width: 100%
+		height: 100%
+
+		top: 0
+		left: 0
+		bottom: 0
+		right: 0
+
+	&__content
+		position: absolute
+
+		top: 50%
+		left: 50%
+
+		transform: translate(-50%, -50%)
+
+	&__list
+		counter-reset: li
+		list-style: none
+
+		margin: 0
+		padding: 0
+		max-width: 400px
+
+	&__text
+		position: relative
+
+	&__title
+		font-size: 30px
+
+		margin: 0
+		padding: 0 0 20px 0
+
+		font-weight: bold
+
+		text-align: center
+
+	&__item
+		display: -webkit-flex
+		display: -moz-flex
+		display: -ms-flex
+		display: -o-flex
+		display: flex
+		align-items: flex-start
+		justify-content: flex-start
+
+		font-size: 12px
+
+		padding-bottom: 5px
+
+	&__counter
+		font-weight: bold
+
+		padding-right: 5px
+		line-height: 1.83
+
+	&__text
+		margin: 0
+
+		line-height: 1.83
+		letter-spacing: normal
+
+	&__link
+		font-weight: bold
+
+		padding-top: 30px
+		text-align: center
+
+		font-size: 16px
+
+		display: block
+
+		&::after
+			content: ""
+			position: static
+			display: inline-block
+			width: 10px
+			height: 10px
+			margin-left: 10px
+			background: url(../../static/img/icons/black-arr.svg) no-repeat center center / 100%
+			transition: all .4s ease
+
+		&:hover
+			&::after
+				transform: translateX(5px)
+
+				@media(max-width:1023px)
+					transform: none
+
+
+@keyframes fadeOut
+	0% 
+		opacity: 1
+	100% 
+		opacity: 0

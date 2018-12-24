@@ -762,4 +762,12 @@ $(document).ready(function () {
       createRowTable: createRowTable
     }
   })()
+
+  $('.instruction__link').on('click', function (EO) {
+    EO.preventDefault()
+    $('.instruction').addClass('instruction--animationClose')
+    setTimeout(() => {
+      $('.instruction').addClass('instruction--closed')
+    }, 1000)
+  })
 })
