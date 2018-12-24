@@ -44529,7 +44529,17 @@ FloorItem.prototype.placeInRoom = function() {
         this.position.x = center.x;
         this.position.z = center.z;
         this.position.y = 0.5 * ( this.geometry.boundingBox.max.y - this.geometry.boundingBox.min.y );
-        console.log(this)
+        // console.log(this);
+        var vec4 = {
+        	x: center.x,
+        	y: 0.5 * ( this.geometry.boundingBox.max.y - this.geometry.boundingBox.min.y ),
+        	z: center.z
+        }
+        this.isValidPosition(vec4, vec4);
+        deleter = this.isValidPosition(vec4, vec4);
+        if (deleter === 1) {
+        	return deleter
+        }
     }
 };
 
@@ -44551,7 +44561,8 @@ FloorItem.prototype.moveToPosition = function(vec3, intersection) {
 }
 
 
-FloorItem.prototype.isValidPosition = function(vec3) {
+FloorItem.prototype.isValidPosition = function(vec3, appearBool) {
+	var countToTwo = 0;
     var corners = this.getCorners('x', 'z', vec3);
 
     // check if we are in a room
@@ -44569,25 +44580,86 @@ FloorItem.prototype.isValidPosition = function(vec3) {
     }
 
     // check if we are outside all other objects
+    // prod change
     
     if (this.obstructFloorMoves) {
+    	// sorry about this
         var objects = this.scene.getItems();
         var thisObjHeight = this.halfSize.y;
         var triggerino = true;
+        var intersectArr = [];
+        var dataArray = $('#floorplanner').attr('data-array');
+        dataArray = dataArray.split(',').map(Number);
+        var nonIntersectArr = dataArray ? dataArray : [];
         for (var i = 0; i < objects.length; i++) {
             if (objects[i] === this || !objects[i].obstructFloorMoves) {
                 continue;
             }
+            for (var k = 0; k < objects.length; k++) {
+            	if (!utils.polygonOutsidePolygon(objects[k].getCorners('x', 'z'), objects[i].getCorners('x', 'z')) ||
+                utils.polygonPolygonIntersect(objects[k].getCorners('x', 'z'), objects[i].getCorners('x', 'z'))) {
+            		if (i == k) {
+
+            		} else {
+                		if (nonIntersectArr.includes(k)) {
+	            			nonIntersectArr = jQuery.grep(nonIntersectArr, function(value) {
+							  return value != k;
+							});
+	                	}
+                		if (nonIntersectArr.includes(i)) {
+	            			nonIntersectArr = jQuery.grep(nonIntersectArr, function(value) {
+							  return value != i;
+							});
+	            		}
+	            		if (!intersectArr.includes(k)) {
+	                		intersectArr.push(k);
+	                	}
+	            		if (!intersectArr.includes(i)) {
+	                		intersectArr.push(i);
+	                	}
+            		}
+                } else {
+                	if ((!intersectArr.includes(k)) && (!nonIntersectArr.includes(k))) {
+                		nonIntersectArr.push(k);
+                	}  
+                	if ((!intersectArr.includes(i)) && (!nonIntersectArr.includes(i))) {
+                		nonIntersectArr.push(i);
+                	}
+                }
+            }
+    
+        	console.log('array is: ', nonIntersectArr)
             if (!utils.polygonOutsidePolygon(corners, objects[i].getCorners('x', 'z')) ||
                 utils.polygonPolygonIntersect(corners, objects[i].getCorners('x', 'z'))) {
-                var intersectedObjHeight = objects[i].halfSize.y;
+            	console.log(corners, objects[i].getCorners('x', 'z'))
+            	countToTwo++;
+                var intersectedObjHeight = objects[i].halfSize.y;   
+                // almost works        	
+                // if (countToTwo < 2) objects[i].position.y = intersectedObjHeight;
             	this.position.y = thisObjHeight + intersectedObjHeight*2;
-            	triggerino = false
+            	triggerino = false;
                 // return false;
             }
             if (triggerino) {
             	this.position.y = thisObjHeight;
             }
+            if ((appearBool) && (countToTwo >= 2)) {            	
+            	$('.conf_wr__alert').addClass('alert');
+            	setTimeout(function() {
+            		$('.conf_wr__alert').removeClass('alert');
+            	}, 4000);
+            	var deleter = 1;
+            	return deleter;
+            }
+            if (countToTwo >= 2) {
+            	return false;
+            }
+	    setTimeout(function() {
+	    	$.each(nonIntersectArr, function (i, v) {
+	    		objects[v].position.y = objects[v].halfSize.y;
+	    	});
+	    }, 100);
+    	$('#floorplanner').attr('data-array', nonIntersectArr)
         }
     }
 
@@ -44737,7 +44809,11 @@ Item.prototype.placeInRoom = function() {
 };
 
 Item.prototype.initObject = function() {
-    this.placeInRoom();    
+    this.placeInRoom();
+    var ifDelete = this.placeInRoom();
+    if (ifDelete === 1) {
+    	this.remove();
+    }
     // select and stuff
     this.scene.needsUpdate = true;
 };

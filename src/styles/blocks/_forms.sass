@@ -204,7 +204,6 @@ label input, label textarea
 
 .label_text
 	position: absolute
-	z-index: 2
 
 	top: 50%
 	left: 29px
@@ -218,6 +217,8 @@ label input, label textarea
 
 	@media(max-width:767px)
 		left: 20px
+
+		z-index: 2
 
 .danger_text
 	position: absolute
@@ -237,14 +238,12 @@ label input, label textarea
 		bottom: -15px
 
 .input_decore_label.danger
-	.input_decore
-		&:focus
-			~ span 
-				color: $danger
-			~ .border
-				background: $danger
-			~ .danger_text
-				opacity: 1
+	.label_text
+		color: $danger
+	.border
+		background: $danger
+	.danger_text
+		opacity: 1
 
 
 // HaveQuastion
@@ -838,6 +837,8 @@ label input, label textarea
 		display: flex
 		justify-content: center
 		align-items: center
+
+		line-height: 60px
 		
 		&::after
 			content: ""
