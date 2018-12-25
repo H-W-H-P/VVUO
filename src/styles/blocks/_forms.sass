@@ -127,124 +127,6 @@
 
 
 
-// Form decore
-label input, label textarea
-	width: 100%
-	height: 100%
-
-.input_decore_label_catalog
-	height: 100%
-	display: block
-
-	.label_text
-		left: 79px
-
-		// z-index: 4
-
-		@media(max-width:767px)
-			display: none
-
-.border
-	position: absolute
-	z-index: 3
-
-	bottom: 0
-	left: 0
-
-	height: 2px
-	width: 100%
-
-	background: $main-blue
-
-	transform: scaleX(0)
-	transform-origin: 0 0
-	transition: all .15s ease
-	
-.input_decore_label
-	position: relative
-
-	cursor: pointer
-
-
-.input_decore
-	padding-left: 29px
-
-	position: relative
-	z-index: 2
-
-	@media(max-width:767px)
-		padding-left: 20px
-
-	&:focus,
-	&.hasCont
-		~ .label_text
-			transform: translateY(-40px) scale(.75)
-
-			@media(max-width:1439px)
-				transform: translateY(-35px) scale(.75)
-
-		~ .border
-			transform: scaleX(1)
-			
-.cooperating_form__area .input_decore
-	padding-top: 8px
-
-.input_decore_catalog
-	box-sizing: border-box
-	
-	padding-left: 79px
-
-	&:focus
-		~ .label_text
-			transform: translateY(-50%)
-			opacity: 0
-		~ .search_form__search_icon
-			&::before
-				opacity: .4
-
-.label_text
-	position: absolute
-	z-index: 2
-
-	top: 50%
-	left: 29px
-
-	width: 86%
-
-	transform: translateY(-50%)
-
-	transform-origin: 0 0
-	transition: all .2s ease
-
-	@media(max-width:767px)
-		left: 20px
-
-.danger_text
-	position: absolute
-
-	color: $danger
-
-	font-size: 11px
-
-	right: 0
-	bottom: -18px
-
-	opacity: 0
-
-	transition: all .2s ease
-
-	@media(max-width:1439px)
-		bottom: -15px
-
-.input_decore_label.danger
-	.input_decore
-		&:focus
-			~ span 
-				color: $danger
-			~ .border
-				background: $danger
-			~ .danger_text
-				opacity: 1
 
 
 // HaveQuastion
@@ -252,8 +134,11 @@ label input, label textarea
 	padding-top: 36px
 	padding-bottom: 178px
 
-	button
-		color: #fff
+	&__input_base
+		border: none
+
+		box-sizing: border-box
+
 
 	&__select_wrap
 		display: none
@@ -428,14 +313,12 @@ label input, label textarea
 		text-align: center
 		cursor: pointer
 
-		position: relative
-
-		display: flex
-
 		box-sizing: border-box
-
-
+		
+		position: relative
+		display: flex
 		justify-content: center
+		align-items: center
 
 		@media(max-width:1439px)
 			width: 30.333%
@@ -490,6 +373,125 @@ label input, label textarea
 		@media(max-width:1023px)
 			width: 100%
 
+// Form decore
+label input, label textarea
+	width: 100%
+	height: 100%
+
+.input_decore_label_catalog
+	height: 100%
+	display: block
+
+	.label_text
+		left: 79px
+
+		// z-index: 4
+
+		@media(max-width:767px)
+			display: none
+
+.border
+	position: absolute
+	z-index: 3
+
+	bottom: 0
+	left: 0
+
+	height: 2px
+	width: 100%
+
+	background: $main-blue
+
+	transform: scaleX(0)
+	transform-origin: 0 0
+	transition: all .15s ease
+	
+.input_decore_label
+	position: relative
+
+	cursor: pointer
+
+
+.input_decore
+	padding-left: 29px
+
+	position: relative
+	z-index: 0
+
+	@media(max-width:767px)
+		padding-left: 20px
+
+	&:focus,
+	&.hasCont
+		~ .label_text
+			transform: translateY(-40px) scale(.75)
+
+			@media(max-width:1439px)
+				transform: translateY(-35px) scale(.75)
+
+		~ .border
+			transform: scaleX(1)
+			
+.cooperating_form__area .input_decore
+	padding-top: 8px
+
+.input_decore_catalog
+	box-sizing: border-box
+	
+	padding-left: 79px
+
+	&:focus
+		~ .label_text
+			transform: translateY(-50%)
+			opacity: 0
+		~ .search_form__search_icon
+			&::before
+				opacity: .4
+
+.label_text
+	position: absolute
+	// z-index: 2
+	z-index: 1
+
+	top: 50%
+	left: 29px
+
+	width: 86%
+
+	transform: translateY(-50%)
+
+	transform-origin: 0 0
+	transition: all .2s ease
+
+	@media(max-width:767px)
+		left: 20px
+
+.danger_text
+	position: absolute
+
+	color: $danger
+
+	font-size: 11px
+
+	right: 0
+	bottom: -18px
+
+	opacity: 0
+
+	transition: all .2s ease
+
+	@media(max-width:1439px)
+		bottom: -15px
+
+.input_decore_label.danger
+	.input_decore
+		&:focus
+			~ span 
+				color: $danger
+			~ .border
+				background: $danger
+			~ .danger_text
+				opacity: 1
 
 
 .select__wr
@@ -700,6 +702,10 @@ label input, label textarea
 
 	.input_decore
 		padding-left: 19px
+
+		border: none
+
+		box-sizing: border-box
 
 		@media(max-width:1439px)
 			padding-left: 20px
