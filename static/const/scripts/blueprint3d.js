@@ -47906,7 +47906,7 @@ var ThreeEdge = function(scene, edge, controls) {
     updatePlanes();
     addToScene();
 
-    $('#constructor_2d').on('click', function(EO) {
+    $('#constructor_2d, .conf_wr__order_btn, .open_page_pdf').on('click', function(EO) {
     	$.each(planes, function (key, value) {
     		value.material.color.r = value.material.color.g = value.material.color.b = 0;
     	});
