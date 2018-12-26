@@ -20325,6 +20325,8 @@ THREE.Loader.prototype = {
 
 			var loader = THREE.Loader.Handlers.get( fullPath );
 
+			console.log(loader, fullPath)
+
 			if ( loader !== null ) {
 
 				texture = loader.load( fullPath );
@@ -44628,11 +44630,8 @@ FloorItem.prototype.isValidPosition = function(vec3, appearBool) {
                 	}
                 }
             }
-    
-        	console.log('array is: ', nonIntersectArr)
             if (!utils.polygonOutsidePolygon(corners, objects[i].getCorners('x', 'z')) ||
                 utils.polygonPolygonIntersect(corners, objects[i].getCorners('x', 'z'))) {
-            	console.log(corners, objects[i].getCorners('x', 'z'))
             	countToTwo++;
                 var intersectedObjHeight = objects[i].halfSize.y;   
                 // almost works        	
@@ -44655,12 +44654,13 @@ FloorItem.prototype.isValidPosition = function(vec3, appearBool) {
             if (countToTwo >= 2) {
             	return false;
             }
-	    setTimeout(function() {
-	    	$.each(nonIntersectArr, function (i, v) {
-	    		objects[v].position.y = objects[v].halfSize.y;
-	    	});
-	    }, 100);
-    	$('#floorplanner').attr('data-array', nonIntersectArr)
+	        // prod change
+		    setTimeout(function() {
+		    	$.each(nonIntersectArr, function (i, v) {
+		    		if (!objects[v].wallOffsetScalar) objects[v].position.y = objects[v].halfSize.y;	    		
+		    	});
+		    }, 50);
+	    	$('#floorplanner').attr('data-array', nonIntersectArr)
         }
     }
 
@@ -46217,6 +46217,8 @@ var Model = function(textureDir) {
       data.items
     );
 
+    console.log(data.items)
+
     scope.roomLoadedCallbacks.fire();
   }
 
@@ -46267,10 +46269,6 @@ var Model = function(textureDir) {
         y: item.scale_y,
         z: item.scale_z
       }
-
-      console.log(position)
-
-      
       scope.scene.addItem( 
         item.item_type, 
         item.model_url, 
@@ -46541,6 +46539,7 @@ var Scene = function(model, textureDir) {
   }
 
   this.addItem = function(itemType, fileName, metadata, name, position, rotation, scale, fixed) {
+  	// console.log(metadata, position)
     itemType = itemType || 1;
     // console.log(item)
     // console.log(position)

@@ -29,6 +29,11 @@ $(document).ready(function () {
     }
   })
 
+  $('.comp_title_2__btn3, .comp_title_2__btn4').click(function () {
+    $('html, body').animate({ scrollTop: $('.have_question').offset().top }, 1000)
+    return false
+  })
+
   $('.header__toggle').click(function () {
     $('.header').toggleClass('open')
     $(this).toggleClass('active')
