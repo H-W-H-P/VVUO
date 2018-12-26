@@ -44343,8 +44343,9 @@ var FloorplannerView = function(floorplan, viewmodel, canvas) {
 
 	let metterFinal = metrerFull.slice(0, pointBetween);
 	let cmFinal = metrerFull.slice(pointBetween + 1);
+	var answ = metterFinal +'cm' + cmFinal + 'cm'
 
-    return `${metterFinal}m${cmFinal}cm`;
+    return answ;
   }
 
   function drawEdgeLabel(edge) {
@@ -46267,6 +46268,9 @@ var Model = function(textureDir) {
         z: item.scale_z
       }
 
+      console.log(position)
+
+      
       scope.scene.addItem( 
         item.item_type, 
         item.model_url, 
@@ -46538,23 +46542,24 @@ var Scene = function(model, textureDir) {
 
   this.addItem = function(itemType, fileName, metadata, name, position, rotation, scale, fixed) {
     itemType = itemType || 1;
-    let _position = {x: 600, y: "42", z: 2}
-    console.log(_position)
+    // console.log(item)
+    // console.log(position)
+    // let _position = {x: 600, y: "42", z: 2}
+    // console.log(_position)
     var loaderCallback = function(geometry, materials) {
       var item = new item_types[itemType](
         model,
         metadata, geometry,
         new THREE.MeshFaceMaterial(materials),
-        _position, rotation, scale
+        position, rotation, scale
       );
       item.fixed = fixed || false;
       items.push(item);
       scope.add(item);
       item.initObject();
       scope.itemLoadedCallbacks.fire(item);
-      
-      item.name = `${name}`;
-      console.log(item)
+      // console.log(item)
+      item.name = name;
     }
     scope.itemLoadingCallbacks.fire();
 
@@ -48781,7 +48786,7 @@ var ThreeMain = function(model, element, canvasElement, opts) {
 
     $('.conf_wr__order_btn').on('click', getImg)
     $('.open_page_pdf').on('click', function() {
-    	setTimeout(() => {
+    	setTimeout(function() {
     		var imgData = renderer.domElement.toDataURL("image/png");
     	    $('.page_pdf__config_img').attr('src', imgData)
     	}, 100)
@@ -48911,7 +48916,8 @@ var ThreeMain = function(model, element, canvasElement, opts) {
     domElement.style.cursor = cursorStyle;
   };
   this.setCursorStyleUrl = function(cursorStyle) {
-  	domElement.style.cursor = `url(${cursorStyle}) 25 15, auto`;
+  	var nameP = 'url(' + cursorStyle + ') 25 25, auto'
+  	domElement.style.cursor = nameP;
   }
 
   this.updateWindowSize = function() {
