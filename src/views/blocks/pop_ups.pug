@@ -108,6 +108,69 @@
 			span.cross_two.cross_lane
 
 
+	.pop_up_equipment.pop_up__wr.pop_up__order
+
+		h6.pop_up__title.title Новый заказ
+
+		form(action="").pop_up__content
+			label(for="").pop_up__input.input_decore_label
+				input(type="text", placeholder="").input_decore.pop_up__input_padd
+				span.label_text.pop_up__label_text Ваше имя
+				span.border
+				span.danger_text Неверное имя
+			label(for="").pop_up__input.input_decore_label
+				input(type="email", placeholder="").input_decore.pop_up__input_padd
+				span.label_text.pop_up__label_text E-mail
+				span.border
+				span.danger_text E-mail
+			label(for="").pop_up__input.input_decore_label
+				input(type="tel", placeholder="").input_decore.pop_up__input_padd
+				span.label_text.pop_up__label_text Телефон
+				span.border
+				span.danger_text Неверный номер телефона
+
+			input(type="text").list_items.list_hide
+			input(type="text").list_name_proj.list_hide
+			input(type="text").list_name_img.list_hide
+
+			//- select#time(name="").pop_up__select.pop_up__input
+			//- 	option(value="default" disabled selected) Время для звонка
+			//- 	option(value="1") 12:00
+			//- 	option(value="1") 14:00
+			//- 	option(value="1") 16:00
+			.have_question__secect_style.select__wr.have_question__input.pop_up__equipment-select
+				ul.select
+					li
+						input(type="radio" name="aw").select__close#aw-close
+						span.select__label.select__label_placeholder Время для звонка
+					li.select__items
+						input(type="radio" name="aw").select__expand#aw-opener
+						label(for="aw-close").select__closeLabel
+						ul.select__options
+							li.select__option
+								input(type="radio" name="aw" value="8-12").select__input#sel7
+								label(for="sel7").select__label утро 8:00 - 12:00
+							li.select__option
+								input(type="radio" name="aw" value="12-15").select__input#sel8
+								label(for="sel8").select__label день 12:00 - 15:00
+							li.select__option
+								input(type="radio" name="aw" value="16-20").select__input#sel9
+								label(for="sel9").select__label вечер 16:00 - 20:00
+						label(for="aw-opener").select__expandLabel
+			label(for="").pop_up__input.pop_up__txt_area.input_decore_label
+				textarea(placeholder="").pop_up__input_padd.input_decore
+				span.label_text.pop_up__label_text Ваш комментарий
+				span.border
+				span.danger_text Ваш комментарий
+			button.pop_up__content_btn.btn_w_arr.pop_up__btn.btn_send_constructor Отправить заявку
+				.hover_bl
+			p.pop_up__text Консультация бесплатно
+
+		a(href="").pop_up__toggle.cross
+			span.cross_one.cross_lane
+			span.cross_two.cross_lane
+
+
 	.pop_up__wr.pop_up__browser
 		h6.pop_up__title.title.pop_up__browser_title Ограниченный функционал
 		p.pop_up__browser_text Полная версия сайта доступна при использовании следующих версий браузеров
