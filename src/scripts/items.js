@@ -165,7 +165,7 @@ $(document).ready(function () {
         </div>
         <p class='config__name'>Стол для учителя</p>
         <p class='config__desc'>100х36 см</p>
-        <p class='config__price'>${valueItem['size']} ₽</p>
+        <p class='config__price' data-price="${valueItem['size']}">${valueItem['size']} ₽</p>
         </a>`
       $(pushHear).append(htmlItem)
       numItem++
@@ -452,8 +452,9 @@ $(document).ready(function () {
   function createContentItem (prop) {
     let itemImg = $(prop).find('.items_pop_up__img_items').clone()
     let itemPrice = $(prop).find('.config__price').html()
+    let itemPrice2 = $(prop).find('.config__price').attr('data-price')
     $('.items_pop_up__wrap_img').html(itemImg)
-    $('.items_pop_up__price').html(itemPrice)
+    $('.items_pop_up__price').html(itemPrice).attr('data-price', itemPrice2)
   }
 
   function addLinkJs (prop) {
@@ -528,8 +529,12 @@ $(document).ready(function () {
     $('.pop_up__toggle').on('click', function () {
       closePopUp()
     })
-    $('.my_add_item').on('click', function (EO) {
+    $('.my_add_item').one('click', function (EO) {
       EO.preventDefault()
+      var dataPrice = $(this).closest('.items_pop_up').find('.items_pop_up__price').attr('data-price')
+      var curPrice = $('.confPrice').html()
+      curPrice = Number(curPrice) + Number(dataPrice)
+      $('.confPrice').html(curPrice)
       closePopUp()
     })
   }
