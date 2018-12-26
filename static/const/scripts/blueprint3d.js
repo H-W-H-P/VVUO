@@ -47027,7 +47027,6 @@ var ThreeController = function(three, model, camera, element, controls, hud) {
         } else {
           // three.setCursorStyle("auto");
           three.setCursorStyle("url(../../static/img/icons/cursor.svg) 20 0, auto");
-          console.log('this too')
           // domElement.style.cursor = 'url(../../static/img/icons/cursor.svg) 25 25, auto';
         }
         break;
@@ -47202,7 +47201,6 @@ var ThreeController = function(three, model, camera, element, controls, hud) {
       // three.setCursorStyle("auto");
       three.setCursorStyle("url(../../static/img/icons/cursor.svg) 20 0, auto");
       if ($('#constructor_2d').hasClass('activeState')) three.setCursorStyle('auto')
-      console.log('this')
       mouseoverObject = null;
       scope.needsUpdate = true;
     }
