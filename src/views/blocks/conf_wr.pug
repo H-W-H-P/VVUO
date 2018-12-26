@@ -2,7 +2,10 @@
 	section.conf_wr__top.max_width
 		p.conf_wr__quart.conf_wr__top-left
 			span.conf_wr__18 Итоговая цена
-			b.conf_wr__bold 320 000 ₽
+			//- b.conf_wr__bold 320 000 ₽
+			b.conf_wr__bold
+				span.confPrice 0 
+				| ₽
 		form(action="#").conf_wr__quart.conf_wr__order
 			button.conf_wr__quart.btn_w_arr.conf_wr__order.conf_wr__order_btn Заказать
 				.hover_bl
