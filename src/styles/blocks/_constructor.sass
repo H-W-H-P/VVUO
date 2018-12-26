@@ -1,5 +1,10 @@
 body 
 	//cursor: url(../../static/img/icons/hand-arrows-coursor-2.svg), auto
+#viewer
+	overflow: hidden
+	.conf_wr__preloader_wrap 
+		padding-right: 0
+
 
 .constructor
 
@@ -51,6 +56,8 @@ body
 	&__controlViwe_blue
 		background-color: #fff
 
+		position: relative
+
 		&:before
 			content: ''
 
@@ -63,11 +70,17 @@ body
 			height: 20px
 			width: 20px
 
+			top: 50%
+			left: 50%
+			bottom: 0
+			right: 0
+
 			display: block
 
 			border: 2px solid #000
 
 			transition: border-color .3s ease
+			transform: translate(-50%, -50%)
 
 		&:hover
 			&:before

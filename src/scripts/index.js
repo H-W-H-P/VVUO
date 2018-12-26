@@ -13,8 +13,16 @@ const YTPlayer = require('yt-player')
 // const canvasFit = require('canvas-fit')
 
 $(document).ready(function () {
-  // click handlers
+  // loader
+  setTimeout(function () {
+    $('.loaderArea').addClass('loaderArea__close')
+    $('body').removeClass('loader')
+    setTimeout(function () {
+      $('.loaderArea').addClass('loaderArea__closed')
+    }, 1000)
+  }, 3000)
 
+  // click handlers
   $('.input_decore').focusout(function () {
     $(this).removeClass('hasCont')
     if ($(this).val()) {
@@ -686,19 +694,18 @@ $(document).ready(function () {
     })
   }
 
-  function bwer () {
-    let ua = navigator.userAgent
-    console.log(ua.search(/Chrome/))
-
-    if (ua.search(/Firefox/) > 0) return 'Firefox'
-    if (ua.search(/Opera/) > 0) return 'Opera'
-    if (ua.search(/Chrome/) > 0) return 'Google Chrome'
-    if (ua.search(/Safari/) > 0) return 'Safari'
-    if (ua.search(/Konqueror/) > 0) return 'Konqueror'
-    if (ua.search(/Iceweasel/) > 0) return 'Debian Iceweasel'
-    if (ua.search(/SeaMonkey/) > 0) return 'SeaMonkey'
-  }
-  console.log(bwer())
+  // function bwer () {
+  //   let ua = navigator.userAgent
+  //   if (ua.search(/Firefox/) > 0) return ua.search(/Firefox/)
+  //   if (ua.search(/Opera/) > 0) return ua.search(/Opera/)
+  //   if (ua.search(/Chrome/) > 0) return ua.search(/Chrome/)
+  //   if (ua.search(/Safari/) > 0) return ua.search(/Safari/)
+  //   if (ua.search(/Konqueror/) > 0) return 'Konqueror'
+  //   if (ua.search(/Iceweasel/) > 0) return 'Debian Iceweasel'
+  //   if (ua.search(/SeaMonkey/) > 0) return 'SeaMonkey'
+  //   return ua.search(/other/)
+  // }
+  // console.log(bwer())
   // map
   if ($('.contacts_page__map').length) {
     ymaps.load().then(maps => {
@@ -772,6 +779,7 @@ $(document).ready(function () {
   $('.open_page_pdf').on('click', function (EO) {
     EO.preventDefault()
     $('.page_pdf').addClass('page_pdf--active')
+    $('.page_pdf__line').addClass('page_pdf__line_hide')
     // $('.have_question, .footer').addClass('pdf_control')
     getListPdf.getListItem()
     getListPdf.createRowTable()
@@ -849,7 +857,6 @@ $(document).ready(function () {
             let priceFull = v['size'] * selectetItem[i]
             $(rowClone).find('.page_pdf__table_item_price_full').html(priceFull)
             $('.page_pdf__table_body')[0].appendChild($(rowClone)[0])
-            console.log('++')
             return v
           }
         })

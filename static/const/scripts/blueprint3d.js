@@ -48840,20 +48840,20 @@ var ThreeMain = function(model, element, canvasElement, opts) {
     var imgData = renderer.domElement.toDataURL("image/png");
     $('.list_name_img').val(imgData)
 
-    var saveFile = function (strData, filename) {
-        var link = document.createElement('a');
-        // $('body')[0].appendChild(link)
-        if (typeof link.download === 'string') {
-            link.download = filename;
-            link.href = strData;
-            link.click();
-        } else {
-            location.replace(uri);
-        }
-    }
+    // var saveFile = function (strData, filename) {
+    //     var link = document.createElement('a');
+    //     // $('body')[0].appendChild(link)
+    //     if (typeof link.download === 'string') {
+    //         link.download = filename;
+    //         link.href = strData;
+    //         // link.click();
+    //     } else {
+    //         location.replace(uri);
+    //     }
+    // }
 
-    saveFile(imgData.replace(strMime, strDownloadMime), "test.jpg");
-    $('body').append(imgData.replace(strMime, strDownloadMime))
+    // saveFile(imgData.replace(strMime, strDownloadMime), "test.jpg");
+    // $('body').append(imgData.replace(strMime, strDownloadMime))
     // return dataUrl;
     // console.log(imgData)
   }
