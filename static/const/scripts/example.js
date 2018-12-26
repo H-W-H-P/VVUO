@@ -461,11 +461,11 @@ var SideMenu = function(blueprint3d, floorplanControls, modalEffects) {
     let htmlJsn = $('.constructor').attr('data-json');
     items = JSON.parse(htmlJsn);
     for (var i = 0; i < items.length; i++) {
-      listItem[i['name']] = 0;
+      // listItem[i['name']] = 0;
     }
-    // items.forEach((v, k) => {
-    //   listItem[v['name']] = 0;
-    // });
+    items.forEach((v, k) => {
+      listItem[v['name']] = 0;
+    });
   }
   getListSelectedItem()
 

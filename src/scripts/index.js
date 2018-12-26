@@ -847,7 +847,6 @@ $(document).ready(function () {
             let priceFull = v['size'] * selectetItem[i]
             $(rowClone).find('.page_pdf__table_item_price_full').html(priceFull)
             $('.page_pdf__table_body')[0].appendChild($(rowClone)[0])
-            console.log('++')
             return v
           }
         })
