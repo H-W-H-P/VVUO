@@ -3,6 +3,7 @@
  * Camera Buttons
  */
 let listItem = {};
+let listItem2 = {};
 var CameraButtons = function(blueprint3d) {
 
   var orbitControls = blueprint3d.three.controls;
@@ -124,10 +125,22 @@ var CameraButtons = function(blueprint3d) {
  */ 
 
 var ContextMenu = function(blueprint3d) {
+  var curPrice;
+  var allPrice = 0;
   function removeItemFromList(props) {
     let nameGoods = props.name;
     listItem[nameGoods]--;
     console.log(listItem)
+    var counter = 0;
+    $.each(listItem, function (index, value) {
+      counter++;
+      if (value) {
+        curPrice = (Number(listItem2[index]) * Number(value));
+        allPrice = allPrice + curPrice;
+      } 
+    });
+    $('.confPrice').html(allPrice);
+    allPrice = 0;
     $('.list_items').val(JSON.stringify(listItem))
   }
 
@@ -428,31 +441,8 @@ var SideMenu = function(blueprint3d, floorplanControls, modalEffects) {
   });
 
   // blueprint3d.model.scene.addItem(1, 'static/const/models/model1/model.js', {resizable: true});
-  // blueprint3d.model.scene.addItem(1, 'static/const/models/model3/model.js', {resizable: true});
-  // blueprint3d.model.scene.addItem(1, 'static/const/models/newObj/o1/model.js', {resizable: true});
-  // blueprint3d.model.scene.addItem(1, 'static/const/models/newObj/o2/model.js', {resizable: true});
-  // blueprint3d.model.scene.addItem(1, 'static/const/models/newObj/o3/model.js', {resizable: true});
-  // blueprint3d.model.scene.addItem(1, 'static/const/models/newObj/o4/model.js', {resizable: true});
-  // blueprint3d.model.scene.addItem(1, 'static/const/models/newObj/o5/model.js', {resizable: true});
-  // blueprint3d.model.scene.addItem(1, 'static/const/models/newObj/o6/model.js', {resizable: true});
-  // blueprint3d.model.scene.addItem(1, 'static/const/models/newObj/o7/model.js', {resizable: true});
-  // blueprint3d.model.scene.addItem(1, 'static/const/models/newObj/o8/model.js', {resizable: true});
-  // blueprint3d.model.scene.addItem(1, 'static/const/models/newObj/o9/model.js', {resizable: true});
-  // blueprint3d.model.scene.addItem(1, 'static/const/models/newObj/o10/model.js', {resizable: true});
-  // blueprint3d.model.scene.addItem(1, 'static/const/models/newObj/o11/model.js', {resizable: true});
-  // blueprint3d.model.scene.addItem(1, 'static/const/models/newObj/o12/model.js', {resizable: true});
-  // blueprint3d.model.scene.addItem(1, 'static/const/models/newObj/o13/model.js', {resizable: true});
-  // blueprint3d.model.scene.addItem(1, 'static/const/models/newObj/o14/model.js', {resizable: true});
-  // blueprint3d.model.scene.addItem(1, 'static/const/models/newObj/o15/model.js', {resizable: true});
-  // blueprint3d.model.scene.addItem(1, 'static/const/models/newObj/o16/model.js', {resizable: true});
-  // blueprint3d.model.scene.addItem(1, 'static/const/models/newObj/o17/model.js', {resizable: true});
-  // blueprint3d.model.scene.addItem(1, 'static/const/models/newObj/o18/model.js', {resizable: true});
-  // blueprint3d.model.scene.addItem(1, 'static/const/models/newObj/o19/model.js', {resizable: true});
-
 
   init();
-
-  
 
   $('.my_add_item').on('click', function() {
     $('body, html').removeClass('pop_up_cond');
@@ -473,6 +463,10 @@ var SideMenu = function(blueprint3d, floorplanControls, modalEffects) {
     items.forEach((v, k) => {
       listItem[v['name']] = 0;
     });
+    items.forEach((v, k) => {
+      listItem2[v['name']] = v.size;
+    });
+    console.log(listItem2)
   }
   getListSelectedItem()
 
