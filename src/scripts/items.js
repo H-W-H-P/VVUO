@@ -7,61 +7,60 @@ $(document).ready(function () {
   let htmlJsn = $('.constructor').attr('data-json')
   items = JSON.parse(htmlJsn)
 
-  let nameCategory = {}
-  // Узнаем Категории
-  function searchTypesAndCategory (propItems, propsCategory) {
-    propItems.forEach((value) => {
-      nameCategory[value['category']] = 1
-    })
-    createCotegory(propsCategory)
-  }
-
-  searchTypesAndCategory(items, nameCategory)
-
-  // Создаем Категории
-  function createCotegory (prop) {
-    let nameCategoryNew = Object.getOwnPropertyNames(prop)
-    let tamplateCatrgory
-    $('.wrap_filter').empty()
-    nameCategoryNew.forEach((value, key) => {
-      tamplateCatrgory = `<div class='shop_filters__block conf_wr__block shop_filters__block_wrap' data-wrapOwl="${key}">
-        <a href='#' class='shop_filters__cat bold css_arr closed conf_wr__cat item_category'>${value}</a>
-        <div class="conf_wr_filters__cat_wr shop_filters__cat_wr closed"></div>
-        </div>`
-      $('.wrap_filter').append(tamplateCatrgory)
-    })
-    createTypes(items, nameCategoryNew)
-  }
-
-  // Создаем ПодКатегорий
-  function createTypes (propItems, propsCategory) {
-    let nameTypes
-    let counter = 0
-    propsCategory.forEach((value, key) => {
-      nameTypes = {}
-      propItems.forEach((v, k) => {
-        if (value === v['category']) {
-          nameTypes[v['types']] = 1
-        }
+  function modulCreateFilter () {
+    let nameCategory = {}
+    let nameCategoryArr = []
+    // Узнаем Категории
+    function searchCategory (propItems) {
+      propItems.forEach((value) => {
+        nameCategory[value['category']] = 1
       })
-      createTypesLabel(nameTypes)
-    })
-
-    // Создаем ПодКатегорий добавление в html
-    function createTypesLabel (props) {
-      let nameTypesNew = Object.getOwnPropertyNames(props)
-      let tamplateTypesLabel
-      nameTypesNew.forEach((v, k) => {
-        tamplateTypesLabel = `<div class='shop_filters__input_wr conf_wr_filters__input_wr'>
-          <input type='checkbox' class="checkbox" id='${k}'>
-          <label for='input${k}' class="conf_wr_filters-side__chbx label_checkbox" data-type="${v}">${v}</label>
+      nameCategoryArr = Object.getOwnPropertyNames(nameCategory)
+      createCotegory()
+    }
+    searchCategory(items)
+    // Создаем Категории
+    function createCotegory () {
+      let tamplateCatrgory
+      $('.wrap_filter').empty()
+      nameCategoryArr.forEach((value, key) => {
+        tamplateCatrgory = `<div class='shop_filters__block conf_wr__block shop_filters__block_wrap' data-wrapOwl="${key}">
+          <a href='#' class='shop_filters__cat bold css_arr closed conf_wr__cat item_category'>${value}</a>
+          <div class="conf_wr_filters__cat_wr shop_filters__cat_wr closed"></div>
           </div>`
-        $('.wrap_filter .shop_filters__block_wrap').eq(counter).find('.conf_wr_filters__cat_wr.shop_filters__cat_wr.closed').append(tamplateTypesLabel)
+        $('.wrap_filter').append(tamplateCatrgory)
       })
-      counter++
+      createTypes(items)
+    }
+    // Создаем ПодКатегорий
+    function createTypes () {
+      let nameTypes
+      let counter = 0
+      nameCategoryArr.forEach((value, key) => {
+        nameTypes = {}
+        items.forEach((v, k) => {
+          if (value === v['category']) {
+            nameTypes[v['types']] = 1
+          }
+        })
+        createTypesLabel(nameTypes, value)
+      })
+      // Создаем ПодКатегорий добавление в html
+      function createTypesLabel (props, nameCategory) {
+        let nameTypesNew = Object.getOwnPropertyNames(props)
+        let tamplateTypesLabel
+        nameTypesNew.forEach((v, k) => {
+          tamplateTypesLabel = `<div class='shop_filters__input_wr conf_wr_filters__input_wr'>
+            <input type='checkbox' class="checkbox" id='${k}'>
+            <label for='input${k}' class="conf_wr_filters-side__chbx label_checkbox" data-type="${v}">${v}</label>
+            </div>`
+          $('.wrap_filter .shop_filters__block_wrap').eq(counter).find('.conf_wr_filters__cat_wr.shop_filters__cat_wr.closed').append(tamplateTypesLabel)
+        })
+        counter++
+      }
     }
   }
-
+  modulCreateFilter()
   // CONTROLS STATE CATALOG
   let stateCatalog = {
     open: false,
@@ -144,6 +143,8 @@ $(document).ready(function () {
     let htmlItem
     let pushHear
     let nameFilter = stateCatalog['label']
+    let nameCatalog = $(`[data-wrapowl=${stateCatalog['catalog']}]`).find('.item_category').html()
+    console.log(nameCatalog)
 
     if (!nameOwl) {
       pushHear = '.config__owl'
@@ -155,6 +156,9 @@ $(document).ready(function () {
       if (valueItem['types'] !== nameFilter) {
         return
       }
+      if (valueItem['category'] !== nameCatalog) {
+        return
+      }
       htmlItem = `<a href='#' class='config__item popUpCall' id="items-wrapper add-items" data-item="${numItem}" data-pop_up=".pop_up__items" data-goods="${valueItem['name']}" data-js="${valueItem['model']}">
         <div class='config__img_wr add-item'   >
         <img src='${valueItem['image']}' class='items_pop_up__img_items'>
@@ -163,7 +167,7 @@ $(document).ready(function () {
         <img src='static/img/icons/white-arr.svg' class='config__icon config__icon-hov'>
         </div>
         </div>
-        <p class='config__name'>Стол для учителя</p>
+        <p class='config__name'>${valueItem['name']}</p>
         <p class='config__desc'>100х36 см</p>
         <p class='config__price' data-price="${valueItem['size']}">${valueItem['size']} ₽</p>
         </a>`
@@ -465,6 +469,7 @@ $(document).ready(function () {
   function addNameGoods (prop) {
     let nameGoods = $(prop).attr('data-goods')
     $('.my_add_item').attr('data-goodsGoods', nameGoods)
+    $('.items_pop_up').find('h6').html(nameGoods)
   }
 
   // - попап next - prev
@@ -509,6 +514,7 @@ $(document).ready(function () {
       // -
       // l // - заполнение попапа (img ptice)
       createContentItem(itemNext)
+      addNameGoods(itemNext)
     }
     // -
     // - вешаем обраюотчики на кнопки

@@ -14,13 +14,11 @@ const YTPlayer = require('yt-player')
 
 $(document).ready(function () {
   // loader
+  $('.loaderArea').addClass('loaderArea__close')
   setTimeout(function () {
-    $('.loaderArea').addClass('loaderArea__close')
     $('body').removeClass('loader')
-    setTimeout(function () {
-      $('.loaderArea').addClass('loaderArea__closed')
-    }, 1000)
-  }, 3000)
+    $('.loaderArea').addClass('loaderArea__closed')
+  }, 2000)
 
   // click handlers
   $('.input_decore').focusout(function () {
