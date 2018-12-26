@@ -111,6 +111,9 @@
 		display: none
 
 	&--active
+		position: relative
+		z-index: 150
+
 		.page_pdf__header
 			padding-top: 0
 
@@ -119,6 +122,10 @@
 
 		margin-left: 120px
 		padding: 0
+
+	&__line
+		&_hide
+			display: none
 
 
 		@media(max-width:1439px)
