@@ -22,6 +22,16 @@ $(document).ready(function () {
     }
   })
 
+  $('.instruction__link').on('click', function (EO) {
+    EO.preventDefault()
+    var domElement = document.getElementById('viewer')
+    domElement.style.cursor = 'url(../../static/img/icons/cursor.svg) 20 0, auto'
+    $('.instruction').addClass('instruction--animationClose')
+    setTimeout(() => {
+      $('.instruction').addClass('instruction--closed')
+    }, 1000)
+  })
+
   $('.input_decore').each(function () {
     $(this).removeClass('hasCont')
     if ($(this).val()) {
@@ -856,12 +866,4 @@ $(document).ready(function () {
       createRowTable: createRowTable
     }
   })()
-
-  $('.instruction__link').on('click', function (EO) {
-    EO.preventDefault()
-    $('.instruction').addClass('instruction--animationClose')
-    setTimeout(() => {
-      $('.instruction').addClass('instruction--closed')
-    }, 1000)
-  })
 })

@@ -303,6 +303,9 @@ var SideMenu = function(blueprint3d, floorplanControls, modalEffects) {
       $('.confWallB-desk').val(wallB);
       $('#confWallB').val(wallB);
 
+      $('.config__top_line .config__number').text(wallA);
+      $('.config__left_line .config__number').text(wallB);
+
       setTimeout(function() {
         setCurrentState(scope.states.FLOORPLAN);
         floorplanUpdate();
@@ -420,7 +423,7 @@ var SideMenu = function(blueprint3d, floorplanControls, modalEffects) {
     blueprint3d.model.scene.addItem(7, 'static/const/models/newObj/door/door.js', {resizable: true});
   });
 
-  // blueprint3d.model.scene.addItem(1, 'static/const/models/model1/model.js', {resizable: true});
+  blueprint3d.model.scene.addItem(1, 'static/const/models/model1/model.js', {resizable: true});
   // blueprint3d.model.scene.addItem(1, 'static/const/models/model3/model.js', {resizable: true});
   // blueprint3d.model.scene.addItem(1, 'static/const/models/newObj/o1/model.js', {resizable: true});
   // blueprint3d.model.scene.addItem(1, 'static/const/models/newObj/o2/model.js', {resizable: true});
