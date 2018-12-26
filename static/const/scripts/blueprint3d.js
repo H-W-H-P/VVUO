@@ -47025,7 +47025,9 @@ var ThreeController = function(three, model, camera, element, controls, hud) {
         if (mouseoverObject) {
           // three.setCursorStyle("pointer");
         } else {
-          three.setCursorStyle("auto");
+          // three.setCursorStyle("auto");
+          three.setCursorStyle("url(../../static/img/icons/cursor.svg) 20 0, auto");
+          // domElement.style.cursor = 'url(../../static/img/icons/cursor.svg) 25 25, auto';
         }
         break;
       case states.ROTATING:
@@ -47196,7 +47198,9 @@ var ThreeController = function(three, model, camera, element, controls, hud) {
       }
     } else if (mouseoverObject != null) {
       mouseoverObject.mouseOff();
-      three.setCursorStyle("auto");
+      // three.setCursorStyle("auto");
+      three.setCursorStyle("url(../../static/img/icons/cursor.svg) 20 0, auto");
+      if ($('#constructor_2d').hasClass('activeState')) three.setCursorStyle('auto')
       mouseoverObject = null;
       scope.needsUpdate = true;
     }
@@ -47840,10 +47844,13 @@ var ThreeControls = function (object, domElement) {
 
 	this.stateZoom2d =  function() {
 		scope.maxDistance = 5500;
+		// prod change
+		scope.domElement.style.cursor = "auto";
 	}
 
 	this.stateZoom3d = function() {
 		scope.maxDistance = 1500;
+		scope.domElement.style.cursor = "url(../../static/img/icons/cursor.svg) 20 0, auto";
 	}
 
 	
@@ -48442,11 +48449,14 @@ var ThreeHUD = function(three) {
 
   this.setMouseover = function(isMousedOver) {
     mouseover = isMousedOver;
-    setColor();
+    setColor();    
+    // prod change
   }
 
   function setColor() {
     if (activeObject) {
+		// three.setCursorStyleUrl("../../static/img/icons/hand-arrows-coursor-2.svg");
+		// console.log('heh')
       utils.forEach(activeObject.children, function(obj) {
         obj.material.color.set(getColor());
       });      
@@ -48455,6 +48465,8 @@ var ThreeHUD = function(three) {
   }
 
   function getColor() {
+  	// if (mouseover) three.setCursorStyleUrl("../../static/img/icons/hand-arrows-coursor-2.svg");
+  	// else three.setCursorStyle("url(../../static/img/icons/cursor.svg) 20 0, auto");
     return (mouseover || rotating) ? hoverColor : color;
   }
 
@@ -48716,13 +48728,16 @@ var ThreeMain = function(model, element, canvasElement, opts) {
   	camera.fov = 10;
   	scope.controls.update();
   	camera.updateProjectionMatrix();
-
+  	$('.constructor__controlViwe').removeClass('activeState');
+  	$(this).addClass('activeState');
   }
 
   function cameraState_3d() {
   	camera.fov = 50;
   	scope.controls.update();
   	camera.updateProjectionMatrix();
+  	$('.constructor__controlViwe').removeClass('activeState');
+  	$(this).addClass('activeState');
   }
   
   function init() {

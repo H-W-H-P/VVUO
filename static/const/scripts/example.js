@@ -303,6 +303,9 @@ var SideMenu = function(blueprint3d, floorplanControls, modalEffects) {
       $('.confWallB-desk').val(wallB);
       $('#confWallB').val(wallB);
 
+      $('.config__top_line .config__number').text(wallA);
+      $('.config__left_line .config__number').text(wallB);
+
       setTimeout(function() {
         setCurrentState(scope.states.FLOORPLAN);
         floorplanUpdate();
