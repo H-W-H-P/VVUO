@@ -765,15 +765,24 @@ $(document).ready(function () {
   })
 
   $('.conf_wr__order_btn').on('click', function (EO) {
-    console.log($('.list_items').val())
+    EO.preventDefault()
     if (!$('.list_name_proj').val()) {
-      EO.preventDefault()
+      $('html, body').animate({ scrollTop: $('.header').offset().top }, 1500)
       $('.simple_title_wr_5__inp_wr').addClass('invalid')
       setTimeout(() => {
         $('.simple_title_wr_5__inp_wr').removeClass('invalid')
-      }, 1000)
+      }, 2000)
       return false
     }
+    var popUpName = $(this).data('pop_up')
+    popUping(popUpName)
+  })
+
+  $('.btn_send_constructor').on('click', function (EO) {
+    EO.preventDefault()
+    $('.list_hide').each((v, y) => {
+      console.log($(y).val())
+    })
   })
   // PDF PAGE
   $('.open_page_pdf').on('click', function (EO) {
