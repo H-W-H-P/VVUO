@@ -20325,7 +20325,8 @@ THREE.Loader.prototype = {
 
 			var loader = THREE.Loader.Handlers.get( fullPath );
 
-			console.log(loader, fullPath)
+			// console.log(loader, fullPath)
+			// prod change
 
 			if ( loader !== null ) {
 
@@ -22207,7 +22208,7 @@ THREE.Material.prototype = {
 
 				// newValue = 14540253;
 
-				console.warn( "THREE.Material: '" + key + "' parameter is undefined." );
+				// console.warn( "THREE.Material: '" + key + "' parameter is undefined." );
 				continue;
 
 			}
@@ -44654,7 +44655,6 @@ FloorItem.prototype.isValidPosition = function(vec3, appearBool) {
             if (countToTwo >= 2) {
             	return false;
             }
-	        // prod change
 		    setTimeout(function() {
 		    	$.each(nonIntersectArr, function (i, v) {
 		    		if (!objects[v].wallOffsetScalar) objects[v].position.y = objects[v].halfSize.y;	    		
@@ -48450,8 +48450,7 @@ var ThreeHUD = function(three) {
 
   this.setMouseover = function(isMousedOver) {
     mouseover = isMousedOver;
-    setColor();    
-    // prod change
+    setColor();
   }
 
   function setColor() {

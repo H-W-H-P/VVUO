@@ -466,7 +466,7 @@ var SideMenu = function(blueprint3d, floorplanControls, modalEffects) {
     items.forEach((v, k) => {
       listItem2[v['name']] = v.size;
     });
-    console.log(listItem2)
+    // console.log(listItem2)
   }
   getListSelectedItem()
 

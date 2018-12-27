@@ -2349,7 +2349,7 @@
 
 		align-items: center
 
-		width: 25%
+		width: 33.333%
 		height: 60px
 		margin: 0
 
@@ -2367,6 +2367,29 @@
 			width: 50%
 
 			border-top: 1px solid  $gray2
+
+		&.open_page_pdf
+			justify-content: flex-end
+
+			border-right: none
+
+			&::before
+				content: ''
+				position: absolute
+
+				right: -120px
+				left: 100%
+				top: -1px
+				bottom: -1px
+
+				background-color: #f4f6f6
+
+				border-top: 1px solid #dcdfe2
+				border-bottom: 1px solid #dcdfe2
+				border-right: 1px solid #dcdfe2
+
+			.hover_bl
+				right: -120px
 
 
 
@@ -2556,6 +2579,9 @@
 
 		.ui-widget.ui-widget-content 
 			background-color: rgba(40,40,43,.3)
+
+		.shop_filters__top
+			padding-top: 15px
 
 		&-side
 			padding-top: 40px
@@ -3254,3 +3280,10 @@
     transform: translate(0)
   100%
     transform: translate(0)
+
+.bigCatLabel,
+.shop_filters__btn
+	cursor: pointer
+
+.conf_wr_filters .shop_filters__caps.colored
+	color: #5b8ec8
