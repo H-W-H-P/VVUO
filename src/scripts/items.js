@@ -143,7 +143,7 @@ $(document).ready(function () {
       htmlItem = `<a href='#' class='config__item popUpCall' id="items-wrapper add-items" data-item="${numItem}" data-pop_up=".pop_up__items" data-goods="${valueItem['name']}" data-js="${valueItem['model']}" data-description="${valueItem['description']}">
         <div class='config__img_wr add-item'   >
         <img src='${valueItem['image']}' class='items_pop_up__img_items'>
-        <div class='config__arrow'>
+        <div class='config__arrow my_add_item_one'>
         <img src='static/img/icons/gray-arr.svg' class='config__icon'>
         <img src='static/img/icons/white-arr.svg' class='config__icon config__icon-hov'>
         </div>
@@ -399,8 +399,19 @@ $(document).ready(function () {
   $('.conf_wr__over, .shop_filters__block').on('click', function (EO) {
     let _this = this
     EO.preventDefault()
+    if (EO.target.tagName === 'IMG') {
+      if ($(EO.target).parent().hasClass('my_add_item_one')) {
+        return
+      }
+    }
+    if ($(EO.target).hasClass('my_add_item_one')) {
+      return
+    }
     let item = $(EO.target).closest('.config__item')
     if (!$(item).hasClass('config__item')) {
+      return
+    }
+    if ($(EO.target).hasClass('my_add_item_one')) {
       return
     }
     createContentItem(item)
