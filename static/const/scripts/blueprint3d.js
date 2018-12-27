@@ -44521,7 +44521,7 @@ var utils = require('../utils/utils')
 
 var FloorItem = function(three, metadata, geometry, material, position, rotation, scale) {
     Item.call(this, three, metadata, geometry, material, position, rotation, scale);
-    console.log(three)
+    // console.log(three)
 };
 
 FloorItem.prototype = Object.create(Item.prototype);
@@ -46256,6 +46256,8 @@ var Model = function(textureDir) {
     this.scene.clearItems();
     this.floorplan.loadFloorplan(floorplan);
     utils.forEach(items, function(item) {
+
+    	console.log(item)
     	
       position = new THREE.Vector3( item.xpos, item.ypos, item.zpos)    
 
