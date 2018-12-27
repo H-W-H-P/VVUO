@@ -7,12 +7,24 @@ section.page_pdf
 			.lanes__vert.vert_lane
 			.lanes__vert.vert_lane
 		.page_pdf__header_top
-			.page_pdf__back_w
-				a(href="#").page_pdf__back Назад
 			.page_pdf__top
-				.simple_title_wr_5__inp_wr.page_pdf__new_project
-					form(action="#")
-						input(type="text", placeholder="Ваш новый проект").simple_title_wr_5__inp.bold.page_pdf__title_form
+				h1.title.page_pdf__name_order.page_pdf__title Конфигурация к заказу №2345
+		.page_pdf__header_middle
+			.info_client
+				.info_client__left_bar.info_client__side
+					p.info_client__text ФИО
+					p.info_client__text Телефон
+					p.info_client__text E-mail
+				.info_client__right_bar.info_client__side
+					p.info_client__text.info_client__text--bold Иванов Иван Иванович
+					p.info_client__text.info_client__text--bold +7 (926)123-34-55
+					p.info_client__text.info_client__text--bold III@mail.ru
+		.page_pdf__header_bottom
+			.info_client
+				.info_client__left_bar.info_client__side
+					p.info_client__text.page_pdf__header_bottom_text Комментарий
+				.info_client__right_bar.info_client__side
+					p.info_client__text.info_client__text--bold Комментарий Комментарий 
 	.page_pdf__body.max_width
 		.config__body.page_pdf__config_wrap
 			img(src="", alt="img").page_pdf__config_img

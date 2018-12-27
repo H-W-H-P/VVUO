@@ -464,7 +464,7 @@ var SideMenu = function(blueprint3d, floorplanControls, modalEffects) {
       listItem[v['name']] = 0;
     });
     items.forEach((v, k) => {
-      listItem2[v['name']] = v.size;
+      listItem2[v['name']] = v.price;
     });
     // console.log(listItem2)
   }

@@ -15,8 +15,8 @@ const YTPlayer = require('yt-player')
 $(document).ready(function () {
   // loader
   $('.loaderArea').addClass('loaderArea__close')
+  $('body').removeClass('loader')
   setTimeout(function () {
-    $('body').removeClass('loader')
     $('.loaderArea').addClass('loaderArea__closed')
   }, 2000)
 
