@@ -4,6 +4,8 @@
  */
 let listItem = {};
 let listItem2 = {};
+let listItem3 = {};
+let objForIvan = {};
 var CameraButtons = function(blueprint3d) {
 
   var orbitControls = blueprint3d.three.controls;
@@ -141,7 +143,13 @@ var ContextMenu = function(blueprint3d) {
     });
     $('.confPrice').html(allPrice);
     allPrice = 0;
-    $('.list_items').val(JSON.stringify(listItem))
+    $.each(listItem, function (i, v) {
+      objForIvan[i]['number'] = v;
+    })
+    $('.list_items').attr('data-val', JSON.stringify(listItem))
+    $('.list_items').val(JSON.stringify(objForIvan))
+    // $('.list_items').val(JSON.stringify(listItem))
+    console.log($('.list_items').val())
   }
 
   var scope = this;
@@ -296,6 +304,12 @@ var SideMenu = function(blueprint3d, floorplanControls, modalEffects) {
   var currentState = scope.states.FLOORPLAN;
 
   function init() {
+    $('.confWallA-desk').val(700);
+    $('#confWallA').val(700);
+    $('.confWallB-desk').val(400);
+    $('#confWallB').val(400);
+    $('.config__input_height').val(250);
+    $('.config__input_height_mobile').val(250);
     for (var tab in tabs) {
       var elem = tabs[tab];
       elem.click(tabClicked(elem));
@@ -322,11 +336,13 @@ var SideMenu = function(blueprint3d, floorplanControls, modalEffects) {
 
       $('.config__top_line .config__number').text(wallA);
       $('.config__left_line .config__number').text(wallB);
+      var rommSize = wallA + 'x' + wallB;
+      $('.list_room_size').val(rommSize)
 
       setTimeout(function() {
         setCurrentState(scope.states.FLOORPLAN);
         floorplanUpdate();
-        $('.config__input').val('');
+        // $('.config__input').val('');
       }, 10);
       return false;
     })
@@ -466,14 +482,27 @@ var SideMenu = function(blueprint3d, floorplanControls, modalEffects) {
     items.forEach((v, k) => {
       listItem2[v['name']] = v.price;
     });
-    // console.log(listItem2)
+    items.forEach((v, k) => {
+      listItem3[v['name']] = v.id;
+    });
+    items.forEach((v, k) => {
+      objForIvan[v['name']] = {
+        'id' : v.id, 
+        'price' : v.price,
+        'number' : 0
+      };
+    });
   }
   getListSelectedItem()
 
   function addItemInList(props) {
     listItem[props]++;
-    // console.log(listItem)
-    $('.list_items').val(JSON.stringify(listItem))
+    $.each(listItem, function (i, v) {
+      objForIvan[i]['number'] = v;
+    })
+    $('.list_items').attr('data-val', JSON.stringify(listItem))
+    $('.list_items').val(JSON.stringify(objForIvan))
+    // console.log(JSON.stringify(objForIvan))
   }
 
 }
