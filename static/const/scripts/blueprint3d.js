@@ -46281,6 +46281,7 @@ var Model = function(textureDir) {
         scale,
         item.fixed);
     });
+    console.log(scope)
   }
 }
 
@@ -46560,8 +46561,8 @@ var Scene = function(model, textureDir) {
       scope.add(item);
       item.initObject();
       scope.itemLoadedCallbacks.fire(item);
-      // console.log(item)
       item.name = name;
+      console.log(item)
     }
     scope.itemLoadingCallbacks.fire();
 
