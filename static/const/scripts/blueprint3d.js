@@ -44086,6 +44086,7 @@ var Floorplanner = function(canvas, floorplan) {
   }
 
   function mousedown() {
+
     mouseDown = true;
     mouseMoved = false;
     lastX = rawMouseX;
@@ -46884,8 +46885,9 @@ var ThreeController = function(three, model, camera, element, controls, hud) {
     }
   
   }
-
+  // <<<<<<<<<<<<<<<<
   function mouseMoveEvent(event) {
+  	// console.log(camera.position)
     if (scope.enabled) {
       event.preventDefault();
 
@@ -47413,7 +47415,6 @@ var ThreeControls = function (object, domElement) {
 		}
 
 		scale /= dollyScale;
-		
 	};
 
 	this.dollyOut = function ( dollyScale ) {
@@ -47425,6 +47426,7 @@ var ThreeControls = function (object, domElement) {
 	};
 
 	this.update = function () {
+
 		var position = this.object.position;
 		var offset = position.clone().sub( this.target );
 
@@ -47458,7 +47460,7 @@ var ThreeControls = function (object, domElement) {
 		offset.x = radius * Math.sin( phi ) * Math.sin( theta );
 		offset.y = radius * Math.cos( phi );
 		offset.z = radius * Math.sin( phi ) * Math.cos( theta );
-		
+
 		position.copy( this.target ).add( offset );
 
 		this.object.lookAt( this.target );
@@ -47473,6 +47475,8 @@ var ThreeControls = function (object, domElement) {
 		this.cameraMovedCallbacks.fire();
 		this.needsUpdate = true;
 	};
+
+	// <<<<<<<<<<<<<<
 
 	function getAutoRotationAngle() {
 		return 2 * Math.PI / 60 / 60 * scope.autoRotateSpeed;
@@ -47708,7 +47712,7 @@ var ThreeControls = function (object, domElement) {
 		}
 
 
-    scope.update();
+    	scope.update();
 	}
 
 	function onKeyDown( event ) {
@@ -48808,7 +48812,10 @@ var ThreeMain = function(model, element, canvasElement, opts) {
     	    $('.page_pdf__config_img').attr('src', imgData)
     	}, 100)
     })
+    
   }
+
+
 
   function spin() {
 	  return;

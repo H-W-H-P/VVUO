@@ -444,6 +444,27 @@ var SideMenu = function(blueprint3d, floorplanControls, modalEffects) {
 
   init();
 
+  $('.conf_wr__over, .shop_filters__block').on('click', function(EO) {
+    EO.stopPropagation()
+    if (EO.target.tagName === 'IMG') {
+      if ($(EO.target).parent().hasClass('my_add_item_one')) {
+        adItem()
+        return
+      }
+    }
+    if (!$(EO.target).hasClass('my_add_item_one')) {
+      return
+    }
+    adItem() 
+  })
+
+  function adItem() {
+    let linkJs = $('.config__item').attr('data-js');
+    let nameGoods = $('.config__item').attr('data-goods');
+    addItemInList(nameGoods)
+    blueprint3d.model.scene.addItem(1, linkJs, {resizable: true}, nameGoods);
+  }
+
   $('.my_add_item').on('click', function() {
     $('body, html').removeClass('pop_up_cond');
     $('.items_pop_up').removeClass('pop_up_active');
