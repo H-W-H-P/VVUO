@@ -782,7 +782,7 @@ $(document).ready(function () {
   })
 
   $('.btn_send_constructor').on('click', function (EO) {
-    EO.preventDefault()
+    // EO.preventDefault()
     $('.list_hide').each((v, y) => {
       console.log($(y).val())
     })
@@ -864,9 +864,9 @@ $(document).ready(function () {
             let rowClone = $(row).clone()
             $(rowClone).find('.page_pdf__table_mob_title_title').html('1')
             $(rowClone).find('.page_pdf__table_item_goods').html(`${v['name']}`)
-            $(rowClone).find('.page_pdf__table_item_price').html(`${v['size']} ₽`)
+            $(rowClone).find('.page_pdf__table_item_price').html(`${v['price']} ₽`)
             $(rowClone).find('.page_pdf__table_item_quantity').html(`${selectetItem[i]} шт.`)
-            let priceFull = v['size'] * selectetItem[i]
+            let priceFull = v['price'] * selectetItem[i]
             $(rowClone).find('.page_pdf__table_item_price_full').html(priceFull)
             $('.page_pdf__table_body')[0].appendChild($(rowClone)[0])
             return v

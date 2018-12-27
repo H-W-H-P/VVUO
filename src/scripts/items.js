@@ -89,9 +89,10 @@ $(document).ready(function () {
   $('.conf_wr_filters-side__chbx').on('click', function (EO) {
     let nameCat = $(this).html()
     $('.config-cond2__title').html(nameCat)
-    $('.conf_wr_filters_active').each((v, k) => {
-      $(k).removeClass('conf_wr_filters_active')
-    })
+    // $('.conf_wr_filters_active').each((v, k) => {
+    //   $(k).removeClass('conf_wr_filters_active')
+    // })
+    deleteActiveTabColor()
     $(this).toggleClass('conf_wr_filters_active')
     $('.conf_wr__preloader_filter').removeClass('conf_wr__preloader_wrap-disable')
     stateCatalog['open'] = true
@@ -105,25 +106,6 @@ $(document).ready(function () {
       return false
     }
     createOwl()
-    // let self = this
-    // setTimeout(() => {
-    //   $('.conf_wr_filters_active').each((v, k) => {
-    //     $(k).removeClass('conf_wr_filters_active')
-    //   })
-    //   $(self).toggleClass('conf_wr_filters_active')
-    //   $('.conf_wr__preloader_filter').removeClass('conf_wr__preloader_wrap-disable')
-    //   stateCatalog['open'] = true
-    //   stateCatalog['catalog'] = $(EO.target).closest('.shop_filters__block_wrap').attr('data-wrapOwl')
-    //   stateCatalog['label'] = $(self).attr('data-type')
-    //   // -
-    //   if (window.innerWidth >= 1440) {
-    //     createOwlDesktop(self)
-    //   } else {
-    //     createOwlMoboles(self)
-    //     return false
-    //   }
-    //   createOwl()
-    // }, 20)
   })
   // CREATE
   function createOwlDesktop (e) {
@@ -144,7 +126,6 @@ $(document).ready(function () {
     let pushHear
     let nameFilter = stateCatalog['label']
     let nameCatalog = $(`[data-wrapowl=${stateCatalog['catalog']}]`).find('.item_category').html()
-    console.log(nameCatalog)
 
     if (!nameOwl) {
       pushHear = '.config__owl'
@@ -159,7 +140,7 @@ $(document).ready(function () {
       if (valueItem['category'] !== nameCatalog) {
         return
       }
-      htmlItem = `<a href='#' class='config__item popUpCall' id="items-wrapper add-items" data-item="${numItem}" data-pop_up=".pop_up__items" data-goods="${valueItem['name']}" data-js="${valueItem['model']}">
+      htmlItem = `<a href='#' class='config__item popUpCall' id="items-wrapper add-items" data-item="${numItem}" data-pop_up=".pop_up__items" data-goods="${valueItem['name']}" data-js="${valueItem['model']}" data-description="${valueItem['description']}">
         <div class='config__img_wr add-item'   >
         <img src='${valueItem['image']}' class='items_pop_up__img_items'>
         <div class='config__arrow'>
@@ -168,8 +149,8 @@ $(document).ready(function () {
         </div>
         </div>
         <p class='config__name'>${valueItem['name']}</p>
-        <p class='config__desc'>100х36 см</p>
-        <p class='config__price' data-price="${valueItem['size']}">${valueItem['size']} ₽</p>
+        <p class='config__desc'>${valueItem['size']}</p>
+        <p class='config__price' data-price="${valueItem['price']}">${valueItem['price']} ₽</p>
         </a>`
       $(pushHear).append(htmlItem)
       numItem++
@@ -240,22 +221,6 @@ $(document).ready(function () {
         </div> `
 
   function createWrapMobile (mob) {
-    if (!wrapM) {
-      wrapM = `<div class='conf_wr__wrap_slider conf_wr__wrap_slider_mob'>
-        <div class='conf_wr__preloader_wrap conf_wr__preloader_filter'>
-        <div class='conf_wr__preloader'>
-        <div class='bigSqr'>
-        <div class='square first'></div>
-        <div class='square second'></div>
-        <div class='square third'></div>
-        <div class='square fourth'></div>
-        </div>
-        <div class='text'>loading</div>
-        </div>
-        </div>
-        <div class='config__owl owl-carousel slider_T1 config__owl_mobiles'></div>
-        </div> `
-    }
     if ($(`[data-wrapowl="${stateCatalog['catalog']}"]`).find('.conf_wr__wrap_slider').length) {
       if (!mob) {
         return false
@@ -331,9 +296,7 @@ $(document).ready(function () {
     courOwlMob = null
   }
   // < 1440
-  var time
   $('.item_category').on('click', function () {
-    time = performance.now()
     let _this = this
     if (window.innerWidth >= 1440) {
       return false
@@ -359,8 +322,6 @@ $(document).ready(function () {
         }
       })
     }
-    time = performance.now() - time
-    console.log('Время выполнения = ', time)
     if (!_this) {
       return
     }
@@ -457,8 +418,10 @@ $(document).ready(function () {
     let itemImg = $(prop).find('.items_pop_up__img_items').clone()
     let itemPrice = $(prop).find('.config__price').html()
     let itemPrice2 = $(prop).find('.config__price').attr('data-price')
+    let description = $(prop).attr('data-description')
     $('.items_pop_up__wrap_img').html(itemImg)
     $('.items_pop_up__price').html(itemPrice).attr('data-price', itemPrice2)
+    $('.items_pop_up__txt').html(description)
   }
 
   function addLinkJs (prop) {
