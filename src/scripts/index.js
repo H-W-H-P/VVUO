@@ -28,6 +28,11 @@ $(document).ready(function () {
     }
   })
 
+  $('.conf_wr_filters .shop_filters__caps').click(function () {
+    $(this).toggleClass('colored')
+    return false
+  })
+
   $('.instruction__link').on('click', function (EO) {
     EO.preventDefault()
     var domElement = document.getElementById('viewer')

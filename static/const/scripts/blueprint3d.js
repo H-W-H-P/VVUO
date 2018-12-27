@@ -20325,7 +20325,8 @@ THREE.Loader.prototype = {
 
 			var loader = THREE.Loader.Handlers.get( fullPath );
 
-			console.log(loader, fullPath)
+			// console.log(loader, fullPath)
+			// prod change
 
 			if ( loader !== null ) {
 
@@ -22207,7 +22208,7 @@ THREE.Material.prototype = {
 
 				// newValue = 14540253;
 
-				console.warn( "THREE.Material: '" + key + "' parameter is undefined." );
+				// console.warn( "THREE.Material: '" + key + "' parameter is undefined." );
 				continue;
 
 			}
@@ -44520,7 +44521,7 @@ var utils = require('../utils/utils')
 
 var FloorItem = function(three, metadata, geometry, material, position, rotation, scale) {
     Item.call(this, three, metadata, geometry, material, position, rotation, scale);
-    console.log(three)
+    // console.log(three)
 };
 
 FloorItem.prototype = Object.create(Item.prototype);
@@ -44654,7 +44655,6 @@ FloorItem.prototype.isValidPosition = function(vec3, appearBool) {
             if (countToTwo >= 2) {
             	return false;
             }
-	        // prod change
 		    setTimeout(function() {
 		    	$.each(nonIntersectArr, function (i, v) {
 		    		if (!objects[v].wallOffsetScalar) objects[v].position.y = objects[v].halfSize.y;	    		
@@ -46256,6 +46256,8 @@ var Model = function(textureDir) {
     this.scene.clearItems();
     this.floorplan.loadFloorplan(floorplan);
     utils.forEach(items, function(item) {
+
+    	console.log(item)
     	
       position = new THREE.Vector3( item.xpos, item.ypos, item.zpos)    
 
@@ -48450,8 +48452,7 @@ var ThreeHUD = function(three) {
 
   this.setMouseover = function(isMousedOver) {
     mouseover = isMousedOver;
-    setColor();    
-    // prod change
+    setColor();
   }
 
   function setColor() {
