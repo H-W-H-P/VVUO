@@ -434,10 +434,10 @@ var SideMenu = function(blueprint3d, floorplanControls, modalEffects) {
   }
 
   $('.config__add_window').on('click', function() {
-    blueprint3d.model.scene.addItem(3, 'static/const/models/newObj/window/window.js', {resizable: true});
+    blueprint3d.model.scene.addItem(2, 'static/const/models/newObj/window/window.js', {resizable: true});
   });
   $('.config__add_door').on('click', function() {
-    blueprint3d.model.scene.addItem(7, 'static/const/models/newObj/door/door.js', {resizable: true});
+    blueprint3d.model.scene.addItem(9, 'static/const/models/newObj/door/door.js', {resizable: true});
   });
 
   // blueprint3d.model.scene.addItem(1, 'static/const/models/model1/model.js', {resizable: true});

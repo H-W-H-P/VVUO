@@ -45082,7 +45082,7 @@ WallItem.prototype.closestWallEdge = function() {
 WallItem.prototype.removed = function() {
     if (this.currentWallEdge != null && this.addToWall) {
         utils.removeValue(this.currentWallEdge.wall.items, this);
-        this.redrawWall();
+        // this.redrawWall();
     }
 }
 
@@ -45113,7 +45113,7 @@ WallItem.prototype.resized = function() {
     }
 
     this.updateSize();
-    this.redrawWall();
+    // this.redrawWall();
 }
 
 WallItem.prototype.placeInRoom = function() {
@@ -45130,7 +45130,7 @@ WallItem.prototype.placeInRoom = function() {
             center.y);
         this.boundMove(newPos);
         this.position.copy(newPos);
-        this.redrawWall();
+        // this.redrawWall();
     } 
 };
 
@@ -45138,7 +45138,7 @@ WallItem.prototype.moveToPosition = function(vec3, intersection) {
     this.changeWallEdge(intersection.object.edge);
     this.boundMove(vec3);
     this.position.copy(vec3);
-    this.redrawWall();
+    // this.redrawWall();
 }
 
 WallItem.prototype.getWallOffset = function() {
@@ -45149,7 +45149,7 @@ WallItem.prototype.changeWallEdge = function(wallEdge) {
     if (this.currentWallEdge != null) {
         if (this.addToWall) {
             utils.removeValue(this.currentWallEdge.wall.items, this);
-            this.redrawWall();
+            // this.redrawWall();
         } else {
             utils.removeValue(this.currentWallEdge.wall.onItems, this);
         }
@@ -45176,7 +45176,7 @@ WallItem.prototype.changeWallEdge = function(wallEdge) {
     this.currentWallEdge = wallEdge;
     if (this.addToWall) {
         wallEdge.wall.items.push(this);  
-        this.redrawWall();      
+        // this.redrawWall();      
     } else {
         wallEdge.wall.onItems.push(this);  
     }
@@ -45622,6 +45622,7 @@ var Floorplan = function() {
   }
 
   // import and export -- cleanup
+  // prod change
 
   this.saveFloorplan = function() {
     var floorplan = {
@@ -45719,6 +45720,7 @@ var Floorplan = function() {
   }
 
   // update rooms
+  // prod change
   this.update = function() {
 
     utils.forEach(walls, function(wall) {
@@ -46549,6 +46551,7 @@ var Scene = function(model, textureDir) {
     // console.log(position)
     // let _position = {x: 600, y: "42", z: 2}
     // console.log(_position)
+    // prod change
     var loaderCallback = function(geometry, materials) {
       var item = new item_types[itemType](
         model,
