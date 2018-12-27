@@ -44767,6 +44767,7 @@ Item.prototype = Object.create(THREE.Mesh.prototype);
 
 Item.prototype.remove = function() {
     this.scene.removeItem(this);
+    console.log('remove')
 };
 
 Item.prototype.resize = function(height, width, depth) {

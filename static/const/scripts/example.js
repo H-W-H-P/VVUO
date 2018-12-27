@@ -152,7 +152,7 @@ var ContextMenu = function(blueprint3d) {
 
     $("#context-menu-delete").click(function(event) {
       removeItemFromList(selectedItem);
-        selectedItem.remove();
+      selectedItem.remove();
     });
 
     three.itemSelectedCallbacks.add(itemSelected);
