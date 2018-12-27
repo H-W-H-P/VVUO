@@ -28,6 +28,7 @@
 			width: 40%
 	
 	&__right_bar
+		width: 67%
 		@media(max-width:767px)
 			width: auto
 
@@ -43,6 +44,7 @@
 
 		&--bold
 			font-weight: bold
+			padding-bottom: 10px
 // -
 // -
 // - @media(max-width:1439px)
@@ -107,8 +109,8 @@
 .page_pdf
 	width: 100%
 
-	&__header_middle, &__name_order, &__header_bottom
-		display: none
+	// &__header_middle, &__name_order, &__header_bottom
+	// 	display: none
 
 	&--active
 		position: relative
@@ -131,7 +133,7 @@
 			display: none
 
 		@media(max-width:1439px)
-			margin-left: 30px
+			margin-left: 0px
 
 	&__title_form
 		padding-top: 40px
@@ -179,7 +181,11 @@
 			padding-bottom: 30px
 	
 	&__header_bottom
-		height: 60px
+		height: auto
+		min-height: 60px
+		padding-top: 15px
+
+		box-sizing: border-box
 
 		border-top: 1px solid rgba(178,130,130, .1)
 		
@@ -388,10 +394,11 @@
 		display: flex
 
 		margin-top: 50px
-		margin-bottom: 65px
+		// padding-bottom: 65px
 
 		& > *
 			width: 33.33%
+			margin-bottom: 65px
 
 		@media(max-width:767px)
 			flex-direction: column
