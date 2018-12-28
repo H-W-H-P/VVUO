@@ -301,19 +301,19 @@ $(document).ready(function () {
     //   console.log(event, ui)
     // },
     slide: function (event, ui) {
-      // probably would needed later
       var curValue = ui.value
-      var curPrice = curValue / maxPrice * 1000000
+      console.log(curValue)
+      var curPrice = Math.floor(curValue / 100 * maxPrice)
       $('.ui-slider-handle.ui-state-active .price').html(curPrice)
       if (ui.handleIndex === 1) $('.prFilRight').val(curPrice)
       else $('.prFilLeft').val(curPrice)
     }
   })
 
-  var maxPrice = 10000
+  var maxPrice = $('.prFilRight').attr('data-maxPrice')
 
-  $('.ui-slider-handle:nth-last-child(2)').append('<div class="shop_filters__price_cont"><span class="price">100</span> ₽</div>')
-  $('.ui-slider-handle:last-child').append('<div class="shop_filters__price_cont"><span class="price">5000</span> ₽</div>')
+  $('.ui-slider-handle:nth-last-child(2)').append('<div class="shop_filters__price_cont"><span class="price">' + Math.floor(maxPrice / 100) + '</span> ₽</div>')
+  $('.ui-slider-handle:last-child').append('<div class="shop_filters__price_cont"><span class="price">' + Math.floor(maxPrice / 2) + '</span> ₽</div>')
 
   // validation
 

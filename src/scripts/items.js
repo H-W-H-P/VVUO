@@ -511,10 +511,10 @@ $(document).ready(function () {
     })
     $('.my_add_item').one('click', function (EO) {
       EO.preventDefault()
-      var dataPrice = $(this).closest('.items_pop_up').find('.items_pop_up__price').attr('data-price')
-      var curPrice = $('.confPrice').html()
-      curPrice = Number(curPrice) + Number(dataPrice)
-      $('.confPrice').html(curPrice)
+      // var dataPrice = $(this).closest('.items_pop_up').find('.items_pop_up__price').attr('data-price')
+      // var curPrice = $('.confPrice').html()
+      // curPrice = Number(curPrice) + Number(dataPrice)
+      // $('.confPrice').html(curPrice)
       closePopUp()
     })
   }
