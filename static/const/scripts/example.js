@@ -153,7 +153,7 @@ var ContextMenu = function(blueprint3d) {
     $('.list_items').attr('data-val', JSON.stringify(listItem))
     $('.list_items').val(JSON.stringify(objForIvan))
     // $('.list_items').val(JSON.stringify(listItem))
-    console.table(listItem)
+    // console.table(listItem)
   }
 
   var scope = this;
@@ -494,6 +494,9 @@ var SideMenu = function(blueprint3d, floorplanControls, modalEffects) {
     });
   }
 
+  
+
+
   $('.config__add_window').on('click', function() {
 
     if (triggerAddItem) {
@@ -509,7 +512,7 @@ var SideMenu = function(blueprint3d, floorplanControls, modalEffects) {
 
   });
 
-  // blueprint3d.model.scene.addItem(1, 'static/const/models/model1/model.js', {resizable: true});
+  blueprint3d.model.scene.addItem(1, 'static/const/models/model1/model.js', {resizable: true});
 
   init();
 
@@ -603,7 +606,7 @@ var SideMenu = function(blueprint3d, floorplanControls, modalEffects) {
         allPrice = 0;
         $('.list_items').attr('data-val', JSON.stringify(listItem))
         $('.list_items').val(JSON.stringify(objForIvan))
-        console.table(listItem)
+        // console.table(listItem)
       }
     }, 200);
   }

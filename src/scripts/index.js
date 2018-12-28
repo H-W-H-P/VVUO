@@ -874,4 +874,103 @@ $(document).ready(function () {
       createRowTable: createRowTable
     }
   })()
+
+  //  Item popUp
+  // - клик по карточки - открытие попапа
+  $('.conf_wr__over, .shop_filters__block').on('click', function (EO) {
+    // let _this = this
+    EO.preventDefault()
+    if (EO.target.tagName === 'IMG') {
+      if ($(EO.target).parent().hasClass('my_add_item_one')) {
+        return
+      }
+    }
+    if ($(EO.target).hasClass('my_add_item_one')) {
+      return
+    }
+    let item = $(EO.target).closest('.config__item')
+    if (!$(item).hasClass('config__item')) {
+      return
+    }
+    if ($(EO.target).hasClass('my_add_item_one')) {
+      return
+    }
+    createContentItem(item)
+    addLinkJs(item)
+    addNameGoods(item)
+    // $(item).addClass('item_select')
+    $('.pop_up__items').addClass('pop_up_active')
+    $('body').addClass('pop_up_cond')
+    $('html').addClass('pop_up_cond')
+    // slideItem(_this)
+    let urlList = $(item).attr('data-moreImg')
+    popUpMoreImg(urlList)
+  })
+
+  function popUpMoreImg (arrUrl) {
+    if ((+arrUrl) === 0) {
+      $('.slider_middle__nav').addClass('slider_middle__nav--hide')
+      return
+    }
+    $('.slider_middle__nav').removeClass('slider_middle__nav--hide')
+    let listUrlImg = JSON.parse(arrUrl)
+    $('.items_pop_up__wrap_img').empty()
+    let img
+    listUrlImg.forEach((v) => {
+      img = `<img src="${v}" alt"slideImg">`
+      $('.items_pop_up__wrap_img').append(img)
+    })
+    createRemoveSliderPopUp(1)
+  }
+
+  function createRemoveSliderPopUp (create, destory) {
+    if (create) {
+      $('.items_pop_up__wrap_img').slick({
+        infinite: false,
+        speed: 300,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        nextArrow: '.items_pop_up__nav_contr_next',
+        prevArrow: '.items_pop_up__nav_contr_prev',
+        cssEase: 'cubic-bezier(.17, 0, .58, 1)'
+      })
+    } else {
+      setTimeout(() => {
+        $('.items_pop_up__wrap_img').slick('unslick')
+      }, 200)
+    }
+  }
+
+  $('.pop_up__toggle').on('click', function () {
+    createRemoveSliderPopUp(0, 1)
+  })
+
+  $('.items_pop_up__nav_contr').on('click', function (EO) {
+    EO.preventDefault()
+  })
+
+  $('.my_add_item').on('click', function (EO) {
+    createRemoveSliderPopUp(0, 1)
+  })
+  // - заполнение попапа (img ptice)
+  function createContentItem (prop) {
+    let itemImg = $(prop).find('.items_pop_up__img_items').clone()
+    let itemPrice = $(prop).find('.config__price').html()
+    let itemPrice2 = $(prop).find('.config__price').attr('data-price')
+    let description = $(prop).attr('data-description')
+    $('.items_pop_up__wrap_img').html(itemImg)
+    $('.items_pop_up__price').html(itemPrice).attr('data-price', itemPrice2)
+    $('.items_pop_up__txt').html(description)
+  }
+
+  function addLinkJs (prop) {
+    let linkJs = $(prop).attr('data-js')
+    $('.my_add_item').attr('data-jsLink', linkJs)
+  }
+
+  function addNameGoods (prop) {
+    let nameGoods = $(prop).attr('data-goods')
+    $('.my_add_item').attr('data-goodsGoods', nameGoods)
+    $('.items_pop_up').find('h6').html(nameGoods)
+  }
 })
