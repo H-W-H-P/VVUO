@@ -493,13 +493,13 @@ var SideMenu = function(blueprint3d, floorplanControls, modalEffects) {
   init();
 
   $('.conf_wr__over, .shop_filters__block').on('click', function(EO) {
-    EO.stopPropagation()
+    let target = EO.target;
     if (EO.target.tagName === 'IMG') {
       if ($(EO.target).parent().hasClass('my_add_item_one')) {
         if (triggerAddItem) {
           closeInstruction();
         }
-        adItem()
+        adItem(target)
         return
       }
     }
@@ -509,12 +509,14 @@ var SideMenu = function(blueprint3d, floorplanControls, modalEffects) {
     if (triggerAddItem) {
       closeInstruction();
     }
-    adItem() 
+
+    adItem(target) 
+    EO.stopPropagation();
   })
 
-  function adItem() {
-    let linkJs = $('.config__item').attr('data-js');
-    let nameGoods = $('.config__item').attr('data-goods');
+  function adItem(e) {
+    let linkJs = $(e).closest('.config__item').attr('data-js');
+    let nameGoods = $(e).closest('.config__item').attr('data-goods');
     addItemInList(nameGoods)
     blueprint3d.model.scene.addItem(1, linkJs, {resizable: true}, nameGoods);
   }
