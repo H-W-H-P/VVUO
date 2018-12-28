@@ -48812,7 +48812,7 @@ var ThreeMain = function(model, element, canvasElement, opts) {
 
     domElement = scope.element.get(0) // Container
     
-    camera = new THREE.PerspectiveCamera(50, 1, 1, 10000);
+    camera = new THREE.PerspectiveCamera(50, 1, 1, 100000);
     // camera = new THREE.OrthographicCamera(-450, 400, 400, -400, 1, 2000);
 
     camera.position.x = 0;
