@@ -47537,30 +47537,26 @@ console.log(position)
 	// <<<<<<<<<<<<<<<<<<<<<
 	  $('#constructor_2d').on('click', function() {
 
-	  	// setTimeout(()=> {
-	  	// 	var _x = scope.object.position.x;
-	  	// 	var _z = scope.object.position.z;
+	  	setTimeout(()=> {
+	  		var _x = scope.object.position.x;
+	  		var _z = scope.object.position.z;
 
-
-	  	// 	var position = scope.object.position;
-		  // 	var size = scope.target;
-		  // 	var x = size.x;
-		  // 	var y = size.y;
-		  // 	var z = size.z;
+	  		var position = scope.object.position;
+		  	var size = scope.target;
+		  	var x = size.x;
+		  	var y = size.y;
+		  	var z = size.z;
 		  	
-		  // 	var max = Math.max(x, y, z)
-		  // 	console.log('++++max++++', max)
-		  // 	max = max * 15
+		  	var max = Math.max(x, y, z)
 
-		  // 	console.log('++++max masax++++', max)
-		  	
+		  	vFov = 10 * Math.PI / 180;
 
-		  // 	scope.object.position.set(_x, max, _z)
+		  	let cameraZ = max / Math.tan( vFov );
+		  	cameraZ = cameraZ * 2.2;
+		  	scope.object.position.set(_x, cameraZ, _z)
 
-		  // 	scope.update()
-
-		  // 	console.log(position)
-		  // },1500)
+		  	scope.update()
+		  },500)
 	  })
 
 
