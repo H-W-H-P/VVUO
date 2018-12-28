@@ -120,11 +120,11 @@ $(document).ready(function () {
     return false
   })
 
-  $('.conf_wr_filters-side__reset').click(function () {
-    $('.config').addClass('config-cond1').removeClass('config-cond2')
-    $('.conf_wr_filters-side').removeClass('conf_wr_filters-side-cond2')
-    return false
-  })
+  // $('.conf_wr_filters-side__reset').click(function () {
+  //   $('.config').addClass('config-cond1').removeClass('config-cond2')
+  //   $('.conf_wr_filters-side').removeClass('conf_wr_filters-side-cond2')
+  //   return false
+  // })
 
   $('.conf_wr_filters__plan').click(function () {
     $('.config').addClass('config-cond1').removeClass('config-cond2')

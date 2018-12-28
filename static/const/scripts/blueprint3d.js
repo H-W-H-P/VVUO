@@ -47444,7 +47444,6 @@ var ThreeControls = function (object, domElement) {
 
 		var position = this.object.position;
 		var offset = position.clone().sub( this.target );
-		console.log(position)
 
 		// angle from z-axis around y-axis
 		var theta = Math.atan2( offset.x, offset.z );
@@ -47550,7 +47549,7 @@ var ThreeControls = function (object, domElement) {
 		  	var coef = 2.2;
 		  	
 		  	var max = x;
-		  	if (x >= z) {
+		  	if (x > z) {
 		  		coef = 1.4;
 		  	} else {
 		  		max = z;
@@ -49024,6 +49023,7 @@ var ThreeMain = function(model, element, canvasElement, opts) {
   }
 
   this.centerCamera = function() {
+  	//prod change
     var yOffset = 150.0;
 
     var pan = model.floorplan.getCenter();
@@ -49034,7 +49034,7 @@ var ThreeMain = function(model, element, canvasElement, opts) {
     var distance = model.floorplan.getSize().z * 1.5;
 
     var offset = pan.clone().add(
-      new THREE.Vector3(0, distance, distance));
+      new THREE.Vector3(0, distance/10, 3.5*distance/5));
     //scope.controls.setOffset(offset);
     camera.position.copy(offset);
 
