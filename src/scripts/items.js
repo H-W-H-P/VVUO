@@ -140,7 +140,13 @@ $(document).ready(function () {
       if (valueItem['category'] !== nameCatalog) {
         return
       }
-      htmlItem = `<a href='#' class='config__item popUpCall' id="items-wrapper add-items" data-item="${numItem}" data-pop_up=".pop_up__items" data-goods="${valueItem['name']}" data-js="${valueItem['model']}" data-description="${valueItem['description']}">
+      let moreImg
+      if (valueItem['imgMore']) {
+        moreImg = JSON.stringify(valueItem['imgMore'])
+      } else {
+        moreImg = 0
+      }
+      htmlItem = `<a href='#' class='config__item popUpCall' id="items-wrapper add-items" data-item="${numItem}" data-pop_up=".pop_up__items" data-goods="${valueItem['name']}" data-js="${valueItem['model']}" data-description="${valueItem['description']}" data-moreImg=${moreImg}>
         <div class='config__img_wr add-item'   >
         <img src='${valueItem['image']}' class='items_pop_up__img_items'>
         <div class='config__arrow my_add_item_one'>
@@ -394,128 +400,4 @@ $(document).ready(function () {
     clearMobSlider()
     resetStateCatalog(stateCatalog)
   })
-
-  // - клик по карточки - открытие попапа
-  $('.conf_wr__over, .shop_filters__block').on('click', function (EO) {
-    let _this = this
-    EO.preventDefault()
-    if (EO.target.tagName === 'IMG') {
-      if ($(EO.target).parent().hasClass('my_add_item_one')) {
-        return
-      }
-    }
-    if ($(EO.target).hasClass('my_add_item_one')) {
-      return
-    }
-    let item = $(EO.target).closest('.config__item')
-    if (!$(item).hasClass('config__item')) {
-      return
-    }
-    if ($(EO.target).hasClass('my_add_item_one')) {
-      return
-    }
-    createContentItem(item)
-    addLinkJs(item)
-    addNameGoods(item)
-    $(item).addClass('item_select')
-    $('.pop_up__items').addClass('pop_up_active')
-    $('body').addClass('pop_up_cond')
-    $('html').addClass('pop_up_cond')
-    slideItem(_this)
-  })
-
-  // - заполнение попапа (img ptice)
-  function createContentItem (prop) {
-    let itemImg = $(prop).find('.items_pop_up__img_items').clone()
-    let itemPrice = $(prop).find('.config__price').html()
-    let itemPrice2 = $(prop).find('.config__price').attr('data-price')
-    let description = $(prop).attr('data-description')
-    $('.items_pop_up__wrap_img').html(itemImg)
-    $('.items_pop_up__price').html(itemPrice).attr('data-price', itemPrice2)
-    $('.items_pop_up__txt').html(description)
-  }
-
-  function addLinkJs (prop) {
-    let linkJs = $(prop).attr('data-js')
-    $('.my_add_item').attr('data-jsLink', linkJs)
-  }
-
-  function addNameGoods (prop) {
-    let nameGoods = $(prop).attr('data-goods')
-    $('.my_add_item').attr('data-goodsGoods', nameGoods)
-    $('.items_pop_up').find('h6').html(nameGoods)
-  }
-
-  // - попап next - prev
-  function slideItem (prop) {
-    let dataItemSelect
-    let itemNext
-    let lengthItem
-    let counter = 0
-    // l
-    // l
-    function slideItemBtn (e, val) {
-      lengthItem = $('.config__item').length
-      e.preventDefault()
-      let selectItem = $('.item_select').eq(0)
-
-      // -
-      // - листаем карточки товаров
-      if (val === 'next') {
-        dataItemSelect = $(selectItem).attr('data-item')
-        dataItemSelect++
-        if (dataItemSelect) {
-          counter = dataItemSelect
-        }
-        if (counter > lengthItem) {
-          return
-        }
-        $(selectItem).removeClass('item_select')
-      } else {
-        dataItemSelect = $(selectItem).attr('data-item')
-        dataItemSelect--
-        if (dataItemSelect) {
-          counter = dataItemSelect
-        }
-        if (dataItemSelect === 0) {
-          return
-        }
-        $(selectItem).removeClass('item_select')
-      }
-      itemNext = $(`.config__item[data-item="${dataItemSelect}"]`)
-      $(itemNext).addClass('item_select')
-      $('.my_add_item').attr('data-jsLink', $('.item_select').attr('data-js'))
-      // -
-      // l // - заполнение попапа (img ptice)
-      createContentItem(itemNext)
-      addNameGoods(itemNext)
-    }
-    // -
-    // - вешаем обраюотчики на кнопки
-    $('.slider_middle_next').on('click', function (EO) {
-      let e = EO
-      slideItemBtn(e, 'next')
-    })
-    $('.slider_middle_prev').on('click', function (EO) {
-      let e = EO
-      slideItemBtn(e, 'prev')
-    })
-    function closePopUp () {
-      $('.item_select').removeClass('item_select')
-      counter = 0
-      $('.slider_middle_prev').unbind()
-      $('.slider_middle_next').unbind()
-    }
-    $('.pop_up__toggle').on('click', function () {
-      closePopUp()
-    })
-    $('.my_add_item').one('click', function (EO) {
-      EO.preventDefault()
-      // var dataPrice = $(this).closest('.items_pop_up').find('.items_pop_up__price').attr('data-price')
-      // var curPrice = $('.confPrice').html()
-      // curPrice = Number(curPrice) + Number(dataPrice)
-      // $('.confPrice').html(curPrice)
-      closePopUp()
-    })
-  }
 })

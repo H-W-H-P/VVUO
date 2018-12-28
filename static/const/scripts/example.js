@@ -473,6 +473,9 @@ var SideMenu = function(blueprint3d, floorplanControls, modalEffects) {
     });
   }
 
+  
+
+
   $('.config__add_window').on('click', function() {
 
     if (triggerAddItem) {
@@ -488,7 +491,7 @@ var SideMenu = function(blueprint3d, floorplanControls, modalEffects) {
 
   });
 
-  // blueprint3d.model.scene.addItem(1, 'static/const/models/model1/model.js', {resizable: true});
+  blueprint3d.model.scene.addItem(1, 'static/const/models/model1/model.js', {resizable: true});
 
   init();
 

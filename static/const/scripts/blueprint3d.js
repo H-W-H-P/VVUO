@@ -46822,7 +46822,12 @@ var ThreeController = function(three, model, camera, element, controls, hud) {
     item.position_set = true;
   }
 
+  function gtn() {
+  	
+  }
+
   function clickPressed(vec2) {
+
     vec2 = vec2 || mouse;
     var intersection = scope.itemIntersection(mouse, selectedObject);
     if (intersection) {
@@ -46831,6 +46836,7 @@ var ThreeController = function(three, model, camera, element, controls, hud) {
   }
 
   function clickDragged(vec2) {
+  	
     vec2 = vec2 || mouse;
     var intersection = scope.itemIntersection(mouse, selectedObject);
     if (intersection) {
@@ -46893,7 +46899,7 @@ var ThreeController = function(three, model, camera, element, controls, hud) {
 
 
   function mouseMoveEvent(event) {
-  	// console.log()
+
     if (scope.enabled) {
       event.preventDefault();
 
@@ -46929,7 +46935,6 @@ var ThreeController = function(three, model, camera, element, controls, hud) {
   }
 
   function mouseDownEvent( event ) {
-
     if (scope.enabled) {
       event.preventDefault();
 
@@ -46963,9 +46968,11 @@ var ThreeController = function(three, model, camera, element, controls, hud) {
           break;
       }
     }
+
   }
 
   function mouseUpEvent( event ) {
+
     if (scope.enabled) {
       mouseDown = false;
 
@@ -47021,7 +47028,6 @@ var ThreeController = function(three, model, camera, element, controls, hud) {
         break;
       case states.DRAGGING:
        three.setCursorStyleUrl("../../static/img/icons/hand-arrows-coursor-2.svg");
-        //three.setCursorStyle("move");
         
         clickPressed();
         controls.enabled = false;
@@ -47037,11 +47043,8 @@ var ThreeController = function(three, model, camera, element, controls, hud) {
       case states.DRAGGING:
         if (mouseoverObject) {
 
-          // three.setCursorStyle("pointer");
         } else {
-          // three.setCursorStyle("auto");
           three.setCursorStyle("url(../../static/img/icons/cursor.svg) 20 0, auto");
-          // domElement.style.cursor = 'url(../../static/img/icons/cursor.svg) 25 25, auto';
         }
         break;
       case states.ROTATING:
@@ -47175,8 +47178,10 @@ var ThreeController = function(three, model, camera, element, controls, hud) {
   
   // manage the selected object
   this.setSelectedObject = function( object ) {
+  	
     if (state === states.UNSELECTED) {
       switchState(states.SELECTED);
+
     }
     if ( selectedObject != null ) {
       selectedObject.setUnselected();
@@ -47188,6 +47193,7 @@ var ThreeController = function(three, model, camera, element, controls, hud) {
     } else {
       selectedObject = null;
       three.itemUnselectedCallbacks.fire();
+
     }
     this.needsUpdate = true;
   }
@@ -47208,15 +47214,15 @@ var ThreeController = function(three, model, camera, element, controls, hud) {
       } else {
         mouseoverObject = intersectedObject;
         mouseoverObject.mouseOver();
-       three.setCursorStyle("pointer");
        three.setCursorStyleUrl("../../static/img/icons/hand-arrows-coursor-2.svg");
         scope.needsUpdate = true;
       }
     } else if (mouseoverObject != null) {
       mouseoverObject.mouseOff();
-      // three.setCursorStyle("auto");
       three.setCursorStyle("url(../../static/img/icons/cursor.svg) 20 0, auto");
-      if ($('#constructor_2d').hasClass('activeState')) three.setCursorStyle('auto')
+      if ($('#constructor_2d').hasClass('activeState')) {
+      	three.setCursorStyle('auto')
+      }
       mouseoverObject = null;
       scope.needsUpdate = true;
     }
@@ -47536,7 +47542,7 @@ console.log(position)
 	}
 	// <<<<<<<<<<<<<<<<<<<<<
 	  $('#constructor_2d').on('click', function() {
-
+	  	// console.log()
 	  	// setTimeout(()=> {
 	  	// 	var _x = scope.object.position.x;
 	  	// 	var _z = scope.object.position.z;
@@ -47550,7 +47556,7 @@ console.log(position)
 		  	
 		  // 	var max = Math.max(x, y, z)
 		  // 	console.log('++++max++++', max)
-		  // 	max = max * 15
+		  // 	max = max * scope.object.fov
 
 		  // 	console.log('++++max masax++++', max)
 		  	
@@ -48505,8 +48511,6 @@ var ThreeHUD = function(three) {
 
   function setColor() {
     if (activeObject) {
-		// three.setCursorStyleUrl("../../static/img/icons/hand-arrows-coursor-2.svg");
-		// console.log('heh')
       utils.forEach(activeObject.children, function(obj) {
         obj.material.color.set(getColor());
       });      
