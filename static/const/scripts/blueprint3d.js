@@ -47450,7 +47450,6 @@ var ThreeControls = function (object, domElement) {
 
 		var position = this.object.position;
 		var offset = position.clone().sub( this.target );
-console.log(position)
 
 		// angle from z-axis around y-axis
 		var theta = Math.atan2( offset.x, offset.z );
@@ -47541,32 +47540,31 @@ console.log(position)
 
 	}
 	// <<<<<<<<<<<<<<<<<<<<<
-	  $('#constructor_2d').on('click', function() {
-	  	// console.log()
-	  	// setTimeout(()=> {
-	  	// 	var _x = scope.object.position.x;
-	  	// 	var _z = scope.object.position.z;
+	  $('#constructor_2d, .conf_wr__order_btn, .open_page_pdf').on('click', function() {
 
+	  	setTimeout(()=> {
+	  		var _x = scope.object.position.x;
+	  		var _z = scope.object.position.z;
+	  		var position = scope.object.position;
+		  	var size = scope.target;
+		  	var x = size.x;
+		  	var z = size.z;
 
-	  	// 	var position = scope.object.position;
-		  // 	var size = scope.target;
-		  // 	var x = size.x;
-		  // 	var y = size.y;
-		  // 	var z = size.z;
-		  	
-		  // 	var max = Math.max(x, y, z)
-		  // 	console.log('++++max++++', max)
-		  // 	max = max * scope.object.fov
+		  	var vFov = 10 * Math.PI / 180;
+		  	var coef = 2.2;
+		  	var max = x;
+		  	if (x > z) {
+		  		coef = 1.4;
+		  	} else {
+		  		max = z;
+		  	}
 
-		  // 	console.log('++++max masax++++', max)
-		  	
+		  	let cameraZ = max / Math.tan( vFov );
+		  	cameraZ = cameraZ * coef;
+		  	scope.object.position.set(_x, cameraZ, _z)
 
-		  // 	scope.object.position.set(_x, max, _z)
-
-		  // 	scope.update()
-
-		  // 	console.log(position)
-		  // },1500)
+		  	scope.update()
+		  },10)
 	  })
 
 
@@ -49027,6 +49025,7 @@ var ThreeMain = function(model, element, canvasElement, opts) {
   }
 
   this.centerCamera = function() {
+  	//prod change
     var yOffset = 150.0;
 
     var pan = model.floorplan.getCenter();
@@ -49037,7 +49036,7 @@ var ThreeMain = function(model, element, canvasElement, opts) {
     var distance = model.floorplan.getSize().z * 1.5;
 
     var offset = pan.clone().add(
-      new THREE.Vector3(0, distance, distance));
+      new THREE.Vector3(0, distance/10, 3.5*distance/5));
     //scope.controls.setOffset(offset);
     camera.position.copy(offset);
 
