@@ -48514,12 +48514,12 @@ var ThreeHUD = function(three) {
   // }
 
   function makeCone(item) {
-    var coneGeo = new THREE.CylinderGeometry(5, 0, 10);
+    var coneGeo = new THREE.CylinderGeometry(10, 0, 20);
     var coneMat = new THREE.MeshBasicMaterial({
       color: getColor()
     });
     var cone = new THREE.Mesh(coneGeo, coneMat);
-    cone.position.copy({x: -30, y: 0, z: 100});
+    cone.position.copy({x: -40, y: 0, z: 100});
 
     cone.rotation.x = -Math.PI / 2.0;
     cone.rotation.z = -Math.PI / 1.35;
@@ -48528,12 +48528,12 @@ var ThreeHUD = function(three) {
   }
 
   function makeSphere(item) {
-    var coneGeo = new THREE.CylinderGeometry(5, 0, 10);
+    var coneGeo = new THREE.CylinderGeometry(10, 0, 20);
     var coneMat = new THREE.MeshBasicMaterial({
       color: getColor()
     });
     var sphere = new THREE.Mesh(coneGeo, coneMat);
-    sphere.position.copy({x: 30, y: 0, z: 100});
+    sphere.position.copy({x: 40, y: 0, z: 100});
 
     sphere.rotation.x = -Math.PI / 2.0;
     sphere.rotation.z = Math.PI / 2.0;
@@ -48551,17 +48551,17 @@ var ThreeHUD = function(three) {
     var numPoints = 100;
 
 	spline = new THREE.SplineCurve3([
-	   new THREE.Vector3(30, 0, 100),
-	   new THREE.Vector3(20, 0, 110),
-	   new THREE.Vector3(7, 0, 120),
-	   new THREE.Vector3(-7, 0, 120),
-	   new THREE.Vector3(-20, 0, 110),
-	   new THREE.Vector3(-30, 0, 100)
+	   new THREE.Vector3(40, 0, 100),
+	   new THREE.Vector3(20, 0, 120),
+	   new THREE.Vector3(7, 0, 130),
+	   new THREE.Vector3(-7, 0, 130),
+	   new THREE.Vector3(-20, 0, 120),
+	   new THREE.Vector3(-40, 0, 100)
 	]);
 
 	var material = new THREE.LineBasicMaterial({
 	    color: 0xff00f0,
-	    linewidth: 10
+	    linewidth: 200
 	});
 
 	var geometry = new THREE.Geometry();
