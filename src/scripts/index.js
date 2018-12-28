@@ -808,7 +808,7 @@ $(document).ready(function () {
     let selectetItem = {}
 
     function getListItem () {
-      listItem = $('.list_items').val()
+      listItem = $('.list_items').attr('data-val')
       if (!listItem) {
         return false
       }
