@@ -47188,6 +47188,7 @@ var ThreeController = function(three, model, camera, element, controls, hud) {
 
   // TODO: there MUST be simpler logic for expressing this
   function updateMouseover() {
+  	
     if ( intersectedObject != null ) {
       if ( mouseoverObject != null ) {
         if ( mouseoverObject !== intersectedObject ) {

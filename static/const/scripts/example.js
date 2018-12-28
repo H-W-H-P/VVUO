@@ -309,7 +309,11 @@ var SideMenu = function(blueprint3d, floorplanControls, modalEffects) {
 
     // click handlers
     $('.instruction__link').on('click', function (EO) {
-      EO.preventDefault()
+      EO.preventDefault();
+      closeInstruction();
+    })
+
+    function closeInstruction() {
       var domElement = document.getElementById('viewer');
       domElement.style.cursor = 'url(../../static/img/icons/cursor.svg) 20 0, auto';
       $('.instruction').addClass('instruction--animationClose');
@@ -317,7 +321,7 @@ var SideMenu = function(blueprint3d, floorplanControls, modalEffects) {
       setTimeout(() => {
         $('.instruction').addClass('instruction--closed');
       }, 1000)
-    })
+    }
 
   // sidebar state
   var currentState = scope.states.FLOORPLAN;
@@ -337,6 +341,7 @@ var SideMenu = function(blueprint3d, floorplanControls, modalEffects) {
     $("#update-floorplan").click(floorplanUpdate);
 
     $('.config__next').click(function () {
+      closeInstruction();
       // check and set min wall height if < 2.1m
       var wallHeight = $('.config__input_height_mobile').val() > 210 ? $('.config__input_height_mobile').val() : $('.config__input_height').val();
       wallHeight = $('.config__input_height').val() > 210 ? $('.config__input_height').val() : 250;
@@ -471,15 +476,13 @@ var SideMenu = function(blueprint3d, floorplanControls, modalEffects) {
   $('.config__add_window').on('click', function() {
 
     if (triggerAddItem) {
-      $('html, body').animate({ scrollTop: $('.constructor').offset().top }, 1000)
-      return
+      closeInstruction();
     }
     blueprint3d.model.scene.addItem(2, 'static/const/models/newObj/window/window.js', {resizable: true});
   });
   $('.config__add_door').on('click', function() {
     if (triggerAddItem) {
-      $('html, body').animate({ scrollTop: $('.constructor').offset().top }, 1000)
-      return
+      closeInstruction();
     }
     blueprint3d.model.scene.addItem(9, 'static/const/models/newObj/door/door.js', {resizable: true});
 
@@ -494,8 +497,7 @@ var SideMenu = function(blueprint3d, floorplanControls, modalEffects) {
     if (EO.target.tagName === 'IMG') {
       if ($(EO.target).parent().hasClass('my_add_item_one')) {
         if (triggerAddItem) {
-          $('html, body').animate({ scrollTop: $('.constructor').offset().top }, 1000)
-          return
+          closeInstruction();
         }
         adItem()
         return
@@ -505,8 +507,7 @@ var SideMenu = function(blueprint3d, floorplanControls, modalEffects) {
       return
     }
     if (triggerAddItem) {
-      $('html, body').animate({ scrollTop: $('.constructor').offset().top }, 1000)
-      return
+      closeInstruction();
     }
     adItem() 
   })
@@ -521,10 +522,7 @@ var SideMenu = function(blueprint3d, floorplanControls, modalEffects) {
   $('.my_add_item').on('click', function(EO) {
     EO.preventDefault()
     if (triggerAddItem) {
-      $('body, html').removeClass('pop_up_cond');
-      $('.items_pop_up').removeClass('pop_up_active');
-      $('html, body').animate({ scrollTop: $('.constructor').offset().top }, 1000);
-      return
+      closeInstruction();
     }
     $('body, html').removeClass('pop_up_cond');
     $('.items_pop_up').removeClass('pop_up_active');
