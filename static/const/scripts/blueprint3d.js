@@ -46890,9 +46890,10 @@ var ThreeController = function(three, model, camera, element, controls, hud) {
     }
   
   }
-  // <<<<<<<<<<<<<<<<
+
+
   function mouseMoveEvent(event) {
-  	// console.log(camera.position)
+  	// console.log()
     if (scope.enabled) {
       event.preventDefault();
 
@@ -47007,6 +47008,7 @@ var ThreeController = function(three, model, camera, element, controls, hud) {
   }
 
   function onEntry(state) {
+
     switch(state) {
       case states.UNSELECTED:
         scope.setSelectedObject( null );
@@ -47034,6 +47036,7 @@ var ThreeController = function(three, model, camera, element, controls, hud) {
         break;
       case states.DRAGGING:
         if (mouseoverObject) {
+
           // three.setCursorStyle("pointer");
         } else {
           // three.setCursorStyle("auto");
@@ -47048,6 +47051,7 @@ var ThreeController = function(three, model, camera, element, controls, hud) {
   }
 
   this.selectedObject = function() {
+
     return selectedObject;
   }
 
@@ -47168,7 +47172,7 @@ var ThreeController = function(three, model, camera, element, controls, hud) {
     } 
     return intersections;
   }
-
+  
   // manage the selected object
   this.setSelectedObject = function( object ) {
     if (state === states.UNSELECTED) {
@@ -47190,7 +47194,7 @@ var ThreeController = function(three, model, camera, element, controls, hud) {
 
   // TODO: there MUST be simpler logic for expressing this
   function updateMouseover() {
-  	
+
     if ( intersectedObject != null ) {
       if ( mouseoverObject != null ) {
         if ( mouseoverObject !== intersectedObject ) {
@@ -47429,12 +47433,18 @@ var ThreeControls = function (object, domElement) {
 		}
 
 		scale *= dollyScale;
+		
+
+
 	};
+
+
 
 	this.update = function () {
 
 		var position = this.object.position;
 		var offset = position.clone().sub( this.target );
+console.log(position)
 
 		// angle from z-axis around y-axis
 		var theta = Math.atan2( offset.x, offset.z );
@@ -47482,7 +47492,6 @@ var ThreeControls = function (object, domElement) {
 		this.needsUpdate = true;
 	};
 
-	// <<<<<<<<<<<<<<
 
 	function getAutoRotationAngle() {
 		return 2 * Math.PI / 60 / 60 * scope.autoRotateSpeed;
@@ -47525,6 +47534,34 @@ var ThreeControls = function (object, domElement) {
 		scope.domElement.addEventListener( 'mouseup', onMouseUp, false );
 
 	}
+	// <<<<<<<<<<<<<<<<<<<<<
+	  $('#constructor_2d').on('click', function() {
+
+	  	// setTimeout(()=> {
+	  	// 	var _x = scope.object.position.x;
+	  	// 	var _z = scope.object.position.z;
+
+
+	  	// 	var position = scope.object.position;
+		  // 	var size = scope.target;
+		  // 	var x = size.x;
+		  // 	var y = size.y;
+		  // 	var z = size.z;
+		  	
+		  // 	var max = Math.max(x, y, z)
+		  // 	console.log('++++max++++', max)
+		  // 	max = max * 15
+
+		  // 	console.log('++++max masax++++', max)
+		  	
+
+		  // 	scope.object.position.set(_x, max, _z)
+
+		  // 	scope.update()
+
+		  // 	console.log(position)
+		  // },1500)
+	  })
 
 
 
@@ -47857,7 +47894,7 @@ var ThreeControls = function (object, domElement) {
 	
 
 	this.stateZoom2d =  function() {
-		scope.maxDistance = 5500;
+		scope.maxDistance = 8500;
 		// prod change
 		scope.domElement.style.cursor = "auto";
 	}
@@ -48736,11 +48773,22 @@ var ThreeMain = function(model, element, canvasElement, opts) {
   this.floorClicked = JQUERY.Callbacks(); // floor
   this.nothingClicked = JQUERY.Callbacks();
   // this.cam2;
+// <<<<<<<<<<<<<<<<<<<<<<<<
 
   function cameraState_2d() {
+
+  	// let sizeRoom = model.floorplan.getCenter()
+
+  	// let x = sizeRoom.x
+  	// let y= sizeRoom.y
+  	// let z = sizeRoom.z
+
+  	// let max = Math.max(x, y, z) * 2
+
   	camera.fov = 10;
-  	scope.controls.update();
+  	// scope.controls.update();
   	camera.updateProjectionMatrix();
+
   	$('.constructor__controlViwe').removeClass('activeState');
   	$(this).addClass('activeState');
   }
@@ -48763,6 +48811,11 @@ var ThreeMain = function(model, element, canvasElement, opts) {
     domElement = scope.element.get(0) // Container
     
     camera = new THREE.PerspectiveCamera(50, 1, 1, 10000);
+    // camera = new THREE.OrthographicCamera(-450, 400, 400, -400, 1, 2000);
+
+    camera.position.x = 0;
+    camera.position.y = 0;
+    camera.position.z = -1;
 
     renderer = new THREE.WebGLRenderer({
       antialias: true,
