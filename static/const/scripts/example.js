@@ -153,7 +153,7 @@ var ContextMenu = function(blueprint3d) {
     $('.list_items').attr('data-val', JSON.stringify(listItem))
     $('.list_items').val(JSON.stringify(objForIvan))
     // $('.list_items').val(JSON.stringify(listItem))
-    console.log($('.list_items').val())
+    console.table(listItem)
   }
 
   var scope = this;
@@ -488,7 +488,7 @@ var SideMenu = function(blueprint3d, floorplanControls, modalEffects) {
 
   });
 
-  blueprint3d.model.scene.addItem(1, 'static/const/models/model1/model.js', {resizable: true});
+  // blueprint3d.model.scene.addItem(1, 'static/const/models/model1/model.js', {resizable: true});
 
   init();
 
@@ -558,14 +558,31 @@ var SideMenu = function(blueprint3d, floorplanControls, modalEffects) {
   }
   getListSelectedItem()
 
+
+  var allPrice = 0;
   function addItemInList(props) {
-    listItem[props]++;
-    $.each(listItem, function (i, v) {
-      objForIvan[i]['number'] = v;
-    })
-    $('.list_items').attr('data-val', JSON.stringify(listItem))
-    $('.list_items').val(JSON.stringify(objForIvan))
-    // console.log(JSON.stringify(objForIvan))
+    setTimeout(function() {
+      console.log(variableThroughAllTheFIles)
+      if (variableThroughAllTheFIles) {
+        listItem[props]++;
+        $.each(listItem, function (i, v) {
+          objForIvan[i]['number'] = v;
+        })
+        var counter = 0;
+        $.each(listItem, function (index, value) {
+          counter++;
+          if (value) {
+            curPrice = (Number(listItem2[index]) * Number(value));
+            allPrice = allPrice + curPrice;
+          } 
+        });
+        $('.confPrice').html(allPrice);
+        allPrice = 0;
+        $('.list_items').attr('data-val', JSON.stringify(listItem))
+        $('.list_items').val(JSON.stringify(objForIvan))
+        console.table(listItem)
+      }
+    }, 200);
   }
 
 }

@@ -44596,6 +44596,7 @@ FloorItem.prototype.isValidPosition = function(vec3, appearBool) {
         var dataArray = $('#floorplanner').attr('data-array');
         dataArray = dataArray.split(',').map(Number);
         var nonIntersectArr = dataArray ? dataArray : [];
+        variableThroughAllTheFIles = true;
         for (var i = 0; i < objects.length; i++) {
             if (objects[i] === this || !objects[i].obstructFloorMoves) {
                 continue;
@@ -44645,7 +44646,8 @@ FloorItem.prototype.isValidPosition = function(vec3, appearBool) {
             if (triggerino) {
             	this.position.y = thisObjHeight;
             }
-            if ((appearBool) && (countToTwo >= 2)) {            	
+            if ((appearBool) && (countToTwo >= 2)) { 
+            	variableThroughAllTheFIles = false;     	
             	$('.conf_wr__alert').addClass('alert');
             	setTimeout(function() {
             		$('.conf_wr__alert').removeClass('alert');
