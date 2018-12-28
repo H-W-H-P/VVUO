@@ -47444,7 +47444,7 @@ var ThreeControls = function (object, domElement) {
 
 		var position = this.object.position;
 		var offset = position.clone().sub( this.target );
-console.log(position)
+		console.log(position)
 
 		// angle from z-axis around y-axis
 		var theta = Math.atan2( offset.x, offset.z );
@@ -47535,7 +47535,7 @@ console.log(position)
 
 	}
 	// <<<<<<<<<<<<<<<<<<<<<
-	  $('#constructor_2d').on('click', function() {
+	  $('#constructor_2d, .conf_wr__order_btn, .open_page_pdf').on('click', function() {
 
 	  	setTimeout(()=> {
 	  		var _x = scope.object.position.x;
@@ -47544,19 +47544,24 @@ console.log(position)
 	  		var position = scope.object.position;
 		  	var size = scope.target;
 		  	var x = size.x;
-		  	var y = size.y;
 		  	var z = size.z;
-		  	
-		  	var max = Math.max(x, y, z)
 
-		  	vFov = 10 * Math.PI / 180;
+		  	var vFov = 10 * Math.PI / 180;
+		  	var coef = 2.2;
+		  	
+		  	var max = x;
+		  	if (x >= z) {
+		  		coef = 1.4;
+		  	} else {
+		  		max = z;
+		  	}
 
 		  	let cameraZ = max / Math.tan( vFov );
-		  	cameraZ = cameraZ * 2.2;
+		  	cameraZ = cameraZ * coef;
 		  	scope.object.position.set(_x, cameraZ, _z)
 
 		  	scope.update()
-		  },500)
+		  },10)
 	  })
 
 
