@@ -33,16 +33,6 @@ $(document).ready(function () {
     return false
   })
 
-  $('.instruction__link').on('click', function (EO) {
-    EO.preventDefault()
-    var domElement = document.getElementById('viewer')
-    domElement.style.cursor = 'url(../../static/img/icons/cursor.svg) 20 0, auto'
-    $('.instruction').addClass('instruction--animationClose')
-    setTimeout(() => {
-      $('.instruction').addClass('instruction--closed')
-    }, 1000)
-  })
-
   $('.input_decore').each(function () {
     $(this).removeClass('hasCont')
     if ($(this).val()) {
@@ -792,7 +782,6 @@ $(document).ready(function () {
     EO.preventDefault()
     $('.page_pdf').addClass('page_pdf--active')
     $('.page_pdf__line').addClass('page_pdf__line_hide')
-    // $('.have_question, .footer').addClass('pdf_control')
     getListPdf.getListItem()
     getListPdf.createRowTable()
     controlHeight()

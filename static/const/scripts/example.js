@@ -4,6 +4,7 @@
  */
 let listItem = {};
 let listItem2 = {};
+
 var CameraButtons = function(blueprint3d) {
 
   var orbitControls = blueprint3d.three.controls;
@@ -83,6 +84,7 @@ var CameraButtons = function(blueprint3d) {
       	$('.constructor__controlViwe_wh').removeClass('constructor_3d_active')
       }
     });
+
   }
 
   function preventDefault(e) {
@@ -118,6 +120,7 @@ var CameraButtons = function(blueprint3d) {
   }
 
   init();
+
 }
 
 /*
@@ -127,6 +130,7 @@ var CameraButtons = function(blueprint3d) {
 var ContextMenu = function(blueprint3d) {
   var curPrice;
   var allPrice = 0;
+
   function removeItemFromList(props) {
     let nameGoods = props.name;
     listItem[nameGoods]--;
@@ -292,6 +296,21 @@ var SideMenu = function(blueprint3d, floorplanControls, modalEffects) {
     }
   }
 
+    var triggerAddItem = true;
+
+
+    // click handlers
+    $('.instruction__link').on('click', function (EO) {
+      EO.preventDefault()
+      var domElement = document.getElementById('viewer');
+      domElement.style.cursor = 'url(../../static/img/icons/cursor.svg) 20 0, auto';
+      $('.instruction').addClass('instruction--animationClose');
+      triggerAddItem = false;
+      setTimeout(() => {
+        $('.instruction').addClass('instruction--closed');
+      }, 1000)
+    })
+
   // sidebar state
   var currentState = scope.states.FLOORPLAN;
 
@@ -434,9 +453,17 @@ var SideMenu = function(blueprint3d, floorplanControls, modalEffects) {
   }
 
   $('.config__add_window').on('click', function() {
+    if (triggerAddItem) {
+      $('html, body').animate({ scrollTop: $('.constructor').offset().top }, 1000)
+      return
+    }
     blueprint3d.model.scene.addItem(3, 'static/const/models/newObj/window/window.js', {resizable: true});
   });
   $('.config__add_door').on('click', function() {
+    if (triggerAddItem) {
+      $('html, body').animate({ scrollTop: $('.constructor').offset().top }, 1000)
+      return
+    }
     blueprint3d.model.scene.addItem(7, 'static/const/models/newObj/door/door.js', {resizable: true});
   });
 
@@ -448,11 +475,19 @@ var SideMenu = function(blueprint3d, floorplanControls, modalEffects) {
     EO.stopPropagation()
     if (EO.target.tagName === 'IMG') {
       if ($(EO.target).parent().hasClass('my_add_item_one')) {
+        if (triggerAddItem) {
+          $('html, body').animate({ scrollTop: $('.constructor').offset().top }, 1000)
+          return
+        }
         adItem()
         return
       }
     }
     if (!$(EO.target).hasClass('my_add_item_one')) {
+      return
+    }
+    if (triggerAddItem) {
+      $('html, body').animate({ scrollTop: $('.constructor').offset().top }, 1000)
       return
     }
     adItem() 
@@ -465,7 +500,14 @@ var SideMenu = function(blueprint3d, floorplanControls, modalEffects) {
     blueprint3d.model.scene.addItem(1, linkJs, {resizable: true}, nameGoods);
   }
 
-  $('.my_add_item').on('click', function() {
+  $('.my_add_item').on('click', function(EO) {
+    EO.preventDefault()
+    if (triggerAddItem) {
+      $('body, html').removeClass('pop_up_cond');
+      $('.items_pop_up').removeClass('pop_up_active');
+      $('html, body').animate({ scrollTop: $('.constructor').offset().top }, 1000);
+      return
+    }
     $('body, html').removeClass('pop_up_cond');
     $('.items_pop_up').removeClass('pop_up_active');
     let linkJs = $('.my_add_item').attr('data-jsLink');
@@ -478,9 +520,9 @@ var SideMenu = function(blueprint3d, floorplanControls, modalEffects) {
     let items;
     let htmlJsn = $('.constructor').attr('data-json');
     items = JSON.parse(htmlJsn);
-    for (var i = 0; i < items.length; i++) {
+    // for (var i = 0; i < items.length; i++) {
       // listItem[i['name']] = 0;
-    }
+    // }
     items.forEach((v, k) => {
       listItem[v['name']] = 0;
     });
