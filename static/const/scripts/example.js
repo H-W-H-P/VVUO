@@ -327,19 +327,20 @@ var SideMenu = function(blueprint3d, floorplanControls, modalEffects) {
   var currentState = scope.states.FLOORPLAN;
 
   function init() {
-    $('.confWallA-desk').val(700);
-    $('#confWallA').val(700);
-    $('.confWallB-desk').val(400);
-    $('#confWallB').val(400);
+
+    var wallA = 700;
+    var wallB = 400;
+    
+    $('.confWallA-desk').val(wallA);
+    $('#confWallA').val(wallA);
+    $('.confWallB-desk').val(wallB);
+    $('#confWallB').val(wallB);
     $('.config__input_height').val(250);
     $('.config__input_height_mobile').val(250);
     for (var tab in tabs) {
       var elem = tabs[tab];
       elem.click(tabClicked(elem));
     }
-
-    var wallA = 700;
-    var wallB = 400;
 
     $("#update-floorplan").click(floorplanUpdate);
 
@@ -517,6 +518,7 @@ var SideMenu = function(blueprint3d, floorplanControls, modalEffects) {
 
   });
 
+  // blueprint3d.model.scene.addItem(1, 'static/const/models/model1/model.js', {resizable: true});
   // blueprint3d.model.scene.addItem(1, 'static/const/models/model1/model.js', {resizable: true});
 
   init();
@@ -777,7 +779,6 @@ $(document).ready(function() {
 
   // Simple hack for exporting rooms.
   $(window).dblclick(function() {
-    console.log(blueprint3d)
     console.log(blueprint3d.model.exportSerialized())
   })
 

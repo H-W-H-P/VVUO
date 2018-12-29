@@ -44565,6 +44565,9 @@ FloorItem.prototype.moveToPosition = function(vec3, intersection) {
     }
 }
 
+FloorItem.prototype.removeChanges = function(vec3) {
+	console.log('heh')
+}
 
 FloorItem.prototype.isValidPosition = function(vec3, appearBool) {
 	var countToTwo = 0;
@@ -44635,11 +44638,19 @@ FloorItem.prototype.isValidPosition = function(vec3, appearBool) {
             }
             if (!utils.polygonOutsidePolygon(corners, objects[i].getCorners('x', 'z')) ||
                 utils.polygonPolygonIntersect(corners, objects[i].getCorners('x', 'z'))) {
+            	// if moved item intesecting another one
             	countToTwo++;
+
                 var intersectedObjHeight = objects[i].halfSize.y;   
-                // almost works        	
-                // if (countToTwo < 2) objects[i].position.y = intersectedObjHeight;
+                var intersectedObjPos = objects[i].position.y;
+
             	this.position.y = thisObjHeight + intersectedObjHeight*2;
+
+            	if (intersectedObjPos > intersectedObjHeight * 2) {
+            		// if intersected model on stage2
+            		this.position.y = thisObjHeight;
+            		return false;
+            	}
             	triggerino = false;
                 // return false;
             }
@@ -44647,6 +44658,7 @@ FloorItem.prototype.isValidPosition = function(vec3, appearBool) {
             	this.position.y = thisObjHeight;
             }
             if ((appearBool) && (countToTwo >= 2)) { 
+           		// if u're adding third floor item
             	variableThroughAllTheFIles = false;     	
             	$('.conf_wr__alert').addClass('alert');
             	setTimeout(function() {
@@ -44770,6 +44782,7 @@ Item.prototype = Object.create(THREE.Mesh.prototype);
 
 Item.prototype.remove = function() {
     this.scene.removeItem(this);
+    this.removeChanges(this)
     console.log('remove')
 };
 
@@ -46561,7 +46574,6 @@ var Scene = function(model, textureDir) {
       item.initObject();
       scope.itemLoadedCallbacks.fire(item);
       item.name = name;
-      console.warn(item)
     }
     scope.itemLoadingCallbacks.fire();
 
@@ -48513,6 +48525,12 @@ var ThreeHUD = function(three) {
   	setTimeout(function() {
   		three.needsUpdate();
   	}, 100);
+  	setTimeout(function() {
+  		three.needsUpdate();
+  	}, 200);
+  	setTimeout(function() {
+  		three.needsUpdate();
+  	}, 500);
   });
 
   function getColor() {
