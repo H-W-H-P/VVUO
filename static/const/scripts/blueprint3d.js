@@ -46223,11 +46223,6 @@ var Model = function(textureDir) {
       data.items
     );
 
-    console.log('=========ONE=============')
-    console.log(data.items)
-    
-
-
     scope.roomLoadedCallbacks.fire();
   }
 
@@ -46264,9 +46259,6 @@ var Model = function(textureDir) {
     this.scene.clearItems();
     this.floorplan.loadFloorplan(floorplan);
     utils.forEach(items, function(item) {
-
-    console.log('=========TWO=============')
-   	console.log(items)
     	
       position = new THREE.Vector3( item.xpos, item.ypos, item.zpos)    
       console.log('=========TWO-position=============')
@@ -46288,13 +46280,12 @@ var Model = function(textureDir) {
         item.item_type, 
         item.model_url, 
         metadata,
-        'name',
+        item.item_name2,
         position, 
         item.rotation,
         scale,
         item.fixed);
     });
-    
   }
 }
 
@@ -46576,7 +46567,7 @@ var Scene = function(model, textureDir) {
       item.initObject();
       scope.itemLoadedCallbacks.fire(item);
       item.name = name;
-      console.log(item)
+      console.warn(item)
     }
     scope.itemLoadingCallbacks.fire();
 
@@ -48453,6 +48444,7 @@ var ThreeHUD = function(three) {
 
   var rotating = false;
   var mouseover = false;
+  var mouseover = true;
 
   var tolerance = 10;
   var height = 25;
@@ -48602,9 +48594,10 @@ var ThreeHUD = function(three) {
 	   new THREE.Vector3(-40, 0, 100)
 	]);
 
-	var material = new THREE.LineBasicMaterial({
-	    color: 0xff00f0,
-	    linewidth: 200
+	// prod change line
+
+	var material = new THREE.MeshBasicMaterial({
+	    color: 0xff00f0
 	});
 
 	var geometry = new THREE.Geometry();
@@ -48758,6 +48751,7 @@ var ThreeMain = function(model, element, canvasElement, opts) {
 
   var lastRender = Date.now();
   var mouseOver = false;
+  var mouseOver = true;
   var hasClicked = false;
 
   var hud;
