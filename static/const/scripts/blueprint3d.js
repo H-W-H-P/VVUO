@@ -46547,13 +46547,7 @@ var Scene = function(model, textureDir) {
   }
 
   this.addItem = function(itemType, fileName, metadata, name, position, rotation, scale, fixed) {
-  	// console.log(metadata, position)
     itemType = itemType || 1;
-    // console.log(item)
-    // console.log(position)
-    // let _position = {x: 600, y: "42", z: 2}
-    // console.log(_position)
-    // prod change
     var loaderCallback = function(geometry, materials) {
       var item = new item_types[itemType](
         model,
@@ -48510,6 +48504,16 @@ var ThreeHUD = function(three) {
     }
     three.needsUpdate();
   }
+
+  $('.config__add_item_center, .my_add_item, .my_add_item_one').click(function () {
+  	three.needsUpdate();
+  	setTimeout(function() {
+  		three.needsUpdate();
+  	}, 10);
+  	setTimeout(function() {
+  		three.needsUpdate();
+  	}, 100);
+  });
 
   function getColor() {
     return (mouseover || rotating) ? hoverColor : color;
