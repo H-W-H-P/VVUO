@@ -46229,8 +46229,12 @@ var Model = function(textureDir) {
   this.exportSerialized = function() {
     var items_arr = [];
     var objects = scope.scene.getItems();
+    console.log(scope)
+    console.log(objects)
     for ( var i = 0; i < objects.length; i++ ) {
       var object = objects[i];
+      console.log(object)
+      console.log(items_arr[i])
       items_arr[i] = {
         item_name: object.metadata.itemName,
         item_type: object.metadata.itemType,
@@ -46244,6 +46248,7 @@ var Model = function(textureDir) {
         scale_z: object.scale.z,
         fixed: object.fixed
       };
+      console.log(items_arr[i])
     }
 
     var room = {

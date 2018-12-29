@@ -492,6 +492,7 @@ var SideMenu = function(blueprint3d, floorplanControls, modalEffects) {
         modelUrl: modelUrl,
         itemType: itemType
       }
+      console.log(metadata)
 
       blueprint3d.model.scene.addItem(itemType, modelUrl, metadata);
       setCurrentState(scope.states.DEFAULT);
@@ -506,13 +507,13 @@ var SideMenu = function(blueprint3d, floorplanControls, modalEffects) {
     if (triggerAddItem) {
       closeInstruction();
     }
-    blueprint3d.model.scene.addItem(2, 'static/const/models/newObj/window/window.js', {resizable: true});
+    blueprint3d.model.scene.addItem(2, 'static/const/models/newObj/window/window.js', {resizable: true, itemName: 'window', itemType: 2, modelUrl: 'static/const/models/newObj/window/window.js'}, 'window');
   });
   $('.config__add_door').on('click', function() {
     if (triggerAddItem) {
       closeInstruction();
     }
-    blueprint3d.model.scene.addItem(9, 'static/const/models/newObj/door/door.js', {resizable: true});
+    blueprint3d.model.scene.addItem(9, 'static/const/models/newObj/door/door.js', {resizable: true, itemName: 'door', itemType: 9, modelUrl: 'static/const/models/newObj/door/door.js'}, 'door');
 
   });
 
@@ -546,7 +547,7 @@ var SideMenu = function(blueprint3d, floorplanControls, modalEffects) {
     let linkJs = $(e).closest('.config__item').attr('data-js');
     let nameGoods = $(e).closest('.config__item').attr('data-goods');
     addItemInList(nameGoods)
-    blueprint3d.model.scene.addItem(1, linkJs, {resizable: true}, nameGoods);
+    blueprint3d.model.scene.addItem(1, linkJs, {resizable: true, itemName: nameGoods, itemType: 1, modelUrl: linkJs}, nameGoods);
   }
 
   // $('.shop_filters').on('click', function() {
@@ -563,7 +564,7 @@ var SideMenu = function(blueprint3d, floorplanControls, modalEffects) {
     let linkJs = $('.my_add_item').attr('data-jsLink');
     let nameGoods = $('.my_add_item').attr('data-goodsGoods');
     addItemInList(nameGoods)
-    blueprint3d.model.scene.addItem(1, linkJs, {resizable: true}, nameGoods);
+    blueprint3d.model.scene.addItem(1, linkJs, {resizable: true, itemName: nameGoods, itemType: 1, modelUrl: linkJs}, nameGoods);
   })
 
   function getListSelectedItem() {
