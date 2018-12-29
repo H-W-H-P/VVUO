@@ -46223,7 +46223,7 @@ var Model = function(textureDir) {
       data.items
     );
 
-    console.log(data.items)
+    // console.log(data.items)
 
     scope.roomLoadedCallbacks.fire();
   }
@@ -46262,7 +46262,7 @@ var Model = function(textureDir) {
     this.floorplan.loadFloorplan(floorplan);
     utils.forEach(items, function(item) {
 
-    	console.log(item)
+   	  console.log(item)
     	
       position = new THREE.Vector3( item.xpos, item.ypos, item.zpos)    
 
@@ -46286,7 +46286,6 @@ var Model = function(textureDir) {
         scale,
         item.fixed);
     });
-    console.log(scope)
   }
 }
 
@@ -46568,7 +46567,7 @@ var Scene = function(model, textureDir) {
       item.initObject();
       scope.itemLoadedCallbacks.fire(item);
       item.name = name;
-      console.log(item)
+      console.warn(item)
     }
     scope.itemLoadingCallbacks.fire();
 
