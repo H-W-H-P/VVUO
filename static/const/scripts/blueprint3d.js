@@ -44565,8 +44565,18 @@ FloorItem.prototype.moveToPosition = function(vec3, intersection) {
     }
 }
 
-FloorItem.prototype.removeChanges = function(vec3) {
-	console.log('heh')
+FloorItem.prototype.removeChanges = function(vec3, deleter) {
+	var deleter = deleter;
+	if (!deleter) {
+		var corners = this.getCorners('x', 'z');
+		var objects = this.scene.getItems();
+	    for (var i = 0; i < objects.length; i++) {
+		    if (!utils.polygonOutsidePolygon(corners, objects[i].getCorners('x', 'z')) ||
+		                utils.polygonPolygonIntersect(corners, objects[i].getCorners('x', 'z'))) {
+		    	if (objects[i].halfSize.y * 2 < objects[i].position.y) objects[i].position.y = objects[i].halfSize.y;
+		    }
+		}
+	}		
 }
 
 FloorItem.prototype.isValidPosition = function(vec3, appearBool) {
@@ -44649,8 +44659,10 @@ FloorItem.prototype.isValidPosition = function(vec3, appearBool) {
             	if (intersectedObjPos > intersectedObjHeight * 2) {
             		// if intersected model on stage2
             		this.position.y = thisObjHeight;
-            		return false;
+            		// return false;
+            		if (!appearBool) return false;
             	}
+
             	triggerino = false;
                 // return false;
             }
@@ -44780,9 +44792,10 @@ var Item = function(model, metadata, geometry, material, position, rotation, sca
 
 Item.prototype = Object.create(THREE.Mesh.prototype);
 
-Item.prototype.remove = function() {
+Item.prototype.remove = function(deleter) {
+	var deleter = deleter;
     this.scene.removeItem(this);
-    this.removeChanges(this)
+    this.removeChanges(this, deleter)
     console.log('remove')
 };
 
@@ -44830,7 +44843,7 @@ Item.prototype.initObject = function() {
     this.placeInRoom();
     var ifDelete = this.placeInRoom();
     if (ifDelete === 1) {
-    	this.remove();
+    	this.remove(ifDelete);
     }
     // select and stuff
     this.scene.needsUpdate = true;
@@ -48546,8 +48559,9 @@ var ThreeHUD = function(three) {
     three.needsUpdate();
   }
 
-  $('.config__add_item_center, .my_add_item, .my_add_item_one').click(function () {
+  $(document).on('click', '.config__add_item_center, .my_add_item, .my_add_item_one', function () {
   	three.needsUpdate();
+  	console.log(three)
   	setTimeout(function() {
   		three.needsUpdate();
   	}, 10);
@@ -48560,6 +48574,18 @@ var ThreeHUD = function(three) {
   	setTimeout(function() {
   		three.needsUpdate();
   	}, 500);
+  	setTimeout(function() {
+  		three.needsUpdate();
+  	}, 1000);
+  	setTimeout(function() {
+  		three.needsUpdate();
+  	}, 1500);
+  	setTimeout(function() {
+  		three.needsUpdate();
+  	}, 2000);
+  	setTimeout(function() {
+  		three.needsUpdate();
+  	}, 2500);
   });
 
   function getColor() {
