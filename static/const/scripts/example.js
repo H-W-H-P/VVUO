@@ -310,12 +310,13 @@ var SideMenu = function(blueprint3d, floorplanControls, modalEffects) {
     // click handlers
     $('.instruction__link').on('click', function (EO) {
       EO.preventDefault();
+      EO.stopPropagation();
       closeInstruction();
     })
 
     function closeInstruction() {
       var domElement = document.getElementById('viewer');
-      domElement.style.cursor = 'url(../../static/img/icons/cursor.svg) 20 0, auto';
+      domElement.style.cursor = 'url(../../static/img/icons/coursor/default-default.svg) 20 0, auto';
       $('.instruction').addClass('instruction--animationClose');
       triggerAddItem = false;
       setTimeout(() => {

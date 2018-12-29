@@ -46288,7 +46288,7 @@ var Model = function(textureDir) {
         item.item_type, 
         item.model_url, 
         metadata,
-        'name',
+        item.item_name2,
         position, 
         item.rotation,
         scale,
@@ -46783,6 +46783,7 @@ var ThreeController = function(three, model, camera, element, controls, hud) {
   var mouseMoved = false; // has mouse moved since down click
 
   var rotateMouseOver = false;
+  var triggerViwe = false
 
   var states = {
     UNSELECTED: 0, // no object selected
@@ -46795,9 +46796,10 @@ var ThreeController = function(three, model, camera, element, controls, hud) {
   var state = states.UNSELECTED;
 
   this.needsUpdate = true;
-
   function init() {
-  	three.setCursorStyle("url(../../static/img/icons/coursor/default-default.svg) 20 0, auto");
+  	if (!triggerViwe) {
+  		three.setCursorStyle("url(../../static/img/icons/coursor/default-default.svg) 20 0, auto");
+  	}
     element.mousedown( mouseDownEvent );
     element.mouseup( mouseUpEvent );
     element.mousemove( mouseMoveEvent );
@@ -46811,6 +46813,16 @@ var ThreeController = function(three, model, camera, element, controls, hud) {
     $('.conf_wr__order_btn, .open_page_pdf').on('click', function() {
     	scope.setSelectedObject(null);
     })
+    $('#constructor_2d').on('click', function() {
+    	triggerViwe = true;
+    	three.setCursorStyle("auto");
+    })
+    $('#constructor_3d').on('click', function() {
+    	triggerViwe = false;
+    })
+    // $('.instruction__link').on('click', function() {
+    // 	three.setCursorStyle("url(../../static/img/icons/coursor/default-default.svg) 20 0, auto");
+    // })
   }
 
   // invoked via callback when item is loaded
@@ -46941,6 +46953,9 @@ var ThreeController = function(three, model, camera, element, controls, hud) {
 
   function mouseDownEvent( event ) {
   	// three.setCursorStyle("url(../../static/img/icons/coursor/default-push.svg) 20 0, auto");
+  	if (!triggerViwe) {
+  		three.setCursorStyle("url(../../static/img/icons/coursor/default-push.svg) 20 0, auto");
+  	}
   	
     if (scope.enabled) {
       event.preventDefault();
@@ -46949,7 +46964,7 @@ var ThreeController = function(three, model, camera, element, controls, hud) {
       mouseDown = true;
       switch(state) {
         case states.SELECTED:
-        	three.setCursorStyle("url(../../static/img/icons/coursor/default-push.svg) 20 0, auto");
+        	// three.setCursorStyle("url(../../static/img/icons/coursor/default-push.svg) 20 0, auto");
           if (rotateMouseOver) {
             switchState(states.ROTATING);
           } else if (intersectedObject != null) {
@@ -46979,7 +46994,10 @@ var ThreeController = function(three, model, camera, element, controls, hud) {
   }
 
   function mouseUpEvent( event ) {
-
+  	if (!triggerViwe) {
+  		three.setCursorStyle("url(../../static/img/icons/coursor/default-default.svg) 20 0, auto");
+  	}
+	
     if (scope.enabled) {
       mouseDown = false;
 
@@ -47001,7 +47019,11 @@ var ThreeController = function(three, model, camera, element, controls, hud) {
           }
           break;
         case states.SELECTED:
-        	three.setCursorStyle("url(../../static/img/icons/coursor/default-default.svg) 20 0, auto");
+        	// if (!triggerViwe) {
+        	// 	three.setCursorStyle("url(../../static/img/icons/coursor/default-default.svg) 20 0, auto");
+        	// } else {
+        	// 	three.setCursorStyle("auto");
+        	// }
           if (intersectedObject == null && !mouseMoved) {
             switchState(states.UNSELECTED);
             checkWallsAndFloors();
@@ -47034,7 +47056,7 @@ var ThreeController = function(three, model, camera, element, controls, hud) {
         controls.enabled = false;
         break;
       case states.DRAGGING:
-        three.setCursorStyle("url(../../static/img/icons/coursor/palm-push.svg) 20 0, auto");
+        three.setCursorStyle("url(../../static/img/icons/coursor/palm-push.svg) 20 20, auto");
         clickPressed();
         controls.enabled = false;
         break;
@@ -47048,9 +47070,13 @@ var ThreeController = function(three, model, camera, element, controls, hud) {
         break;
       case states.DRAGGING:
         if (mouseoverObject) {
-          three.setCursorStyle("url(../../static/img/icons/coursor/palm-default.svg) 20 0, auto");
+          three.setCursorStyle("url(../../static/img/icons/coursor/palm-default.svg) 20 20, auto");
         } else {
-          three.setCursorStyle("url(../../static/img/icons/coursor/default-default.svg) 20 0, auto");
+        	if (!triggerViwe) {
+        		three.setCursorStyle("url(../../static/img/icons/coursor/default-default.svg) 20 0, auto");
+        	} else {
+        		three.setCursorStyle("auto");
+        	}
         }
         break;
       case states.ROTATING:
@@ -47220,12 +47246,17 @@ var ThreeController = function(three, model, camera, element, controls, hud) {
       } else {
         mouseoverObject = intersectedObject;
         mouseoverObject.mouseOver();
-        three.setCursorStyle("url(../../static/img/icons/coursor/palm-default.svg) 20 0, auto");
+        three.setCursorStyle("url(../../static/img/icons/coursor/palm-default.svg) 20 20, auto");
         scope.needsUpdate = true;
       }
     } else if (mouseoverObject != null) {
       mouseoverObject.mouseOff();
-      three.setCursorStyle("url(../../static/img/icons/coursor/default-default.svg) 20 0, auto");
+      if (!triggerViwe) {
+      	three.setCursorStyle("url(../../static/img/icons/coursor/default-default.svg) 20 0, auto");
+      } else {
+      	three.setCursorStyle("auto");
+      }
+      
       mouseoverObject = null;
       scope.needsUpdate = true;
     }
@@ -48814,6 +48845,7 @@ var ThreeMain = function(model, element, canvasElement, opts) {
     domElement = scope.element.get(0) // Container
     
     camera = new THREE.PerspectiveCamera(50, 1, 1, 100000);
+    // camera = new THREE.PerspectiveCamera(50, 1, 1, 100000);
     // camera = new THREE.OrthographicCamera(-450, 400, 400, -400, 1, 2000);
 
     camera.position.x = 0;

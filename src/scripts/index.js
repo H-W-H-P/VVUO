@@ -922,10 +922,10 @@ $(document).ready(function () {
     })
     createRemoveSliderPopUp(1)
   }
-
+  let slickPopUp = false
   function createRemoveSliderPopUp (create, destory) {
     if (create) {
-      $('.items_pop_up__wrap_img').slick({
+      slickPopUp = $('.items_pop_up__wrap_img').slick({
         infinite: false,
         speed: 300,
         slidesToShow: 1,
@@ -938,6 +938,8 @@ $(document).ready(function () {
       setTimeout(() => {
         console.log('SLICK')
         $('.items_pop_up__wrap_img').slick('unslick')
+        slickPopUp.slick('unslick')
+        slickPopUp = false
       }, 20)
     }
   }
@@ -951,6 +953,9 @@ $(document).ready(function () {
   })
 
   $('.my_add_item').on('click', function (EO) {
+    if (!slickPopUp) {
+      return
+    }
     createRemoveSliderPopUp(0, 1)
   })
   // - заполнение попапа (img ptice)
