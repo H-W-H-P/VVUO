@@ -48445,6 +48445,7 @@ var ThreeHUD = function(three) {
 
   var rotating = false;
   var mouseover = false;
+  var mouseover = true;
 
   var tolerance = 10;
   var height = 25;
@@ -48594,9 +48595,10 @@ var ThreeHUD = function(three) {
 	   new THREE.Vector3(-40, 0, 100)
 	]);
 
-	var material = new THREE.LineBasicMaterial({
-	    color: 0xff00f0,
-	    linewidth: 200
+	// prod change line
+
+	var material = new THREE.MeshBasicMaterial({
+	    color: 0xff00f0
 	});
 
 	var geometry = new THREE.Geometry();
@@ -48750,6 +48752,7 @@ var ThreeMain = function(model, element, canvasElement, opts) {
 
   var lastRender = Date.now();
   var mouseOver = false;
+  var mouseOver = true;
   var hasClicked = false;
 
   var hud;
