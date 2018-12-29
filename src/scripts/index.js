@@ -936,8 +936,9 @@ $(document).ready(function () {
       })
     } else {
       setTimeout(() => {
+        console.log('SLICK')
         $('.items_pop_up__wrap_img').slick('unslick')
-      }, 200)
+      }, 20)
     }
   }
 

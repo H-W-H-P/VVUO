@@ -46223,7 +46223,10 @@ var Model = function(textureDir) {
       data.items
     );
 
+    console.log('=========ONE=============')
     console.log(data.items)
+    
+
 
     scope.roomLoadedCallbacks.fire();
   }
@@ -46262,9 +46265,12 @@ var Model = function(textureDir) {
     this.floorplan.loadFloorplan(floorplan);
     utils.forEach(items, function(item) {
 
-    	console.log(item)
+    console.log('=========TWO=============')
+   	console.log(items)
     	
       position = new THREE.Vector3( item.xpos, item.ypos, item.zpos)    
+      console.log('=========TWO-position=============')
+   	  console.log(position)
 
       var metadata = {
         itemName: item.item_name,
@@ -46277,16 +46283,18 @@ var Model = function(textureDir) {
         y: item.scale_y,
         z: item.scale_z
       }
+   
       scope.scene.addItem( 
         item.item_type, 
         item.model_url, 
         metadata,
+        'name',
         position, 
         item.rotation,
         scale,
         item.fixed);
     });
-    console.log(scope)
+    
   }
 }
 
