@@ -345,8 +345,6 @@ var SideMenu = function(blueprint3d, floorplanControls, modalEffects) {
       wallB = 400;
     }
 
-    
-
     $('.confWallA-desk').val(wallA);
     $('#confWallA').val(wallA);
     $('.confWallB-desk').val(wallB);
@@ -509,6 +507,7 @@ var SideMenu = function(blueprint3d, floorplanControls, modalEffects) {
         modelUrl: modelUrl,
         itemType: itemType
       }
+      console.log(metadata)
 
       blueprint3d.model.scene.addItem(itemType, modelUrl, metadata);
       setCurrentState(scope.states.DEFAULT);
@@ -523,16 +522,17 @@ var SideMenu = function(blueprint3d, floorplanControls, modalEffects) {
     if (triggerAddItem) {
       closeInstruction();
     }
-    blueprint3d.model.scene.addItem(2, 'static/const/models/newObj/window/window.js', {resizable: true});
+    blueprint3d.model.scene.addItem(2, 'static/const/models/newObj/window/window.js', {resizable: true, itemName: 'window', itemType: 2, modelUrl: 'static/const/models/newObj/window/window.js'}, 'window');
   });
   $('.config__add_door').on('click', function() {
     if (triggerAddItem) {
       closeInstruction();
     }
-    blueprint3d.model.scene.addItem(9, 'static/const/models/newObj/door/door.js', {resizable: true});
+    blueprint3d.model.scene.addItem(9, 'static/const/models/newObj/door/door.js', {resizable: true, itemName: 'door', itemType: 9, modelUrl: 'static/const/models/newObj/door/door.js'}, 'door');
 
   });
 
+  // blueprint3d.model.scene.addItem(1, 'static/const/models/model1/model.js', {resizable: true});
   // blueprint3d.model.scene.addItem(1, 'static/const/models/model1/model.js', {resizable: true});
 
   init();
@@ -563,7 +563,7 @@ var SideMenu = function(blueprint3d, floorplanControls, modalEffects) {
     let linkJs = $(e).closest('.config__item').attr('data-js');
     let nameGoods = $(e).closest('.config__item').attr('data-goods');
     addItemInList(nameGoods)
-    blueprint3d.model.scene.addItem(1, linkJs, {resizable: true}, nameGoods);
+    blueprint3d.model.scene.addItem(1, linkJs, {resizable: true, itemName: nameGoods, itemType: 1, modelUrl: linkJs}, nameGoods);
   }
 
   // $('.shop_filters').on('click', function() {
@@ -580,7 +580,7 @@ var SideMenu = function(blueprint3d, floorplanControls, modalEffects) {
     let linkJs = $('.my_add_item').attr('data-jsLink');
     let nameGoods = $('.my_add_item').attr('data-goodsGoods');
     addItemInList(nameGoods)
-    blueprint3d.model.scene.addItem(1, linkJs, {resizable: true}, nameGoods);
+    blueprint3d.model.scene.addItem(1, linkJs, {resizable: true, itemName: nameGoods, itemType: 1, modelUrl: linkJs}, nameGoods);
   })
 
   function getListSelectedItem() {
@@ -793,7 +793,6 @@ $(document).ready(function() {
 
   // Simple hack for exporting rooms.
   $(window).dblclick(function() {
-    console.log(blueprint3d)
     console.log(blueprint3d.model.exportSerialized())
   })
   var dataRoomDefault = '{"floorplan":{"corners":{"8f4a050d-e102-3c3f-5af9-3d9133555d76":{"x":0,"y":0,"pos":"left-bot"},"4e312eca-6c4f-30d1-3d9a-a19a9d1ee359":{"x":0,"y":400,"pos":"left-top"},"11d25193-4411-fbbf-78cb-ae7c0283164b":{"x":700,"y":400,"pos":"right-top"},"edf0de13-df9f-cd6a-7d11-9bd13c36ce12":{"x":700,"y":0,"pos":"right-bot"}},"walls":[{"corner1":"8f4a050d-e102-3c3f-5af9-3d9133555d76","corner2":"4e312eca-6c4f-30d1-3d9a-a19a9d1ee359"},{"corner1":"8f4a050d-e102-3c3f-5af9-3d9133555d76","corner2":"edf0de13-df9f-cd6a-7d11-9bd13c36ce12"},{"corner1":"edf0de13-df9f-cd6a-7d11-9bd13c36ce12","corner2":"11d25193-4411-fbbf-78cb-ae7c0283164b"},{"corner1":"11d25193-4411-fbbf-78cb-ae7c0283164b","corner2":"4e312eca-6c4f-30d1-3d9a-a19a9d1ee359"}],"wallTextures":[],"floorTextures":{}},"items":[]}';
@@ -803,5 +802,6 @@ $(document).ready(function() {
   }
 
   data = dataRoom;
+
   blueprint3d.model.loadSerialized(data);
 })
