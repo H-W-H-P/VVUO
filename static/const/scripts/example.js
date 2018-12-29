@@ -67,7 +67,7 @@ var CameraButtons = function(blueprint3d) {
     	return orbitControls.changeViewe_2d();
     });
 
-     $('#constructor_3d, .page_pdf__back').on('click', function(EO) {
+     $('#constructor_3d, .page_pdf__back, .config__next, .clearConstr').on('click', function(EO) {
     	EO.preventDefault();
     	return orbitControls.changeViewe_3d();
     });
@@ -270,7 +270,7 @@ var ModalEffects = function(blueprint3d) {
  */
 
 var SideMenu = function(blueprint3d, floorplanControls, modalEffects) {
-  $('#constructor_3d, .page_pdf__back').on('click', function(EO) {
+  $('#constructor_3d, .page_pdf__back, .config__next, .clearConstr').on('click', function(EO) {
     EO.preventDefault();
     blueprint3d.model.floorplan.update();
   })
@@ -344,6 +344,8 @@ var SideMenu = function(blueprint3d, floorplanControls, modalEffects) {
     $("#update-floorplan").click(floorplanUpdate);
 
     $('.config__next').click(function () {
+      $('.constructor__controlViwe').removeClass('activeState constructor_2d_active constructor_3d_active')
+      $('#constructor_3d').addClass('activeState')
       closeInstruction();
       // check and set min wall height if < 2.1m
       var wallHeight = $('.config__input_height_mobile').val() > 210 ? $('.config__input_height_mobile').val() : $('.config__input_height').val();
@@ -375,6 +377,8 @@ var SideMenu = function(blueprint3d, floorplanControls, modalEffects) {
     })
 
     $('.clearConstr').click(function () {
+      $('.constructor__controlViwe').removeClass('activeState constructor_2d_active constructor_3d_active')
+      $('#constructor_3d').addClass('activeState')
       $(this).closest('.pop_up__wr').removeClass('pop_up_active')
       $('html, body').removeClass('pop_up_cond')
       blueprint3d.model.loadSerialized('{"floorplan":{"corners":{"8f4a050d-e102-3c3f-5af9-3d9133555d76":{"x":0,"y":0,"pos":"left-bot"},"4e312eca-6c4f-30d1-3d9a-a19a9d1ee359":{"x":0,"y":' + wallB + ',"pos":"left-top"},"11d25193-4411-fbbf-78cb-ae7c0283164b":{"x":' + wallA + ',"y":' + wallB + ',"pos":"right-top"},"edf0de13-df9f-cd6a-7d11-9bd13c36ce12":{"x":' + wallA + ',"y":0,"pos":"right-bot"}},"walls":[{"corner1":"8f4a050d-e102-3c3f-5af9-3d9133555d76","corner2":"4e312eca-6c4f-30d1-3d9a-a19a9d1ee359"},{"corner1":"8f4a050d-e102-3c3f-5af9-3d9133555d76","corner2":"edf0de13-df9f-cd6a-7d11-9bd13c36ce12"},{"corner1":"edf0de13-df9f-cd6a-7d11-9bd13c36ce12","corner2":"11d25193-4411-fbbf-78cb-ae7c0283164b"},{"corner1":"11d25193-4411-fbbf-78cb-ae7c0283164b","corner2":"4e312eca-6c4f-30d1-3d9a-a19a9d1ee359"}],"wallTextures":[],"floorTextures":{}},"items":[{"item_name": "Full Bed", "item_type": 1, "model_url": "static/const/models/model3/model.js", "xpos": 0, "ypos": 100, "zpos":0, "rotation": 1, "scale_x": 1, "scale_y": 1, "scale_z": 1, "fixed": false},{"item_name2": "Full Bed2", "item_type": 1, "model_url": "static/const/models/model3/model.js", "xpos": 330, "ypos": 200, "zpos": 100, "rotation": 1, "scale_x": 1, "scale_y": 1, "scale_z": 1, "fixed": false}]}');
@@ -512,7 +516,7 @@ var SideMenu = function(blueprint3d, floorplanControls, modalEffects) {
 
   });
 
-  blueprint3d.model.scene.addItem(1, 'static/const/models/model1/model.js', {resizable: true});
+  // blueprint3d.model.scene.addItem(1, 'static/const/models/model1/model.js', {resizable: true});
 
   init();
 
