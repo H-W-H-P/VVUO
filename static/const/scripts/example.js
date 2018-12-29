@@ -549,6 +549,10 @@ var SideMenu = function(blueprint3d, floorplanControls, modalEffects) {
     blueprint3d.model.scene.addItem(1, linkJs, {resizable: true}, nameGoods);
   }
 
+  // $('.shop_filters').on('click', function() {
+  //   blueprint3d.model.scene.addItem(1, 'static/const/models/model1/model.js', {resizable: true}, 'name', {'x': 100, 'y': 71, 'z': 250});
+  // })
+
   $('.my_add_item').on('click', function(EO) {
     EO.preventDefault()
     if (triggerAddItem) {
@@ -776,6 +780,6 @@ $(document).ready(function() {
     console.log(blueprint3d.model.exportSerialized())
   })
 
-  data = '{"floorplan":{"corners":{"8f4a050d-e102-3c3f-5af9-3d9133555d76":{"x":0,"y":0,"pos":"left-bot"},"4e312eca-6c4f-30d1-3d9a-a19a9d1ee359":{"x":0,"y":400,"pos":"left-top"},"11d25193-4411-fbbf-78cb-ae7c0283164b":{"x":700,"y":400,"pos":"right-top"},"edf0de13-df9f-cd6a-7d11-9bd13c36ce12":{"x":700,"y":0,"pos":"right-bot"}},"walls":[{"corner1":"8f4a050d-e102-3c3f-5af9-3d9133555d76","corner2":"4e312eca-6c4f-30d1-3d9a-a19a9d1ee359"},{"corner1":"8f4a050d-e102-3c3f-5af9-3d9133555d76","corner2":"edf0de13-df9f-cd6a-7d11-9bd13c36ce12"},{"corner1":"edf0de13-df9f-cd6a-7d11-9bd13c36ce12","corner2":"11d25193-4411-fbbf-78cb-ae7c0283164b"},{"corner1":"11d25193-4411-fbbf-78cb-ae7c0283164b","corner2":"4e312eca-6c4f-30d1-3d9a-a19a9d1ee359"}],"wallTextures":[],"floorTextures":{}},"items":[{"item_name": "Full Bed", "item_type": 1, "model_url": "static/const/models/model3/model.js", "xpos": 0, "ypos": 100, "zpos":0, "rotation": 1, "scale_x": 1, "scale_y": 1, "scale_z": 1, "fixed": false},{"item_name2": "Full Bed2", "item_type": 1, "model_url": "static/const/models/model3/model.js", "xpos": 330, "ypos": 200, "zpos": 100, "rotation": 1, "scale_x": 1, "scale_y": 1, "scale_z": 1, "fixed": false}]}'
+  data = '{"floorplan":{"corners":{"8f4a050d-e102-3c3f-5af9-3d9133555d76":{"x":0,"y":0,"pos":"left-bot"},"4e312eca-6c4f-30d1-3d9a-a19a9d1ee359":{"x":0,"y":400,"pos":"left-top"},"11d25193-4411-fbbf-78cb-ae7c0283164b":{"x":700,"y":400,"pos":"right-top"},"edf0de13-df9f-cd6a-7d11-9bd13c36ce12":{"x":700,"y":0,"pos":"right-bot"}},"walls":[{"corner1":"8f4a050d-e102-3c3f-5af9-3d9133555d76","corner2":"4e312eca-6c4f-30d1-3d9a-a19a9d1ee359"},{"corner1":"8f4a050d-e102-3c3f-5af9-3d9133555d76","corner2":"edf0de13-df9f-cd6a-7d11-9bd13c36ce12"},{"corner1":"edf0de13-df9f-cd6a-7d11-9bd13c36ce12","corner2":"11d25193-4411-fbbf-78cb-ae7c0283164b"},{"corner1":"11d25193-4411-fbbf-78cb-ae7c0283164b","corner2":"4e312eca-6c4f-30d1-3d9a-a19a9d1ee359"}],"wallTextures":[],"floorTextures":{}},"items":[{"item_name2": "Bad Boy", "item_type": 1, "model_url": "static/const/models/model1/model.js", "xpos": 330, "ypos": 200, "zpos": 100, "rotation": 1, "scale_x": 1, "scale_y": 1, "scale_z": 1, "fixed": false},{"item_name2": "Bad Boy", "item_type": 1, "model_url": "static/const/models/model3/model.js", "xpos": 350, "ypos": 200, "zpos": 200, "rotation": 1, "scale_x": 1, "scale_y": 1, "scale_z": 1, "fixed": false}]}'
   blueprint3d.model.loadSerialized(data);
 })
