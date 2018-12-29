@@ -46789,6 +46789,7 @@ var ThreeController = function(three, model, camera, element, controls, hud) {
   this.needsUpdate = true;
 
   function init() {
+  	three.setCursorStyle("url(../../static/img/icons/coursor/default-default.svg) 20 0, auto");
     element.mousedown( mouseDownEvent );
     element.mouseup( mouseUpEvent );
     element.mousemove( mouseMoveEvent );
@@ -46820,10 +46821,6 @@ var ThreeController = function(three, model, camera, element, controls, hud) {
         // prod change
     }
     item.position_set = true;
-  }
-
-  function gtn() {
-  	
   }
 
   function clickPressed(vec2) {
@@ -46899,7 +46896,7 @@ var ThreeController = function(three, model, camera, element, controls, hud) {
 
 
   function mouseMoveEvent(event) {
-
+	
     if (scope.enabled) {
       event.preventDefault();
 
@@ -46935,14 +46932,16 @@ var ThreeController = function(three, model, camera, element, controls, hud) {
   }
 
   function mouseDownEvent( event ) {
+  	// three.setCursorStyle("url(../../static/img/icons/coursor/default-push.svg) 20 0, auto");
+  	
     if (scope.enabled) {
       event.preventDefault();
 
       mouseMoved = false;
       mouseDown = true;
-
       switch(state) {
         case states.SELECTED:
+        	three.setCursorStyle("url(../../static/img/icons/coursor/default-push.svg) 20 0, auto");
           if (rotateMouseOver) {
             switchState(states.ROTATING);
           } else if (intersectedObject != null) {
@@ -46994,6 +46993,7 @@ var ThreeController = function(three, model, camera, element, controls, hud) {
           }
           break;
         case states.SELECTED:
+        	three.setCursorStyle("url(../../static/img/icons/coursor/default-default.svg) 20 0, auto");
           if (intersectedObject == null && !mouseMoved) {
             switchState(states.UNSELECTED);
             checkWallsAndFloors();
@@ -47015,7 +47015,6 @@ var ThreeController = function(three, model, camera, element, controls, hud) {
   }
 
   function onEntry(state) {
-
     switch(state) {
       case states.UNSELECTED:
         scope.setSelectedObject( null );
@@ -47027,8 +47026,7 @@ var ThreeController = function(three, model, camera, element, controls, hud) {
         controls.enabled = false;
         break;
       case states.DRAGGING:
-       three.setCursorStyleUrl("../../static/img/icons/hand-arrows-coursor-2.svg");
-        
+        three.setCursorStyle("url(../../static/img/icons/coursor/palm-push.svg) 20 0, auto");
         clickPressed();
         controls.enabled = false;
         break;
@@ -47042,9 +47040,9 @@ var ThreeController = function(three, model, camera, element, controls, hud) {
         break;
       case states.DRAGGING:
         if (mouseoverObject) {
-
+          three.setCursorStyle("url(../../static/img/icons/coursor/palm-default.svg) 20 0, auto");
         } else {
-          three.setCursorStyle("url(../../static/img/icons/cursor.svg) 20 0, auto");
+          three.setCursorStyle("url(../../static/img/icons/coursor/default-default.svg) 20 0, auto");
         }
         break;
       case states.ROTATING:
@@ -47214,15 +47212,12 @@ var ThreeController = function(three, model, camera, element, controls, hud) {
       } else {
         mouseoverObject = intersectedObject;
         mouseoverObject.mouseOver();
-       three.setCursorStyleUrl("../../static/img/icons/hand-arrows-coursor-2.svg");
+        three.setCursorStyle("url(../../static/img/icons/coursor/palm-default.svg) 20 0, auto");
         scope.needsUpdate = true;
       }
     } else if (mouseoverObject != null) {
       mouseoverObject.mouseOff();
-      three.setCursorStyle("url(../../static/img/icons/cursor.svg) 20 0, auto");
-      if ($('#constructor_2d').hasClass('activeState')) {
-      	three.setCursorStyle('auto')
-      }
+      three.setCursorStyle("url(../../static/img/icons/coursor/default-default.svg) 20 0, auto");
       mouseoverObject = null;
       scope.needsUpdate = true;
     }
@@ -47905,7 +47900,7 @@ var ThreeControls = function (object, domElement) {
 
 	this.stateZoom3d = function() {
 		scope.maxDistance = 1500;
-		scope.domElement.style.cursor = "url(../../static/img/icons/cursor.svg) 20 0, auto";
+		scope.domElement.style.cursor = "url(../../static/img/icons/coursor/default-default.svg) 20 0, auto";
 	}
 
 	
@@ -48517,8 +48512,6 @@ var ThreeHUD = function(three) {
   }
 
   function getColor() {
-  	// if (mouseover) three.setCursorStyleUrl("../../static/img/icons/hand-arrows-coursor-2.svg");
-  	// else three.setCursorStyle("url(../../static/img/icons/cursor.svg) 20 0, auto");
     return (mouseover || rotating) ? hoverColor : color;
   }
 
