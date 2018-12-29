@@ -20903,6 +20903,7 @@ THREE.JSONLoader.prototype.loadAjaxJSON = function ( context, url, callback, tex
 				if ( xhr.responseText ) {
 
 					var json = JSON.parse( xhr.responseText );
+					
 
 					if ( json.metadata !== undefined && json.metadata.type === 'scene' ) {
 
@@ -46604,6 +46605,7 @@ var Scene = function(model, textureDir) {
   }
 
   this.addItem = function(itemType, fileName, metadata, name, position, rotation, scale, fixed) {
+
     itemType = itemType || 1;
     if (position) var posY = position.y;    
     var loaderCallback = function(geometry, materials, posY) {
@@ -46620,6 +46622,7 @@ var Scene = function(model, textureDir) {
       scope.itemLoadedCallbacks.fire(item);
       item.name = name;
     }
+
     scope.itemLoadingCallbacks.fire();
     //prcha
 
