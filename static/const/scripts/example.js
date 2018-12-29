@@ -584,15 +584,33 @@ var SideMenu = function(blueprint3d, floorplanControls, modalEffects) {
   })
 
   function getListSelectedItem() {
-    let items;
     let htmlJsn = $('.constructor').attr('data-json');
-    items = JSON.parse(htmlJsn);
-    // for (var i = 0; i < items.length; i++) {
-      // listItem[i['name']] = 0;
-    // }
-    items.forEach((v, k) => {
-      listItem[v['name']] = 0;
-    });
+    let items = JSON.parse(htmlJsn);
+
+    if ($('.constructor').attr('data-objForIvan')) {
+      let htmlJsnIvan = $('.constructor').attr('data-objForIvan');
+      let itemsIvan = JSON.parse(htmlJsnIvan);
+      
+      items.forEach((v, k) => {
+        if (itemsIvan[v['name']]) {
+          listItem[v['name']] = itemsIvan[v['name']]['number'];
+        } else {
+          listItem[v['name']] = 0;
+        }
+      });
+    } else {
+      items.forEach((v, k) => {
+        listItem[v['name']] = 0;
+      });
+    }
+    console.table(listItem)
+    // htmlJsn = $('.constructor').attr('data-json');
+    // items = JSON.parse(htmlJsn);
+    // items.forEach((v, k) => {
+    //   listItem[v['name']] = 0;
+    // });
+    
+    // console.table(items)
     items.forEach((v, k) => {
       listItem2[v['name']] = v.price;
     });
@@ -606,6 +624,7 @@ var SideMenu = function(blueprint3d, floorplanControls, modalEffects) {
         'number' : 0
       };
     });
+    console.log(objForIvan)
   }
   getListSelectedItem()
 
