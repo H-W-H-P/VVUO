@@ -587,8 +587,8 @@ var SideMenu = function(blueprint3d, floorplanControls, modalEffects) {
     let htmlJsn = $('.constructor').attr('data-json');
     let items = JSON.parse(htmlJsn);
 
-    if ($('.constructor').attr('data-objForIvan')) {
-      let htmlJsnIvan = $('.constructor').attr('data-objForIvan');
+    if ($('.constructor').attr('data-objModels')) {
+      let htmlJsnIvan = $('.constructor').attr('data-objModels');
       let itemsIvan = JSON.parse(htmlJsnIvan);
       
       items.forEach((v, k) => {
