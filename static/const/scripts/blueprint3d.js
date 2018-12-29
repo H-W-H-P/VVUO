@@ -20864,15 +20864,18 @@ THREE.JSONLoader = function ( showStatus ) {
 
 	THREE.Loader.call( this, showStatus );
 
+	this.posY;
+
 	this.withCredentials = false;
 
 };
 
 THREE.JSONLoader.prototype = Object.create( THREE.Loader.prototype );
 
-THREE.JSONLoader.prototype.load = function ( url, callback, texturePath ) {
+THREE.JSONLoader.prototype.load = function ( url, callback, texturePath, posY ) {
 
 	var scope = this;
+	this.posY = posY;
 
 	// todo: unify load API to for easier SceneLoader use
 
@@ -20886,6 +20889,8 @@ THREE.JSONLoader.prototype.load = function ( url, callback, texturePath ) {
 THREE.JSONLoader.prototype.loadAjaxJSON = function ( context, url, callback, texturePath, callbackProgress ) {
 
 	var xhr = new XMLHttpRequest();
+
+	var posY = this.posY;
 
 	var length = 0;
 
@@ -20907,7 +20912,7 @@ THREE.JSONLoader.prototype.loadAjaxJSON = function ( context, url, callback, tex
 					}
 
 					var result = context.parse( json, texturePath );
-					callback( result.geometry, result.materials );
+					callback( result.geometry, result.materials, posY );
 
 				} else {
 
@@ -20952,6 +20957,8 @@ THREE.JSONLoader.prototype.loadAjaxJSON = function ( context, url, callback, tex
 		}
 
 	};
+
+	//prcha
 
 	xhr.open( 'GET', url, true );
 	xhr.withCredentials = this.withCredentials;
@@ -44859,8 +44866,13 @@ Item.prototype.placeInRoom = function() {
     // handle in sub class
 };
 
-Item.prototype.initObject = function() {
+Item.prototype.initObject = function(posY) {
+	// if scene imported with two stages
+	if (posY) this.position.y = posY;
+
     this.placeInRoom();
+
+    // if obj didnt fit scene(>=2)
     var ifDelete = this.placeInRoom();
     if (ifDelete === 1) {
     	variableThroughAllTheFIles = false;
@@ -46307,7 +46319,7 @@ var Model = function(textureDir) {
     this.floorplan.loadFloorplan(floorplan);
     utils.forEach(items, function(item) {
     	
-      position = new THREE.Vector3( item.xpos, item.ypos, item.zpos)    
+      position = new THREE.Vector3( item.xpos, item.ypos, item.zpos) 
 
       var metadata = {
         itemName: item.item_name,
@@ -46593,7 +46605,8 @@ var Scene = function(model, textureDir) {
 
   this.addItem = function(itemType, fileName, metadata, name, position, rotation, scale, fixed) {
     itemType = itemType || 1;
-    var loaderCallback = function(geometry, materials) {
+    if (position) var posY = position.y;    
+    var loaderCallback = function(geometry, materials, posY) {
       var item = new item_types[itemType](
         model,
         metadata, geometry,
@@ -46603,17 +46616,19 @@ var Scene = function(model, textureDir) {
       item.fixed = fixed || false;
       items.push(item);
       scope.add(item);
-      item.initObject();
+      item.initObject(posY);
       scope.itemLoadedCallbacks.fire(item);
       item.name = name;
     }
     scope.itemLoadingCallbacks.fire();
+    //prcha
 
 
     loader.load(
       fileName,
       loaderCallback,
-      textureDir
+      textureDir,
+      posY
     );
 
   }
