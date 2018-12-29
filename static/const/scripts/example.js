@@ -328,19 +328,35 @@ var SideMenu = function(blueprint3d, floorplanControls, modalEffects) {
   var currentState = scope.states.FLOORPLAN;
 
   function init() {
-    $('.confWallA-desk').val(700);
-    $('#confWallA').val(700);
-    $('.confWallB-desk').val(400);
-    $('#confWallB').val(400);
+
+    var wallA = 700;
+    var wallB = 400;
+
+    var dataRoomWall = $('.constructor').attr('data-room');
+    if (dataRoomWall) {
+      var parseRoomWall = JSON.parse(dataRoomWall);
+      var nameCoor = Object.keys(parseRoomWall.floorplan.corners)[2]
+      wallA = parseRoomWall.floorplan.corners[nameCoor]['x'];
+      wallB = parseRoomWall.floorplan.corners[nameCoor]['y'];
+      $('.config__top_line .config__number').text(wallA);
+      $('.config__left_line .config__number').text(wallB);
+    } else {
+      wallA = 700;
+      wallB = 400;
+    }
+
+    
+
+    $('.confWallA-desk').val(wallA);
+    $('#confWallA').val(wallA);
+    $('.confWallB-desk').val(wallB);
+    $('#confWallB').val(wallB);
     $('.config__input_height').val(250);
     $('.config__input_height_mobile').val(250);
     for (var tab in tabs) {
       var elem = tabs[tab];
       elem.click(tabClicked(elem));
     }
-
-    var wallA = 700;
-    var wallB = 400;
 
     $("#update-floorplan").click(floorplanUpdate);
 
@@ -614,7 +630,7 @@ var SideMenu = function(blueprint3d, floorplanControls, modalEffects) {
         allPrice = 0;
         $('.list_items').attr('data-val', JSON.stringify(listItem))
         $('.list_items').val(JSON.stringify(objForIvan))
-        // console.table(listItem)
+        console.table(listItem)
       }
     }, 200);
   }
@@ -780,7 +796,12 @@ $(document).ready(function() {
     console.log(blueprint3d)
     console.log(blueprint3d.model.exportSerialized())
   })
+  var dataRoomDefault = '{"floorplan":{"corners":{"8f4a050d-e102-3c3f-5af9-3d9133555d76":{"x":0,"y":0,"pos":"left-bot"},"4e312eca-6c4f-30d1-3d9a-a19a9d1ee359":{"x":0,"y":400,"pos":"left-top"},"11d25193-4411-fbbf-78cb-ae7c0283164b":{"x":700,"y":400,"pos":"right-top"},"edf0de13-df9f-cd6a-7d11-9bd13c36ce12":{"x":700,"y":0,"pos":"right-bot"}},"walls":[{"corner1":"8f4a050d-e102-3c3f-5af9-3d9133555d76","corner2":"4e312eca-6c4f-30d1-3d9a-a19a9d1ee359"},{"corner1":"8f4a050d-e102-3c3f-5af9-3d9133555d76","corner2":"edf0de13-df9f-cd6a-7d11-9bd13c36ce12"},{"corner1":"edf0de13-df9f-cd6a-7d11-9bd13c36ce12","corner2":"11d25193-4411-fbbf-78cb-ae7c0283164b"},{"corner1":"11d25193-4411-fbbf-78cb-ae7c0283164b","corner2":"4e312eca-6c4f-30d1-3d9a-a19a9d1ee359"}],"wallTextures":[],"floorTextures":{}},"items":[]}';
+  var dataRoom = $('.constructor').attr('data-room');
+  if (!dataRoom) {
+    dataRoom = dataRoomDefault;
+  }
 
-  data = '{"floorplan":{"corners":{"8f4a050d-e102-3c3f-5af9-3d9133555d76":{"x":0,"y":0,"pos":"left-bot"},"4e312eca-6c4f-30d1-3d9a-a19a9d1ee359":{"x":0,"y":400,"pos":"left-top"},"11d25193-4411-fbbf-78cb-ae7c0283164b":{"x":700,"y":400,"pos":"right-top"},"edf0de13-df9f-cd6a-7d11-9bd13c36ce12":{"x":700,"y":0,"pos":"right-bot"}},"walls":[{"corner1":"8f4a050d-e102-3c3f-5af9-3d9133555d76","corner2":"4e312eca-6c4f-30d1-3d9a-a19a9d1ee359"},{"corner1":"8f4a050d-e102-3c3f-5af9-3d9133555d76","corner2":"edf0de13-df9f-cd6a-7d11-9bd13c36ce12"},{"corner1":"edf0de13-df9f-cd6a-7d11-9bd13c36ce12","corner2":"11d25193-4411-fbbf-78cb-ae7c0283164b"},{"corner1":"11d25193-4411-fbbf-78cb-ae7c0283164b","corner2":"4e312eca-6c4f-30d1-3d9a-a19a9d1ee359"}],"wallTextures":[],"floorTextures":{}},"items":[{"item_name2": "Bad Boy", "item_type": 1, "model_url": "static/const/models/model1/model.js", "xpos": 330, "ypos": 200, "zpos": 100, "rotation": 1, "scale_x": 1, "scale_y": 1, "scale_z": 1, "fixed": false},{"item_name2": "Bad Boy", "item_type": 1, "model_url": "static/const/models/model3/model.js", "xpos": 350, "ypos": 200, "zpos": 200, "rotation": 1, "scale_x": 1, "scale_y": 1, "scale_z": 1, "fixed": false}]}'
+  data = dataRoom;
   blueprint3d.model.loadSerialized(data);
 })

@@ -46261,8 +46261,6 @@ var Model = function(textureDir) {
     utils.forEach(items, function(item) {
     	
       position = new THREE.Vector3( item.xpos, item.ypos, item.zpos)    
-      console.log('=========TWO-position=============')
-   	  console.log(position)
 
       var metadata = {
         itemName: item.item_name,
