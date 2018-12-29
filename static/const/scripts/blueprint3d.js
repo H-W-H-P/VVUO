@@ -20864,15 +20864,18 @@ THREE.JSONLoader = function ( showStatus ) {
 
 	THREE.Loader.call( this, showStatus );
 
+	this.posY;
+
 	this.withCredentials = false;
 
 };
 
 THREE.JSONLoader.prototype = Object.create( THREE.Loader.prototype );
 
-THREE.JSONLoader.prototype.load = function ( url, callback, texturePath ) {
+THREE.JSONLoader.prototype.load = function ( url, callback, texturePath, posY ) {
 
 	var scope = this;
+	this.posY = posY;
 
 	// todo: unify load API to for easier SceneLoader use
 
@@ -20886,6 +20889,8 @@ THREE.JSONLoader.prototype.load = function ( url, callback, texturePath ) {
 THREE.JSONLoader.prototype.loadAjaxJSON = function ( context, url, callback, texturePath, callbackProgress ) {
 
 	var xhr = new XMLHttpRequest();
+
+	var posY = this.posY;
 
 	var length = 0;
 
@@ -20907,7 +20912,7 @@ THREE.JSONLoader.prototype.loadAjaxJSON = function ( context, url, callback, tex
 					}
 
 					var result = context.parse( json, texturePath );
-					callback( result.geometry, result.materials );
+					callback( result.geometry, result.materials, posY );
 
 				} else {
 
@@ -20952,6 +20957,8 @@ THREE.JSONLoader.prototype.loadAjaxJSON = function ( context, url, callback, tex
 		}
 
 	};
+
+	//prcha
 
 	xhr.open( 'GET', url, true );
 	xhr.withCredentials = this.withCredentials;
@@ -44565,10 +44572,39 @@ FloorItem.prototype.moveToPosition = function(vec3, intersection) {
     }
 }
 
+FloorItem.prototype.removeChanges = function(vec3, deleter) {
+	// check if deleted item was under smth and climb down it if true
+	var deleter = deleter;
+	if (!deleter) {
+		var corners = this.getCorners('x', 'z');
+		var objects = this.scene.getItems();
+		var minLimX = corners[0].x;
+		var maxLimX = corners[1].x;
+		var minLimY = corners[0].y;
+		var maxLimY = corners[2].y;
+	    for (var i = 0; i < objects.length; i++) {
+	    	// console.table(corners)
+	    	// console.table(objects[i].getCorners('x', 'z'))
+	    	var cornerObjX = objects[i].getCorners('x')[0].x;
+	    	var cornerObjY = objects[i].getCorners('x')[0].y;
+	    	// console.log(cornerObjX, cornerObjY)
+		    if (!utils.polygonOutsidePolygon(corners, objects[i].getCorners('x', 'z')) ||
+                utils.polygonPolygonIntersect(corners, objects[i].getCorners('x', 'z')) || 
+                ((cornerObjX < maxLimX) && (cornerObjX > minLimX) && (cornerObjY > minLimY) && (cornerObjY < maxLimY))) {
+		    	if (objects[i].halfSize.y * 2 < objects[i].position.y) objects[i].position.y = objects[i].halfSize.y;
+		    }
+		}
+	}		
+}
 
 FloorItem.prototype.isValidPosition = function(vec3, appearBool) {
 	var countToTwo = 0;
     var corners = this.getCorners('x', 'z', vec3);
+
+    var minLimX = corners[0].x;
+	var maxLimX = corners[1].x;
+	var minLimY = corners[0].y;
+	var maxLimY = corners[2].y;
 
     // check if we are in a room
     var rooms = this.model.floorplan.getRooms();
@@ -44598,6 +44634,9 @@ FloorItem.prototype.isValidPosition = function(vec3, appearBool) {
         var nonIntersectArr = dataArray ? dataArray : [];
         variableThroughAllTheFIles = true;
         for (var i = 0; i < objects.length; i++) {
+        	var cornerObjX = objects[i].getCorners('x')[0].x;
+	    	var cornerObjY = objects[i].getCorners('x')[0].y;
+
             if (objects[i] === this || !objects[i].obstructFloorMoves) {
                 continue;
             }
@@ -44634,12 +44673,23 @@ FloorItem.prototype.isValidPosition = function(vec3, appearBool) {
                 }
             }
             if (!utils.polygonOutsidePolygon(corners, objects[i].getCorners('x', 'z')) ||
-                utils.polygonPolygonIntersect(corners, objects[i].getCorners('x', 'z'))) {
+                utils.polygonPolygonIntersect(corners, objects[i].getCorners('x', 'z')) || 
+                ((cornerObjX < maxLimX) && (cornerObjX > minLimX) && (cornerObjY > minLimY) && (cornerObjY < maxLimY))) {
+            	// if moved item intesecting another one
             	countToTwo++;
+
                 var intersectedObjHeight = objects[i].halfSize.y;   
-                // almost works        	
-                // if (countToTwo < 2) objects[i].position.y = intersectedObjHeight;
+                var intersectedObjPos = objects[i].position.y;
+
             	this.position.y = thisObjHeight + intersectedObjHeight*2;
+
+            	if (intersectedObjPos > intersectedObjHeight * 2) {
+            		// if intersected model on stage2
+            		this.position.y = thisObjHeight;
+            		// return false;
+            		if (!appearBool) return false;
+            	}
+
             	triggerino = false;
                 // return false;
             }
@@ -44647,6 +44697,7 @@ FloorItem.prototype.isValidPosition = function(vec3, appearBool) {
             	this.position.y = thisObjHeight;
             }
             if ((appearBool) && (countToTwo >= 2)) { 
+           		// if u're adding third floor item
             	variableThroughAllTheFIles = false;     	
             	$('.conf_wr__alert').addClass('alert');
             	setTimeout(function() {
@@ -44768,8 +44819,10 @@ var Item = function(model, metadata, geometry, material, position, rotation, sca
 
 Item.prototype = Object.create(THREE.Mesh.prototype);
 
-Item.prototype.remove = function() {
+Item.prototype.remove = function(deleter) {
+	var deleter = deleter;
     this.scene.removeItem(this);
+    this.removeChanges(this, deleter)
     console.log('remove')
 };
 
@@ -44813,11 +44866,17 @@ Item.prototype.placeInRoom = function() {
     // handle in sub class
 };
 
-Item.prototype.initObject = function() {
+Item.prototype.initObject = function(posY) {
+	// if scene imported with two stages
+	if (posY) this.position.y = posY;
+
     this.placeInRoom();
+
+    // if obj didnt fit scene(>=2)
     var ifDelete = this.placeInRoom();
     if (ifDelete === 1) {
-    	this.remove();
+    	variableThroughAllTheFIles = false;
+    	this.remove(ifDelete);
     }
     // select and stuff
     this.scene.needsUpdate = true;
@@ -46260,9 +46319,7 @@ var Model = function(textureDir) {
     this.floorplan.loadFloorplan(floorplan);
     utils.forEach(items, function(item) {
     	
-      position = new THREE.Vector3( item.xpos, item.ypos, item.zpos)    
-      console.log('=========TWO-position=============')
-   	  console.log(position)
+      position = new THREE.Vector3( item.xpos, item.ypos, item.zpos) 
 
       var metadata = {
         itemName: item.item_name,
@@ -46547,14 +46604,9 @@ var Scene = function(model, textureDir) {
   }
 
   this.addItem = function(itemType, fileName, metadata, name, position, rotation, scale, fixed) {
-  	// console.log(metadata, position)
     itemType = itemType || 1;
-    // console.log(item)
-    // console.log(position)
-    // let _position = {x: 600, y: "42", z: 2}
-    // console.log(_position)
-    // prod change
-    var loaderCallback = function(geometry, materials) {
+    if (position) var posY = position.y;    
+    var loaderCallback = function(geometry, materials, posY) {
       var item = new item_types[itemType](
         model,
         metadata, geometry,
@@ -46564,18 +46616,19 @@ var Scene = function(model, textureDir) {
       item.fixed = fixed || false;
       items.push(item);
       scope.add(item);
-      item.initObject();
+      item.initObject(posY);
       scope.itemLoadedCallbacks.fire(item);
       item.name = name;
-      console.warn(item)
     }
     scope.itemLoadingCallbacks.fire();
+    //prcha
 
 
     loader.load(
       fileName,
       loaderCallback,
-      textureDir
+      textureDir,
+      posY
     );
 
   }
@@ -46774,6 +46827,7 @@ var ThreeController = function(three, model, camera, element, controls, hud) {
   var mouseMoved = false; // has mouse moved since down click
 
   var rotateMouseOver = false;
+  var triggerViwe = false
 
   var states = {
     UNSELECTED: 0, // no object selected
@@ -46786,9 +46840,10 @@ var ThreeController = function(three, model, camera, element, controls, hud) {
   var state = states.UNSELECTED;
 
   this.needsUpdate = true;
-
   function init() {
-  	three.setCursorStyle("url(../../static/img/icons/coursor/default-default.svg) 20 0, auto");
+  	if (!triggerViwe) {
+  		three.setCursorStyle("url(../../static/img/icons/coursor/default-default.svg) 20 0, auto");
+  	}
     element.mousedown( mouseDownEvent );
     element.mouseup( mouseUpEvent );
     element.mousemove( mouseMoveEvent );
@@ -46802,6 +46857,16 @@ var ThreeController = function(three, model, camera, element, controls, hud) {
     $('.conf_wr__order_btn, .open_page_pdf').on('click', function() {
     	scope.setSelectedObject(null);
     })
+    $('#constructor_2d').on('click', function() {
+    	triggerViwe = true;
+    	three.setCursorStyle("auto");
+    })
+    $('#constructor_3d').on('click', function() {
+    	triggerViwe = false;
+    })
+    // $('.instruction__link').on('click', function() {
+    // 	three.setCursorStyle("url(../../static/img/icons/coursor/default-default.svg) 20 0, auto");
+    // })
   }
 
   // invoked via callback when item is loaded
@@ -46932,6 +46997,9 @@ var ThreeController = function(three, model, camera, element, controls, hud) {
 
   function mouseDownEvent( event ) {
   	// three.setCursorStyle("url(../../static/img/icons/coursor/default-push.svg) 20 0, auto");
+  	if (!triggerViwe) {
+  		three.setCursorStyle("url(../../static/img/icons/coursor/default-push.svg) 20 0, auto");
+  	}
   	
     if (scope.enabled) {
       event.preventDefault();
@@ -46940,7 +47008,7 @@ var ThreeController = function(three, model, camera, element, controls, hud) {
       mouseDown = true;
       switch(state) {
         case states.SELECTED:
-        	three.setCursorStyle("url(../../static/img/icons/coursor/default-push.svg) 20 0, auto");
+        	// three.setCursorStyle("url(../../static/img/icons/coursor/default-push.svg) 20 0, auto");
           if (rotateMouseOver) {
             switchState(states.ROTATING);
           } else if (intersectedObject != null) {
@@ -46970,7 +47038,10 @@ var ThreeController = function(three, model, camera, element, controls, hud) {
   }
 
   function mouseUpEvent( event ) {
-
+  	if (!triggerViwe) {
+  		three.setCursorStyle("url(../../static/img/icons/coursor/default-default.svg) 20 0, auto");
+  	}
+	
     if (scope.enabled) {
       mouseDown = false;
 
@@ -46992,7 +47063,11 @@ var ThreeController = function(three, model, camera, element, controls, hud) {
           }
           break;
         case states.SELECTED:
-        	three.setCursorStyle("url(../../static/img/icons/coursor/default-default.svg) 20 0, auto");
+        	// if (!triggerViwe) {
+        	// 	three.setCursorStyle("url(../../static/img/icons/coursor/default-default.svg) 20 0, auto");
+        	// } else {
+        	// 	three.setCursorStyle("auto");
+        	// }
           if (intersectedObject == null && !mouseMoved) {
             switchState(states.UNSELECTED);
             checkWallsAndFloors();
@@ -47025,7 +47100,7 @@ var ThreeController = function(three, model, camera, element, controls, hud) {
         controls.enabled = false;
         break;
       case states.DRAGGING:
-        three.setCursorStyle("url(../../static/img/icons/coursor/palm-push.svg) 20 0, auto");
+        three.setCursorStyle("url(../../static/img/icons/coursor/palm-push.svg) 20 20, auto");
         clickPressed();
         controls.enabled = false;
         break;
@@ -47039,9 +47114,13 @@ var ThreeController = function(three, model, camera, element, controls, hud) {
         break;
       case states.DRAGGING:
         if (mouseoverObject) {
-          three.setCursorStyle("url(../../static/img/icons/coursor/palm-default.svg) 20 0, auto");
+          three.setCursorStyle("url(../../static/img/icons/coursor/palm-default.svg) 20 20, auto");
         } else {
-          three.setCursorStyle("url(../../static/img/icons/coursor/default-default.svg) 20 0, auto");
+        	if (!triggerViwe) {
+        		three.setCursorStyle("url(../../static/img/icons/coursor/default-default.svg) 20 0, auto");
+        	} else {
+        		three.setCursorStyle("auto");
+        	}
         }
         break;
       case states.ROTATING:
@@ -47211,12 +47290,17 @@ var ThreeController = function(three, model, camera, element, controls, hud) {
       } else {
         mouseoverObject = intersectedObject;
         mouseoverObject.mouseOver();
-        three.setCursorStyle("url(../../static/img/icons/coursor/palm-default.svg) 20 0, auto");
+        three.setCursorStyle("url(../../static/img/icons/coursor/palm-default.svg) 20 20, auto");
         scope.needsUpdate = true;
       }
     } else if (mouseoverObject != null) {
       mouseoverObject.mouseOff();
-      three.setCursorStyle("url(../../static/img/icons/coursor/default-default.svg) 20 0, auto");
+      if (!triggerViwe) {
+      	three.setCursorStyle("url(../../static/img/icons/coursor/default-default.svg) 20 0, auto");
+      } else {
+      	three.setCursorStyle("auto");
+      }
+      
       mouseoverObject = null;
       scope.needsUpdate = true;
     }
@@ -48511,6 +48595,34 @@ var ThreeHUD = function(three) {
     three.needsUpdate();
   }
 
+  $(document).on('click', '.config__add_item_center, .my_add_item, .my_add_item_one', function () {
+  	three.needsUpdate();
+  	setTimeout(function() {
+  		three.needsUpdate();
+  	}, 10);
+  	setTimeout(function() {
+  		three.needsUpdate();
+  	}, 100);
+  	setTimeout(function() {
+  		three.needsUpdate();
+  	}, 200);
+  	setTimeout(function() {
+  		three.needsUpdate();
+  	}, 500);
+  	setTimeout(function() {
+  		three.needsUpdate();
+  	}, 1000);
+  	setTimeout(function() {
+  		three.needsUpdate();
+  	}, 1500);
+  	setTimeout(function() {
+  		three.needsUpdate();
+  	}, 2000);
+  	setTimeout(function() {
+  		three.needsUpdate();
+  	}, 2500);
+  });
+
   function getColor() {
     return (mouseover || rotating) ? hoverColor : color;
   }
@@ -48808,6 +48920,7 @@ var ThreeMain = function(model, element, canvasElement, opts) {
     domElement = scope.element.get(0) // Container
     
     camera = new THREE.PerspectiveCamera(50, 1, 1, 100000);
+    // camera = new THREE.PerspectiveCamera(50, 1, 1, 100000);
     // camera = new THREE.OrthographicCamera(-450, 400, 400, -400, 1, 2000);
 
     camera.position.x = 0;

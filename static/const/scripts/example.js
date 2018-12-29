@@ -310,12 +310,13 @@ var SideMenu = function(blueprint3d, floorplanControls, modalEffects) {
     // click handlers
     $('.instruction__link').on('click', function (EO) {
       EO.preventDefault();
+      EO.stopPropagation();
       closeInstruction();
     })
 
     function closeInstruction() {
       var domElement = document.getElementById('viewer');
-      domElement.style.cursor = 'url(../../static/img/icons/cursor.svg) 20 0, auto';
+      domElement.style.cursor = 'url(../../static/img/icons/coursor/default-default.svg) 20 0, auto';
       $('.instruction').addClass('instruction--animationClose');
       triggerAddItem = false;
       setTimeout(() => {
@@ -327,19 +328,33 @@ var SideMenu = function(blueprint3d, floorplanControls, modalEffects) {
   var currentState = scope.states.FLOORPLAN;
 
   function init() {
-    $('.confWallA-desk').val(700);
-    $('#confWallA').val(700);
-    $('.confWallB-desk').val(400);
-    $('#confWallB').val(400);
+
+    var wallA = 700;
+    var wallB = 400;
+
+    var dataRoomWall = $('.constructor').attr('data-room');
+    if (dataRoomWall) {
+      var parseRoomWall = JSON.parse(dataRoomWall);
+      var nameCoor = Object.keys(parseRoomWall.floorplan.corners)[2]
+      wallA = parseRoomWall.floorplan.corners[nameCoor]['x'];
+      wallB = parseRoomWall.floorplan.corners[nameCoor]['y'];
+      $('.config__top_line .config__number').text(wallA);
+      $('.config__left_line .config__number').text(wallB);
+    } else {
+      wallA = 700;
+      wallB = 400;
+    }
+
+    $('.confWallA-desk').val(wallA);
+    $('#confWallA').val(wallA);
+    $('.confWallB-desk').val(wallB);
+    $('#confWallB').val(wallB);
     $('.config__input_height').val(250);
     $('.config__input_height_mobile').val(250);
     for (var tab in tabs) {
       var elem = tabs[tab];
       elem.click(tabClicked(elem));
     }
-
-    var wallA = 700;
-    var wallB = 400;
 
     $("#update-floorplan").click(floorplanUpdate);
 
@@ -492,6 +507,7 @@ var SideMenu = function(blueprint3d, floorplanControls, modalEffects) {
         modelUrl: modelUrl,
         itemType: itemType
       }
+      console.log(metadata)
 
       blueprint3d.model.scene.addItem(itemType, modelUrl, metadata);
       setCurrentState(scope.states.DEFAULT);
@@ -506,16 +522,17 @@ var SideMenu = function(blueprint3d, floorplanControls, modalEffects) {
     if (triggerAddItem) {
       closeInstruction();
     }
-    blueprint3d.model.scene.addItem(2, 'static/const/models/newObj/window/window.js', {resizable: true});
+    blueprint3d.model.scene.addItem(2, 'static/const/models/newObj/window/window.js', {resizable: true, itemName: 'window', itemType: 2, modelUrl: 'static/const/models/newObj/window/window.js'}, 'window');
   });
   $('.config__add_door').on('click', function() {
     if (triggerAddItem) {
       closeInstruction();
     }
-    blueprint3d.model.scene.addItem(9, 'static/const/models/newObj/door/door.js', {resizable: true});
+    blueprint3d.model.scene.addItem(9, 'static/const/models/newObj/door/door.js', {resizable: true, itemName: 'door', itemType: 9, modelUrl: 'static/const/models/newObj/door/door.js'}, 'door');
 
   });
 
+  // blueprint3d.model.scene.addItem(1, 'static/const/models/model1/model.js', {resizable: true});
   // blueprint3d.model.scene.addItem(1, 'static/const/models/model1/model.js', {resizable: true});
 
   init();
@@ -546,7 +563,7 @@ var SideMenu = function(blueprint3d, floorplanControls, modalEffects) {
     let linkJs = $(e).closest('.config__item').attr('data-js');
     let nameGoods = $(e).closest('.config__item').attr('data-goods');
     addItemInList(nameGoods)
-    blueprint3d.model.scene.addItem(1, linkJs, {resizable: true}, nameGoods);
+    blueprint3d.model.scene.addItem(1, linkJs, {resizable: true, itemName: nameGoods, itemType: 1, modelUrl: linkJs}, nameGoods);
   }
 
   // $('.shop_filters').on('click', function() {
@@ -563,19 +580,37 @@ var SideMenu = function(blueprint3d, floorplanControls, modalEffects) {
     let linkJs = $('.my_add_item').attr('data-jsLink');
     let nameGoods = $('.my_add_item').attr('data-goodsGoods');
     addItemInList(nameGoods)
-    blueprint3d.model.scene.addItem(1, linkJs, {resizable: true}, nameGoods);
+    blueprint3d.model.scene.addItem(1, linkJs, {resizable: true, itemName: nameGoods, itemType: 1, modelUrl: linkJs}, nameGoods);
   })
 
   function getListSelectedItem() {
-    let items;
     let htmlJsn = $('.constructor').attr('data-json');
-    items = JSON.parse(htmlJsn);
-    // for (var i = 0; i < items.length; i++) {
-      // listItem[i['name']] = 0;
-    // }
-    items.forEach((v, k) => {
-      listItem[v['name']] = 0;
-    });
+    let items = JSON.parse(htmlJsn);
+
+    if ($('.constructor').attr('data-objForIvan')) {
+      let htmlJsnIvan = $('.constructor').attr('data-objForIvan');
+      let itemsIvan = JSON.parse(htmlJsnIvan);
+      
+      items.forEach((v, k) => {
+        if (itemsIvan[v['name']]) {
+          listItem[v['name']] = itemsIvan[v['name']]['number'];
+        } else {
+          listItem[v['name']] = 0;
+        }
+      });
+    } else {
+      items.forEach((v, k) => {
+        listItem[v['name']] = 0;
+      });
+    }
+    console.table(listItem)
+    // htmlJsn = $('.constructor').attr('data-json');
+    // items = JSON.parse(htmlJsn);
+    // items.forEach((v, k) => {
+    //   listItem[v['name']] = 0;
+    // });
+    
+    // console.table(items)
     items.forEach((v, k) => {
       listItem2[v['name']] = v.price;
     });
@@ -589,6 +624,7 @@ var SideMenu = function(blueprint3d, floorplanControls, modalEffects) {
         'number' : 0
       };
     });
+    console.log(objForIvan)
   }
   getListSelectedItem()
 
@@ -613,7 +649,7 @@ var SideMenu = function(blueprint3d, floorplanControls, modalEffects) {
         allPrice = 0;
         $('.list_items').attr('data-val', JSON.stringify(listItem))
         $('.list_items').val(JSON.stringify(objForIvan))
-        // console.table(listItem)
+        console.table(listItem)
       }
     }, 200);
   }
@@ -776,10 +812,15 @@ $(document).ready(function() {
 
   // Simple hack for exporting rooms.
   $(window).dblclick(function() {
-    console.log(blueprint3d)
     console.log(blueprint3d.model.exportSerialized())
   })
+  var dataRoomDefault = '{"floorplan":{"corners":{"8f4a050d-e102-3c3f-5af9-3d9133555d76":{"x":0,"y":0,"pos":"left-bot"},"4e312eca-6c4f-30d1-3d9a-a19a9d1ee359":{"x":0,"y":400,"pos":"left-top"},"11d25193-4411-fbbf-78cb-ae7c0283164b":{"x":700,"y":400,"pos":"right-top"},"edf0de13-df9f-cd6a-7d11-9bd13c36ce12":{"x":700,"y":0,"pos":"right-bot"}},"walls":[{"corner1":"8f4a050d-e102-3c3f-5af9-3d9133555d76","corner2":"4e312eca-6c4f-30d1-3d9a-a19a9d1ee359"},{"corner1":"8f4a050d-e102-3c3f-5af9-3d9133555d76","corner2":"edf0de13-df9f-cd6a-7d11-9bd13c36ce12"},{"corner1":"edf0de13-df9f-cd6a-7d11-9bd13c36ce12","corner2":"11d25193-4411-fbbf-78cb-ae7c0283164b"},{"corner1":"11d25193-4411-fbbf-78cb-ae7c0283164b","corner2":"4e312eca-6c4f-30d1-3d9a-a19a9d1ee359"}],"wallTextures":[],"floorTextures":{}},"items":[]}';
+  var dataRoom = $('.constructor').attr('data-room');
+  if (!dataRoom) {
+    dataRoom = dataRoomDefault;
+  }
 
-  data = '{"floorplan":{"corners":{"8f4a050d-e102-3c3f-5af9-3d9133555d76":{"x":0,"y":0,"pos":"left-bot"},"4e312eca-6c4f-30d1-3d9a-a19a9d1ee359":{"x":0,"y":400,"pos":"left-top"},"11d25193-4411-fbbf-78cb-ae7c0283164b":{"x":700,"y":400,"pos":"right-top"},"edf0de13-df9f-cd6a-7d11-9bd13c36ce12":{"x":700,"y":0,"pos":"right-bot"}},"walls":[{"corner1":"8f4a050d-e102-3c3f-5af9-3d9133555d76","corner2":"4e312eca-6c4f-30d1-3d9a-a19a9d1ee359"},{"corner1":"8f4a050d-e102-3c3f-5af9-3d9133555d76","corner2":"edf0de13-df9f-cd6a-7d11-9bd13c36ce12"},{"corner1":"edf0de13-df9f-cd6a-7d11-9bd13c36ce12","corner2":"11d25193-4411-fbbf-78cb-ae7c0283164b"},{"corner1":"11d25193-4411-fbbf-78cb-ae7c0283164b","corner2":"4e312eca-6c4f-30d1-3d9a-a19a9d1ee359"}],"wallTextures":[],"floorTextures":{}},"items":[{"item_name2": "Bad Boy", "item_type": 1, "model_url": "static/const/models/model1/model.js", "xpos": 330, "ypos": 200, "zpos": 100, "rotation": 1, "scale_x": 1, "scale_y": 1, "scale_z": 1, "fixed": false},{"item_name2": "Bad Boy", "item_type": 1, "model_url": "static/const/models/model3/model.js", "xpos": 350, "ypos": 200, "zpos": 200, "rotation": 1, "scale_x": 1, "scale_y": 1, "scale_z": 1, "fixed": false}]}'
+  data = dataRoom;
+
   blueprint3d.model.loadSerialized(data);
 })
