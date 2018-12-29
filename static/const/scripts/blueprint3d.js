@@ -44565,13 +44565,39 @@ FloorItem.prototype.moveToPosition = function(vec3, intersection) {
     }
 }
 
-FloorItem.prototype.removeChanges = function(vec3) {
-	console.log('heh')
+FloorItem.prototype.removeChanges = function(vec3, deleter) {
+	// check if deleted item was under smth and climb down it if true
+	var deleter = deleter;
+	if (!deleter) {
+		var corners = this.getCorners('x', 'z');
+		var objects = this.scene.getItems();
+		var minLimX = corners[0].x;
+		var maxLimX = corners[1].x;
+		var minLimY = corners[0].y;
+		var maxLimY = corners[2].y;
+	    for (var i = 0; i < objects.length; i++) {
+	    	// console.table(corners)
+	    	// console.table(objects[i].getCorners('x', 'z'))
+	    	var cornerObjX = objects[i].getCorners('x')[0].x;
+	    	var cornerObjY = objects[i].getCorners('x')[0].y;
+	    	// console.log(cornerObjX, cornerObjY)
+		    if (!utils.polygonOutsidePolygon(corners, objects[i].getCorners('x', 'z')) ||
+                utils.polygonPolygonIntersect(corners, objects[i].getCorners('x', 'z')) || 
+                ((cornerObjX < maxLimX) && (cornerObjX > minLimX) && (cornerObjY > minLimY) && (cornerObjY < maxLimY))) {
+		    	if (objects[i].halfSize.y * 2 < objects[i].position.y) objects[i].position.y = objects[i].halfSize.y;
+		    }
+		}
+	}		
 }
 
 FloorItem.prototype.isValidPosition = function(vec3, appearBool) {
 	var countToTwo = 0;
     var corners = this.getCorners('x', 'z', vec3);
+
+    var minLimX = corners[0].x;
+	var maxLimX = corners[1].x;
+	var minLimY = corners[0].y;
+	var maxLimY = corners[2].y;
 
     // check if we are in a room
     var rooms = this.model.floorplan.getRooms();
@@ -44601,6 +44627,9 @@ FloorItem.prototype.isValidPosition = function(vec3, appearBool) {
         var nonIntersectArr = dataArray ? dataArray : [];
         variableThroughAllTheFIles = true;
         for (var i = 0; i < objects.length; i++) {
+        	var cornerObjX = objects[i].getCorners('x')[0].x;
+	    	var cornerObjY = objects[i].getCorners('x')[0].y;
+
             if (objects[i] === this || !objects[i].obstructFloorMoves) {
                 continue;
             }
@@ -44637,7 +44666,8 @@ FloorItem.prototype.isValidPosition = function(vec3, appearBool) {
                 }
             }
             if (!utils.polygonOutsidePolygon(corners, objects[i].getCorners('x', 'z')) ||
-                utils.polygonPolygonIntersect(corners, objects[i].getCorners('x', 'z'))) {
+                utils.polygonPolygonIntersect(corners, objects[i].getCorners('x', 'z')) || 
+                ((cornerObjX < maxLimX) && (cornerObjX > minLimX) && (cornerObjY > minLimY) && (cornerObjY < maxLimY))) {
             	// if moved item intesecting another one
             	countToTwo++;
 
@@ -44649,8 +44679,10 @@ FloorItem.prototype.isValidPosition = function(vec3, appearBool) {
             	if (intersectedObjPos > intersectedObjHeight * 2) {
             		// if intersected model on stage2
             		this.position.y = thisObjHeight;
-            		return false;
+            		// return false;
+            		if (!appearBool) return false;
             	}
+
             	triggerino = false;
                 // return false;
             }
@@ -44780,9 +44812,10 @@ var Item = function(model, metadata, geometry, material, position, rotation, sca
 
 Item.prototype = Object.create(THREE.Mesh.prototype);
 
-Item.prototype.remove = function() {
+Item.prototype.remove = function(deleter) {
+	var deleter = deleter;
     this.scene.removeItem(this);
-    this.removeChanges(this)
+    this.removeChanges(this, deleter)
     console.log('remove')
 };
 
@@ -44830,7 +44863,8 @@ Item.prototype.initObject = function() {
     this.placeInRoom();
     var ifDelete = this.placeInRoom();
     if (ifDelete === 1) {
-    	this.remove();
+    	variableThroughAllTheFIles = false;
+    	this.remove(ifDelete);
     }
     // select and stuff
     this.scene.needsUpdate = true;
@@ -48546,7 +48580,7 @@ var ThreeHUD = function(three) {
     three.needsUpdate();
   }
 
-  $('.config__add_item_center, .my_add_item, .my_add_item_one').click(function () {
+  $(document).on('click', '.config__add_item_center, .my_add_item, .my_add_item_one', function () {
   	three.needsUpdate();
   	setTimeout(function() {
   		three.needsUpdate();
@@ -48560,6 +48594,18 @@ var ThreeHUD = function(three) {
   	setTimeout(function() {
   		three.needsUpdate();
   	}, 500);
+  	setTimeout(function() {
+  		three.needsUpdate();
+  	}, 1000);
+  	setTimeout(function() {
+  		three.needsUpdate();
+  	}, 1500);
+  	setTimeout(function() {
+  		three.needsUpdate();
+  	}, 2000);
+  	setTimeout(function() {
+  		three.needsUpdate();
+  	}, 2500);
   });
 
   function getColor() {
