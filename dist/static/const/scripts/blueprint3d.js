@@ -46383,14 +46383,9 @@ var Room = function(floorplan, corners) {
   // prod change floor
 
   var defaultTexture = {
-    url: "static/const/images/grid3.png",
-    // url: "static/const/images/hardwood.png",
+    url: "/wp-content/themes/unnell/web/static/const/images/grid3.png",
     scale: 400
   }
-
-  // $('#constructor_2d').on('click', function(EO) {
-  // 	defaultTexture.url = "static/const/images/grid3.png"
-  // });
 
   var floorChangeCallbacks = JQUERY.Callbacks();
 
@@ -46671,7 +46666,7 @@ var Wall = function(start, end) {
   var action_callbacks = JQUERY.Callbacks();
 
   var defaultTexture =  {
-    url: "static/const/images/wallmap.png",
+    url: "/wp-content/themes/unnell/web/static/const/images/wallmap.png",
     stretch: true,
     scale: 0
   }
@@ -46845,7 +46840,7 @@ var ThreeController = function(three, model, camera, element, controls, hud) {
   this.needsUpdate = true;
   function init() {
   	if (!triggerViwe) {
-  		three.setCursorStyle("url(../../static/img/icons/coursor/default-default.svg) 20 0, auto");
+  		three.setCursorStyle("url(../../wp-content/themes/unnell/web/static/img/icons/coursor/default-default.svg) 20 0, auto");
   	}
     element.mousedown( mouseDownEvent );
     element.mouseup( mouseUpEvent );
@@ -46867,9 +46862,6 @@ var ThreeController = function(three, model, camera, element, controls, hud) {
     $('#constructor_3d').on('click', function() {
     	triggerViwe = false;
     })
-    // $('.instruction__link').on('click', function() {
-    // 	three.setCursorStyle("url(../../static/img/icons/coursor/default-default.svg) 20 0, auto");
-    // })
   }
 
   // invoked via callback when item is loaded
@@ -46999,9 +46991,8 @@ var ThreeController = function(three, model, camera, element, controls, hud) {
   }
 
   function mouseDownEvent( event ) {
-  	// three.setCursorStyle("url(../../static/img/icons/coursor/default-push.svg) 20 0, auto");
   	if (!triggerViwe) {
-  		three.setCursorStyle("url(../../static/img/icons/coursor/default-push.svg) 20 0, auto");
+  		three.setCursorStyle("url(../../wp-content/themes/unnell/web/static/img/icons/coursor/default-push.svg) 20 0, auto");
   	}
   	
     if (scope.enabled) {
@@ -47011,7 +47002,6 @@ var ThreeController = function(three, model, camera, element, controls, hud) {
       mouseDown = true;
       switch(state) {
         case states.SELECTED:
-        	// three.setCursorStyle("url(../../static/img/icons/coursor/default-push.svg) 20 0, auto");
           if (rotateMouseOver) {
             switchState(states.ROTATING);
           } else if (intersectedObject != null) {
@@ -47042,7 +47032,7 @@ var ThreeController = function(three, model, camera, element, controls, hud) {
 
   function mouseUpEvent( event ) {
   	if (!triggerViwe) {
-  		three.setCursorStyle("url(../../static/img/icons/coursor/default-default.svg) 20 0, auto");
+  		three.setCursorStyle("url(../../wp-content/themes/unnell/web/static/img/icons/coursor/default-default.svg) 20 0, auto");
   	}
 	
     if (scope.enabled) {
@@ -47066,11 +47056,6 @@ var ThreeController = function(three, model, camera, element, controls, hud) {
           }
           break;
         case states.SELECTED:
-        	// if (!triggerViwe) {
-        	// 	three.setCursorStyle("url(../../static/img/icons/coursor/default-default.svg) 20 0, auto");
-        	// } else {
-        	// 	three.setCursorStyle("auto");
-        	// }
           if (intersectedObject == null && !mouseMoved) {
             switchState(states.UNSELECTED);
             checkWallsAndFloors();
@@ -47103,7 +47088,7 @@ var ThreeController = function(three, model, camera, element, controls, hud) {
         controls.enabled = false;
         break;
       case states.DRAGGING:
-        three.setCursorStyle("url(../../static/img/icons/coursor/palm-push.svg) 20 20, auto");
+        three.setCursorStyle("url(../../wp-content/themes/unnell/web/static/img/icons/coursor/palm-push.svg) 20 20, auto");
         clickPressed();
         controls.enabled = false;
         break;
@@ -47117,10 +47102,10 @@ var ThreeController = function(three, model, camera, element, controls, hud) {
         break;
       case states.DRAGGING:
         if (mouseoverObject) {
-          three.setCursorStyle("url(../../static/img/icons/coursor/palm-default.svg) 20 20, auto");
+          three.setCursorStyle("url(../../wp-content/themes/unnell/web/static/img/icons/coursor/palm-default.svg) 20 20, auto");
         } else {
         	if (!triggerViwe) {
-        		three.setCursorStyle("url(../../static/img/icons/coursor/default-default.svg) 20 0, auto");
+        		three.setCursorStyle("url(../../wp-content/themes/unnell/web/static/img/icons/coursor/default-default.svg) 20 0, auto");
         	} else {
         		three.setCursorStyle("auto");
         	}
@@ -47293,13 +47278,13 @@ var ThreeController = function(three, model, camera, element, controls, hud) {
       } else {
         mouseoverObject = intersectedObject;
         mouseoverObject.mouseOver();
-        three.setCursorStyle("url(../../static/img/icons/coursor/palm-default.svg) 20 20, auto");
+        three.setCursorStyle("url(../../wp-content/themes/unnell/web/static/img/icons/coursor/palm-default.svg) 20 20, auto");
         scope.needsUpdate = true;
       }
     } else if (mouseoverObject != null) {
       mouseoverObject.mouseOff();
       if (!triggerViwe) {
-      	three.setCursorStyle("url(../../static/img/icons/coursor/default-default.svg) 20 0, auto");
+      	three.setCursorStyle("url(../../wp-content/themes/unnell/web/static/img/icons/coursor/default-default.svg) 20 0, auto");
       } else {
       	three.setCursorStyle("auto");
       }
@@ -47986,7 +47971,7 @@ var ThreeControls = function (object, domElement) {
 
 	this.stateZoom3d = function() {
 		scope.maxDistance = 1500;
-		scope.domElement.style.cursor = "url(../../static/img/icons/coursor/default-default.svg) 20 0, auto";
+		scope.domElement.style.cursor = "url(../../wp-content/themes/unnell/web/static/img/icons/coursor/default-default.svg) 20 0, auto";
 	}
 
 	
@@ -48021,7 +48006,7 @@ var ThreeEdge = function(scene, edge, controls) {
   var basePlanes = []; // always visible
   var texture = null;
   
-  var lightMap = THREE.ImageUtils.loadTexture("static/const/images/walllightmap.png");
+  var lightMap = THREE.ImageUtils.loadTexture("/wp-content/themes/unnell/web/static/const/images/walllightmap.png");
   var fillerColor = 0xdddddd;
   var sideColor = 0xcccccc;
   var baseColor = 0xdddddd;
