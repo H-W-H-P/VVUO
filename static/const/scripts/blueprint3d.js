@@ -48906,7 +48906,7 @@ var ThreeMain = function(model, element, canvasElement, opts) {
   }
 
   function cameraState_3d() {
-  	camera.fov = 50;
+  	camera.fov = 60;
   	scope.controls.update();
   	camera.updateProjectionMatrix();
   	$('.constructor__controlViwe').removeClass('activeState');
@@ -48922,7 +48922,7 @@ var ThreeMain = function(model, element, canvasElement, opts) {
 
     domElement = scope.element.get(0) // Container
     
-    camera = new THREE.PerspectiveCamera(50, 1, 1, 100000);
+    camera = new THREE.PerspectiveCamera(60, 1, 1, 100000);
     // camera = new THREE.PerspectiveCamera(50, 1, 1, 100000);
     // camera = new THREE.OrthographicCamera(-450, 400, 400, -400, 1, 2000);
 
