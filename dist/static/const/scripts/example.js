@@ -316,7 +316,7 @@ var SideMenu = function(blueprint3d, floorplanControls, modalEffects) {
 
     function closeInstruction() {
       var domElement = document.getElementById('viewer');
-      domElement.style.cursor = 'url(../../wp-content/themes/unnell/web/static/img/icons/coursor/default-default.svg) 20 0, auto';
+      domElement.style.cursor = 'url(/wp-content/themes/unnell/web/static/img/icons/coursor/default-default.svg) 20 0, auto';
       $('.instruction').addClass('instruction--animationClose');
       triggerAddItem = false;
       setTimeout(() => {
@@ -532,6 +532,9 @@ var SideMenu = function(blueprint3d, floorplanControls, modalEffects) {
 
   });
 
+  // blueprint3d.model.scene.addItem(1, 'static/const/models/model1/model.js', {resizable: true});
+  // blueprint3d.model.scene.addItem(1, 'static/const/models/model1/model.js', {resizable: true});
+
   init();
 
   $('.conf_wr__over, .shop_filters__block').on('click', function(EO) {
@@ -562,6 +565,10 @@ var SideMenu = function(blueprint3d, floorplanControls, modalEffects) {
     addItemInList(nameGoods)
     blueprint3d.model.scene.addItem(1, linkJs, {resizable: true, itemName: nameGoods, itemType: 1, modelUrl: linkJs}, nameGoods);
   }
+
+  // $('.shop_filters').on('click', function() {
+  //   blueprint3d.model.scene.addItem(1, 'static/const/models/model1/model.js', {resizable: true}, 'name', {'x': 100, 'y': 71, 'z': 250});
+  // })
 
   $('.my_add_item').on('click', function(EO) {
     EO.preventDefault()
