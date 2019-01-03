@@ -316,7 +316,7 @@ var SideMenu = function(blueprint3d, floorplanControls, modalEffects) {
 
     function closeInstruction() {
       var domElement = document.getElementById('viewer');
-      domElement.style.cursor = 'url(/wp-content/themes/unnell/web/static/img/icons/coursor/default-default.svg) 20 0, auto';
+      domElement.style.cursor = 'url(../../static/img/icons/coursor/default-default.svg) 20 0, auto';
       $('.instruction').addClass('instruction--animationClose');
       triggerAddItem = false;
       setTimeout(() => {
@@ -522,13 +522,13 @@ var SideMenu = function(blueprint3d, floorplanControls, modalEffects) {
     if (triggerAddItem) {
       closeInstruction();
     }
-    blueprint3d.model.scene.addItem(2, '/wp-content/themes/unnell/web/static/const/models/newObj/window/window.js', {resizable: true, itemName: 'window', itemType: 2, modelUrl: '/wp-content/themes/unnell/web/static/const/models/newObj/window/window.js'}, 'window');
+    blueprint3d.model.scene.addItem(2, 'static/const/models/newObj/window/window.js', {resizable: true, itemName: 'window', itemType: 2, modelUrl: 'static/const/models/newObj/window/window.js'}, 'window');
   });
   $('.config__add_door').on('click', function() {
     if (triggerAddItem) {
       closeInstruction();
     }
-    blueprint3d.model.scene.addItem(9, '/wp-content/themes/unnell/web/static/const/models/newObj/door/door.js', {resizable: true, itemName: 'door', itemType: 9, modelUrl: '/wp-content/themes/unnell/web/static/const/models/newObj/door/door.js'}, 'door');
+    blueprint3d.model.scene.addItem(9, 'static/const/models/newObj/door/door.js', {resizable: true, itemName: 'door', itemType: 9, modelUrl: 'static/const/models/newObj/door/door.js'}, 'door');
 
   });
 
