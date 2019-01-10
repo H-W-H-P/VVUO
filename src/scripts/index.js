@@ -77,16 +77,16 @@ $(document).ready(function () {
   }
 
   $('.prFil').on('input', function (e) {
-    var priceVal = $(this).val()
-    // curValue / maxPrice * 1000000
+    var priceVal = Number($(this).val())
+    if (Number(priceVal) < minPrice) return false
     if ($(this).hasClass('prFilLeft')) {
       if (Number(priceVal) > Number($('.ui-slider-handle:last-child .price').text())) return false
       $('.ui-slider-handle:nth-last-child(2) .price').text(priceVal)
-      priceLimits.left = priceVal * 100 / maxPrice
+      priceLimits.left = (priceVal - minPrice) * 100 / maxPrice
     } else {
       if (Number(priceVal) < Number($('.ui-slider-handle:nth-last-child(2) .price').text())) return false
       $('.ui-slider-handle:last-child .price').text(priceVal)
-      priceLimits.right = priceVal * 100 / maxPrice
+      priceLimits.right = (priceVal - minPrice) * 100 / maxPrice
     }
     $('.shop_filters__price').slider('option', 'values', [ priceLimits.left, priceLimits.right ])
   })
@@ -305,7 +305,7 @@ $(document).ready(function () {
     slide: function (event, ui) {
       var curValue = ui.value
       console.log(curValue)
-      var curPrice = Math.floor(curValue / 100 * maxPrice)
+      var curPrice = Math.floor(curValue / 100 * maxPrice) + Math.floor(minPrice)
       $('.ui-slider-handle.ui-state-active .price').html(curPrice)
       if (ui.handleIndex === 1) {
         $('.prFilRight').val(curPrice)
@@ -317,11 +317,12 @@ $(document).ready(function () {
     }
   })
 
-  var maxPrice = $('.prFilRight').attr('data-maxPrice')
   var minPrice = $('.prFilLeft').attr('data-minPrice')
+  var maxPrice = $('.prFilRight').attr('data-maxPrice')
 
   $('.ui-slider-handle:nth-last-child(2)').append('<div class="shop_filters__price_cont"><span class="price">' + Math.floor(minPrice) + '</span> ₽</div>')
   $('.ui-slider-handle:last-child').append('<div class="shop_filters__price_cont"><span class="price">' + Math.floor(maxPrice) + '</span> ₽</div>')
+  maxPrice = maxPrice - minPrice
 
   // validation
 
