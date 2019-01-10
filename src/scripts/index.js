@@ -72,19 +72,21 @@ $(document).ready(function () {
   })
 
   var priceLimits = {
-    left: 1,
-    right: 50
+    left: 0,
+    right: 100
   }
 
   $('.prFil').on('input', function (e) {
     var priceVal = $(this).val()
     // curValue / maxPrice * 1000000
     if ($(this).hasClass('prFilLeft')) {
+      if (Number(priceVal) > Number($('.ui-slider-handle:last-child .price').text())) return false
       $('.ui-slider-handle:nth-last-child(2) .price').text(priceVal)
-      priceLimits.left = priceVal / 100
+      priceLimits.left = priceVal * 100 / maxPrice
     } else {
+      if (Number(priceVal) < Number($('.ui-slider-handle:nth-last-child(2) .price').text())) return false
       $('.ui-slider-handle:last-child .price').text(priceVal)
-      priceLimits.right = priceVal / 100
+      priceLimits.right = priceVal * 100 / maxPrice
     }
     $('.shop_filters__price').slider('option', 'values', [ priceLimits.left, priceLimits.right ])
   })
@@ -305,15 +307,21 @@ $(document).ready(function () {
       console.log(curValue)
       var curPrice = Math.floor(curValue / 100 * maxPrice)
       $('.ui-slider-handle.ui-state-active .price').html(curPrice)
-      if (ui.handleIndex === 1) $('.prFilRight').val(curPrice)
-      else $('.prFilLeft').val(curPrice)
+      if (ui.handleIndex === 1) {
+        $('.prFilRight').val(curPrice)
+        priceLimits.right = curPrice * 100 / maxPrice
+      } else {
+        $('.prFilLeft').val(curPrice)
+        priceLimits.left = curPrice * 100 / maxPrice
+      }
     }
   })
 
   var maxPrice = $('.prFilRight').attr('data-maxPrice')
+  var minPrice = $('.prFilLeft').attr('data-minPrice')
 
-  $('.ui-slider-handle:nth-last-child(2)').append('<div class="shop_filters__price_cont"><span class="price">' + Math.floor(maxPrice / 100) + '</span> ₽</div>')
-  $('.ui-slider-handle:last-child').append('<div class="shop_filters__price_cont"><span class="price">' + Math.floor(maxPrice / 2) + '</span> ₽</div>')
+  $('.ui-slider-handle:nth-last-child(2)').append('<div class="shop_filters__price_cont"><span class="price">' + Math.floor(minPrice) + '</span> ₽</div>')
+  $('.ui-slider-handle:last-child').append('<div class="shop_filters__price_cont"><span class="price">' + Math.floor(maxPrice) + '</span> ₽</div>')
 
   // validation
 
