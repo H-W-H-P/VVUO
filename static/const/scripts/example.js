@@ -562,8 +562,13 @@ var SideMenu = function(blueprint3d, floorplanControls, modalEffects) {
   function adItem(e) {
     let linkJs = $(e).closest('.config__item').attr('data-js');
     let nameGoods = $(e).closest('.config__item').attr('data-goods');
+    let valueFloor = $(e).closest('.config__item').attr('data-floor');
     addItemInList(nameGoods)
-    blueprint3d.model.scene.addItem(1, linkJs, {resizable: true, itemName: nameGoods, itemType: 1, modelUrl: linkJs}, nameGoods);
+    if (valueFloor) {
+      blueprint3d.model.scene.addItem(1, linkJs, {floor: true, resizable: true, itemName: nameGoods, itemType: 1, modelUrl: linkJs}, nameGoods);
+    } else {
+      blueprint3d.model.scene.addItem(1, linkJs, {resizable: true, itemName: nameGoods, itemType: 1, modelUrl: linkJs}, nameGoods);
+    }
   }
 
   // $('.shop_filters').on('click', function() {

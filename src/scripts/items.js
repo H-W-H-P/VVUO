@@ -126,6 +126,7 @@ $(document).ready(function () {
     let pushHear
     let nameFilter = stateCatalog['label']
     let nameCatalog = $(`[data-wrapowl=${stateCatalog['catalog']}]`).find('.item_category').html()
+    let valueFloor = false
 
     if (!nameOwl) {
       pushHear = '.config__owl'
@@ -146,7 +147,10 @@ $(document).ready(function () {
       } else {
         moreImg = 0
       }
-      htmlItem = `<a href='#' class='config__item popUpCall' id="items-wrapper add-items" data-item="${numItem}" data-pop_up=".pop_up__items" data-goods="${valueItem['name']}" data-js="${valueItem['model']}" data-description="${valueItem['description']}" data-moreImg=${moreImg}>
+      if (valueItem['floor']) {
+        valueFloor = true
+      }
+      htmlItem = `<a href='#' class='config__item popUpCall' id="items-wrapper add-items" data-floor="${valueFloor}" data-item="${numItem}" data-pop_up=".pop_up__items" data-goods="${valueItem['name']}" data-js="${valueItem['model']}" data-description="${valueItem['description']}" data-moreImg=${moreImg}>
         <div class='config__img_wr add-item'   >
         <img src='${valueItem['image']}' class='items_pop_up__img_items'>
         <div class='config__arrow my_add_item_one'>
