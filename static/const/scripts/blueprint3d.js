@@ -47621,7 +47621,7 @@ var ThreeControls = function (object, domElement) {
 
 	}
 	// <<<<<<<<<<<<<<<<<<<<<
-	  $('#constructor_2d, .conf_wr__order_btn, .open_page_pdf').on('click', function() {
+	  $('#constructor_2d, .conf_wr__order_btn').on('click', function() {
 
 	  	setTimeout(()=> {
 	  		var _x = scope.object.position.x;
@@ -47997,8 +47997,8 @@ var ThreeControls = function (object, domElement) {
 	this.domElement.addEventListener( 'touchstart', touchstart, false );
 	this.domElement.addEventListener( 'touchend', touchend, false );
 	this.domElement.addEventListener( 'touchmove', touchmove, false );
-	$('#constructor_2d, .conf_wr__order_btn, .open_page_pdf').on('click', this.stateZoom2d)
-	$('#constructor_3d, .page_pdf__back, .config__next, .clearConstr').on('click', this.stateZoom3d)
+	$('#constructor_2d, .conf_wr__order_btn').on('click', this.stateZoom2d)
+	$('#constructor_3d, .config__next, .clearConstr').on('click', this.stateZoom3d)
 
 	window.addEventListener( 'keydown', onKeyDown, false );
 };
@@ -48041,7 +48041,7 @@ var ThreeEdge = function(scene, edge, controls) {
     updatePlanes();
     addToScene();
 
-    $('#constructor_2d, .conf_wr__order_btn, .open_page_pdf').on('click', function(EO) {
+    $('#constructor_2d, .conf_wr__order_btn').on('click', function(EO) {
     	$.each(planes, function (key, value) {
     		value.material.color.r = value.material.color.g = value.material.color.b = 0;
     	});
@@ -48916,8 +48916,8 @@ var ThreeMain = function(model, element, canvasElement, opts) {
   function init() {
     THREE.ImageUtils.crossOrigin = "";
 
-    $('#constructor_2d, .conf_wr__order_btn, .open_page_pdf').on('click', cameraState_2d);
-    $('#constructor_3d, .page_pdf__back, .config__next, .clearConstr').on('click', cameraState_3d);
+    $('#constructor_2d, .conf_wr__order_btn').on('click', cameraState_2d);
+    $('#constructor_3d, .config__next, .clearConstr').on('click', cameraState_3d);
     $('.config__next, .clearConstr').on('click', cameraState_3d);
 
     domElement = scope.element.get(0) // Container

@@ -62,12 +62,12 @@ var CameraButtons = function(blueprint3d) {
       return orbitControls.changeViewe_2d();
     });
 
-    $('#constructor_2d, .open_page_pdf').on('click', function(EO) {
+    $('#constructor_2d').on('click', function(EO) {
     	EO.preventDefault();
     	return orbitControls.changeViewe_2d();
     });
 
-     $('#constructor_3d, .page_pdf__back, .config__next, .clearConstr').on('click', function(EO) {
+     $('#constructor_3d, .config__next, .clearConstr').on('click', function(EO) {
     	EO.preventDefault();
     	return orbitControls.changeViewe_3d();
     });
@@ -270,7 +270,7 @@ var ModalEffects = function(blueprint3d) {
  */
 
 var SideMenu = function(blueprint3d, floorplanControls, modalEffects) {
-  $('#constructor_3d, .page_pdf__back, .config__next, .clearConstr').on('click', function(EO) {
+  $('#constructor_3d, .config__next, .clearConstr').on('click', function(EO) {
     EO.preventDefault();
     blueprint3d.model.floorplan.update();
   })
