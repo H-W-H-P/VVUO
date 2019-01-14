@@ -954,7 +954,11 @@ $(document).ready(function () {
   }
 
   $('.pop_up__toggle').on('click', function () {
-    createRemoveSliderPopUp(0, 1)
+    if (slickPopUp) {
+      createRemoveSliderPopUp(0, 1)
+    } else {
+      return false
+    }
   })
 
   $('.items_pop_up__nav_contr').on('click', function (EO) {

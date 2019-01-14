@@ -537,10 +537,11 @@ var SideMenu = function(blueprint3d, floorplanControls, modalEffects) {
 
   init();
 
-  $('.conf_wr__over, .shop_filters__block').on('click', function(EO) {
+  $(document).on('click', '.conf_wr__over, .shop_filters__block', function (EO) {
     let target = EO.target;
     if (EO.target.tagName === 'IMG') {
       if ($(EO.target).parent().hasClass('my_add_item_one')) {
+        console.log('hear')
         if (triggerAddItem) {
           closeInstruction();
         }
@@ -557,6 +558,29 @@ var SideMenu = function(blueprint3d, floorplanControls, modalEffects) {
 
     adItem(target) 
     EO.stopPropagation();
+  }) 
+
+  $('.conf_wr__over, .shop_filters__block').on('click', function(EO) {
+    // let target = EO.target;
+    // if (EO.target.tagName === 'IMG') {
+    //   if ($(EO.target).parent().hasClass('my_add_item_one')) {
+    //     console.log('hear')
+    //     if (triggerAddItem) {
+    //       closeInstruction();
+    //     }
+    //     adItem(target)
+    //     return
+    //   }
+    // }
+    // if (!$(EO.target).hasClass('my_add_item_one')) {
+    //   return
+    // }
+    // if (triggerAddItem) {
+    //   closeInstruction();
+    // }
+
+    // adItem(target) 
+    // EO.stopPropagation();
   })
 
   function adItem(e) {
