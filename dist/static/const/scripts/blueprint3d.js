@@ -20325,9 +20325,6 @@ THREE.Loader.prototype = {
 
 			var loader = THREE.Loader.Handlers.get( fullPath );
 
-			// console.log(loader, fullPath)
-			// prod change
-
 			if ( loader !== null ) {
 
 				texture = loader.load( fullPath );
@@ -44536,19 +44533,20 @@ var FloorItem = function(three, metadata, geometry, material, position, rotation
 FloorItem.prototype = Object.create(Item.prototype);
 
 FloorItem.prototype.placeInRoom = function() {
-	// prod change
     if (!this.position_set) {
+    	if (this.metadata.floor) {
+    		var placeFloorItem = true;
+    	}
         var center = this.model.floorplan.getCenter();
         this.position.x = center.x;
         this.position.z = center.z;
         this.position.y = 0.5 * ( this.geometry.boundingBox.max.y - this.geometry.boundingBox.min.y );
-        // console.log(this);
         var vec4 = {
         	x: center.x,
         	y: 0.5 * ( this.geometry.boundingBox.max.y - this.geometry.boundingBox.min.y ),
         	z: center.z
         }
-        this.isValidPosition(vec4, vec4);
+        this.isValidPosition(vec4, vec4, placeFloorItem);
         deleter = this.isValidPosition(vec4, vec4);
         if (deleter === 1) {
         	return deleter
@@ -44598,7 +44596,7 @@ FloorItem.prototype.removeChanges = function(vec3, deleter) {
 	}		
 }
 
-FloorItem.prototype.isValidPosition = function(vec3, appearBool) {
+FloorItem.prototype.isValidPosition = function(vec3, appearBool, placeFloorItem) {
 	var countToTwo = 0;
     var corners = this.getCorners('x', 'z', vec3);
 
@@ -44625,6 +44623,10 @@ FloorItem.prototype.isValidPosition = function(vec3, appearBool) {
     // prod change
     
     if (this.obstructFloorMoves) {
+    	var floorOnly = this.metadata.floor;
+    	if (placeFloorItem) {
+    		floorOnly = false;
+    	}
     	// sorry about this
         var objects = this.scene.getItems();
         var thisObjHeight = this.halfSize.y;
@@ -44678,6 +44680,12 @@ FloorItem.prototype.isValidPosition = function(vec3, appearBool) {
                 ((cornerObjX < maxLimX) && (cornerObjX > minLimX) && (cornerObjY > minLimY) && (cornerObjY < maxLimY))) {
             	// if moved item intesecting another one
             	countToTwo++;
+
+
+            	if (floorOnly) {
+            		// moved item floorOnly mode
+            		return false
+            	}
 
                 var intersectedObjHeight = objects[i].halfSize.y;   
                 var intersectedObjPos = objects[i].position.y;
@@ -47179,7 +47187,6 @@ var ThreeController = function(three, model, camera, element, controls, hud) {
   }
 
   // sets coords to -1 to 1
-  // prod change
   function normalizeVector2(vec2) {
      var retVec = new THREE.Vector2();
   	 var helper = window.innerWidth - three.element.outerWidth() - three.element.offset().left;
@@ -47621,7 +47628,7 @@ var ThreeControls = function (object, domElement) {
 
 	}
 	// <<<<<<<<<<<<<<<<<<<<<
-	  $('#constructor_2d, .conf_wr__order_btn, .open_page_pdf').on('click', function() {
+	  $('#constructor_2d').on('click', function() {
 
 	  	setTimeout(()=> {
 	  		var _x = scope.object.position.x;
@@ -47997,8 +48004,8 @@ var ThreeControls = function (object, domElement) {
 	this.domElement.addEventListener( 'touchstart', touchstart, false );
 	this.domElement.addEventListener( 'touchend', touchend, false );
 	this.domElement.addEventListener( 'touchmove', touchmove, false );
-	$('#constructor_2d, .conf_wr__order_btn, .open_page_pdf').on('click', this.stateZoom2d)
-	$('#constructor_3d, .page_pdf__back, .config__next, .clearConstr').on('click', this.stateZoom3d)
+	$('#constructor_2d').on('click', this.stateZoom2d)
+	$('#constructor_3d, .config__next, .clearConstr').on('click', this.stateZoom3d)
 
 	window.addEventListener( 'keydown', onKeyDown, false );
 };
@@ -48041,7 +48048,7 @@ var ThreeEdge = function(scene, edge, controls) {
     updatePlanes();
     addToScene();
 
-    $('#constructor_2d, .conf_wr__order_btn, .open_page_pdf').on('click', function(EO) {
+    $('#constructor_2d').on('click', function(EO) {
     	$.each(planes, function (key, value) {
     		value.material.color.r = value.material.color.g = value.material.color.b = 0;
     	});
@@ -48916,8 +48923,8 @@ var ThreeMain = function(model, element, canvasElement, opts) {
   function init() {
     THREE.ImageUtils.crossOrigin = "";
 
-    $('#constructor_2d, .conf_wr__order_btn, .open_page_pdf').on('click', cameraState_2d);
-    $('#constructor_3d, .page_pdf__back, .config__next, .clearConstr').on('click', cameraState_3d);
+    $('#constructor_2d').on('click', cameraState_2d);
+    $('#constructor_3d, .config__next, .clearConstr').on('click', cameraState_3d);
     $('.config__next, .clearConstr').on('click', cameraState_3d);
 
     domElement = scope.element.get(0) // Container

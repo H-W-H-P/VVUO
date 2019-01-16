@@ -58,16 +58,16 @@ var CameraButtons = function(blueprint3d) {
     $("#move-up").dblclick(preventDefault);
     $("#move-down").dblclick(preventDefault);
 
-    $('.conf_wr__order_btn').on('click', function(EO) {
-      return orbitControls.changeViewe_2d();
-    });
+    // $('.conf_wr__order_btn').on('click', function(EO) {
+    //   return orbitControls.changeViewe_2d();
+    // });
 
-    $('#constructor_2d, .open_page_pdf').on('click', function(EO) {
+    $('#constructor_2d').on('click', function(EO) {
     	EO.preventDefault();
     	return orbitControls.changeViewe_2d();
     });
 
-     $('#constructor_3d, .page_pdf__back, .config__next, .clearConstr').on('click', function(EO) {
+     $('#constructor_3d, .config__next, .clearConstr').on('click', function(EO) {
     	EO.preventDefault();
     	return orbitControls.changeViewe_3d();
     });
@@ -270,7 +270,7 @@ var ModalEffects = function(blueprint3d) {
  */
 
 var SideMenu = function(blueprint3d, floorplanControls, modalEffects) {
-  $('#constructor_3d, .page_pdf__back, .config__next, .clearConstr').on('click', function(EO) {
+  $('#constructor_3d, .config__next, .clearConstr').on('click', function(EO) {
     EO.preventDefault();
     blueprint3d.model.floorplan.update();
   })
@@ -537,10 +537,11 @@ var SideMenu = function(blueprint3d, floorplanControls, modalEffects) {
 
   init();
 
-  $('.conf_wr__over, .shop_filters__block').on('click', function(EO) {
+  $(document).on('click', '.conf_wr__over, .shop_filters__block', function (EO) {
     let target = EO.target;
     if (EO.target.tagName === 'IMG') {
       if ($(EO.target).parent().hasClass('my_add_item_one')) {
+        console.log('hear')
         if (triggerAddItem) {
           closeInstruction();
         }
@@ -557,13 +558,41 @@ var SideMenu = function(blueprint3d, floorplanControls, modalEffects) {
 
     adItem(target) 
     EO.stopPropagation();
+  }) 
+
+  $('.conf_wr__over, .shop_filters__block').on('click', function(EO) {
+    // let target = EO.target;
+    // if (EO.target.tagName === 'IMG') {
+    //   if ($(EO.target).parent().hasClass('my_add_item_one')) {
+    //     console.log('hear')
+    //     if (triggerAddItem) {
+    //       closeInstruction();
+    //     }
+    //     adItem(target)
+    //     return
+    //   }
+    // }
+    // if (!$(EO.target).hasClass('my_add_item_one')) {
+    //   return
+    // }
+    // if (triggerAddItem) {
+    //   closeInstruction();
+    // }
+
+    // adItem(target) 
+    // EO.stopPropagation();
   })
 
   function adItem(e) {
     let linkJs = $(e).closest('.config__item').attr('data-js');
     let nameGoods = $(e).closest('.config__item').attr('data-goods');
+    let valueFloor = $(e).closest('.config__item').attr('data-floor');
     addItemInList(nameGoods)
-    blueprint3d.model.scene.addItem(1, linkJs, {resizable: true, itemName: nameGoods, itemType: 1, modelUrl: linkJs}, nameGoods);
+    if (valueFloor) {
+      blueprint3d.model.scene.addItem(1, linkJs, {floor: true, resizable: true, itemName: nameGoods, itemType: 1, modelUrl: linkJs}, nameGoods);
+    } else {
+      blueprint3d.model.scene.addItem(1, linkJs, {resizable: true, itemName: nameGoods, itemType: 1, modelUrl: linkJs}, nameGoods);
+    }
   }
 
   // $('.shop_filters').on('click', function() {
@@ -580,6 +609,7 @@ var SideMenu = function(blueprint3d, floorplanControls, modalEffects) {
     let linkJs = $('.my_add_item').attr('data-jsLink');
     let nameGoods = $('.my_add_item').attr('data-goodsGoods');
     addItemInList(nameGoods)
+    // blueprint3d.model.scene.addItem(1, linkJs, {floor: true, resizable: true, itemName: nameGoods, itemType: 1, modelUrl: linkJs}, nameGoods);
     blueprint3d.model.scene.addItem(1, linkJs, {resizable: true, itemName: nameGoods, itemType: 1, modelUrl: linkJs}, nameGoods);
   })
 
