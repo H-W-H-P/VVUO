@@ -470,7 +470,8 @@ $(document).ready(function () {
     items: 1,
     loop: true,
     dots: false,
-    nav: true
+    nav: true,
+    autoHeight: true
   })
 
   $('.shop_filters__mob_wr').owlCarousel({
