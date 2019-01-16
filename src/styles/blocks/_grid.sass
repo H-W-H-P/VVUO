@@ -1292,6 +1292,10 @@
 	&__quarter_left
 		position: relative
 
+		&_btn
+			@media(max-width:1439px)
+				display: none
+
 	&__quarter_right
 		position: absolute
 		z-index: -1
@@ -1532,12 +1536,6 @@
 
 		position: absolute
 
-		@media(max-width:1439px)
-			bottom: 40px
-
-		@media(max-width:1023px)
-			bottom: 90px
-
 		@media(max-width:767px)
 			display: none
 
@@ -1575,6 +1573,12 @@
 			@media(max-width: 1023px)
 				padding-right: 0
 				margin-right: 0
+		
+		&__arrow
+			@media(max-width: 1023px)
+				left: 87.5%
+			@media(max-width:767px)
+				left: initial
 
 		&__desc
 			padding-bottom: 70px
@@ -1593,7 +1597,7 @@
 			@media(max-width: 1439px)
 				margin-left: 0
 				width: 55.66%
-				height: 95px
+				height: 90px
 
 		&__arrow
 			@media(max-width: 1439px)
@@ -1644,7 +1648,7 @@
 				width: 100%
 
 			@media(max-width: 767px)
-				display: none
+				// display: none
 
 		&__btn2
 			@media(max-width: 1439px)
@@ -1696,10 +1700,9 @@
 			background-color: $gray8
 
 		&__image
-			bottom: 115px
+			bottom: 0
 
-			@media(max-width: 1439px)
-				bottom: 95px
+			
 
 .grid2
 	padding: 90px 0 80px
