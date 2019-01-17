@@ -2130,6 +2130,7 @@
 
 		.owl
 
+
 			&-nav
 				position: absolute
 				top: 0
@@ -2159,6 +2160,20 @@
 
 						@media(max-width:1023px)
 							background-image: url('../../static/img/icons/arr-long-white.svg') !important
+
+		&.owl-carousel
+
+			img
+				max-height: 900px
+				width: auto
+				// max-width: 1200px
+				margin: 0 auto
+
+				@media(max-width:1023px)
+					max-height: 500px
+
+				@media(max-width:767px)
+					max-height: 400px
 
 	&__bot
 		position: absolute
