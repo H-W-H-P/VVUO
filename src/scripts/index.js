@@ -417,13 +417,26 @@ $(document).ready(function () {
   $('.input_decore[type=tel]').mask('(000) 000 0000')
 
   // owls
-  $('.main_slider__right').owlCarousel({
+  var mainSliderOwl = $('.main_slider__right').owlCarousel({
     items: 1,
     loop: false,
     dots: false,
     nav: true,
     onInitialized: callback,
     onChanged: callback2
+  })
+
+  var colorSlideStart = $('.main_slider__right .active .main_slider__image').attr('data-color')
+  $('.ban_color').addClass('ban_' + colorSlideStart)
+
+  mainSliderOwl.on('changed.owl.carousel', function (event) {
+    setTimeout(function () {
+      var colorSlide = $('.main_slider__right .active .main_slider__image').attr('data-color')
+      if (colorSlide) {
+        $('.ban_color').removeClass('ban_green ban_violet ban_cream ban_grey')
+        $('.ban_color').addClass('ban_' + colorSlide)
+      }
+    }, 10)
   })
 
   function callback (event) {
