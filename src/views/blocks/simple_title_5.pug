@@ -1,6 +1,16 @@
 section.simple_title_wr.simple_title_wr_5
-	.max_width.simple_title_wr__date_wr
-		span.simple_title_wr__date Конфигуратор оборудования
 	.simple_title_wr_5__inp_wr.max_width
 		form(action="#")
 			input(type="text", placeholder="Ваш новый проект").simple_title_wr_5__inp.bold
+
+	div.conf_wr__top.max_width
+		p.conf_wr__quart.conf_wr__top-left
+			span.conf_wr__18 Итоговая цена
+			b.conf_wr__bold
+				span.confPrice 0 
+				| ₽
+		form(action="#").conf_wr__quart.conf_wr__order
+			button.conf_wr__quart.btn_w_arr.conf_wr__order.conf_wr__order_btn(data-pop_up='.pop_up__order') Заказать
+				.hover_bl
+		a(href="").conf_wr__quart.btn_w_arr.conf_wr__btn2.open_page_pdf Посмотреть список
+			.hover_bl

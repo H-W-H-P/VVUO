@@ -1,6 +1,7 @@
 import $ from 'jquery'
 import 'owl.carousel'
 import ymaps from 'ymaps'
+import PerfectScrollbar from 'perfect-scrollbar'
 
 require('jquery-ui-bundle')
 require('jquery-ui-touch-punch')
@@ -1006,4 +1007,30 @@ $(document).ready(function () {
     $('.my_add_item').attr('data-goodsGoods', nameGoods)
     $('.items_pop_up').find('h6').html(nameGoods)
   }
+})
+
+$(document).ready(function () {
+  $('.conf_wr_filters__plan').click(function () {
+    if (window.innerWidth >= 1440) {
+      $(this).removeClass('closed')
+      if ($('.planWrap').hasClass('closed')) $(this).addClass('closed')
+      // $('.planWrap').toggleClass('closed')
+    }
+  })
+  $('.conf_wr .shop_filters__cat').click(function () {
+    var _this = this
+    setTimeout(function () {
+      $('.conf_wr__wrap_slider').css('top', $(_this).closest('.shop_filters__block').find('.conf_wr_filters__cat_wr').innerHeight() - 20)
+      const ps = new PerfectScrollbar('.conf_wr__wrap_slider')
+      ps.update()
+    }, 800)
+  })
+  $('.conf_wr_filters__input_wr').mousedown(function () {
+    var _this = this
+    setTimeout(function () {
+      $('.conf_wr__wrap_slider').css('top', $(_this).closest('.shop_filters__block').find('.conf_wr_filters__cat_wr').innerHeight() - 20)
+      const ps = new PerfectScrollbar('.conf_wr__wrap_slider')
+      ps.update()
+    }, 800)
+  })
 })
