@@ -2315,7 +2315,10 @@
 .conf_wr
 	position: relative
 
-	padding-top: 160px
+	padding-top: 140px
+
+	@media(max-width:1439px)
+		padding-top: 90px
 
 	.wrap_filter,
 	.wrap
@@ -2605,9 +2608,9 @@
 		&_active
 			color: #5b8ec8
 
-		&__wrap .conf_wr_filters-side__reset
-			@media(max-width:1439px)
-				display: none
+		// &__wrap .conf_wr_filters-side__reset
+		// 	@media(max-width:1439px)
+		// 		display: none
 
 		&.opened
 			max-height: 2000px
@@ -2669,8 +2672,6 @@
 
 			&__wrap
 				padding-top: 40px
-
-				display: none
 
 			&__chbx
 				padding-left: 0
@@ -3228,12 +3229,20 @@
 				top: -86px
 				right: 20px
 
+	&__next
+		margin-top: 20px
 
 	&__center
 		padding-top: 40px
 
+		@media(max-width:1439px)
+			padding-top: 10px
+
 	&__add_window
 		padding-bottom: 38px
+
+		@media(max-width:1439px)
+			padding-bottom: 20px
 
 	&__add_txt
 		font-weight: bold
@@ -3354,3 +3363,12 @@
 
 .conf_wr_filters .shop_filters__caps.colored
 	color: #5b8ec8
+
+.pop_up__order 
+	@media(max-width:1439px)
+	
+		padding-bottom: 40px
+
+		.pop_up__title 
+			padding-top: 50px
+			padding-bottom: 30px

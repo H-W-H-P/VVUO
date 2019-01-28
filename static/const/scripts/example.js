@@ -384,6 +384,7 @@ var SideMenu = function(blueprint3d, floorplanControls, modalEffects) {
       var rommSize = wallA + 'x' + wallB;
       console.log(wallB, wallA)
       $('.list_room_size').val(rommSize)
+      $('.conf_wr_filters__plan, .planWrap').addClass('closed')
 
       setTimeout(function() {
         setCurrentState(scope.states.FLOORPLAN);

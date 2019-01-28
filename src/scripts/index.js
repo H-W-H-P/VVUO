@@ -784,7 +784,7 @@ $(document).ready(function () {
   $('.conf_wr__order_btn').on('click', function (EO) {
     EO.preventDefault()
     if (!$('.list_name_proj').val()) {
-      $('html, body').animate({ scrollTop: $('.header').offset().top }, 1500)
+      $('html, body').animate({ scrollTop: $('.simple_title_wr_5').offset().top }, 1500)
       $('.simple_title_wr_5__inp_wr').addClass('invalid')
       setTimeout(() => {
         $('.simple_title_wr_5__inp_wr').removeClass('invalid')
