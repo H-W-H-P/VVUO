@@ -167,8 +167,9 @@ $(document).ready(function () {
   }
   function wallMaxLength (evt) {
     var charCode = (evt.which) ? evt.which : event.keyCode
+    console.log(evt, charCode)
     if ((charCode >= 48 && charCode <= 57) || (charCode >= 96 && charCode <= 105) || (charCode === 8) || (charCode === 9) || (charCode === 13) || (charCode >= 35 && charCode <= 46)) {
-      if (parseInt(this.value + String.fromCharCode(charCode), 10) <= 1500) return true
+      if ((parseInt(this.value + String.fromCharCode(charCode), 10) <= 1500) || (isTextSelected(evt.path[0]))) return true
     }
     evt.preventDefault()
     evt.stopPropagation()
@@ -182,6 +183,15 @@ $(document).ready(function () {
     evt.preventDefault()
     evt.stopPropagation()
     return false
+  }
+
+  function isTextSelected (input) {
+    if (typeof input.selectionStart === 'number') {
+      return input.selectionStart === 0 && input.selectionEnd === input.value.length
+    } else if (typeof document.selection !== 'undefined') {
+      input.focus()
+      return document.selection.createRange().text === input.value
+    }
   }
 
   resizing1()
@@ -783,14 +793,14 @@ $(document).ready(function () {
 
   $('.conf_wr__order_btn').on('click', function (EO) {
     EO.preventDefault()
-    if (!$('.list_name_proj').val()) {
-      $('html, body').animate({ scrollTop: $('.simple_title_wr_5').offset().top }, 1500)
-      $('.simple_title_wr_5__inp_wr').addClass('invalid')
-      setTimeout(() => {
-        $('.simple_title_wr_5__inp_wr').removeClass('invalid')
-      }, 2000)
-      return false
-    }
+    // if (!$('.list_name_proj').val()) {
+    //   $('html, body').animate({ scrollTop: $('.simple_title_wr_5').offset().top }, 1500)
+    //   $('.simple_title_wr_5__inp_wr').addClass('invalid')
+    //   setTimeout(() => {
+    //     $('.simple_title_wr_5__inp_wr').removeClass('invalid')
+    //   }, 2000)
+    //   return false
+    // }
     var popUpName = $(this).data('pop_up')
     popUping(popUpName)
   })
