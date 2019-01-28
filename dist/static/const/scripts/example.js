@@ -368,13 +368,13 @@ var SideMenu = function(blueprint3d, floorplanControls, modalEffects) {
       $('.config__input_height').val(wallHeight);
       $('.config__input_height_mobile').val(wallHeight);
       // check and set min wallA length if < 3m
-      wallA = $('#confWallA').val() > 300 ? $('#confWallA').val() : $('.confWallA-desk').val();
-      wallA = $('.confWallA-desk').val() > 300 ? $('.confWallA-desk').val() : 300;
+      wallA = $('#confWallA').val() > 300 ? $('#confWallA').val() : 300;
+      // wallA = $('.confWallA-desk').val() > 300 ? $('.confWallA-desk').val() : 300;
       $('.confWallA-desk').val(wallA);
       $('#confWallA').val(wallA);
       // check and set min wallB height if < 3m
-      wallB = $('#confWallB').val() > 300 ? $('#confWallB').val() : $('.confWallB-desk').val();
-      wallB = $('.confWallB-desk').val() > 300 ? $('.confWallB-desk').val() : 300;
+      wallB = $('#confWallB').val() > 300 ? $('#confWallB').val() : 300;
+      // wallB = $('.confWallB-desk').val() > 300 ? $('.confWallB-desk').val() : 300;
       $('.confWallB-desk').val(wallB);
       $('#confWallB').val(wallB);
 

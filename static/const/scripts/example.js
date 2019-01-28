@@ -359,6 +359,7 @@ var SideMenu = function(blueprint3d, floorplanControls, modalEffects) {
     $("#update-floorplan").click(floorplanUpdate);
 
     $('.config__next').click(function () {
+      console.log('heh')
       $('.constructor__controlViwe').removeClass('activeState constructor_2d_active constructor_3d_active')
       $('#constructor_3d').addClass('activeState')
       closeInstruction();
@@ -368,19 +369,20 @@ var SideMenu = function(blueprint3d, floorplanControls, modalEffects) {
       $('.config__input_height').val(wallHeight);
       $('.config__input_height_mobile').val(wallHeight);
       // check and set min wallA length if < 3m
-      wallA = $('#confWallA').val() > 300 ? $('#confWallA').val() : $('.confWallA-desk').val();
-      wallA = $('.confWallA-desk').val() > 300 ? $('.confWallA-desk').val() : 300;
+      wallA = $('#confWallA').val() > 300 ? $('#confWallA').val() : 300;
+      // wallA = $('.confWallA-desk').val() > 300 ? $('.confWallA-desk').val() : 300;
       $('.confWallA-desk').val(wallA);
       $('#confWallA').val(wallA);
       // check and set min wallB height if < 3m
-      wallB = $('#confWallB').val() > 300 ? $('#confWallB').val() : $('.confWallB-desk').val();
-      wallB = $('.confWallB-desk').val() > 300 ? $('.confWallB-desk').val() : 300;
+      wallB = $('#confWallB').val() > 300 ? $('#confWallB').val() : 300;
+      // wallB = $('.confWallB-desk').val() > 300 ? $('.confWallB-desk').val() : 300;
       $('.confWallB-desk').val(wallB);
       $('#confWallB').val(wallB);
 
       $('.config__top_line .config__number').text(wallA);
       $('.config__left_line .config__number').text(wallB);
       var rommSize = wallA + 'x' + wallB;
+      console.log(wallB, wallA)
       $('.list_room_size').val(rommSize)
 
       setTimeout(function() {
