@@ -359,7 +359,6 @@ var SideMenu = function(blueprint3d, floorplanControls, modalEffects) {
     $("#update-floorplan").click(floorplanUpdate);
 
     $('.config__next').click(function () {
-      console.log('heh')
       $('.constructor__controlViwe').removeClass('activeState constructor_2d_active constructor_3d_active')
       $('#constructor_3d').addClass('activeState')
       closeInstruction();
@@ -395,6 +394,7 @@ var SideMenu = function(blueprint3d, floorplanControls, modalEffects) {
     })
 
     $('.clearConstr').click(function () {
+      $('.conf_wr_filters-side__reset').removeClass('visible')
       $('.constructor__controlViwe').removeClass('activeState constructor_2d_active constructor_3d_active')
       $('#constructor_3d').addClass('activeState')
       $(this).closest('.pop_up__wr').removeClass('pop_up_active')
@@ -524,12 +524,14 @@ var SideMenu = function(blueprint3d, floorplanControls, modalEffects) {
 
     if (triggerAddItem) {
       closeInstruction();
+      $('.conf_wr_filters-side__reset').addClass('visible')
     }
     blueprint3d.model.scene.addItem(2, 'static/const/models/newObj/window/window.js', {resizable: true, itemName: 'window', itemType: 2, modelUrl: 'static/const/models/newObj/window/window.js'}, 'window');
   });
   $('.config__add_door').on('click', function() {
     if (triggerAddItem) {
       closeInstruction();
+      $('.conf_wr_filters-side__reset').addClass('visible')
     }
     blueprint3d.model.scene.addItem(9, 'static/const/models/newObj/door/door.js', {resizable: true, itemName: 'door', itemType: 9, modelUrl: 'static/const/models/newObj/door/door.js'}, 'door');
 
@@ -547,6 +549,7 @@ var SideMenu = function(blueprint3d, floorplanControls, modalEffects) {
         console.log('hear')
         if (triggerAddItem) {
           closeInstruction();
+          $('.conf_wr_filters-side__reset').addClass('visible')
         }
         adItem(target)
         return
@@ -557,7 +560,9 @@ var SideMenu = function(blueprint3d, floorplanControls, modalEffects) {
     }
     if (triggerAddItem) {
       closeInstruction();
+      $('.conf_wr_filters-side__reset').addClass('visible')
     }
+    $('.conf_wr_filters-side__reset').addClass('visible')
 
     adItem(target) 
     EO.stopPropagation();
@@ -606,6 +611,7 @@ var SideMenu = function(blueprint3d, floorplanControls, modalEffects) {
     EO.preventDefault()
     if (triggerAddItem) {
       closeInstruction();
+      $('.conf_wr_filters-side__reset').addClass('visible')
     }
     $('body, html').removeClass('pop_up_cond');
     $('.items_pop_up').removeClass('pop_up_active');

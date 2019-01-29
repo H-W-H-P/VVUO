@@ -2608,9 +2608,12 @@
 		&_active
 			color: #5b8ec8
 
-		// &__wrap .conf_wr_filters-side__reset
-		// 	@media(max-width:1439px)
-		// 		display: none
+		&__wrap .conf_wr_filters-side__reset
+			transition: all ease .4s
+			opacity: 0
+
+			&.visible
+				opacity: 1
 
 		&.opened
 			max-height: 2000px

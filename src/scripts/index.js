@@ -178,7 +178,7 @@ $(document).ready(function () {
   function wallMaxHeight (evt) {
     var charCode = (evt.which) ? evt.which : event.keyCode
     if ((charCode >= 48 && charCode <= 57) || (charCode >= 96 && charCode <= 105) || (charCode === 8) || (charCode === 9) || (charCode === 13) || (charCode >= 35 && charCode <= 46)) {
-      if (parseInt(this.value + String.fromCharCode(charCode), 10) <= 300) return true
+      if ((parseInt(this.value + String.fromCharCode(charCode), 10) <= 300) || (isTextSelected(evt.path[0]))) return true
     }
     evt.preventDefault()
     evt.stopPropagation()
