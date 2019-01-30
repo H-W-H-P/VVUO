@@ -221,6 +221,12 @@ $(document).ready(function () {
     return false
   })
 
+  $('.comp_title__btn2, .comp_title__quarter_left_btn, .comp_title__btn4, .comp_title_2__btn2, .comp_title_2__btn1').click(function () {
+    var popUpName = $(this).data('pop_up')
+    popUping(popUpName)
+    return false
+  })
+
   function popUping (_popUpName) {
     $('html, body').addClass('pop_up_cond')
     $(_popUpName).addClass('pop_up_active')
