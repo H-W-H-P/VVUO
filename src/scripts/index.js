@@ -93,7 +93,9 @@ $(document).ready(function () {
   })
 
   $('.comp_title__arrow').click(function () {
-    var $nextSect = $(this).closest('section').next()
+    var $nextSect
+    if ($(this).closest('section').next().length) $nextSect = $(this).closest('section').next()
+    else $nextSect = $(this).closest('section').closest('div').next()
     $('html, body').animate({ scrollTop: $nextSect.offset().top }, 1000)
     return false
   })

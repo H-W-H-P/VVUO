@@ -189,7 +189,8 @@
 			padding-right: 80px
 
 	&__item
-		transition: transform ease .4s
+		// transition: transform ease .4s
+		width: 100%
 
 		box-sizing: border-box
 
@@ -308,7 +309,7 @@
 	min-height: 920px
 
 	@media(max-width:1439px)
-		min-height: 790px
+		min-height: 735px
 
 	@media(max-width:1023px)
 		min-height: 900px
@@ -338,6 +339,9 @@
 		left: 30px
 		bottom: 150px
 		width: 400%
+
+		@media(max-width:1439px)
+			bottom: 115px
 
 		@media(max-width: 1023px)
 			left: 106px
@@ -428,6 +432,9 @@
 		display: inline-block
 
 		position: relative
+
+		@media(max-width:1439px)
+			padding-bottom: 243px
 
 		@media(max-width:767px)
 			padding-bottom: 150px
