@@ -363,9 +363,9 @@ var SideMenu = function(blueprint3d, floorplanControls, modalEffects) {
       $('#constructor_3d').addClass('activeState')
       closeInstruction();
       // check and set min wall height if < 2.1m
-      var wallHeight = $('.config__input_height_mobile').val() > 210 ? $('.config__input_height_mobile').val() : $('.config__input_height').val();
-      wallHeight = $('.config__input_height').val() > 210 ? $('.config__input_height').val() : 250;
-      $('.config__input_height').val(wallHeight);
+      var wallHeight = $('.config__input_height_mobile').val() > 210 ? $('.config__input_height_mobile').val() : 250;
+      // wallHeight = $('.config__input_height').val() > 210 ? $('.config__input_height').val() : 250;
+      // $('.config__input_height').val(wallHeight);
       $('.config__input_height_mobile').val(wallHeight);
       // check and set min wallA length if < 3m
       wallA = $('#confWallA').val() > 300 ? $('#confWallA').val() : 300;
@@ -596,10 +596,12 @@ var SideMenu = function(blueprint3d, floorplanControls, modalEffects) {
     let nameGoods = $(e).closest('.config__item').attr('data-goods');
     let valueFloor = $(e).closest('.config__item').attr('data-floor');
     addItemInList(nameGoods)
+    console.log(valueFloor)
     if (valueFloor) {
-      blueprint3d.model.scene.addItem(1, linkJs, {floor: true, resizable: true, itemName: nameGoods, itemType: 1, modelUrl: linkJs}, nameGoods);
+      // blueprint3d.model.scene.addItem(1, linkJs, {floor: true, resizable: true, itemName: nameGoods, itemType: 1, modelUrl: linkJs}, nameGoods);
+      blueprint3d.model.scene.addItem(1, linkJs, {floor: false, resizable: true, itemName: nameGoods, itemType: 1, modelUrl: linkJs}, nameGoods);
     } else {
-      blueprint3d.model.scene.addItem(1, linkJs, {resizable: true, itemName: nameGoods, itemType: 1, modelUrl: linkJs}, nameGoods);
+      blueprint3d.model.scene.addItem(1, linkJs, {floor: false, resizable: true, itemName: nameGoods, itemType: 1, modelUrl: linkJs}, nameGoods);
     }
   }
 

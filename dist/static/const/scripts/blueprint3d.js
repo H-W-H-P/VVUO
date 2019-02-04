@@ -44705,7 +44705,8 @@ FloorItem.prototype.isValidPosition = function(vec3, appearBool, placeFloorItem)
             if (triggerino) {
             	this.position.y = thisObjHeight;
             }
-            if ((appearBool) && (countToTwo >= 2)) { 
+            if ((appearBool) && (countToTwo >= 2)) {
+            	console.log('3 items')
            		// if u're adding third floor item
             	variableThroughAllTheFIles = false;     	
             	$('.conf_wr__alert').addClass('alert');
