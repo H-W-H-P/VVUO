@@ -62,7 +62,7 @@ $(document).ready(function () {
     if (!$(this).closest('.header__slide').length) {
       $('.catalog_open_wr__item').removeClass('active')
       $('.catalog_open_wr__item').eq($(this).index()).addClass('active')
-      return false
+      if (window.innerWidth >= 1024) return false
     }
   })
 
@@ -233,6 +233,12 @@ $(document).ready(function () {
     $('html, body').addClass('pop_up_cond')
     $(_popUpName).addClass('pop_up_active')
   }
+
+  $('.btn_send_constructor').click(function () {
+    $(this).closest('.pop_up__wr').removeClass('pop_up_active')
+    // $('html, body').removeClass('pop_up_cond')
+    // return false
+  })
 
   $('.pop_up__toggle').click(function () {
     $(this).closest('.pop_up__wr').removeClass('pop_up_active')
