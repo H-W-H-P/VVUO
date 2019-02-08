@@ -223,6 +223,12 @@ $(document).ready(function () {
     return false
   })
 
+  $('.btn_send_constructor').click(function () {
+    var popUpName = $(this).data('pop_up')
+    popUping(popUpName)
+    return false
+  })
+
   $('.comp_title__btn2, .comp_title__quarter_left_btn, .comp_title__btn4, .comp_title_2__btn2, .comp_title_2__btn1').click(function () {
     var popUpName = $(this).data('pop_up')
     popUping(popUpName)
@@ -235,12 +241,27 @@ $(document).ready(function () {
   }
 
   $('.btn_send_constructor').click(function () {
+    var trigger = true
+    $(this).closest('form').find('.input_decore').each(function (i) {
+      var _this = this
+      if (!validate(_this, trigger)) {
+        $(this).closest('.input_decore_label').addClass('danger')
+        trigger = false
+      }
+    })
+    if (!trigger) return false
     $(this).closest('.pop_up__wr').removeClass('pop_up_active')
-    // $('html, body').removeClass('pop_up_cond')
-    // return false
+  })
+
+  $(document).on('click', '.pop_up__toggle', function () {
+    console.log('heh')
+    $(this).closest('.pop_up__wr').removeClass('pop_up_active')
+    $('html, body').removeClass('pop_up_cond')
+    return false
   })
 
   $('.pop_up__toggle').click(function () {
+    console.log('heh')
     $(this).closest('.pop_up__wr').removeClass('pop_up_active')
     $('html, body').removeClass('pop_up_cond')
     return false
