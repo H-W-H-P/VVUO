@@ -1,28 +1,13 @@
 .shop_wrap.conf_wr
-	section.conf_wr__top.max_width
-		p.conf_wr__quart.conf_wr__top-left
-			span.conf_wr__18 Итоговая цена
-			//- b.conf_wr__bold 320 000 ₽
-			b.conf_wr__bold
-				span.confPrice 0 
-				| ₽
-		form(action="#").conf_wr__quart.conf_wr__order
-			button.conf_wr__quart.btn_w_arr.conf_wr__order.conf_wr__order_btn(data-pop_up='.pop_up__order') Заказать
-				.hover_bl
-			//- input(type="text").list_items.list_hide
-			//- input(type="text").list_img.list_hide
-			//- input(type="text").list_name_proj.list_hide
-			//- input(type="text").list_name_img.list_hide
-		//- a(href="").conf_wr__quart.btn_w_arr.conf_wr__order Заказать
-		//- 		.hover_bl
-		a(href="").conf_wr__quart.btn_w_arr.conf_wr__btn2.open_page_pdf Посмотреть список
-			.hover_bl
 
 	section.shop.max_width.conf_wr__shop
 		form(action="").shop_filters.conf_wr_filters-side
 			.shop_filters__block.conf_wr__block.conf_wr__plan
 				a(href="#").shop_filters__cat.bold.css_arr.closed.conf_wr_filters__plan.conf_wr__cat План помещения
-				.shop_filters__cat_wr.closed.shop_filters__desk_toggle
+				.shop_filters__cat_wr.closed.shop_filters__desk_toggle.planWrap
+					a(href="").pop_up__toggle.cross.cross_constr
+						span.cross_one.cross_lane
+						span.cross_two.cross_lane
 					.config__wr.config__wr-filter
 						.config__wrap.config__wrap-no_desk
 							.config__left
@@ -56,6 +41,9 @@
 				.shop_filters__block.conf_wr__block.shop_filters__block_wrap
 					a(href="#").shop_filters__cat.bold.css_arr.closed.conf_wr__cat.item_category Готовые комплекты
 					.conf_wr_filters__cat_wr.shop_filters__cat_wr.closed
+						a(href="").pop_up__toggle.cross.cross_constr
+							span.cross_one.cross_lane
+							span.cross_two.cross_lane
 						.shop_filters__input_wr.conf_wr_filters__input_wr
 							input(type="checkbox").checkbox#input5
 							label(for="input5").conf_wr_filters-side__chbx.label_checkbox Комплект 1
@@ -64,6 +52,9 @@
 							label(for="input5").conf_wr_filters-side__chbx.label_checkbox Комплект 2
 
 			.wrap_filter
+				//- a(href="").pop_up__toggle.cross.cross_constr
+				//- 			span.cross_one.cross_lane
+				//- 			span.cross_two.cross_lane
 				.shop_filters__block.conf_wr__block.shop_filters__block_wrap
 					a(href="#").shop_filters__cat.bold.css_arr.closed.conf_wr__cat.item_category Слон
 					.conf_wr_filters__cat_wr.shop_filters__cat_wr.closed
@@ -81,8 +72,8 @@
 				a(href="#", data-pop_up=".pop_up_clear_constr").shop_filters__reset.bold.trs.conf_wr_filters-side__reset.popUpCall Сбросить
 
 		.config.config-cond1
-			h7.config__title.title.config-cond1__title План помещения
-			.config__wr
+			//- h7.config__title.title.config-cond1__title План помещения
+			.config__wr.noNeed
 				.config__wrap
 					.config__left
 						.config__inp_wr
@@ -130,15 +121,9 @@
 				.config__left_line
 					.config__number 400
 				include constructor
-			form(action="#").conf_wr__quart.btn_w_arr.conf_wr__order.conf_wr__order2.conf_wr__order2_form
-				button.conf_wr__quart.btn_w_arr.conf_wr__order.conf_wr__order2.conf_wr__order_btn(data-pop_up='.pop_up__order') Заказать
-					.hover_bl
-				//- input(type="text").list_items.list_hide
-				//- input(type="text").list_img.list_hide
-				//- input(type="text").list_name_proj.list_hide
-				//- input(type="text").list_name_img.list_hide
-			//- a(href="").conf_wr__quart.btn_w_arr.conf_wr__order.conf_wr__order2 Заказать
-			//- 	.hover_bl
+			//- form(action="#").conf_wr__quart.btn_w_arr.conf_wr__order.conf_wr__order2.conf_wr__order2_form
+			//- 	button.conf_wr__quart.btn_w_arr.conf_wr__order.conf_wr__order2.conf_wr__order_btn(data-pop_up='.pop_up__order') Заказать
+			//- 		.hover_bl
 
 	section.mob.conf_wr__mob
 		img(src="static/img/icons/comp.svg", width="100", alt="")
