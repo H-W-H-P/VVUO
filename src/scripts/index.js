@@ -945,7 +945,6 @@ $(document).ready(function () {
       })
     } else {
       setTimeout(() => {
-        console.log('SLICK')
         $('.items_pop_up__wrap_img').slick('unslick')
         slickPopUp.slick('unslick')
         slickPopUp = false
