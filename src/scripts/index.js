@@ -281,42 +281,95 @@ $(document).ready(function () {
     return false
   })
   var zoomImgToggle2 = true
-  $(document).on('click', '.imgZoom_new', function () {
+  // $(document).on('click', '.imgZoom_news', function () {
+  //   console.log('++')
+  //   if (zoomImgToggle2) {
+  //     popUping()
+  //     $('.zoomImgWr__popUp').addClass('zoomImgWr__popUp_opened')
+  //     let wrap = $(this).parent('.zoomImgWr').clone()
+  //     $(wrap).find('img').remove()
+  //     $('.zoomImgWr__popUp').append(wrap)
+  //     // controlHeightA($(wrap).find('.grid2__img'))
+  //     // $(this).parent('.zoomImgWr').addClass('zoomed')
+  //     zoomImgToggle2 = false
+  //     if ($(this).hasClass('video-on')) {
+  //       $(this).removeClass('video-on')
+  //       player.stop()
+  //       player.destroy()
+  //     } else {
+  //       player = new YTPlayer('.player', {
+  //         autoplay: true,
+  //         controls: false,
+  //         info: false,
+  //         annotations: false,
+  //         modestbranding: false,
+  //         related: false
+  //       })
+  //       var dataVideo = $(this).data('video')
+  //       player.load(dataVideo)
+  //       player.play()
+  //       $(this).addClass('video-on')
+  //     }
+  //   } else {
+  //     $('html, body').removeClass('pop_up_cond')
+  //     // $(this).closest('.zoomImgWr').removeClass('zoomed')
+  //     $('.zoomImgWr__popUp').removeClass('zoomImgWr__popUp_opened').empty()
+  //     zoomImgToggle2 = true
+  //   }
+  //   return false
+  // })
+  $(document).on('click', '.imgZoom_new.videoZoom', function () {
+    if ($('.imgZoom_new.videoZoom').hasClass('video-on')) {
+      $('.imgZoom_new.videoZoom').removeClass('video-on')
+      player.stop()
+      player.destroy()
+      $('html, body').removeClass('pop_up_cond')
+      $('.zoomImgWr__popUp').find('.zoomImgWr').find('.imgZoom_new').remove()
+      $('.zoomImgWr__popUp').removeClass('zoomImgWr__popUp_opened')
+      $('.zoomImgWr ').removeClass('zoomed')
+      zoomImgToggle2 = true
+    }
+    // zoomImgToggle2 = true
+  })
+  function dropVid (props) {
+    let _this = props
     if (zoomImgToggle2) {
       popUping()
       $('.zoomImgWr__popUp').addClass('zoomImgWr__popUp_opened')
-      let wrap = $(this).parent('.zoomImgWr').clone()
-      $('.zoomImgWr__popUp').append(wrap)
-      controlHeightA($(wrap).find('.grid2__img'))
+      let wrap = $(_this).parent('.zoomImgWr').find('.videoZoom ').clone()
+      // $('.zoomImgWr__popUp').append(wrap)
+      $('.zoomImgWr__popUp .zoomImgWr').append(wrap)
+      // controlHeightA($(wrap).find('.grid2__imgs'))
+      // $(wrap).find('img').remove()
       // $(this).parent('.zoomImgWr').addClass('zoomed')
       zoomImgToggle2 = false
     } else {
       $('html, body').removeClass('pop_up_cond')
       // $(this).closest('.zoomImgWr').removeClass('zoomed')
-      $('.zoomImgWr__popUp').removeClass('zoomImgWr__popUp_opened').empty()
+      // $('.zoomImgWr__popUp').removeClass('zoomImgWr__popUp_opened').empty()
+      $('.zoomImgWr__popUp .zoomImgWr .imgZoom_news').remove()
       zoomImgToggle2 = true
     }
-    return false
-  })
-  function controlHeightA (elem) {
-    let elemHeight = elem[0].offsetHeight
-    $(window).resize(function () {
-      if (window.innerHeight <= elemHeight) {
-        $(elem).css({
-          'max-height': window.innerHeight
-        })
-      } else {
-        if (window.innerHeight >= elemHeight) {
-          $(elem).css({
-            'max-height': elemHeight
-          })
-        }
-        $(elem).css({
-          'max-height': elemHeight
-        })
-      }
-    })
   }
+  // function controlHeightA (elem) {
+  //   let elemHeight = elem[0].offsetHeight
+  //   $(window).resize(function () {
+  //     if (window.innerHeight <= elemHeight) {
+  //       $(elem).css({
+  //         'max-height': window.innerHeight
+  //       })
+  //     } else {
+  //       if (window.innerHeight >= elemHeight) {
+  //         $(elem).css({
+  //           'max-height': elemHeight
+  //         })
+  //       }
+  //       $(elem).css({
+  //         'max-height': elemHeight
+  //       })
+  //     }
+  //   })
+  // }
 
   if ($('.player').length) {
     var player = new YTPlayer('.player', {
@@ -348,6 +401,7 @@ $(document).ready(function () {
       player.play()
       $(this).addClass('video-on')
     }
+    dropVid(this)
   })
 
   // 360 creating
