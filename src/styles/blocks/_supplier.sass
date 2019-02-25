@@ -133,6 +133,13 @@
 			left: 20px
 			bottom: -56px
 
+	&__img
+		@media(max-width:767px)
+			object-fit: cover
+			width: auto
+			height: 229px
+
+
 	&__item
 		position: relative
 		width: 530px
@@ -140,7 +147,7 @@
 
 		@media(max-width:767px)
 			width: 100%
-			height: auto
+			height: 229px
 
 
 .supplier_banner
@@ -190,7 +197,7 @@
 
 
 	&__left
-		width: 50%
+		width: 47%
 
 		// background: url('/../static/img/pictures/bg4.jpg')
 		// background-size: cover
@@ -206,7 +213,7 @@
 			padding-left: 14px
 
 	&__right
-		width: 50%
+		width: 53%
 
 	&__title
 		font-size: 130px
@@ -247,30 +254,35 @@
 			font-size: 25px
 
 	&__descript
-		font-size: 45px
+		font-size: 51px
 
 		padding-bottom: 35px
+		max-width: 100%
 
 		@media(max-width:1439px)
-			font-size: 38px
+			font-size: 39px
+			padding-bottom: 25px
 
 		@media(max-width:1023px)
-			font-size: 33px
+			font-size: 31px
 			line-height: 33px
 
 			padding-bottom: 20px
 
 		@media(max-width:767px)
-			font-size: 14px
+			font-size: 15px
 			line-height: 18px
 
 			padding-bottom: 7px
 
 		&_small
-			font-size: 30px
+			font-size: 33px
 
 			@media(max-width:1439px)
-				font-size: 18px
+				font-size: 26px
+
+			@media(max-width:1023px)
+				font-size: 20px
 
 			@media(max-width:767px)
 				font-size: 10px
@@ -293,10 +305,19 @@
 			@media(max-width:767px)
 				right: initial
 				top: initial
-				left: -86%
+				left: -77%
 				bottom: -56px
 
 				background-color: transparent !important
+
+			@media(max-width:320px)
+				left: -87%
+
+			button.owl-prev
+				padding-right: 0 !important
+
+			button.owl-next
+				padding-left: 0 !important
 
 			button.owl-prev,
 			button.owl-next
@@ -304,6 +325,8 @@
 				width: 55px
 
 				box-sizing: border-box
+
+				background-position: 70% !important
 
 				@media(max-width:767px)
 					height: 46px
@@ -378,25 +401,37 @@
 
 
 	&__wr
-		width: 50%
+		// width: 50%
+
+		display: -webkit-flex
+		display: -moz-flex
+		display: -ms-flex
+		display: -o-flex
+		display: flex
+		justify-content: center
+
+		@media(max-width:767px)
+			display: block
 
 	&__left
+		width: 47%
 		@media(max-width:1439px)
-			width: 60%
+			// width: 60%
 
 		@media(max-width:1023px)
-			width: 50%
+			// width: 50%
 
 		@media(max-width:767px)
 			width: 100%
 
 	&__right
+		width: 53%
 		@media(max-width:1439px)
-			width: 40%
+			// width: 40%
 
 		@media(max-width:1023px)
-			width: 50%
-			padding-left: 30px
+			// width: 50%
+			padding-left: 34px
 
 
 		@media(max-width:767px)
@@ -435,14 +470,14 @@
 
 			justify-content: flex-start
 
-			padding-left: 70px
+			// padding-left: 70px
 
 		@media(max-width:1023px)
 			width: auto
 
 			justify-content: flex-start
 
-			padding-left: 34px
+			// padding-left: 34px
 
 		@media(max-width:767px)
 			position: relative
@@ -450,6 +485,7 @@
 			float: none
 
 			height: 70px
+			padding-left: 34px
 			// padding-left: 14px
 			// width: 220px
 
@@ -537,11 +573,23 @@
 		.zoomImgWr
 
 			position: relative
+			// position: absolute
 
 			max-width: 90%
 			max-height: auto
 			margin: 0
 			padding: 0
+
+			width: 90%
+			height: 80%
+
+			.player 
+				position: absolute
+
+
+
+			@media(max-width:1023px)
+				height: 360px
 
 			.grid2__img
 				width: auto
