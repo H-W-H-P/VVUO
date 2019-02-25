@@ -280,6 +280,43 @@ $(document).ready(function () {
     }
     return false
   })
+  var zoomImgToggle2 = true
+  $(document).on('click', '.imgZoom_new', function () {
+    if (zoomImgToggle2) {
+      popUping()
+      $('.zoomImgWr__popUp').addClass('zoomImgWr__popUp_opened')
+      let wrap = $(this).parent('.zoomImgWr').clone()
+      $('.zoomImgWr__popUp').append(wrap)
+      controlHeightA($(wrap).find('.grid2__img'))
+      // $(this).parent('.zoomImgWr').addClass('zoomed')
+      zoomImgToggle2 = false
+    } else {
+      $('html, body').removeClass('pop_up_cond')
+      // $(this).closest('.zoomImgWr').removeClass('zoomed')
+      $('.zoomImgWr__popUp').removeClass('zoomImgWr__popUp_opened').empty()
+      zoomImgToggle2 = true
+    }
+    return false
+  })
+  function controlHeightA (elem) {
+    let elemHeight = elem[0].offsetHeight
+    $(window).resize(function () {
+      if (window.innerHeight <= elemHeight) {
+        $(elem).css({
+          'max-height': window.innerHeight
+        })
+      } else {
+        if (window.innerHeight >= elemHeight) {
+          $(elem).css({
+            'max-height': elemHeight
+          })
+        }
+        $(elem).css({
+          'max-height': elemHeight
+        })
+      }
+    })
+  }
 
   if ($('.player').length) {
     var player = new YTPlayer('.player', {
@@ -525,6 +562,20 @@ $(document).ready(function () {
   //   }
   // })
 
+  $('.supplierSlider').owlCarousel({
+    items: 1,
+    loop: true,
+    dots: false,
+    nav: true
+    // autoHeight: true
+  })
+  $('.supplier_banner__slider').owlCarousel({
+    items: 1,
+    loop: true,
+    dots: false,
+    nav: true
+    // autoHeight: true
+  })
   $('.big_image__wr2').owlCarousel({
     items: 1,
     loop: true,
