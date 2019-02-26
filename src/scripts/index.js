@@ -1167,7 +1167,7 @@ $(document).ready(function () {
       // $('.planWrap').toggleClass('closed')
     }
   })
-  $('.conf_wr .shop_filters__cat').click(function () {
+  $('.conf_wr .shop_filters__cat, .provider .shop_filters__cat').click(function () {
     var _this = this
     setTimeout(function () {
       $('.conf_wr__wrap_slider').css('top', $(_this).closest('.shop_filters__block').find('.conf_wr_filters__cat_wr').innerHeight() - 20)
@@ -1182,5 +1182,21 @@ $(document).ready(function () {
       const ps = new PerfectScrollbar('.conf_wr__wrap_slider')
       ps.update()
     }, 800)
+  })
+  $('.provider__drop_name').on('click', function (e) {
+    console.log($(e.target))
+    $(this).toggleClass('closed')
+    // var _this = this
+    $('.provider__drop_toogle').toggleClass('closed')
+    $('.provider__drop').toggleClass('open')
+  })
+  const psr = new PerfectScrollbar('.provider__drop_wr')
+  psr.update()
+  $('.provider__drop_item').on('click', function (e) {
+    let txt = $(this).text()
+    $('.provider__drop_name').text(txt)
+    $('.provider__drop_name').toggleClass('closed')
+    $('.provider__drop_toogle').toggleClass('closed')
+    $('.provider__drop').toggleClass('open')
   })
 })
