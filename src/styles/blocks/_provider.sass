@@ -169,7 +169,7 @@
 			width: 100%
 			padding-right: 0px
 			padding-left: 17px
-			padding-bottom: 15px
+			padding-bottom: 0px
 
 	&__drop_name
 		width: 100%
@@ -199,24 +199,31 @@
 		@media (max-width: 767px)
 			height: 99px
 
+
 	&__drop_item:first-child
-		padding-top: 25px
+		padding-top: 30px
 
 		@media (max-width: 767px)
-			padding-top: 0px
+			padding-top: 10px
+			padding-top: 0
 
 	&__drop_item
 		font-size: 12px
 
-		padding-top: 22px	
+		padding-top: 0
+		padding-bottom: 22px
 
 		cursor: pointer
 		color: #b7b8b9
 
 		user-select: none
 
+		@media(max-width:1439px)
+			// 3
+
 		@media (max-width: 767px)
-			padding-top: 15px
+			padding-bottom: 15px
+			padding-top: 0
 
 		&:hover
 			color: #000
@@ -255,7 +262,7 @@
 			z-index: 10000
 			
 		.provider__drop_toogle
-			margin-top: -75px
+			margin-top: -80px
 			opacity: 1
 
 			@media (max-width: 767px)
@@ -265,6 +272,9 @@
 			margin-top: 70px
 
 			@media(max-width:1439px)
+				margin-top: 10px
+
+			@media (max-width: 767px)
 				margin-top: 10px
 
 		.provider__block_filter
