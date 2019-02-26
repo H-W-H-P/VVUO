@@ -281,6 +281,43 @@ $(document).ready(function () {
     return false
   })
   var zoomImgToggle2 = true
+  // $(document).on('click', '.imgZoom_news', function () {
+  //   console.log('++')
+  //   if (zoomImgToggle2) {
+  //     popUping()
+  //     $('.zoomImgWr__popUp').addClass('zoomImgWr__popUp_opened')
+  //     let wrap = $(this).parent('.zoomImgWr').clone()
+  //     $(wrap).find('img').remove()
+  //     $('.zoomImgWr__popUp').append(wrap)
+  //     // controlHeightA($(wrap).find('.grid2__img'))
+  //     // $(this).parent('.zoomImgWr').addClass('zoomed')
+  //     zoomImgToggle2 = false
+  //     if ($(this).hasClass('video-on')) {
+  //       $(this).removeClass('video-on')
+  //       player.stop()
+  //       player.destroy()
+  //     } else {
+  //       player = new YTPlayer('.player', {
+  //         autoplay: true,
+  //         controls: false,
+  //         info: false,
+  //         annotations: false,
+  //         modestbranding: false,
+  //         related: false
+  //       })
+  //       var dataVideo = $(this).data('video')
+  //       player.load(dataVideo)
+  //       player.play()
+  //       $(this).addClass('video-on')
+  //     }
+  //   } else {
+  //     $('html, body').removeClass('pop_up_cond')
+  //     // $(this).closest('.zoomImgWr').removeClass('zoomed')
+  //     $('.zoomImgWr__popUp').removeClass('zoomImgWr__popUp_opened').empty()
+  //     zoomImgToggle2 = true
+  //   }
+  //   return false
+  // })
   $(document).on('click', '.imgZoom_new.videoZoom', function () {
     if ($('.imgZoom_new.videoZoom').hasClass('video-on')) {
       $('.imgZoom_new.videoZoom').removeClass('video-on')
@@ -292,6 +329,7 @@ $(document).ready(function () {
       $('.zoomImgWr ').removeClass('zoomed')
       zoomImgToggle2 = true
     }
+    // zoomImgToggle2 = true
   })
   function dropVid (props) {
     let _this = props
@@ -299,15 +337,40 @@ $(document).ready(function () {
       popUping()
       $('.zoomImgWr__popUp').addClass('zoomImgWr__popUp_opened')
       let wrap = $(_this).parent('.zoomImgWr').find('.videoZoom ').clone()
+      // $('.zoomImgWr__popUp').append(wrap)
       $('.zoomImgWr__popUp .zoomImgWr').append(wrap)
-
+      // controlHeightA($(wrap).find('.grid2__imgs'))
+      // $(wrap).find('img').remove()
+      // $(this).parent('.zoomImgWr').addClass('zoomed')
       zoomImgToggle2 = false
     } else {
       $('html, body').removeClass('pop_up_cond')
+      // $(this).closest('.zoomImgWr').removeClass('zoomed')
+      // $('.zoomImgWr__popUp').removeClass('zoomImgWr__popUp_opened').empty()
       $('.zoomImgWr__popUp .zoomImgWr .imgZoom_news').remove()
       zoomImgToggle2 = true
     }
   }
+  // function controlHeightA (elem) {
+  //   let elemHeight = elem[0].offsetHeight
+  //   $(window).resize(function () {
+  //     if (window.innerHeight <= elemHeight) {
+  //       $(elem).css({
+  //         'max-height': window.innerHeight
+  //       })
+  //     } else {
+  //       if (window.innerHeight >= elemHeight) {
+  //         $(elem).css({
+  //           'max-height': elemHeight
+  //         })
+  //       }
+  //       $(elem).css({
+  //         'max-height': elemHeight
+  //       })
+  //     }
+  //   })
+  // }
+
   if ($('.player').length) {
     var player = new YTPlayer('.player', {
       autoplay: true,
@@ -1104,7 +1167,7 @@ $(document).ready(function () {
       // $('.planWrap').toggleClass('closed')
     }
   })
-  $('.conf_wr .shop_filters__cat').click(function () {
+  $('.conf_wr .shop_filters__cat, .provider .shop_filters__cat').click(function () {
     var _this = this
     setTimeout(function () {
       $('.conf_wr__wrap_slider').css('top', $(_this).closest('.shop_filters__block').find('.conf_wr_filters__cat_wr').innerHeight() - 20)
@@ -1119,5 +1182,21 @@ $(document).ready(function () {
       const ps = new PerfectScrollbar('.conf_wr__wrap_slider')
       ps.update()
     }, 800)
+  })
+  $('.provider__drop_name').on('click', function (e) {
+    console.log($(e.target))
+    $(this).toggleClass('closed')
+    // var _this = this
+    $('.provider__drop_toogle').toggleClass('closed')
+    $('.provider__drop').toggleClass('open')
+  })
+  const psr = new PerfectScrollbar('.provider__drop_wr')
+  psr.update()
+  $('.provider__drop_item').on('click', function (e) {
+    let txt = $(this).text()
+    $('.provider__drop_name').text(txt)
+    $('.provider__drop_name').toggleClass('closed')
+    $('.provider__drop_toogle').toggleClass('closed')
+    $('.provider__drop').toggleClass('open')
   })
 })

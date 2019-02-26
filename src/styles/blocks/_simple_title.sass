@@ -277,7 +277,8 @@
 	z-index: 1
 
 	@media(max-width:1439px)
-		padding-left: 28px
+		padding-left: 30px
+		padding-right: 30px
 
 	@media(max-width:1023px)
 		padding-left: 103px
@@ -382,8 +383,15 @@
 		display: flex
 		justify-content: flex-end
 
+		max-width: 1200px
+		margin: 0 auto
+
+		@media(max-width:1439px)
+			max-width: initial			
+
 		@media(max-width:767px)
 			position: relative
+
 			left: -30px
 
 			display: block
@@ -393,7 +401,7 @@
 		position: relative
 		z-index: 2
 
-		width: 420px
+		width: 25%
 		height: 120px
 		right: 0
 		bottom: 0
@@ -402,19 +410,31 @@
 
 		background-color: $main-blue
 
+		justify-content: flex-end
+
+		&::before
+			content: ''
+			position: absolute
+
+			top: 0
+			bottom: 0
+			right: -120px
+			left: 100%
+
+			background-color: inherit
+
+		.hover_bl
+			right: -120px
+
 		&:hover
 			.hover_bl
 				opacity: 1
 
-		@media(max-width:1440px)
-			width: 411px
-
 		@media(max-width:1439px)
-			width: 346px
+			width: 33.33%
 			height: 95px
 
-		@media(max-width:1024px)
-			width: 35.3%
+			justify-content: center
 
 		@media(max-width:1023px)
 			width: 310px
@@ -433,16 +453,16 @@
 			box-sizing: border-box
 
 		&_small
-			width: 300px
+			width: 25%
 
 			background-color: #e0d7cf
 			color: #000
 
+			justify-content: center
+
 			@media(max-width:1439px)
 				width: 315px
-
-			@media(max-width:1024px)
-				width: 32.3%
+				width: 33.33%
 
 			@media(max-width:1023px)
 				width: 315px
