@@ -1184,7 +1184,7 @@ $(document).ready(function () {
     }, 800)
   })
   $('.provider__drop_name').on('click', function (e) {
-    console.log($(e.target))
+    // console.log($(e.target))
     $(this).toggleClass('closed')
     // var _this = this
     $('.provider__drop_toogle').toggleClass('closed')
@@ -1192,6 +1192,9 @@ $(document).ready(function () {
   })
   const psr = new PerfectScrollbar('.provider__drop_wr')
   psr.update()
+  $(window).resize(function () {
+    psr.update()
+  })
   $('.provider__drop_item').on('click', function (e) {
     let txt = $(this).text()
     $('.provider__drop_name').text(txt)
