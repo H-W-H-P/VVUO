@@ -34,6 +34,11 @@ $(document).ready(function () {
     return false
   })
 
+  $('.simple_title_wr_6__btn').click(function () {
+    $('html, body').animate({ scrollTop: $('.shop_wrap').offset().top }, 2000)
+    return false
+  })
+
   $('.input_decore').each(function () {
     $(this).removeClass('hasCont')
     if ($(this).val()) {
