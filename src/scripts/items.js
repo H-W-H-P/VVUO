@@ -156,7 +156,7 @@ $(document).ready(function () {
       if (valueItem['floor']) {
         valueFloor = true
       }
-      htmlItem = `<a href='#' class='config__item popUpCall' id="items-wrapper add-items" data-floor="${valueFloor}" data-item="${numItem}" data-pop_up=".pop_up__items" data-goods="${valueItem['name']}" data-js="${valueItem['model']}" data-description="${valueItem['description']}" data-moreImg=${moreImg}>
+      htmlItem = `<a href='#' class='config__item popUpCall' id="items-wrapper add-items" data-floor="${valueFloor}" data-item="${numItem}" data-pop_up=".pop_up__items" data-state="${valueItem['type']}" data-goods="${valueItem['name']}" data-js="${valueItem['model']}" data-description="${valueItem['description']}" data-moreImg=${moreImg}>
         <div class='config__img_wr add-item'   >
         <img src='${valueItem['image']}' class='items_pop_up__img_items'>
         <div class='config__arrow my_add_item_one'>
