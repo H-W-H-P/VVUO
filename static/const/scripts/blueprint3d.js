@@ -17,7 +17,7 @@
 
 (function( global, factory ) {
 
-	
+
 
 	if ( typeof module === "object" && typeof module.exports === "object" ) {
 		// For CommonJS and CommonJS-like environments where a proper `window`
@@ -3094,7 +3094,7 @@ jQuery.Callbacks = function( options ) {
 		stack = !options.once && [],
 		// Fire callbacks
 		fire = function( data ) {
-			
+
 			memory = options.memory && data;
 			fired = true;
 			firingIndex = firingStart || 0;
@@ -14795,7 +14795,7 @@ THREE.Ray.prototype = {
 			// in order to always return an intersect point that is in front of the ray.
 			if ( t0 < 0 ) return this.at( t1, optionalTarget );
 
-			// else t0 is in front of the ray, so return the first collision point scaled by t0 
+			// else t0 is in front of the ray, so return the first collision point scaled by t0
 			return this.at( t0, optionalTarget );
 
 		}
@@ -18607,7 +18607,7 @@ THREE.Geometry.prototype = {
 			}
 
 		}
-		
+
 		this.computeFaceNormals();
 
 		if ( geometry.boundingBox !== null ) {
@@ -19817,7 +19817,7 @@ THREE.Light = function ( color ) {
 	THREE.Object3D.call( this );
 
 	this.type = 'Light';
-	
+
 	this.color = new THREE.Color( color );
 
 };
@@ -20900,7 +20900,7 @@ THREE.JSONLoader.prototype.loadAjaxJSON = function ( context, url, callback, tex
 				if ( xhr.responseText ) {
 
 					var json = JSON.parse( xhr.responseText );
-					
+
 
 					if ( json.metadata !== undefined && json.metadata.type === 'scene' ) {
 
@@ -21577,7 +21577,7 @@ THREE.MaterialLoader.prototype = {
 		if ( json.shininess !== undefined ) material.shininess = json.shininess;
 		if ( json.uniforms !== undefined ) material.uniforms = json.uniforms;
 		if ( json.vertexShader !== undefined ) material.vertexShader = json.vertexShader;
-		if ( json.fragmentShader !== undefined ) material.fragmentShader = json.fragmentShader;		
+		if ( json.fragmentShader !== undefined ) material.fragmentShader = json.fragmentShader;
 		if ( json.vertexColors !== undefined ) material.vertexColors = json.vertexColors;
 		if ( json.shading !== undefined ) material.shading = json.shading;
 		if ( json.blending !== undefined ) material.blending = json.blending;
@@ -22209,7 +22209,7 @@ THREE.Material.prototype = {
 			// console.log(key, newValue)
 
 			if ( newValue === undefined ) {
-				
+
 
 				// newValue = 14540253;
 
@@ -23029,7 +23029,7 @@ THREE.MeshFaceMaterial = function ( materials ) {
 	this.uuid = THREE.Math.generateUUID();
 
 	this.type = 'MeshFaceMaterial';
-	
+
 	this.materials = materials instanceof Array ? materials : [];
 
 };
@@ -23899,7 +23899,7 @@ THREE.Mesh = function ( geometry, material ) {
 	THREE.Object3D.call( this );
 
 	this.type = 'Mesh';
-	
+
 	this.geometry = geometry !== undefined ? geometry : new THREE.Geometry();
 	this.material = material !== undefined ? material : new THREE.MeshBasicMaterial( { color: Math.random() * 0xffffff } );
 
@@ -24388,7 +24388,7 @@ THREE.Skeleton.prototype.pose = function () {
 THREE.Skeleton.prototype.update = ( function () {
 
 	var offsetMatrix = new THREE.Matrix4();
-	
+
 	return function () {
 
 		// flatten bone matrices to array
@@ -24409,7 +24409,7 @@ THREE.Skeleton.prototype.update = ( function () {
 			this.boneTexture.needsUpdate = true;
 
 		}
-		
+
 	};
 
 } )();
@@ -26331,7 +26331,7 @@ THREE.ShaderLib = {
 			"		#endif",
 
 			"	}",
-			
+
 			THREE.ShaderChunk[ "alphatest_fragment" ],
 
 			"	if( enableSpecular )",
@@ -27213,7 +27213,7 @@ THREE.WebGLRenderer = function ( parameters ) {
 				}
 
 			}
-			
+
 			return array;
 
 		};
@@ -27588,7 +27588,7 @@ THREE.WebGLRenderer = function ( parameters ) {
 	// Buffer deallocation
 
 	var deleteBuffers = function ( geometry ) {
-	
+
 		var buffers = [
 			'__webglVertexBuffer',
 			'__webglNormalBuffer',
@@ -27596,13 +27596,13 @@ THREE.WebGLRenderer = function ( parameters ) {
 			'__webglColorBuffer',
 			'__webglUVBuffer',
 			'__webglUV2Buffer',
-			
+
 			'__webglSkinIndicesBuffer',
 			'__webglSkinWeightsBuffer',
-			
+
 			'__webglFaceBuffer',
 			'__webglLineBuffer',
-			
+
 			'__webglLineDistanceBuffer'
 		];
 
@@ -27645,7 +27645,7 @@ THREE.WebGLRenderer = function ( parameters ) {
 		if ( geometry instanceof THREE.BufferGeometry ) {
 
 			for ( var name in geometry.attributes ) {
-			
+
 				var attribute = geometry.attributes[ name ];
 
 				if ( attribute.buffer !== undefined ) {
@@ -30737,7 +30737,7 @@ THREE.WebGLRenderer = function ( parameters ) {
 					numMorphTargets: numMorphTargets,
 					numMorphNormals: numMorphNormals
 				};
-				
+
 				groups[ groupHash ] = group;
 				groupsList.push( group );
 
@@ -30758,7 +30758,7 @@ THREE.WebGLRenderer = function ( parameters ) {
 						numMorphTargets: numMorphTargets,
 						numMorphNormals: numMorphNormals
 					};
-					
+
 					groups[ groupHash ] = group;
 					groupsList.push( group );
 
@@ -33320,7 +33320,7 @@ THREE.WebGLRenderer = function ( parameters ) {
 	}
 
 	// DEPRECATED
-	
+
 	this.initMaterial = function () {
 
 		console.warn( 'THREE.WebGLRenderer: .initMaterial() has been removed.' );
@@ -33467,7 +33467,7 @@ THREE.WebGLExtensions = function ( gl ) {
 		var extension;
 
 		switch ( name ) {
-		
+
 			case 'OES_texture_float':
 				extension = gl.getExtension( 'OES_texture_float' );
 				break;
@@ -33922,7 +33922,7 @@ THREE.WebGLShader = ( function () {
 
 	return function ( gl, type, string ) {
 
-		var shader = gl.createShader( type ); 
+		var shader = gl.createShader( type );
 
 		gl.shaderSource( shader, string );
 		gl.compileShader( shader );
@@ -34274,7 +34274,7 @@ THREE.LensFlarePlugin = function ( renderer, flares ) {
 			// calc object screen position
 
 			var flare = flares[ i ];
-			
+
 			tempPosition.set( flare.matrixWorld.elements[12], flare.matrixWorld.elements[13], flare.matrixWorld.elements[14] );
 
 			tempPosition.applyMatrix4( camera.matrixWorldInverse );
@@ -34440,7 +34440,7 @@ THREE.ShadowMapPlugin = function ( _renderer, _lights, _webglObjects, _webglObje
 	_max = new THREE.Vector3(),
 
 	_matrixPosition = new THREE.Vector3(),
-	
+
 	_renderList = [];
 
 	// init
@@ -34961,7 +34961,7 @@ THREE.SpritePlugin = function ( renderer, sprites ) {
 	var program, attributes, uniforms;
 
 	var texture;
-	
+
 	var init = function () {
 
 		var vertices = new Float32Array( [
@@ -35186,7 +35186,7 @@ THREE.SpritePlugin = function ( renderer, sprites ) {
 		// restore gl
 
 		gl.enable( gl.CULL_FACE );
-		
+
 		renderer.resetGLState();
 
 	};
@@ -35856,7 +35856,7 @@ THREE.FontUtils = {
 
 THREE.FontUtils.generateShapes = function ( text, parameters ) {
 
-	// Parameters 
+	// Parameters
 
 	parameters = parameters || {};
 
@@ -36577,7 +36577,7 @@ THREE.CurvePath = function () {
 
 	this.curves = [];
 	this.bends = [];
-	
+
 	this.autoClose = false; // Automatically closes the path
 };
 
@@ -36601,11 +36601,11 @@ THREE.CurvePath.prototype.closePath = function() {
 	// Add a line curve if start and end of lines are not connected
 	var startPoint = this.curves[0].getPoint(0);
 	var endPoint = this.curves[this.curves.length-1].getPoint(1);
-	
+
 	if (! startPoint.equals(endPoint)) {
 		this.curves.push( new THREE.LineCurve(endPoint, startPoint) );
 	}
-	
+
 };
 
 // To get accurate point with reference to
@@ -36953,7 +36953,7 @@ THREE.Gyroscope.prototype.updateMatrixWorld = ( function () {
 		}
 
 	};
-	
+
 }() );
 
 // File:src/extras/core/Path.js
@@ -37335,7 +37335,7 @@ THREE.Path.prototype.getPoints = function( divisions, closedPath ) {
 			//console.log(points);
 
 		  break;
-		  
+
 		case THREE.PathActions.ELLIPSE:
 
 			var aX = args[ 0 ], aY = args[ 1 ],
@@ -37538,7 +37538,7 @@ THREE.Path.prototype.toShapes = function( isCCW, noHoles ) {
 	holesFirst = isCCW ? ! holesFirst : holesFirst;
 
 	// console.log("Holes first", holesFirst);
-	
+
 	var betterShapeHoles = [];
 	var newShapes = [];
 	var newShapeHoles = [];
@@ -37564,7 +37564,7 @@ THREE.Path.prototype.toShapes = function( isCCW, noHoles ) {
 			newShapes[mainIdx] = { s: new THREE.Shape(), p: tmpPoints };
 			newShapes[mainIdx].s.actions = tmpPath.actions;
 			newShapes[mainIdx].s.curves = tmpPath.curves;
-			
+
 			if ( holesFirst )	mainIdx ++;
 			newShapeHoles[mainIdx] = [];
 
@@ -38415,7 +38415,7 @@ THREE.EllipseCurve.prototype.getPoint = function ( t ) {
 		angle = this.aStartAngle + t * deltaAngle;
 
 	}
-	
+
 	var vector = new THREE.Vector2();
 
 	vector.x = this.aX + this.xRadius * Math.cos( angle );
@@ -39105,7 +39105,7 @@ THREE.Animation.prototype.update = (function(){
 						// blend
 
 						var vector = object.position;
-						
+
 						vector.x = vector.x + ( currentPoint[ 0 ] - vector.x ) * proportionalWeight;
 						vector.y = vector.y + ( currentPoint[ 1 ] - vector.y ) * proportionalWeight;
 						vector.z = vector.z + ( currentPoint[ 2 ] - vector.z ) * proportionalWeight;
@@ -39351,7 +39351,7 @@ THREE.KeyFrameAnimation.prototype.stop = function() {
 	// reset JIT matrix and remove cache
 
 	for ( var h = 0; h < this.data.hierarchy.length; h ++ ) {
-		
+
 		var obj = this.hierarchy[ h ];
 		var node = this.data.hierarchy[ h ];
 
@@ -40125,14 +40125,14 @@ THREE.ExtrudeGeometry.prototype.addShape = function ( shape, options ) {
 	function getBevelVec( inPt, inPrev, inNext ) {
 
 		var EPSILON = 0.0000000001;
-		
+
 		// computes for inPt the corresponding point inPt' on a new contour
 		//   shiftet by 1 unit (length of normalized vector) to the left
 		// if we walk along contour clockwise, this new contour is outside the old one
 		//
 		// inPt' is the intersection of the two lines parallel to the two
 		//  adjacent edges of inPt at a distance of 1 unit on the left side.
-		
+
 		var v_trans_x, v_trans_y, shrink_by = 1;		// resulting translation vector for inPt
 
 		// good reading for geometry algorithms (here: line-line intersection)
@@ -40140,38 +40140,38 @@ THREE.ExtrudeGeometry.prototype.addShape = function ( shape, options ) {
 
 		var v_prev_x = inPt.x - inPrev.x, v_prev_y = inPt.y - inPrev.y;
 		var v_next_x = inNext.x - inPt.x, v_next_y = inNext.y - inPt.y;
-		
+
 		var v_prev_lensq = ( v_prev_x * v_prev_x + v_prev_y * v_prev_y );
-		
+
 		// check for colinear edges
 		var colinear0 = ( v_prev_x * v_next_y - v_prev_y * v_next_x );
-		
+
 		if ( Math.abs( colinear0 ) > EPSILON ) {		// not colinear
-			
+
 			// length of vectors for normalizing
-	
+
 			var v_prev_len = Math.sqrt( v_prev_lensq );
 			var v_next_len = Math.sqrt( v_next_x * v_next_x + v_next_y * v_next_y );
-			
+
 			// shift adjacent points by unit vectors to the left
-	
+
 			var ptPrevShift_x = ( inPrev.x - v_prev_y / v_prev_len );
 			var ptPrevShift_y = ( inPrev.y + v_prev_x / v_prev_len );
-			
+
 			var ptNextShift_x = ( inNext.x - v_next_y / v_next_len );
 			var ptNextShift_y = ( inNext.y + v_next_x / v_next_len );
-	
+
 			// scaling factor for v_prev to intersection point
-	
+
 			var sf = (  ( ptNextShift_x - ptPrevShift_x ) * v_next_y -
 						( ptNextShift_y - ptPrevShift_y ) * v_next_x    ) /
 					  ( v_prev_x * v_next_y - v_prev_y * v_next_x );
-	
+
 			// vector from inPt to intersection point
-	
+
 			v_trans_x = ( ptPrevShift_x + v_prev_x * sf - inPt.x );
 			v_trans_y = ( ptPrevShift_y + v_prev_y * sf - inPt.y );
-	
+
 			// Don't normalize!, otherwise sharp corners become ugly
 			//  but prevent crazy spikes
 			var v_trans_lensq = ( v_trans_x * v_trans_x + v_trans_y * v_trans_y )
@@ -40180,7 +40180,7 @@ THREE.ExtrudeGeometry.prototype.addShape = function ( shape, options ) {
 			} else {
 				shrink_by = Math.sqrt( v_trans_lensq / 2 );
 			}
-			
+
 		} else {		// handle special case of colinear edges
 
 			var direction_eq = false;		// assumes: opposite
@@ -40748,7 +40748,7 @@ THREE.ShapeGeometry.prototype.addShape = function ( shape, options ) {
  * @author bhouston / http://exocortex.com
  */
 
-// points - to create a closed torus, one must use a set of points 
+// points - to create a closed torus, one must use a set of points
 //    like so: [ a, b, c, d, a ], see first is the same as last.
 // segments - the number of circumference segments to create
 // phiStart - the starting radian
@@ -41078,7 +41078,7 @@ THREE.SphereGeometry = function ( radius, widthSegments, heightSegments, phiStar
 		phiStart: phiStart,
 		phiLength: phiLength,
 		thetaStart: thetaStart,
-		thetaLength: thetaLength 
+		thetaLength: thetaLength
 	};
 
 	radius = radius || 50;
@@ -41349,7 +41349,7 @@ THREE.TorusKnotGeometry = function ( radius, tube, radialSegments, tubularSegmen
 	p = p || 2;
 	q = q || 3;
 	heightScale = heightScale || 1;
-	
+
 	var grid = new Array( radialSegments );
 	var tang = new THREE.Vector3();
 	var n = new THREE.Vector3();
@@ -42591,7 +42591,7 @@ THREE.CameraHelper.prototype = Object.create( THREE.Line.prototype );
 THREE.CameraHelper.prototype.update = function () {
 
 	var geometry, pointMap;
-	
+
 	var vector = new THREE.Vector3();
 	var camera = new THREE.Camera();
 
@@ -43984,11 +43984,11 @@ global.Blueprint3d = function(opts) {
   // opts.threeElement
   // opts.floorplannerElement
   // opts.textureDir
-  
+
   this.model = new Model(opts.textureDir);
   this.three = new ThreeMain(this.model, opts.threeElement, opts.threeCanvasElement, {});
   if (!opts.widget) {
-    this.floorplanner = new Floorplanner(opts.floorplannerElement, this.model.floorplan);    
+    this.floorplanner = new Floorplanner(opts.floorplannerElement, this.model.floorplan);
   } else {
     this.three.getController().enabled = false;
   }
@@ -44059,7 +44059,7 @@ var Floorplanner = function(canvas, floorplan) {
     canvasElement.mouseup(mouseup);
     canvasElement.mouseleave(mouseleave);
     $(document).keyup(function(e) {
-      if (e.keyCode == 27) { 
+      if (e.keyCode == 27) {
         escapeKey();
       }
     });
@@ -44071,7 +44071,7 @@ var Floorplanner = function(canvas, floorplan) {
   }
 
   function updateTarget() {
-    if (scope.mode == scope.modes.DRAW && scope.lastNode) { 
+    if (scope.mode == scope.modes.DRAW && scope.lastNode) {
       if (Math.abs(mouseX - scope.lastNode.x) < snapTolerance) {
         scope.targetX = scope.lastNode.x;
       } else {
@@ -44084,7 +44084,7 @@ var Floorplanner = function(canvas, floorplan) {
       }
     } else {
       scope.targetX = mouseX;
-      scope.targetY = mouseY;      
+      scope.targetY = mouseY;
     }
 
     view.draw();
@@ -44127,7 +44127,7 @@ var Floorplanner = function(canvas, floorplan) {
     // update object target
     if (scope.mode != scope.modes.DRAW && !mouseDown) {
       var hoverCorner = floorplan.overlappedCorner(mouseX, mouseY);
-      var hoverWall = floorplan.overlappedWall(mouseX, mouseY);      
+      var hoverWall = floorplan.overlappedWall(mouseX, mouseY);
       var draw = false;
       if (hoverCorner != scope.activeCorner) {
         scope.activeCorner = hoverCorner;
@@ -44138,7 +44138,7 @@ var Floorplanner = function(canvas, floorplan) {
         if (hoverWall != scope.activeWall) {
           scope.activeWall = hoverWall;
           draw = true;
-        }  
+        }
       } else {
         scope.activeWall = null;
       }
@@ -44163,7 +44163,7 @@ var Floorplanner = function(canvas, floorplan) {
         scope.activeCorner.snapToAxis(snapTolerance);
       } else if (scope.activeWall) {
         scope.activeWall.relativeMove(
-          (rawMouseX - lastX) * cmPerPixel, 
+          (rawMouseX - lastX) * cmPerPixel,
           (rawMouseY - lastY) * cmPerPixel
         );
         scope.activeWall.snapToAxis(snapTolerance);
@@ -44182,12 +44182,12 @@ var Floorplanner = function(canvas, floorplan) {
     if (scope.mode == scope.modes.DRAW && !mouseMoved) {
       var corner = floorplan.newCorner(scope.targetX, scope.targetY);
       if (scope.lastNode != null) {
-        floorplan.newWall(scope.lastNode, corner);  
+        floorplan.newWall(scope.lastNode, corner);
       }
       if (corner.mergeWithIntersected() && scope.lastNode != null) {
         scope.setMode(scope.modes.MOVE);
-      } 
-      scope.lastNode = corner;  
+      }
+      scope.lastNode = corner;
     }
   }
 
@@ -44288,7 +44288,7 @@ var FloorplannerView = function(floorplan, viewmodel, canvas) {
     canvasSel.height(parent.innerHeight());
     canvasSel.width(parent.innerWidth());
     canvasElement.height = parent.innerHeight();
-    canvasElement.width = parent.innerWidth(); 
+    canvasElement.width = parent.innerWidth();
     scope.draw();
   }
 
@@ -44326,7 +44326,7 @@ var FloorplannerView = function(floorplan, viewmodel, canvas) {
       color = deleteColor;
     } else if (hover) {
       color = wallColorHover;
-    } 
+    }
     drawLine(
       viewmodel.convertX(wall.getStartX()),
       viewmodel.convertY(wall.getStartY()),
@@ -44371,11 +44371,11 @@ var FloorplannerView = function(floorplan, viewmodel, canvas) {
     context.strokeStyle = "#ffffff";
     context.lineWidth  = 4;
 
-    context.strokeText(cmToFeet(length), 
-      viewmodel.convertX(pos.x), 
+    context.strokeText(cmToFeet(length),
+      viewmodel.convertX(pos.x),
       viewmodel.convertY(pos.y));
-    context.fillText(cmToFeet(length), 
-      viewmodel.convertX(pos.x), 
+    context.fillText(cmToFeet(length),
+      viewmodel.convertX(pos.x),
       viewmodel.convertY(pos.y));
   }
 
@@ -44385,21 +44385,21 @@ var FloorplannerView = function(floorplan, viewmodel, canvas) {
       color = deleteColor;
     } else if (hover) {
       color = edgeColorHover;
-    } 
+    }
     corners = edge.corners();
     drawPolygon(
       utils.map(corners, function(corner) {
         return viewmodel.convertX(corner.x);
-      }), 
+      }),
       utils.map(corners, function(corner) {
         return viewmodel.convertY(corner.y);
-      }), 
+      }),
       false,
       null,
       true,
       color,
       edgeWidth
-    ); 
+    );
   }
 
   function drawRoom(room) {
@@ -44407,10 +44407,10 @@ var FloorplannerView = function(floorplan, viewmodel, canvas) {
     drawPolygon(
       utils.map(room.corners, function(corner) {
         return viewmodel.convertX(corner.x);
-      }), 
+      }),
       utils.map(room.corners, function(corner) {
         return viewmodel.convertY(corner.y);
-      }), 
+      }),
       true,
       roomColor
     );
@@ -44423,20 +44423,20 @@ var FloorplannerView = function(floorplan, viewmodel, canvas) {
       color = deleteColor;
     } else if (hover) {
       color = cornerColorHover;
-    } 
+    }
     drawCircle(
-      viewmodel.convertX(corner.x), 
-      viewmodel.convertY(corner.y), 
-      hover ? cornerRadiusHover : cornerRadius, 
+      viewmodel.convertX(corner.x),
+      viewmodel.convertY(corner.y),
+      hover ? cornerRadiusHover : cornerRadius,
       color
     );
   }
 
   function drawTarget(x, y, lastNode) {
     drawCircle(
-      viewmodel.convertX(x), 
-      viewmodel.convertY(y), 
-      cornerRadiusHover, 
+      viewmodel.convertX(x),
+      viewmodel.convertY(y),
+      cornerRadiusHover,
       cornerColorHover
     );
     if (viewmodel.lastNode) {
@@ -44474,7 +44474,7 @@ var FloorplannerView = function(floorplan, viewmodel, canvas) {
     context.closePath();
     if (fill) {
       context.fillStyle = fillColor;
-      context.fill();   
+      context.fill();
     }
     if (stroke) {
       context.lineWidth = strokeWidth;
@@ -44491,12 +44491,12 @@ var FloorplannerView = function(floorplan, viewmodel, canvas) {
     context.fill();
   }
 
-  // returns n where -gridSize/2 < n <= gridSize/2 
+  // returns n where -gridSize/2 < n <= gridSize/2
   function calculateGridOffset(n) {
     if (n >= 0) {
       return (n + gridSpacing/2.0) % gridSpacing - gridSpacing/2.0;
     } else {
-      return (n - gridSpacing/2.0) % gridSpacing + gridSpacing/2.0;  
+      return (n - gridSpacing/2.0) % gridSpacing + gridSpacing/2.0;
     }
   }
 
@@ -44534,23 +44534,23 @@ FloorItem.prototype = Object.create(Item.prototype);
 
 FloorItem.prototype.placeInRoom = function() {
     if (!this.position_set) {
-    	if (this.metadata.floor) {
-    		var placeFloorItem = true;
-    	}
-        var center = this.model.floorplan.getCenter();
-        this.position.x = center.x;
-        this.position.z = center.z;
-        this.position.y = 0.5 * ( this.geometry.boundingBox.max.y - this.geometry.boundingBox.min.y );
-        var vec4 = {
-        	x: center.x,
-        	y: 0.5 * ( this.geometry.boundingBox.max.y - this.geometry.boundingBox.min.y ),
-        	z: center.z
-        }
-        this.isValidPosition(vec4, vec4, placeFloorItem);
-        deleter = this.isValidPosition(vec4, vec4);
-        if (deleter === 1) {
-        	return deleter
-        }
+    	// if (this.metadata.floor) {
+  		var placeFloorItem = this.metadata.floor;
+    	// }
+      var center = this.model.floorplan.getCenter();
+      this.position.x = center.x;
+      this.position.z = center.z;
+      this.position.y = 0.5 * ( this.geometry.boundingBox.max.y - this.geometry.boundingBox.min.y );
+      var vec4 = {
+      	x: center.x,
+      	y: 0.5 * ( this.geometry.boundingBox.max.y - this.geometry.boundingBox.min.y ),
+      	z: center.z
+      }
+      this.isValidPosition(vec4, vec4, placeFloorItem);
+      deleter = this.isValidPosition(vec4, vec4);
+      if (deleter === 1) {
+      	return deleter
+      }
     }
 };
 
@@ -44588,22 +44588,24 @@ FloorItem.prototype.removeChanges = function(vec3, deleter) {
 	    	var cornerObjY = objects[i].getCorners('x')[0].y;
 	    	// console.log(cornerObjX, cornerObjY)
 		    if (!utils.polygonOutsidePolygon(corners, objects[i].getCorners('x', 'z')) ||
-                utils.polygonPolygonIntersect(corners, objects[i].getCorners('x', 'z')) || 
+                utils.polygonPolygonIntersect(corners, objects[i].getCorners('x', 'z')) ||
                 ((cornerObjX < maxLimX) && (cornerObjX > minLimX) && (cornerObjY > minLimY) && (cornerObjY < maxLimY))) {
 		    	if (objects[i].halfSize.y * 2 < objects[i].position.y) objects[i].position.y = objects[i].halfSize.y;
 		    }
 		}
-	}		
+	}
 }
 
 FloorItem.prototype.isValidPosition = function(vec3, appearBool, placeFloorItem) {
-	var countToTwo = 0;
-    var corners = this.getCorners('x', 'z', vec3);
+		console.log('placeFloorItem')
+		console.log(placeFloorItem)
+		var countToTwo = 0;
+	  var corners = this.getCorners('x', 'z', vec3);
 
-    var minLimX = corners[0].x;
-	var maxLimX = corners[1].x;
-	var minLimY = corners[0].y;
-	var maxLimY = corners[2].y;
+	  var minLimX = corners[0].x;
+		var maxLimX = corners[1].x;
+		var minLimY = corners[0].y;
+		var maxLimY = corners[2].y;
 
     // check if we are in a room
     var rooms = this.model.floorplan.getRooms();
@@ -44621,13 +44623,18 @@ FloorItem.prototype.isValidPosition = function(vec3, appearBool, placeFloorItem)
 
     // check if we are outside all other objects
     // prod change
-    
+
     if (this.obstructFloorMoves) {
-    	var floorOnly = this.metadata.floor;
-    	if (placeFloorItem) {
-    		floorOnly = false;
-    	}
-    	// sorry about this
+	    	var floorOnly = this.metadata.floor;
+				console.log('  ')
+				console.log('  ')
+				console.log('flooronly')
+				console.log(floorOnly)
+	    	if (placeFloorItem) {
+	    		floorOnly = false;
+	    	}
+				console.log(floorOnly)
+	    	// sorry about this
         var objects = this.scene.getItems();
         var thisObjHeight = this.halfSize.y;
         var triggerino = true;
@@ -44637,8 +44644,8 @@ FloorItem.prototype.isValidPosition = function(vec3, appearBool, placeFloorItem)
         var nonIntersectArr = dataArray ? dataArray : [];
         variableThroughAllTheFIles = true;
         for (var i = 0; i < objects.length; i++) {
-        	var cornerObjX = objects[i].getCorners('x')[0].x;
-	    	var cornerObjY = objects[i].getCorners('x')[0].y;
+        		var cornerObjX = objects[i].getCorners('x')[0].x;
+	    			var cornerObjY = objects[i].getCorners('x')[0].y;
 
             if (objects[i] === this || !objects[i].obstructFloorMoves) {
                 continue;
@@ -44669,26 +44676,26 @@ FloorItem.prototype.isValidPosition = function(vec3, appearBool, placeFloorItem)
                 } else {
                 	if ((!intersectArr.includes(k)) && (!nonIntersectArr.includes(k))) {
                 		nonIntersectArr.push(k);
-                	}  
+                	}
                 	if ((!intersectArr.includes(i)) && (!nonIntersectArr.includes(i))) {
                 		nonIntersectArr.push(i);
                 	}
                 }
             }
             if (!utils.polygonOutsidePolygon(corners, objects[i].getCorners('x', 'z')) ||
-                utils.polygonPolygonIntersect(corners, objects[i].getCorners('x', 'z')) || 
+                utils.polygonPolygonIntersect(corners, objects[i].getCorners('x', 'z')) ||
                 ((cornerObjX < maxLimX) && (cornerObjX > minLimX) && (cornerObjY > minLimY) && (cornerObjY < maxLimY))) {
             	// if moved item intesecting another one
             	countToTwo++;
 
 
-            	if (floorOnly) {
+            	if ((floorOnly) && (countToTwo < 2) && (!appearBool)) {
             		// moved item floorOnly mode
             		return false
             	}
 
-                var intersectedObjHeight = objects[i].halfSize.y;   
-                var intersectedObjPos = objects[i].position.y;
+              var intersectedObjHeight = objects[i].halfSize.y;
+              var intersectedObjPos = objects[i].position.y;
 
             	this.position.y = thisObjHeight + intersectedObjHeight*2;
 
@@ -44708,7 +44715,7 @@ FloorItem.prototype.isValidPosition = function(vec3, appearBool, placeFloorItem)
             if ((appearBool) && (countToTwo >= 2)) {
             	console.log('3 items')
            		// if u're adding third floor item
-            	variableThroughAllTheFIles = false;     	
+            	variableThroughAllTheFIles = false;
             	$('.conf_wr__alert').addClass('alert');
             	setTimeout(function() {
             		$('.conf_wr__alert').removeClass('alert');
@@ -44721,7 +44728,7 @@ FloorItem.prototype.isValidPosition = function(vec3, appearBool, placeFloorItem)
             }
 		    setTimeout(function() {
 		    	$.each(nonIntersectArr, function (i, v) {
-		    		if (!objects[v].wallOffsetScalar) objects[v].position.y = objects[v].halfSize.y;	    		
+		    		if (!objects[v].wallOffsetScalar) objects[v].position.y = objects[v].halfSize.y;
 		    	});
 		    }, 50);
 	    	$('#floorplanner').attr('data-array', nonIntersectArr)
@@ -44780,7 +44787,8 @@ var Item = function(model, metadata, geometry, material, position, rotation, sca
     this.selected = false;
     this.highlighted = false;
     this.error = false;
-    this.emissiveColor = 0x444444;
+		// this.emissiveColor = 0x444444;
+    this.emissiveColor = 0x666666;
     this.errorColor = 0xff0000;
 
     this.metadata = metadata;
@@ -44795,7 +44803,7 @@ var Item = function(model, metadata, geometry, material, position, rotation, sca
     this.obstructFloorMoves = true;
 
     if (position) {
-        this.position.copy(position);        
+        this.position.copy(position);
         this.position_set = true;
     } else {
         this.position_set = false;
@@ -44830,9 +44838,9 @@ var Item = function(model, metadata, geometry, material, position, rotation, sca
 Item.prototype = Object.create(THREE.Mesh.prototype);
 
 Item.prototype.remove = function(deleter) {
-	var deleter = deleter;
+		var deleter = deleter;
     this.scene.removeItem(this);
-    this.removeChanges(this, deleter)
+    // this.removeChanges(this, deleter)
     console.log('remove')
 };
 
@@ -44905,7 +44913,7 @@ Item.prototype.updateHighlight = function() {
     utils.forEach(this.material.materials, function(material) {
         material.emissive.setHex(hex);
     });
-    
+
 }
 
 Item.prototype.mouseOver = function() {
@@ -44937,7 +44945,7 @@ Item.prototype.clickPressed = function(intersection) {
 Item.prototype.clickDragged = function(intersection) {
     if (intersection) {
         this.moveToPosition(
-            intersection.point.sub(this.dragOffset), 
+            intersection.point.sub(this.dragOffset),
             intersection);
     }
 };
@@ -44945,9 +44953,9 @@ Item.prototype.clickDragged = function(intersection) {
 Item.prototype.rotate = function(intersection) {
     if (intersection) {
         var angle = utils.angle(
-            0, 
-            1, 
-            intersection.point.x - this.position.x, 
+            0,
+            1,
+            intersection.point.x - this.position.x,
             intersection.point.z - this.position.z);
 
         var snapTolerance = Math.PI / 16.0;
@@ -45062,7 +45070,7 @@ Item.prototype.createGlow = function( color, opacity, ignoreDepth ) {
 		transparent: true,
         depthTest: !ignoreDepth
 	});
-		
+
 	var glow = new THREE.Mesh(this.geometry.clone(), glowMaterial);
 	glow.position.copy(this.position);
 	glow.rotation.copy(this.rotation);
@@ -45135,7 +45143,7 @@ WallItem.prototype.closestWallEdge = function() {
     var wallEdges = this.model.floorplan.wallEdges();
 
     var wallEdge = null;
-    var minDistance = null; 
+    var minDistance = null;
 
     var itemX = this.position.x;
     var itemZ = this.position.z;
@@ -45181,7 +45189,7 @@ WallItem.prototype.updateSize = function() {
 
 WallItem.prototype.resized = function() {
     if (this.boundToFloor) {
-        this.position.y = 0.5 * (this.geometry.boundingBox.max.y - this.geometry.boundingBox.min.y)  * this.scale.y + 0.01;        
+        this.position.y = 0.5 * (this.geometry.boundingBox.max.y - this.geometry.boundingBox.min.y)  * this.scale.y + 0.01;
     }
 
     this.updateSize();
@@ -45192,7 +45200,7 @@ WallItem.prototype.placeInRoom = function() {
     var closestWallEdge = this.closestWallEdge();
     this.changeWallEdge(closestWallEdge);
     this.updateSize();
-    
+
     if (!this.position_set) {
         // position not set
         var center = closestWallEdge.interiorCenter();
@@ -45203,7 +45211,7 @@ WallItem.prototype.placeInRoom = function() {
         this.boundMove(newPos);
         this.position.copy(newPos);
         // this.redrawWall();
-    } 
+    }
 };
 
 WallItem.prototype.moveToPosition = function(vec3, intersection) {
@@ -45247,10 +45255,10 @@ WallItem.prototype.changeWallEdge = function(wallEdge) {
     // update currentWall
     this.currentWallEdge = wallEdge;
     if (this.addToWall) {
-        wallEdge.wall.items.push(this);  
-        // this.redrawWall();      
+        wallEdge.wall.items.push(this);
+        // this.redrawWall();
     } else {
-        wallEdge.wall.onItems.push(this);  
+        wallEdge.wall.onItems.push(this);
     }
 }
 
@@ -45275,7 +45283,7 @@ WallItem.prototype.boundMove = function(vec3) {
     }
 
     if (this.boundToFloor) {
-        vec3.y = 0.5 * ( this.geometry.boundingBox.max.y - this.geometry.boundingBox.min.y ) * this.scale.y + 0.01;        
+        vec3.y = 0.5 * ( this.geometry.boundingBox.max.y - this.geometry.boundingBox.min.y ) * this.scale.y + 0.01;
     } else {
         if (vec3.y < this.sizeY / 2.0 + tolerance) {
             vec3.y = this.sizeY / 2.0 + tolerance;
@@ -45349,7 +45357,7 @@ var Corner = function(floorplan, x, y, id) {
       if (Math.abs(corner.x - scope.x) < tolerance) {
         scope.x = corner.x;
         snapped.x = true;
-      } 
+      }
       if (Math.abs(corner.y - scope.y) < tolerance) {
         scope.y = corner.y;
         snapped.y = true;
@@ -45375,8 +45383,8 @@ var Corner = function(floorplan, x, y, id) {
       this.wallStarts[i].remove();
     }
     for( var i = 0; i < this.wallEnds.length; i++ ) {
-      this.wallEnds[i].remove();  
-    } 
+      this.wallEnds[i].remove();
+    }
     this.remove()
   }
 
@@ -45401,7 +45409,7 @@ var Corner = function(floorplan, x, y, id) {
     for( var i = 0; i < this.wallEnds.length; i++ ) {
       retArray.push(this.wallEnds[i].getStart());
     }
-    return retArray;   
+    return retArray;
   }
 
   this.isWallConnected = function(wall) {
@@ -45414,8 +45422,8 @@ var Corner = function(floorplan, x, y, id) {
       if (this.wallEnds[i] == wall) {
         return true;
       }
-    }  
-    return false;      
+    }
+    return false;
   }
 
   this.distanceFrom = function(x, y) {
@@ -45435,9 +45443,9 @@ var Corner = function(floorplan, x, y, id) {
   this.detachWall = function(wall) {
     utils.removeValue(this.wallStarts, wall);
     utils.removeValue(this.wallEnds, wall);
-    if (this.wallStarts.length == 0 && this.wallEnds.length == 0) {    
+    if (this.wallStarts.length == 0 && this.wallEnds.length == 0) {
       this.remove();
-    }     
+    }
   }
 
   this.attachStart = function(wall) {
@@ -45455,7 +45463,7 @@ var Corner = function(floorplan, x, y, id) {
         return this.wallStarts[i];
       }
     }
-    return null; 
+    return null;
   }
 
   this.wallFrom = function(corner) {
@@ -45463,7 +45471,7 @@ var Corner = function(floorplan, x, y, id) {
       if (this.wallEnds[i].getStart() === corner) {
         return this.wallEnds[i];
       }
-    } 
+    }
     return null;
   }
 
@@ -45480,8 +45488,8 @@ var Corner = function(floorplan, x, y, id) {
       corner.wallStarts[i].setStart( this );
     }
     for( var i = corner.wallEnds.length - 1; i >= 0; i-- ) {
-      corner.wallEnds[i].setEnd( this );         
-    }           
+      corner.wallEnds[i].setEnd( this );
+    }
     // delete the other corner
     corner.removeAll();
     this.removeDuplicateWalls();
@@ -45503,18 +45511,18 @@ var Corner = function(floorplan, x, y, id) {
       obj = floorplan.getWalls()[i];
       if (this.distanceFromWall(obj) < tolerance && !this.isWallConnected( obj )) {
         // update position to be on wall
-        var intersection = utils.closestPointOnLine(this.x, this.y, 
-          obj.getStart().x, obj.getStart().y, 
+        var intersection = utils.closestPointOnLine(this.x, this.y,
+          obj.getStart().x, obj.getStart().y,
           obj.getEnd().x, obj.getEnd().y);
         this.x = intersection.x;
         this.y = intersection.y;
         // merge this corner into wall by breaking wall into two parts
-        floorplan.newWall(   
+        floorplan.newWall(
           this, obj.getEnd());
-        obj.setEnd(this); 
+        obj.setEnd(this);
         floorplan.update();
         return true;
-      }         
+      }
     }
     return false;
   }
@@ -45526,8 +45534,8 @@ var Corner = function(floorplan, x, y, id) {
     var wallStartpoints = {};
     for( var i = this.wallStarts.length - 1; i >= 0; i-- ) {
       if (this.wallStarts[i].getEnd() === this) {
-        // remove zero length wall 
-        this.wallStarts[i].remove();   
+        // remove zero length wall
+        this.wallStarts[i].remove();
       } else if (this.wallStarts[i].getEnd().id in wallEndpoints) {
         // remove duplicated wall
         this.wallStarts[i].remove();
@@ -45537,15 +45545,15 @@ var Corner = function(floorplan, x, y, id) {
     }
     for( var i = this.wallEnds.length - 1; i >= 0; i-- ) {
       if (this.wallEnds[i].getStart() === this) {
-        // removed zero length wall 
-        this.wallEnds[i].remove();     
+        // removed zero length wall
+        this.wallEnds[i].remove();
       } else if (this.wallEnds[i].getStart().id in wallStartpoints) {
         // removed duplicated wall
         this.wallEnds[i].remove();
       } else {
         wallStartpoints[this.wallEnds[i].getStart().id] = true;
-      }         
-    } 
+      }
+    }
   }
 
 };
@@ -45678,7 +45686,7 @@ var Floorplan = function() {
       if (corners[i].distanceFrom(x, y) < tolerance) {
         //console.log("got corner")
         return corners[i];
-      }      
+      }
     }
     return null;
   }
@@ -45688,7 +45696,7 @@ var Floorplan = function() {
     for (i = 0; i < walls.length; i++) {
       if (walls[i].distanceFrom(x, y) < tolerance) {
         return walls[i];
-      }      
+      }
     }
     return null;
   }
@@ -45727,7 +45735,7 @@ var Floorplan = function() {
     var corners = {};
     if (floorplan == null || !('corners' in floorplan) || !('walls' in floorplan)) {
       return
-    } 
+    }
     for (var id in floorplan.corners) {
       var corner = floorplan.corners[id];
       corners[id] = this.newCorner(corner.x, corner.y, id);
@@ -45747,7 +45755,7 @@ var Floorplan = function() {
       this.floorTextures = floorplan.newFloorTextures;
     }
 
-    this.update();    
+    this.update();
     this.roomLoadedCallbacks.fire();
   }
 
@@ -45841,7 +45849,7 @@ var Floorplan = function() {
         ret = new THREE.Vector3( (xMin + xMax) * 0.5, 0, (zMin + zMax) * 0.5 );
       } else {
         // size
-        ret = new THREE.Vector3( (xMax - xMin), 0, (zMax - zMin) );        
+        ret = new THREE.Vector3( (xMax - xMin), 0, (zMax - zMin) );
       }
     }
     return ret;
@@ -45883,12 +45891,12 @@ function findRooms(corners) {
       nextCorner.y - currentCorner.y);
     return theta;
   }
-  
+
   function removeDuplicateRooms(roomArray) {
     var results = [];
     var lookup = {};
     var hashFunc = function(corner) {
-      return corner.id 
+      return corner.id
     };
     var sep = '-';
     for (var i = 0; i < roomArray.length; i++) {
@@ -45907,9 +45915,9 @@ function findRooms(corners) {
         lookup[str] = true;
       }
     }
-    return results; 
+    return results;
   }
-  
+
   function findTightestCycle(firstCorner, secondCorner) {
     var stack = [];
     var next = {
@@ -45919,35 +45927,35 @@ function findRooms(corners) {
     var visited = {};
     visited[firstCorner.id] = true;
 
-    while ( next ) {  
+    while ( next ) {
       // update previous corners, current corner, and visited corners
       var currentCorner = next.corner;
-      visited[currentCorner.id] = true; 
-    
+      visited[currentCorner.id] = true;
+
       // did we make it back to the startCorner?
       if ( next.corner === firstCorner && currentCorner !== secondCorner ) {
-        return next.previousCorners;  
+        return next.previousCorners;
       }
-      
+
       var addToStack = [];
-      var adjacentCorners = next.corner.adjacentCorners();  
+      var adjacentCorners = next.corner.adjacentCorners();
       for ( var i = 0; i < adjacentCorners.length; i++ ) {
         var nextCorner = adjacentCorners[i];
-            
+
         // is this where we came from?
         // give an exception if its the first corner and we aren't at the second corner
-        if ( nextCorner.id in visited &&  
+        if ( nextCorner.id in visited &&
           !( nextCorner === firstCorner && currentCorner !== secondCorner )) {
           continue;
         }
-        
-        // nope, throw it on the queue  
-        addToStack.push( nextCorner );  
+
+        // nope, throw it on the queue
+        addToStack.push( nextCorner );
       }
-    
+
       var previousCorners = next.previousCorners.slice(0);
-      previousCorners.push( currentCorner );  
-      if (addToStack.length > 1) {  
+      previousCorners.push( currentCorner );
+      if (addToStack.length > 1) {
         // visit the ones with smallest theta first
         var previousCorner = next.previousCorners[next.previousCorners.length - 1];
         addToStack.sort(function(a,b) {
@@ -45955,21 +45963,21 @@ function findRooms(corners) {
               calculateTheta(previousCorner, currentCorner, a));
         });
       }
-    
+
       if (addToStack.length > 0) {
         // add to the stack
         utils.forEach(addToStack, function(corner) {
           stack.push({
             corner: corner,
             previousCorners: previousCorners
-          });   
+          });
         });
       }
-    
+
       // pop off the next one
       next = stack.pop();
     }
-    return [];  
+    return [];
   }
 
   // find tightest loops, for each corner, for each adjacent
@@ -46024,8 +46032,8 @@ var HalfEdge = function(room, wall, front) {
   this.plane = null;
 
   // transform from world coords to wall planes (z=0)
-  this.interiorTransform = new THREE.Matrix4(); 
-  this.invInteriorTransform = new THREE.Matrix4(); 
+  this.interiorTransform = new THREE.Matrix4();
+  this.invInteriorTransform = new THREE.Matrix4();
   this.exteriorTransform = new THREE.Matrix4();
   this.invExteriorTransform = new THREE.Matrix4();
 
@@ -46115,7 +46123,7 @@ var HalfEdge = function(room, wall, front) {
     var tt = new THREE.Matrix4();
     tt.makeTranslation(-v1.x, 0, -v1.y);
     var tr = new THREE.Matrix4();
-    tr.makeRotationY(-angle); 
+    tr.makeRotationY(-angle);
     transform.multiplyMatrices( tr, tt );
     invTransform.getInverse(transform);
   }
@@ -46126,7 +46134,7 @@ var HalfEdge = function(room, wall, front) {
       this.interiorStart().x,
       this.interiorStart().y,
       this.interiorEnd().x,
-      this.interiorEnd().y); 
+      this.interiorEnd().y);
   }
 
   this.getStart = function() {
@@ -46204,7 +46212,7 @@ var HalfEdge = function(room, wall, front) {
     // make the best of things if we dont have prev or next
     if (!v1) {
       var v1startX = v2.getStart().x - (v2.getEnd().x - v2.getStart().x);
-      var v1startY = v2.getStart().y - (v2.getEnd().y - v2.getStart().y);     
+      var v1startY = v2.getStart().y - (v2.getEnd().y - v2.getStart().y);
       var v1endX = v2.getStart().x;
       var v1endY = v2.getStart().y;
     } else {
@@ -46218,12 +46226,12 @@ var HalfEdge = function(room, wall, front) {
       var v2startX = v1.getEnd().x;
       var v2startY = v1.getEnd().y;
       var v2endX = v1.getEnd().x + (v1.getEnd().x - v1.getStart().x);
-      var v2endY = v1.getEnd().y + (v1.getEnd().y - v1.getStart().y); 
+      var v2endY = v1.getEnd().y + (v1.getEnd().y - v1.getStart().y);
     } else {
       var v2startX = v2.getStart().x;
       var v2startY = v2.getStart().y;
       var v2endX = v2.getEnd().x;
-      var v2endY = v2.getEnd().y;      
+      var v2endY = v2.getEnd().y;
     }
 
     // CCW angle between edges
@@ -46324,12 +46332,12 @@ var Model = function(textureDir) {
   }
 
   this.newRoom = function(floorplan, items) {
-  	
+
     this.scene.clearItems();
     this.floorplan.loadFloorplan(floorplan);
     utils.forEach(items, function(item) {
-    	
-      position = new THREE.Vector3( item.xpos, item.ypos, item.zpos) 
+
+      position = new THREE.Vector3( item.xpos, item.ypos, item.zpos)
 
       var metadata = {
         itemName: item.item_name,
@@ -46342,13 +46350,13 @@ var Model = function(textureDir) {
         y: item.scale_y,
         z: item.scale_z
       }
-   
-      scope.scene.addItem( 
-        item.item_type, 
-        item.model_url, 
+
+      scope.scene.addItem(
+        item.item_type,
+        item.model_url,
         metadata,
         item.item_name2,
-        position, 
+        position,
         item.rotation,
         scale,
         item.fixed);
@@ -46374,7 +46382,7 @@ var Polygon = require('polygon')
 var HalfEdge = require('./half_edge')
 
 var Room = function(floorplan, corners) {
- 
+
   var scope = this;
 
   // ordered CCW
@@ -46383,7 +46391,7 @@ var Room = function(floorplan, corners) {
 
   this.interiorCorners = [];
   this.edgePointer = null;
-  
+
   // floor plane for intersection testing
   this.floorPlane = null;
 
@@ -46436,7 +46444,7 @@ var Room = function(floorplan, corners) {
     var points = [];
     utils.forEach( scope.interiorCorners, function(corner) {
         points.push(new THREE.Vector2(
-          corner.x, 
+          corner.x,
           corner.y));
     });
     var shape = new THREE.Shape(points);
@@ -46556,7 +46564,7 @@ var Scene = function(model, textureDir) {
   // init item loader
   var loader = new THREE.JSONLoader();
   loader.crossOrigin = "";
-  
+
   var item_types = {
     1: FloorItem,
     2: WallItem,
@@ -46567,7 +46575,7 @@ var Scene = function(model, textureDir) {
   };
 
   // init callbacks
-  this.itemLoadingCallbacks = JQUERY.Callbacks(); 
+  this.itemLoadingCallbacks = JQUERY.Callbacks();
   this.itemLoadedCallbacks = JQUERY.Callbacks(); // Item
   this.itemRemovedCallbacks = JQUERY.Callbacks(); // Item
 
@@ -46616,7 +46624,7 @@ var Scene = function(model, textureDir) {
   this.addItem = function(itemType, fileName, metadata, name, position, rotation, scale, fixed) {
 
     itemType = itemType || 1;
-    if (position) var posY = position.y;    
+    if (position) var posY = position.y;
     var loaderCallback = function(geometry, materials, posY) {
       var item = new item_types[itemType](
         model,
@@ -46658,7 +46666,7 @@ var Wall = function(start, end) {
   this.id = getUuid();
 
   var scope = this;
-  
+
   var start = start;
   var end = end;
 
@@ -46696,7 +46704,7 @@ var Wall = function(start, end) {
 
   this.resetFrontBack = function(func) {
     this.frontEdge = null;
-    this.backEdge = null; 
+    this.backEdge = null;
     this.orphan = false;
   }
 
@@ -46789,8 +46797,8 @@ var Wall = function(start, end) {
   }
 
   this.distanceFrom = function(x, y) {
-    return utils.pointDistanceFromLine(x, y, 
-      this.getStartX(), this.getStartY(), 
+    return utils.pointDistanceFromLine(x, y,
+      this.getStartX(), this.getStartY(),
       this.getEndX(), this.getEndY());
   }
 
@@ -46889,11 +46897,11 @@ var ThreeController = function(three, model, camera, element, controls, hud) {
         // var pos = item.position.clone();
         // console.log('mouse ', mouse)
         // console.log('pos ', pos)
-        // // pos.y = 0;   
+        // // pos.y = 0;
         // // var vec = three.projectVector(pos);
         // var vec = mouse;
-        // console.log('vec ', vec) 
-        // clickPressed(vec); 
+        // console.log('vec ', vec)
+        // clickPressed(vec);
         // prod change
     }
     item.position_set = true;
@@ -46909,14 +46917,14 @@ var ThreeController = function(three, model, camera, element, controls, hud) {
   }
 
   function clickDragged(vec2) {
-  	
+
     vec2 = vec2 || mouse;
     var intersection = scope.itemIntersection(mouse, selectedObject);
     if (intersection) {
       if (scope.isRotating()) {
-        selectedObject.rotate(intersection);        
+        selectedObject.rotate(intersection);
       } else {
-        selectedObject.clickDragged(intersection);        
+        selectedObject.clickDragged(intersection);
       }
     }
   }
@@ -46925,16 +46933,16 @@ var ThreeController = function(three, model, camera, element, controls, hud) {
     // invoked as a callback to event in Scene
     if (item === selectedObject) {
       selectedObject.setUnselected();
-      selectedObject.mouseOff();  
-      scope.setSelectedObject(null);  
+      selectedObject.mouseOff();
+      scope.setSelectedObject(null);
     }
   }
 
   function setGroundPlane() {
     // ground plane used to find intersections
     var size = 10000;
-    plane = new THREE.Mesh( 
-      new THREE.PlaneGeometry(size, size), 
+    plane = new THREE.Mesh(
+      new THREE.PlaneGeometry(size, size),
       new THREE.MeshBasicMaterial());
     plane.rotation.x = -Math.PI/2;
     plane.visible = false;
@@ -46953,7 +46961,7 @@ var ThreeController = function(three, model, camera, element, controls, hud) {
         var wall = wallIntersects[0].object.edge;
         three.wallClicked.fire(wall);
         return;
-      } 
+      }
 
       // check floors
       var floorPlanes = model.floorplan.floorPlanes();
@@ -46967,12 +46975,12 @@ var ThreeController = function(three, model, camera, element, controls, hud) {
 
       three.nothingClicked.fire();
     }
-  
+
   }
 
 
   function mouseMoveEvent(event) {
-	
+
     if (scope.enabled) {
       event.preventDefault();
 
@@ -46982,7 +46990,7 @@ var ThreeController = function(three, model, camera, element, controls, hud) {
       mouse.y = event.clientY;
 
       if (!mouseDown) {
-        updateIntersections();        
+        updateIntersections();
       }
 
       switch(state) {
@@ -47012,7 +47020,7 @@ var ThreeController = function(three, model, camera, element, controls, hud) {
   	if (!triggerViwe) {
   		three.setCursorStyle("url(../../static/img/icons/coursor/default-push.svg) 20 0, auto");
   	}
-  	
+
     if (scope.enabled) {
       event.preventDefault();
 
@@ -47026,7 +47034,7 @@ var ThreeController = function(three, model, camera, element, controls, hud) {
           } else if (intersectedObject != null) {
             scope.setSelectedObject(intersectedObject);
             if (!intersectedObject.fixed) {
-              switchState(states.DRAGGING);              
+              switchState(states.DRAGGING);
             }
           }
           break;
@@ -47036,7 +47044,7 @@ var ThreeController = function(three, model, camera, element, controls, hud) {
             if (!intersectedObject.fixed) {
               switchState(states.DRAGGING);
             }
-          } 
+          }
           break;
         case states.DRAGGING:
         case states.ROTATING:
@@ -47053,7 +47061,7 @@ var ThreeController = function(three, model, camera, element, controls, hud) {
   	if (!triggerViwe) {
   		three.setCursorStyle("url(../../static/img/icons/coursor/default-default.svg) 20 0, auto");
   	}
-	
+
     if (scope.enabled) {
       mouseDown = false;
 
@@ -47163,7 +47171,7 @@ var ThreeController = function(three, model, camera, element, controls, hud) {
         hud.setMouseover(true);
         intersectedObject = null;
         return;
-      } 
+      }
     }
     rotateMouseOver = false;
     hud.setMouseover(false);
@@ -47176,7 +47184,7 @@ var ThreeController = function(three, model, camera, element, controls, hud) {
       return remove;
     });*/
     var intersects = scope.getIntersections(
-      mouse, 
+      mouse,
       items,
       false, true);
 
@@ -47193,6 +47201,10 @@ var ThreeController = function(three, model, camera, element, controls, hud) {
   	 var helper = window.innerWidth - three.element.outerWidth() - three.element.offset().left;
   	 var helper2 = three.element.offset().top - $(window).scrollTop();
      retVec.x = ((vec2.x - three.widthMargin) / (window.innerWidth - three.widthMargin - helper)) * 2 - 1;
+		 if (!$('#constructor_2d').hasClass('constructor_2d_active')) retVec.x = retVec.x * .85;
+		 // retVec.x = retVec.x * .85;
+		 // console.table(helper, vec2.x, three.widthMargin, window.innerWidth)
+		 // console.table((vec2.x - three.widthMargin), (window.innerWidth - three.widthMargin - helper), retVec.x)
      retVec.y = -((vec2.y - helper2) / (three.element.outerHeight())) * 2 + 1;
      return retVec;
   }
@@ -47259,13 +47271,14 @@ var ThreeController = function(three, model, camera, element, controls, hud) {
         var dot = intersection.face.normal.dot(direction);
         return (dot > 0)
       });
-    } 
+    }
+		// console.log(intersections)
     return intersections;
   }
-  
+
   // manage the selected object
   this.setSelectedObject = function( object ) {
-  	
+
     if (state === states.UNSELECTED) {
       switchState(states.SELECTED);
 
@@ -47311,7 +47324,7 @@ var ThreeController = function(three, model, camera, element, controls, hud) {
       } else {
       	three.setCursorStyle("auto");
       }
-      
+
       mouseoverObject = null;
       scope.needsUpdate = true;
     }
@@ -47387,7 +47400,7 @@ var ThreeControls = function (object, domElement) {
 
 	this.needsUpdate = true;
 
-	
+
 
 	// internals
 
@@ -47460,7 +47473,7 @@ var ThreeControls = function (object, domElement) {
 		panOffset.normalize();
 
 		panOffset.multiplyScalar(-distance);
-		
+
 		pan.add( panOffset );
 
 	};
@@ -47474,10 +47487,10 @@ var ThreeControls = function (object, domElement) {
 		panOffset.set( te[4], 0, te[6] );
 		panOffset.normalize();
 		panOffset.multiplyScalar(distance);
-		
+
 		pan.add( panOffset );
 	};
-	
+
 	// main entry point; pass in Vector2 of change desired in pixel space,
 	// right and down are positive
 	this.pan = function ( delta ) {
@@ -47528,7 +47541,7 @@ var ThreeControls = function (object, domElement) {
 		}
 
 		scale *= dollyScale;
-		
+
 
 
 	};
@@ -47560,7 +47573,7 @@ var ThreeControls = function (object, domElement) {
 		phi = Math.max( EPS, Math.min( Math.PI - EPS, phi ) );
 
 		var radius = offset.length() * scale;
-		
+
 
 		// restrict radius to be between desired limits
 		radius = Math.max( this.minDistance, Math.min( this.maxDistance, radius ) );
@@ -47579,7 +47592,7 @@ var ThreeControls = function (object, domElement) {
 		phiDelta = 0;
 
 		scale = 1;
-		
+
 		pan.set(0,0,0);
 
 		this.cameraMovedCallbacks.fire();
@@ -47662,7 +47675,7 @@ var ThreeControls = function (object, domElement) {
 		var position = this.object.position;
 		var offset = position.clone().sub( this.target );
 
-	
+
 		// angle from z-axis around y-axis
 		var theta = Math.atan2( offset.x, offset.z );
 
@@ -47686,7 +47699,7 @@ var ThreeControls = function (object, domElement) {
 
 		// restrict radius to be between desired limits
 		radius = Math.max( this.minDistance, Math.min( this.maxDistance, radius ) );
-		
+
 		// move target to panned location
 		this.target.add( pan );
 
@@ -47694,7 +47707,7 @@ var ThreeControls = function (object, domElement) {
 			offset.x = 0;
 			offset.y = 5200;
 			offset.z = 1;
-		} 
+		}
 
 
 		position.copy( this.target ).add( offset );
@@ -47705,7 +47718,7 @@ var ThreeControls = function (object, domElement) {
 		phiDelta = 0;
 		// scale = 1;
 		pan.set(0,0,0);
-	
+
 
 		this.cameraMovedCallbacks.fire();
 		this.needsUpdate = true;
@@ -47743,7 +47756,7 @@ var ThreeControls = function (object, domElement) {
 		phiDelta = 0;
 		// scale = 1;
 		pan.set(0,0,0);
-	
+
 
 		this.cameraMovedCallbacks.fire();
 		this.needsUpdate = true;
@@ -47755,15 +47768,15 @@ var ThreeControls = function (object, domElement) {
 
 
 	function onMouseMove( event ) {
-	
+
 		if ( scope.enabled === false ) return;
 
 		event.preventDefault();
 
 		var element = scope.domElement === document ? scope.domElement.body : scope.domElement;
 
-		
-		
+
+
 
 		if ( state === STATE.ROTATE ) {
 
@@ -47774,10 +47787,10 @@ var ThreeControls = function (object, domElement) {
 
 			// rotating across whole screen goes 360 degrees around
 			scope.rotateLeft( 2 * Math.PI * rotateDelta.x / element.clientWidth * scope.rotateSpeed );
-			
+
 			// rotating up and down along whole screen attempts to go 360, but limited to 180
 			scope.rotateUp( 2 * Math.PI * rotateDelta.y / element.clientHeight * scope.rotateSpeed );
-			
+
 
 			rotateStart.copy( rotateEnd );
 
@@ -47806,7 +47819,7 @@ var ThreeControls = function (object, domElement) {
 
 			panEnd.set( event.clientX, event.clientY );
 			panDelta.subVectors( panEnd, panStart );
-			
+
 			scope.pan( panDelta );
 
 			panStart.copy( panEnd );
@@ -47856,7 +47869,7 @@ var ThreeControls = function (object, domElement) {
 		if ( scope.enabled === false ) { return; }
 		if ( scope.noKeys === true ) { return; }
 		if ( scope.noPan === true ) { return; }
-	
+
 		switch ( event.keyCode ) {
 
 			case scope.keys.UP:
@@ -47874,7 +47887,7 @@ var ThreeControls = function (object, domElement) {
 		}
 
 	}
-	
+
 	function touchstart( event ) {
 
 		if ( scope.enabled === false ) { return; }
@@ -47966,7 +47979,7 @@ var ThreeControls = function (object, domElement) {
 
 				panEnd.set( event.touches[ 0 ].pageX, event.touches[ 0 ].pageY );
 				panDelta.subVectors( panEnd, panStart );
-				
+
 				scope.pan( panDelta );
 
 				panStart.copy( panEnd );
@@ -47978,13 +47991,13 @@ var ThreeControls = function (object, domElement) {
 	}
 
 	function touchend( /* event */ ) {
-		if ( scope.enabled === false ) { 
-			return; 
+		if ( scope.enabled === false ) {
+			return;
 		}
 		state = STATE.NONE;
 	}
 
-	
+
 
 	this.stateZoom2d =  function() {
 		scope.maxDistance = 8500;
@@ -47997,7 +48010,7 @@ var ThreeControls = function (object, domElement) {
 		scope.domElement.style.cursor = "url(../../static/img/icons/coursor/default-default.svg) 20 0, auto";
 	}
 
-	
+
 	this.domElement.addEventListener( 'contextmenu', function ( event ) { event.preventDefault(); }, false );
 	this.domElement.addEventListener( 'mousedown', onMouseDown, false );
 	this.domElement.addEventListener( 'mousewheel', onMouseWheel, false );
@@ -48028,7 +48041,7 @@ var ThreeEdge = function(scene, edge, controls) {
   var planes = [];
   var basePlanes = []; // always visible
   var texture = null;
-  
+
   var lightMap = THREE.ImageUtils.loadTexture("static/const/images/walllightmap.png");
   var fillerColor = 0xdddddd;
   var sideColor = 0xcccccc;
@@ -48110,7 +48123,7 @@ var ThreeEdge = function(scene, edge, controls) {
     scope.visible = (dot >= 0);
 
     // show or hide plans
-    utils.forEach(planes, function(plane) { 
+    utils.forEach(planes, function(plane) {
       plane.visible = scope.visible;
     });
 
@@ -48127,7 +48140,7 @@ var ThreeEdge = function(scene, edge, controls) {
   		nameInput = '.config__input_height'
   	} else {
   		nameInput = '.config__input_height_mobile'
-  	}		
+  	}
 
   	if (!isNumeric($(nameInput).val())) {
   		wall.height = 240;
@@ -48144,7 +48157,7 @@ var ThreeEdge = function(scene, edge, controls) {
     utils.forEach(wall.onItems, function(item) {
       item.updateEdgeVisibility(scope.visible, front);
     });
-  } 
+  }
 
 
   function updateTexture(callback) {
@@ -48159,7 +48172,7 @@ var ThreeEdge = function(scene, edge, controls) {
     texture = THREE.ImageUtils.loadTexture(url, null, callback);
     if (!stretch) {
       var height = wall.height;
-      var width = edge.interiorDistance(); 
+      var width = edge.interiorDistance();
       texture.wrapT = THREE.RepeatWrapping;
       texture.wrapS = THREE.RepeatWrapping;
       texture.repeat.set(width/scale, height/scale);
@@ -48185,15 +48198,15 @@ var ThreeEdge = function(scene, edge, controls) {
       lightMap: lightMap
     });
 
-    
+
     var fillerMaterial = new THREE.MeshBasicMaterial({
       color: fillerColor,
       side: THREE.DoubleSide
-    });  
+    });
 
     // exterior plane
     planes.push(makeWall(
-      edge.exteriorStart(), 
+      edge.exteriorStart(),
       edge.exteriorEnd(),
       edge.exteriorTransform,
       edge.invExteriorTransform,
@@ -48201,7 +48214,7 @@ var ThreeEdge = function(scene, edge, controls) {
 
     // interior plane
     planes.push(makeWall(
-      edge.interiorStart(), 
+      edge.interiorStart(),
       edge.interiorEnd(),
       edge.interiorTransform,
       edge.invInteriorTransform,
@@ -48210,27 +48223,27 @@ var ThreeEdge = function(scene, edge, controls) {
     // bottom
     // put into basePlanes since this is always visible
     basePlanes.push(buildFiller(
-      edge, 0, 
-      THREE.BackSide, baseColor)); 
+      edge, 0,
+      THREE.BackSide, baseColor));
 
     // top
     planes.push(buildFiller(
-      edge, wall.height, 
+      edge, wall.height,
       THREE.DoubleSide, fillerColor));
 
     // sides
     planes.push(buildSideFillter(
-      edge.interiorStart(), edge.exteriorStart(), 
+      edge.interiorStart(), edge.exteriorStart(),
       wall.height, sideColor));
 
     planes.push(buildSideFillter(
-      edge.interiorEnd(), edge.exteriorEnd(), 
+      edge.interiorEnd(), edge.exteriorEnd(),
       wall.height, sideColor));
   }
 
-  // start, end have x and y attributes (i.e. corners) 
+  // start, end have x and y attributes (i.e. corners)
   // EXOX
- 
+
   function makeWall(start, end, transform, invTransform, material) {
     v1 = toVec3(start);
     v2 = toVec3(end);
@@ -48291,7 +48304,7 @@ var ThreeEdge = function(scene, edge, controls) {
       geometry.faceVertexUvs[0].push([
           vertexToUv(vertA),
           vertexToUv(vertB),
-          vertexToUv(vertC)]);      
+          vertexToUv(vertC)]);
     });
 
     geometry.faceVertexUvs[1] = geometry.faceVertexUvs[0];
@@ -48314,7 +48327,7 @@ var ThreeEdge = function(scene, edge, controls) {
       toVec3(p1, height)
     ];
 
-    var geometry = new THREE.Geometry(); 
+    var geometry = new THREE.Geometry();
     utils.forEach(points, function(p){
       geometry.vertices.push(p);
     });
@@ -48324,7 +48337,7 @@ var ThreeEdge = function(scene, edge, controls) {
     var fillerMaterial = new THREE.MeshBasicMaterial({
       color: color,
       side: THREE.DoubleSide
-    });  
+    });
 
     var filler = new THREE.Mesh(geometry, fillerMaterial);
     return filler;
@@ -48341,7 +48354,7 @@ var ThreeEdge = function(scene, edge, controls) {
     var fillerMaterial = new THREE.MeshBasicMaterial({
       color: color,
       side: side
-    });  
+    });
 
     var shape = new THREE.Shape(points);
     var geometry = new THREE.ShapeGeometry(shape);
@@ -48373,7 +48386,7 @@ var utils = require('../utils/utils')
 var ThreeFloor = function(scene, room) {
 
   var scope = this;
-  
+
   this.room = room;
   var scene = scene;
 
@@ -48388,7 +48401,7 @@ var ThreeFloor = function(scene, room) {
     // roofs look weird, so commented out
     //roofPlane = buildRoof();
   }
-  
+
   function redraw() {
     scope.removeFromScene();
     floorPlane = buildFloor();
@@ -48402,8 +48415,8 @@ var ThreeFloor = function(scene, room) {
     floorTexture.wrapS = THREE.RepeatWrapping;
     floorTexture.wrapT = THREE.RepeatWrapping;
     floorTexture.repeat.set(1, 1);
-    var floorMaterialTop = new THREE.MeshPhongMaterial({ 
-      map: floorTexture, 
+    var floorMaterialTop = new THREE.MeshPhongMaterial({
+      map: floorTexture,
       side: THREE.DoubleSide,
       ambient: 0xffffff,
       color: 0xcccccc,
@@ -48417,7 +48430,7 @@ var ThreeFloor = function(scene, room) {
     var points = [];
     utils.forEach( scope.room.interiorCorners, function(corner) {
         points.push(new THREE.Vector2(
-          corner.x / textureScale, 
+          corner.x / textureScale,
           corner.y / textureScale));
     });
     var shape = new THREE.Shape( points );
@@ -48435,7 +48448,7 @@ var ThreeFloor = function(scene, room) {
 
   function buildRoof() {
     // setup texture
-    var roofMaterial = new THREE.MeshBasicMaterial({ 
+    var roofMaterial = new THREE.MeshBasicMaterial({
       side: THREE.FrontSide,
       color: 0xe5e5e5
     });
@@ -48443,7 +48456,7 @@ var ThreeFloor = function(scene, room) {
     var points = [];
     utils.forEach( scope.room.interiorCorners, function(corner) {
         points.push(new THREE.Vector2(
-          corner.x, 
+          corner.x,
           corner.y));
     });
     var shape = new THREE.Shape( points );
@@ -48452,7 +48465,7 @@ var ThreeFloor = function(scene, room) {
 
     roof.rotation.set(Math.PI/2, 0, 0);
     roof.position.y = 250;
-    return roof;  
+    return roof;
   }
 
   this.addToScene = function() {
@@ -48601,7 +48614,7 @@ var ThreeHUD = function(three) {
     if (activeObject) {
       utils.forEach(activeObject.children, function(obj) {
         obj.material.color.set(getColor());
-      });      
+      });
     }
     three.needsUpdate();
   }
@@ -48658,14 +48671,14 @@ var ThreeHUD = function(three) {
   // }
 
   function rotateVector(item) {
-    var vec = new THREE.Vector3(0, 0, 
+    var vec = new THREE.Vector3(0, 0,
       Math.max(item.halfSize.x, item.halfSize.z) + 1.4 + distance);
     return vec;
   }
 
   // function makeLineMaterial(rotating) {
-  //   var mat = new THREE.LineBasicMaterial({ 
-  //     color: getColor(), 
+  //   var mat = new THREE.LineBasicMaterial({
+  //     color: getColor(),
   //     linewidth: 3
   //   });
   //   return mat;
@@ -48727,7 +48740,7 @@ var ThreeHUD = function(three) {
 	var splinePoints = spline.getPoints(numPoints);
 
 	for(var i = 0; i < splinePoints.length; i++){
-	    geometry.vertices.push(splinePoints[i]);  
+	    geometry.vertices.push(splinePoints[i]);
 	}
 
 	var line2 = new THREE.Line(geometry, material);
@@ -48887,7 +48900,7 @@ var ThreeMain = function(model, element, canvasElement, opts) {
   this.elementWidth;
 
   this.itemSelectedCallbacks = JQUERY.Callbacks(); // item
-  this.itemUnselectedCallbacks = JQUERY.Callbacks(); 
+  this.itemUnselectedCallbacks = JQUERY.Callbacks();
 
   this.wallClicked = JQUERY.Callbacks(); // wall
   this.floorClicked = JQUERY.Callbacks(); // floor
@@ -48920,7 +48933,7 @@ var ThreeMain = function(model, element, canvasElement, opts) {
   	$('.constructor__controlViwe').removeClass('activeState');
   	$(this).addClass('activeState');
   }
-  
+
   function init() {
     THREE.ImageUtils.crossOrigin = "";
 
@@ -48929,7 +48942,7 @@ var ThreeMain = function(model, element, canvasElement, opts) {
     $('.config__next, .clearConstr').on('click', cameraState_3d);
 
     domElement = scope.element.get(0) // Container
-    
+
     camera = new THREE.PerspectiveCamera(60, 1, 1, 100000);
     // camera = new THREE.PerspectiveCamera(50, 1, 1, 100000);
     // camera = new THREE.OrthographicCamera(-450, 400, 400, -400, 1, 2000);
@@ -48963,14 +48976,14 @@ var ThreeMain = function(model, element, canvasElement, opts) {
     if (options.resize) {
       JQUERY(window).resize(scope.updateWindowSize);
     }
-    
+
     // setup camera nicely
     scope.centerCamera();
     model.floorplan.fireOnUpdatedRooms(scope.centerCamera);
 
     var lights = new ThreeLights(scene, model.floorplan);
 
-    floorplan = new ThreeFloorplan(scene, 
+    floorplan = new ThreeFloorplan(scene,
       model.floorplan, scope.controls);
 
     animate();
@@ -48992,7 +49005,7 @@ var ThreeMain = function(model, element, canvasElement, opts) {
     	    $('.page_pdf__config_img').attr('src', imgData)
     	}, 100)
     })
-    
+
   }
 
 
@@ -49025,7 +49038,7 @@ var ThreeMain = function(model, element, canvasElement, opts) {
   	var imgData, imgNode;
   	var strDownloadMime = "image/octet-stream";
   	var strMime = "image/octet-stream";
-  	
+
 
     var imgData = renderer.domElement.toDataURL("image/png");
     $('.list_name_img').val(imgData)
@@ -49095,14 +49108,14 @@ var ThreeMain = function(model, element, canvasElement, opts) {
       renderer.clear();
       renderer.render(scene.getScene(), camera);
       renderer.clearDepth();
-      renderer.render(hud.getScene(), camera); 
+      renderer.render(hud.getScene(), camera);
     }
     lastRender = Date.now();
   };
 
   function animate() {
     var delay = 50;
-    setTimeout(function() { 
+    setTimeout(function() {
       requestAnimationFrame(animate);
       }, delay);
     render();
@@ -49231,27 +49244,27 @@ ThreeSkybox = function(scene) {
   function init() {
 
     var uniforms = {
-        topColor: { 
-          type: "c", 
-          value: new THREE.Color(topColor) 
+        topColor: {
+          type: "c",
+          value: new THREE.Color(topColor)
         },
-        bottomColor: { 
-          type: "c", 
-          value: new THREE.Color(bottomColor) 
+        bottomColor: {
+          type: "c",
+          value: new THREE.Color(bottomColor)
         },
-        offset: { 
-          type: "f", 
-          value: verticalOffset 
+        offset: {
+          type: "f",
+          value: verticalOffset
         }
     }
 
-    var skyGeo = new THREE.SphereGeometry( 
+    var skyGeo = new THREE.SphereGeometry(
       sphereRadius, widthSegments, heightSegments );
-    var skyMat = new THREE.ShaderMaterial({ 
-      vertexShader: vertexShader, 
-      fragmentShader: fragmentShader, 
-      uniforms: uniforms, 
-      side: THREE.BackSide 
+    var skyMat = new THREE.ShaderMaterial({
+      vertexShader: vertexShader,
+      fragmentShader: fragmentShader,
+      uniforms: uniforms,
+      side: THREE.BackSide
     });
 
     var sky = new THREE.Mesh(skyGeo, skyMat);
@@ -49306,7 +49319,7 @@ utils.closestPointOnLine = function(x, y, x1, y1, x2, y2) {
 
 utils.distance = function( x1, y1, x2, y2 ) {
 	return Math.sqrt(
-		Math.pow(x2 - x1, 2) + 
+		Math.pow(x2 - x1, 2) +
 		Math.pow(y2 - y1, 2));
 }
 
@@ -49551,7 +49564,7 @@ utils.unique = function(arr, hashFunc) {
         map[hashFunc(arr[i])] = true;
       }
     }
-    return results; 
+    return results;
 }
 
 utils.removeValue = function(arr, value) {
@@ -49584,4 +49597,3 @@ utils.subtract = function(array, subArray) {
 module.exports = utils;
 
 },{}]},{},[3]);
-

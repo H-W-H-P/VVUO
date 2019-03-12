@@ -34,10 +34,10 @@ $(document).ready(function () {
     return false
   })
 
-  $('.simple_title_wr_6__btn').click(function () {
-    $('html, body').animate({ scrollTop: $('.shop_wrap').offset().top }, 2000)
-    return false
-  })
+  // $('.simple_title_wr_6__btn').click(function () {
+  //   $('html, body').animate({ scrollTop: $('.shop_wrap').offset().top }, 2000)
+  //   return false
+  // })
 
   $('.input_decore').each(function () {
     $(this).removeClass('hasCont')
@@ -1155,6 +1155,8 @@ $(document).ready(function () {
   function addLinkJs (prop) {
     let linkJs = $(prop).attr('data-js')
     $('.my_add_item').attr('data-jsLink', linkJs)
+    let dataFloor = $(prop).attr('data-floor')
+    $('.my_add_item').attr('data-floor', dataFloor)
   }
 
   function addNameGoods (prop) {
@@ -1176,16 +1178,20 @@ $(document).ready(function () {
     var _this = this
     setTimeout(function () {
       $('.conf_wr__wrap_slider').css('top', $(_this).closest('.shop_filters__block').find('.conf_wr_filters__cat_wr').innerHeight() - 20)
-      const ps = new PerfectScrollbar('.conf_wr__wrap_slider')
-      ps.update()
+      if ($('.conf_wr__wrap_slider').length) {
+        var ps = new PerfectScrollbar('.conf_wr__wrap_slider')
+        ps.update()
+      }
     }, 800)
   })
   $('.conf_wr_filters__input_wr').mousedown(function () {
     var _this = this
     setTimeout(function () {
       $('.conf_wr__wrap_slider').css('top', $(_this).closest('.shop_filters__block').find('.conf_wr_filters__cat_wr').innerHeight() - 20)
-      const ps = new PerfectScrollbar('.conf_wr__wrap_slider')
-      ps.update()
+      if ($('.conf_wr__wrap_slider').length) {
+        var ps = new PerfectScrollbar('.conf_wr__wrap_slider')
+        ps.update()
+      }
     }, 800)
   })
   $('.provider__drop_name').on('click', function (e) {
@@ -1195,8 +1201,10 @@ $(document).ready(function () {
     $('.provider__drop_toogle').toggleClass('closed')
     $('.provider__drop').toggleClass('open')
   })
-  const psr = new PerfectScrollbar('.provider__drop_wr')
-  psr.update()
+  if ($('.provider__drop_wr').length) {
+    var psr = new PerfectScrollbar('.provider__drop_wr')
+    psr.update()
+  }
   $(window).resize(function () {
     psr.update()
   })
