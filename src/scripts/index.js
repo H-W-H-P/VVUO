@@ -1161,7 +1161,8 @@ $(document).ready(function () {
 
   function addNameGoods (prop) {
     let nameGoods = $(prop).attr('data-goods')
-    $('.my_add_item').attr('data-goodsGoods', nameGoods)
+    let stateName = $(prop).attr('data-state')
+    $('.my_add_item').attr('data-goodsGoods', nameGoods).attr('data-state2', stateName)
     $('.items_pop_up').find('h6').html(nameGoods)
   }
 })

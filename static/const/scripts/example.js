@@ -576,12 +576,18 @@ var SideMenu = function(blueprint3d, floorplanControls, modalEffects) {
     let linkJs = $(e).closest('.config__item').attr('data-js');
     let nameGoods = $(e).closest('.config__item').attr('data-goods');
     let valueFloor = $(e).closest('.config__item').attr('data-floor');
+    let 
+    
+    = $(e).closest('.config__item').attr('data-state');
     addItemInList(nameGoods)
-    // console.log(valueFloor)
+
+    valueState = +valueState
     if (valueFloor === "true") {
-      blueprint3d.model.scene.addItem(1, linkJs, {floor: true, resizable: true, itemName: nameGoods, itemType: 1, modelUrl: linkJs}, nameGoods);
+      // blueprint3d.model.scene.addItem(1, linkJs, {floor: true, resizable: true, itemName: nameGoods, itemType: 1, modelUrl: linkJs}, nameGoods);
+      blueprint3d.model.scene.addItem(valueState, linkJs, {floor: false, resizable: true, itemName: nameGoods, itemType: valueState, modelUrl: linkJs}, nameGoods);
+
     } else {
-      blueprint3d.model.scene.addItem(1, linkJs, {floor: false, resizable: true, itemName: nameGoods, itemType: 1, modelUrl: linkJs}, nameGoods);
+      blueprint3d.model.scene.addItem(valueState, linkJs, {floor: false, resizable: true, itemName: nameGoods, itemType: valueState, modelUrl: linkJs}, nameGoods);
     }
     // blueprint3d.model.scene.addItem(1, linkJs, {floor: valueFloor, resizable: true, itemName: nameGoods, itemType: 1, modelUrl: linkJs}, nameGoods);
   }
@@ -600,14 +606,18 @@ var SideMenu = function(blueprint3d, floorplanControls, modalEffects) {
     $('.items_pop_up').removeClass('pop_up_active');
     let linkJs = $('.my_add_item').attr('data-jsLink');
     let nameGoods = $('.my_add_item').attr('data-goodsGoods');
+
     let valueFloor = $('.my_add_item').attr('data-floor');
+    let valueState = $('.my_add_item').attr('data-state2');
+    valueState = +valueState
     addItemInList(nameGoods)
     // blueprint3d.model.scene.addItem(1, linkJs, {floor: true, resizable: true, itemName: nameGoods, itemType: 1, modelUrl: linkJs}, nameGoods);
     if (valueFloor === "true") {
-      blueprint3d.model.scene.addItem(1, linkJs, {floor: true, resizable: true, itemName: nameGoods, itemType: 1, modelUrl: linkJs}, nameGoods);
+      blueprint3d.model.scene.addItem(valueState, linkJs, {floor: true, resizable: true, itemName: nameGoods, itemType: valueState, modelUrl: linkJs}, nameGoods);
     } else {
-      blueprint3d.model.scene.addItem(1, linkJs, {floor: false, resizable: true, itemName: nameGoods, itemType: 1, modelUrl: linkJs}, nameGoods);
+      blueprint3d.model.scene.addItem(valueState, linkJs, {floor: false, resizable: true, itemName: nameGoods, itemType: valueState, modelUrl: linkJs}, nameGoods);
     }
+
   })
 
   function getListSelectedItem() {
