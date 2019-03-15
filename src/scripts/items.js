@@ -351,6 +351,7 @@ $(document).ready(function () {
     if (stateCatalog['catalog']) {
       if (!$('.conf_wr_filters__plan').hasClass('closed')) {
         $('.conf_wr_filters__plan').addClass('closed')
+        $('.item_category, .conf_wr_filters__cat_wr').addClass('closed')
         $('.conf_wr_filters__plan').next().addClass('closed')
       }
     }
@@ -383,6 +384,7 @@ $(document).ready(function () {
     })
   })
   $('.conf_wr_filters__plan').on('click', function () {
+    $('.item_category, .conf_wr_filters__cat_wr').addClass('closed')
     if (window.innerWidth >= 1440) {
       // $(this).next().toggleClass('closed')
       // deleteActiveTabColor()
