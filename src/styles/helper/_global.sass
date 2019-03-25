@@ -36,12 +36,13 @@ textarea
 button	
     border: none
     background: none
-    font-family: avantgardegothicc;
+    font-family: CenturyGothic
     font-size: 100%
     font-weight: 100%
     padding: 0
     margin: 0
     outline: 0
+
 
 // sizes
 
@@ -106,6 +107,11 @@ button
 .desktop_small
 	display: none
 	@media(max-width:1439px)
+		display: block
+
+.desktop_small_new
+	display: none
+	@media(max-width:1023px)
 		display: block
 
 .tablet
@@ -177,6 +183,7 @@ button
 	font-weight: bold
 
 	position: relative
+	font-family: CenturyGothic
 
 	&::after
 		content: ''
@@ -226,8 +233,8 @@ button
 			@media(max-width:1023px)
 				border-color: transparent
 
-.zoomImgWr
-	transition: all ease .4s
+// .zoomImgWr
+// 	transition: all ease .4s
 
 .zoomImgWr.zoomed
 	position: fixed
@@ -375,13 +382,15 @@ button
 	@media(max-width:1023px)
 		display: none
 
+
 .css_arr
 	position: relative
+
 
 	&::after
 		position: absolute
 		content: ''
-
+		
 		right: 0
 		top: 50%
 		transform: translateY(-70%) rotate(-45deg)
@@ -392,6 +401,15 @@ button
 
 		border-left: 2px solid $blackTxt
 		border-bottom: 2px solid $blackTxt
+
+		
+.conf_wr .shop_filters__cat.css_arr.closed
+	&::after
+		opacity: 1
+		
+.conf_wr .shop_filters__cat.css_arr
+	&::after
+		opacity: 0
 
 .checkbox
 	position: absolute

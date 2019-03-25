@@ -58,20 +58,20 @@ var CameraButtons = function(blueprint3d) {
     $("#move-up").dblclick(preventDefault);
     $("#move-down").dblclick(preventDefault);
 
-    $('.conf_wr__order_btn').on('click', function(EO) {
-      return orbitControls.changeViewe_2d();
-    });
+    // $('.conf_wr__order_btn').on('click', function(EO) {
+    //   return orbitControls.changeViewe_2d();
+    // });
 
-    $('#constructor_2d, .open_page_pdf').on('click', function(EO) {
+    $('#constructor_2d').on('click', function(EO) {
     	EO.preventDefault();
     	return orbitControls.changeViewe_2d();
     });
 
-     $('#constructor_3d, .page_pdf__back, .config__next, .clearConstr').on('click', function(EO) {
+     $('#constructor_3d, .config__next, .clearConstr').on('click', function(EO) {
     	EO.preventDefault();
     	return orbitControls.changeViewe_3d();
     });
-    
+
     $('.constructor__controlViwe').on('click', function(EO) {
       let parent = EO.target;
       if ($(parent).hasClass('constructor__controlViwe_blue')) {
@@ -127,7 +127,7 @@ var CameraButtons = function(blueprint3d) {
 
 /*
  * Context menu for selected item
- */ 
+ */
 
 var ContextMenu = function(blueprint3d) {
   var curPrice;
@@ -143,7 +143,7 @@ var ContextMenu = function(blueprint3d) {
       if (value) {
         curPrice = (Number(listItem2[index]) * Number(value));
         allPrice = allPrice + curPrice;
-      } 
+      }
     });
     $('.confPrice').html(allPrice);
     allPrice = 0;
@@ -163,7 +163,11 @@ var ContextMenu = function(blueprint3d) {
   function init() {
 
     $("#context-menu-delete").click(function(event) {
-      removeItemFromList(selectedItem);
+      if ((selectedItem.name == 'door') || (selectedItem.name == 'window')) {
+
+      } else {
+        removeItemFromList(selectedItem);
+      }
       selectedItem.remove();
     });
 
@@ -194,7 +198,7 @@ var ContextMenu = function(blueprint3d) {
     $("#item-width").val(cmToIn(selectedItem.getWidth()).toFixed(0));
     $("#item-height").val(cmToIn(selectedItem.getHeight()).toFixed(0));
     $("#item-depth").val(cmToIn(selectedItem.getDepth()).toFixed(0));
-    
+
     $("#div").val(cmToIn(selectedItem.getDepth()).toFixed(0));
 
 
@@ -257,7 +261,7 @@ var ModalEffects = function(blueprint3d) {
      blueprint3d.model.scene.itemLoadedCallbacks.add(function() {
       itemsLoading -= 1;
       update();
-    });   
+    });
 
     update();
   }
@@ -270,7 +274,7 @@ var ModalEffects = function(blueprint3d) {
  */
 
 var SideMenu = function(blueprint3d, floorplanControls, modalEffects) {
-  $('#constructor_3d, .page_pdf__back, .config__next, .clearConstr').on('click', function(EO) {
+  $('#constructor_3d, .config__next, .clearConstr').on('click', function(EO) {
     EO.preventDefault();
     blueprint3d.model.floorplan.update();
   })
@@ -363,25 +367,27 @@ var SideMenu = function(blueprint3d, floorplanControls, modalEffects) {
       $('#constructor_3d').addClass('activeState')
       closeInstruction();
       // check and set min wall height if < 2.1m
-      var wallHeight = $('.config__input_height_mobile').val() > 210 ? $('.config__input_height_mobile').val() : $('.config__input_height').val();
-      wallHeight = $('.config__input_height').val() > 210 ? $('.config__input_height').val() : 250;
-      $('.config__input_height').val(wallHeight);
+      var wallHeight = $('.config__input_height_mobile').val() > 210 ? $('.config__input_height_mobile').val() : 250;
+      // wallHeight = $('.config__input_height').val() > 210 ? $('.config__input_height').val() : 250;
+      // $('.config__input_height').val(wallHeight);
       $('.config__input_height_mobile').val(wallHeight);
       // check and set min wallA length if < 3m
-      wallA = $('#confWallA').val() > 300 ? $('#confWallA').val() : $('.confWallA-desk').val();
-      wallA = $('.confWallA-desk').val() > 300 ? $('.confWallA-desk').val() : 300;
+      wallA = $('#confWallA').val() > 300 ? $('#confWallA').val() : 300;
+      // wallA = $('.confWallA-desk').val() > 300 ? $('.confWallA-desk').val() : 300;
       $('.confWallA-desk').val(wallA);
       $('#confWallA').val(wallA);
       // check and set min wallB height if < 3m
-      wallB = $('#confWallB').val() > 300 ? $('#confWallB').val() : $('.confWallB-desk').val();
-      wallB = $('.confWallB-desk').val() > 300 ? $('.confWallB-desk').val() : 300;
+      wallB = $('#confWallB').val() > 300 ? $('#confWallB').val() : 300;
+      // wallB = $('.confWallB-desk').val() > 300 ? $('.confWallB-desk').val() : 300;
       $('.confWallB-desk').val(wallB);
       $('#confWallB').val(wallB);
 
       $('.config__top_line .config__number').text(wallA);
       $('.config__left_line .config__number').text(wallB);
       var rommSize = wallA + 'x' + wallB;
+      console.log(wallB, wallA)
       $('.list_room_size').val(rommSize)
+      $('.conf_wr_filters__plan, .planWrap').addClass('closed')
 
       setTimeout(function() {
         setCurrentState(scope.states.FLOORPLAN);
@@ -392,6 +398,7 @@ var SideMenu = function(blueprint3d, floorplanControls, modalEffects) {
     })
 
     $('.clearConstr').click(function () {
+      $('.conf_wr_filters-side__reset').removeClass('visible')
       $('.constructor__controlViwe').removeClass('activeState constructor_2d_active constructor_3d_active')
       $('#constructor_3d').addClass('activeState')
       $(this).closest('.pop_up__wr').removeClass('pop_up_active')
@@ -440,7 +447,7 @@ var SideMenu = function(blueprint3d, floorplanControls, modalEffects) {
       }
     }
   }
-  
+
   function setCurrentState(newState) {
 
     if (currentState == newState) {
@@ -450,7 +457,7 @@ var SideMenu = function(blueprint3d, floorplanControls, modalEffects) {
     // show the right tab as active
     if (currentState.tab !== newState.tab) {
       if (currentState.tab != null) {
-        currentState.tab.removeClass(ACTIVE_CLASS);          
+        currentState.tab.removeClass(ACTIVE_CLASS);
       }
       if (newState.tab != null) {
         newState.tab.addClass(ACTIVE_CLASS);
@@ -468,7 +475,7 @@ var SideMenu = function(blueprint3d, floorplanControls, modalEffects) {
     if (newState == scope.states.FLOORPLAN) {
       floorplanControls.updateFloorplanView();
       floorplanControls.handleWindowResize();
-    } 
+    }
 
     if (currentState == scope.states.FLOORPLAN) {
       blueprint3d.model.floorplan.update();
@@ -477,9 +484,9 @@ var SideMenu = function(blueprint3d, floorplanControls, modalEffects) {
     if (newState == scope.states.DEFAULT) {
       blueprint3d.three.updateWindowSize();
     }
- 
+
     // set new state
-    handleWindowResize();    
+    handleWindowResize();
     currentState = newState;
 
     scope.stateChangeCallbacks.fire(newState);
@@ -514,19 +521,21 @@ var SideMenu = function(blueprint3d, floorplanControls, modalEffects) {
     });
   }
 
-  
+
 
 
   $('.config__add_window').on('click', function() {
 
     if (triggerAddItem) {
       closeInstruction();
+      $('.conf_wr_filters-side__reset').addClass('visible')
     }
     blueprint3d.model.scene.addItem(2, 'static/const/models/newObj/window/window.js', {resizable: true, itemName: 'window', itemType: 2, modelUrl: 'static/const/models/newObj/window/window.js'}, 'window');
   });
   $('.config__add_door').on('click', function() {
     if (triggerAddItem) {
       closeInstruction();
+      $('.conf_wr_filters-side__reset').addClass('visible')
     }
     blueprint3d.model.scene.addItem(9, 'static/const/models/newObj/door/door.js', {resizable: true, itemName: 'door', itemType: 9, modelUrl: 'static/const/models/newObj/door/door.js'}, 'door');
 
@@ -537,12 +546,14 @@ var SideMenu = function(blueprint3d, floorplanControls, modalEffects) {
 
   init();
 
-  $('.conf_wr__over, .shop_filters__block').on('click', function(EO) {
+  $(document).on('click', '.conf_wr__over, .shop_filters__block', function (EO) {
     let target = EO.target;
     if (EO.target.tagName === 'IMG') {
       if ($(EO.target).parent().hasClass('my_add_item_one')) {
+        console.log('hear')
         if (triggerAddItem) {
           closeInstruction();
+          $('.conf_wr_filters-side__reset').addClass('visible')
         }
         adItem(target)
         return
@@ -553,17 +564,32 @@ var SideMenu = function(blueprint3d, floorplanControls, modalEffects) {
     }
     if (triggerAddItem) {
       closeInstruction();
+      $('.conf_wr_filters-side__reset').addClass('visible')
     }
+    $('.conf_wr_filters-side__reset').addClass('visible')
 
-    adItem(target) 
+    adItem(target)
     EO.stopPropagation();
   })
 
   function adItem(e) {
     let linkJs = $(e).closest('.config__item').attr('data-js');
     let nameGoods = $(e).closest('.config__item').attr('data-goods');
+    let valueFloor = $(e).closest('.config__item').attr('data-floor');
+    let 
+    
+    = $(e).closest('.config__item').attr('data-state');
     addItemInList(nameGoods)
-    blueprint3d.model.scene.addItem(1, linkJs, {resizable: true, itemName: nameGoods, itemType: 1, modelUrl: linkJs}, nameGoods);
+
+    valueState = +valueState
+    if (valueFloor === "true") {
+      // blueprint3d.model.scene.addItem(1, linkJs, {floor: true, resizable: true, itemName: nameGoods, itemType: 1, modelUrl: linkJs}, nameGoods);
+      blueprint3d.model.scene.addItem(valueState, linkJs, {floor: false, resizable: true, itemName: nameGoods, itemType: valueState, modelUrl: linkJs}, nameGoods);
+
+    } else {
+      blueprint3d.model.scene.addItem(valueState, linkJs, {floor: false, resizable: true, itemName: nameGoods, itemType: valueState, modelUrl: linkJs}, nameGoods);
+    }
+    // blueprint3d.model.scene.addItem(1, linkJs, {floor: valueFloor, resizable: true, itemName: nameGoods, itemType: 1, modelUrl: linkJs}, nameGoods);
   }
 
   // $('.shop_filters').on('click', function() {
@@ -574,13 +600,24 @@ var SideMenu = function(blueprint3d, floorplanControls, modalEffects) {
     EO.preventDefault()
     if (triggerAddItem) {
       closeInstruction();
+      $('.conf_wr_filters-side__reset').addClass('visible')
     }
     $('body, html').removeClass('pop_up_cond');
     $('.items_pop_up').removeClass('pop_up_active');
     let linkJs = $('.my_add_item').attr('data-jsLink');
     let nameGoods = $('.my_add_item').attr('data-goodsGoods');
+
+    let valueFloor = $('.my_add_item').attr('data-floor');
+    let valueState = $('.my_add_item').attr('data-state2');
+    valueState = +valueState
     addItemInList(nameGoods)
-    blueprint3d.model.scene.addItem(1, linkJs, {resizable: true, itemName: nameGoods, itemType: 1, modelUrl: linkJs}, nameGoods);
+    // blueprint3d.model.scene.addItem(1, linkJs, {floor: true, resizable: true, itemName: nameGoods, itemType: 1, modelUrl: linkJs}, nameGoods);
+    if (valueFloor === "true") {
+      blueprint3d.model.scene.addItem(valueState, linkJs, {floor: true, resizable: true, itemName: nameGoods, itemType: valueState, modelUrl: linkJs}, nameGoods);
+    } else {
+      blueprint3d.model.scene.addItem(valueState, linkJs, {floor: false, resizable: true, itemName: nameGoods, itemType: valueState, modelUrl: linkJs}, nameGoods);
+    }
+
   })
 
   function getListSelectedItem() {
@@ -590,7 +627,7 @@ var SideMenu = function(blueprint3d, floorplanControls, modalEffects) {
     if ($('.constructor').attr('data-objModels')) {
       let htmlJsnIvan = $('.constructor').attr('data-objModels');
       let itemsIvan = JSON.parse(htmlJsnIvan);
-      
+
       items.forEach((v, k) => {
         if (itemsIvan[v['name']]) {
           listItem[v['name']] = itemsIvan[v['name']]['number'];
@@ -609,7 +646,7 @@ var SideMenu = function(blueprint3d, floorplanControls, modalEffects) {
     // items.forEach((v, k) => {
     //   listItem[v['name']] = 0;
     // });
-    
+
     // console.table(items)
     items.forEach((v, k) => {
       listItem2[v['name']] = v.price;
@@ -619,7 +656,7 @@ var SideMenu = function(blueprint3d, floorplanControls, modalEffects) {
     });
     items.forEach((v, k) => {
       objForIvan[v['name']] = {
-        'id' : v.id, 
+        'id' : v.id,
         'price' : v.price,
         'number' : 0
       };
@@ -643,7 +680,7 @@ var SideMenu = function(blueprint3d, floorplanControls, modalEffects) {
           if (value) {
             curPrice = (Number(listItem2[index]) * Number(value));
             allPrice = allPrice + curPrice;
-          } 
+          }
         });
         $('.confPrice').html(allPrice);
         allPrice = 0;
@@ -692,19 +729,19 @@ var TextureSelector = function (blueprint3d, sideMenu) {
 
   function wallClicked(halfEdge) {
     currentTarget = halfEdge;
-    $("#floorTexturesDiv").hide();  
-    $("#wallTextures").show();  
+    $("#floorTexturesDiv").hide();
+    $("#wallTextures").show();
   }
 
   function floorClicked(room) {
     currentTarget = room;
-    $("#wallTextures").hide();  
-    $("#floorTexturesDiv").show();  
+    $("#wallTextures").hide();
+    $("#floorTexturesDiv").show();
   }
 
   function reset() {
-    $("#wallTextures").hide();  
-    $("#floorTexturesDiv").hide();  
+    $("#wallTextures").hide();
+    $("#floorTexturesDiv").hide();
   }
 
   init();
@@ -778,7 +815,7 @@ var ViewerFloorplanner = function(blueprint3d) {
   };
 
   init();
-}; 
+};
 
 /*
  * Initialize!
@@ -806,7 +843,7 @@ $(document).ready(function() {
   var viewerFloorplanner = new ViewerFloorplanner(blueprint3d);
   var contextMenu = new ContextMenu(blueprint3d);
   var sideMenu = new SideMenu(blueprint3d, viewerFloorplanner, modalEffects);
-  var textureSelector = new TextureSelector(blueprint3d, sideMenu);        
+  var textureSelector = new TextureSelector(blueprint3d, sideMenu);
   var cameraButtons = new CameraButtons(blueprint3d);
   // mainControls(blueprint3d);
 

@@ -26,7 +26,8 @@ $(document).ready(function () {
       nameCategoryArr.forEach((value, key) => {
         tamplateCatrgory = `<div class='shop_filters__block conf_wr__block shop_filters__block_wrap' data-wrapOwl="${key}">
           <a href='#' class='shop_filters__cat bold css_arr closed conf_wr__cat item_category'>${value}</a>
-          <div class="conf_wr_filters__cat_wr shop_filters__cat_wr closed"></div>
+          <div class="conf_wr_filters__cat_wr shop_filters__cat_wr closed">
+          </div>
           </div>`
         $('.wrap_filter').append(tamplateCatrgory)
       })
@@ -51,6 +52,10 @@ $(document).ready(function () {
         let tamplateTypesLabel
         nameTypesNew.forEach((v, k) => {
           tamplateTypesLabel = `<div class='shop_filters__input_wr conf_wr_filters__input_wr'>
+            <a href="" class="pop_up__toggle cross cross_constr">
+            <span class="cross_one cross_lane"></span>
+            <span class="cross_two cross_lane"></span>
+            </a>
             <input type='checkbox' class="checkbox" id='${k}'>
             <label for='input${k}' class="conf_wr_filters-side__chbx label_checkbox" data-type="${v}">${v}</label>
             </div>`
@@ -100,7 +105,8 @@ $(document).ready(function () {
     stateCatalog['label'] = $(this).attr('data-type')
     // -
     if (window.innerWidth >= 1440) {
-      createOwlDesktop(this)
+      // createOwlDesktop(this)
+      createOwlMoboles(this)
     } else {
       createOwlMoboles(this)
       return false
@@ -126,6 +132,7 @@ $(document).ready(function () {
     let pushHear
     let nameFilter = stateCatalog['label']
     let nameCatalog = $(`[data-wrapowl=${stateCatalog['catalog']}]`).find('.item_category').html()
+    let valueFloor = false
 
     if (!nameOwl) {
       pushHear = '.config__owl'
@@ -146,7 +153,10 @@ $(document).ready(function () {
       } else {
         moreImg = 0
       }
-      htmlItem = `<a href='#' class='config__item popUpCall' id="items-wrapper add-items" data-item="${numItem}" data-pop_up=".pop_up__items" data-goods="${valueItem['name']}" data-js="${valueItem['model']}" data-description="${valueItem['description']}" data-moreImg=${moreImg}>
+      if (valueItem['floor']) {
+        valueFloor = true
+      }
+      htmlItem = `<a href='#' class='config__item popUpCall' id="items-wrapper add-items" data-floor="${valueFloor}" data-item="${numItem}" data-pop_up=".pop_up__items" data-state="${valueItem['type']}" data-goods="${valueItem['name']}" data-js="${valueItem['model']}" data-description="${valueItem['description']}" data-moreImg=${moreImg}>
         <div class='config__img_wr add-item'   >
         <img src='${valueItem['image']}' class='items_pop_up__img_items'>
         <div class='config__arrow my_add_item_one'>
@@ -177,31 +187,9 @@ $(document).ready(function () {
     }
 
     if (val) {
-      courOwlMob = $('.config__owl_mobiles').owlCarousel({
-        items: 4,
-        loop: false,
-        dots: false,
-        nav: true,
-        onInitialized: callbackOwl,
-        responsive: {
-          1024: {
-            items: 5
-          }
-        }
-      })
+      callbackOwl()
     } else {
-      courOwl = $('.config__owl').owlCarousel({
-        items: 4,
-        loop: false,
-        dots: false,
-        nav: true,
-        onInitialized: callbackOwl,
-        responsive: {
-          1024: {
-            items: 5
-          }
-        }
-      })
+      callbackOwl()
     }
     function callbackOwl () {
       setTimeout(function () {
@@ -244,18 +232,18 @@ $(document).ready(function () {
   }
   // resize
   $(window).resize(function () {
-    if (window.innerWidth < 1440) {
-      resizeStateONMobile()
-      tabToogle()
-      st = true
-    } else {
-      resizeStateOnDesk()
-      $('.owl-carousel.owl-hidden').removeClass('owl-hidden')
-      if (!$('.conf_wr_filters__plan').next().hasClass('closed')) {
-        $('.conf_wr_filters__plan').next().toggleClass('closed')
-        $('.conf_wr_filters__plan').addClass('closed')
-      }
-    }
+    // if (window.innerWidth < 1440) {
+    resizeStateONMobile()
+    tabToogle()
+    st = true
+    // } else {
+    //   resizeStateOnDesk()
+    //   $('.owl-carousel.owl-hidden').removeClass('owl-hidden')
+    //   if (!$('.conf_wr_filters__plan').next().hasClass('closed')) {
+    //     $('.conf_wr_filters__plan').next().toggleClass('closed')
+    //     $('.conf_wr_filters__plan').addClass('closed')
+    //   }
+    // }
   })
   // resize
   function closePanel () {
@@ -296,17 +284,18 @@ $(document).ready(function () {
       }
     }
   }
+  console.log(resizeStateOnDesk)
   // resize
   function clearMobSlider () {
     $('.conf_wr__wrap_slider_mob').remove()
     courOwlMob = null
   }
   // < 1440
-  $('.item_category').on('click', function () {
+  $('.item_category, .cross_constr').on('click', function () {
     let _this = this
-    if (window.innerWidth >= 1440) {
-      return false
-    }
+    // if (window.innerWidth >= 1440) {
+    //   return false
+    // }
     deleteActiveTabColor()
     if (!$('.conf_wr_filters__plan').hasClass('closed')) {
       $('.conf_wr_filters__plan').addClass('closed')
@@ -358,37 +347,47 @@ $(document).ready(function () {
   }
   // Tab
   function tabToogle () {
-    if (window.innerWidth < 1440) {
-      if (stateCatalog['catalog']) {
-        if (!$('.conf_wr_filters__plan').hasClass('closed')) {
-          $('.conf_wr_filters__plan').addClass('closed')
-          $('.conf_wr_filters__plan').next().addClass('closed')
-        }
+    // if (window.innerWidth < 1440) {
+    if (stateCatalog['catalog']) {
+      if (!$('.conf_wr_filters__plan').hasClass('closed')) {
+        $('.conf_wr_filters__plan').addClass('closed')
+        $('.item_category, .conf_wr_filters__cat_wr').addClass('closed')
+        $('.conf_wr_filters__plan').next().addClass('closed')
       }
-      if (stateCatalog['open']) {
-        $('.item_category').each((v, k) => {
-          if ($(k).parent().attr('data-wrapowl') !== stateCatalog['catalog']) {
-            if (!$(k).hasClass('closed')) {
-              $(k).toggleClass('closed')
-              $(k).next().toggleClass('closed')
-            }
-          }
-        })
-      } else {
-        $('.item_category').each((v, k) => {
+    }
+    if (stateCatalog['open']) {
+      $('.item_category').each((v, k) => {
+        if ($(k).parent().attr('data-wrapowl') !== stateCatalog['catalog']) {
           if (!$(k).hasClass('closed')) {
             $(k).toggleClass('closed')
             $(k).next().toggleClass('closed')
           }
-        })
-      }
+        }
+      })
+    } else {
+      $('.item_category').each((v, k) => {
+        if (!$(k).hasClass('closed')) {
+          $(k).toggleClass('closed')
+          $(k).next().toggleClass('closed')
+        }
+      })
     }
+    // }
   }
   // Tab
+  $('.cross_constr').on('click', function (e) {
+    $('.item_category').each((v, k) => {
+      if (!$(k).hasClass('closed')) {
+        $(k).toggleClass('closed')
+        $(k).next().toggleClass('closed')
+      }
+    })
+  })
   $('.conf_wr_filters__plan').on('click', function () {
+    $('.item_category, .conf_wr_filters__cat_wr').addClass('closed')
     if (window.innerWidth >= 1440) {
-      $(this).next().toggleClass('closed')
-      deleteActiveTabColor()
+      // $(this).next().toggleClass('closed')
+      // deleteActiveTabColor()
     } else {
       $('.item_category').each((v, k) => {
         if (!$(k).hasClass('closed')) {
